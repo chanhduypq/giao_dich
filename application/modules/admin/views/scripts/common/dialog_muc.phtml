@@ -1,0 +1,50 @@
+<div id="dialog-form" title="Thêm mục con">
+    <fieldset>
+      <label for="name">Tên mục: </label>
+      <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+      <br>
+      <input style="cursor: pointer;" type="checkbox" id="is_show_at_home_page">
+      <label style="cursor: pointer;" for="is_show_at_home_page">&nbsp;&nbsp;Cho hiển thị tại trang chủ</label>      
+      <br>
+      
+      <div id="div_name_show">
+          <label for="name_show">Tên mục để hiển thị: </label>
+          <input type="text" id="name_show" class="text ui-widget-content ui-corner-all">
+      </div>
+      <br>
+      <input type="file" id="picture"/>
+
+      <input type="hidden" name="level" id="level">
+      <input type="hidden" name="id" id="id">
+ 
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+</div>
+
+<div id="dialog-form-edit" title="Sửa">
+    <fieldset>
+      <label for="name_edit">Tên mục: </label>
+      <input type="text" name="name_edit" id="name_edit" class="text ui-widget-content ui-corner-all">
+      <br>
+      <input style="cursor: pointer;" type="checkbox" id="is_show_at_home_page_edit">
+      <label style="cursor: pointer;" for="is_show_at_home_page_edit">&nbsp;&nbsp;Cho hiển thị tại trang chủ</label>      
+      <br>
+      
+      <div id="div_name_show_edit">
+          <label for="name_show_edit">Tên mục để hiển thị: </label>
+          <input type="text" id="name_show_edit" class="text ui-widget-content ui-corner-all">
+      </div>
+      <br>
+      <input type="file" id="picture_edit"/>
+      <br>
+      <br>
+      <div style="display: none;" id="photo">
+          <img style="width: 100%;height: auto;"/>
+      </div>
+
+      <input type="hidden" name="level_edit" id="level_edit">
+      <input type="hidden" name="id_edit" id="id_edit">
+ 
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+</div>

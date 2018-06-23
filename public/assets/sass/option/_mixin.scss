@@ -1,0 +1,49 @@
+@import 'variable';
+
+@mixin reset-ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+@mixin border-inner($bd-w: 20px, $scale: 0.95, $opacity: 0.4){
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	border: $bd-w solid #000;
+	opacity: $opacity;
+	filter: alpha(opacity=$opacity);
+	-webkit-transform: scale($scale);
+	-ms-transform: scale($scale);
+	-o-transform: scale($scale);
+	transform: scale($scale);
+	-webkit-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+}
+
+@mixin fa-before($fs: 16px){
+	display: inline-block;
+    font-family: "FontAwesome", sans-serif;
+    font-size: $fs;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin btn-project{
+	display: inline-block;
+	line-height: 40px;
+	padding: 0 15px 0 40px;
+	border: 1px solid;
+	color: $cl-silver;
+	font-size: 14px;
+	background: #ffffff url('../images/layout/bookmark-light.png') 15px center no-repeat;
+	background-size: 17px;
+}
+
+@mixin btn-project-hover{
+	color: #ffffff;
+	background: $cl-green url('../images/layout/bookmark-white.png') 15px center no-repeat;
+	background-size: 17px;
+}

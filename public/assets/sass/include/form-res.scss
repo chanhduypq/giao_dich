@@ -1,0 +1,123 @@
+@import '../option/variable';
+@import '../option/mixin';
+
+@media screen and (max-width: 991px) {
+	.page-option{
+		.form-page{
+			.fp-content{
+				.fp-group{
+					.fp-input{
+						&.fp-tab{
+							.fp-tab-i{
+								.fp-tab-select{
+									min-width: 50px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.form-register,&.form-login{
+				max-width: 90%;
+				margin-left: auto;
+				margin-right: auto;
+				padding-bottom: 200px;
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 768px) {
+	.page-option{
+		.form-page{
+			.fp-content{
+				.fp-group{
+					.fp-input{
+						&.fp-tab{
+							margin-left: -5px;
+							margin-right: -5px;
+							.fp-tab-i{
+								float: left;
+								width: calc(100% / 3);
+								padding-left: 5px;
+								padding-right: 5px;
+								.fp-tab-ii{
+									position: relative;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.form-register,&.form-login{
+				max-width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				padding-bottom: 150px;
+
+
+			}
+
+			&.form-login{
+				.fp-desc{
+					a:first-child{
+						margin-right: 50px;
+						color: inherit;
+						text-transform: none;
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+@media screen and (max-width: 480px) {
+	.page-option{
+		.form-page{
+			.fp-content{
+				.fp-group{
+					.fp-input{
+						&.fp-tab{
+							margin-left: 0;
+							margin-right: 0;
+							.fp-tab-i{
+								float: none;
+								width: 100%;
+								padding: 4px 0;
+								.fp-tab-select{
+									min-width: 50px;
+									line-height: 50px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.form-register,&.form-login{
+				max-width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				padding-bottom: 100px;
+				.fp-content{
+					padding-top: 0px;
+				}
+			}
+
+			&.form-login{
+				.fp-desc{
+					a:first-child{
+						display: block;
+						margin-right: 0px;
+						color: inherit;
+						text-transform: none;
+					}
+				}
+			}
+		}
+	}
+}

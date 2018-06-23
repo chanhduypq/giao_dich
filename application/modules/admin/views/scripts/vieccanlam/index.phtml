@@ -1,0 +1,166 @@
+<?php echo $this->render('common/tree.phtml'); ?>
+<script type="text/javascript">
+        
+    var clickedItem = null;
+    var dialog,dialogEdit;
+ 
+    $(document).ready(function () {
+        // Create jqxTree
+        $('#jqxTree').jqxTree({ height: '400px', width: '300px' });
+        $('#jqxTree').css('visibility', 'visible');
+        
+        contextMenuAll = $("#jqxMenuAll").jqxMenu({ width: '200px',  height: '86px', autoOpenPopup: false, mode: 'popup' });
+        contextMenu = $("#jqxMenu").jqxMenu({ width: '200px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+        contextMenuRoot = $("#jqxMenuRoot").jqxMenu({ width: '200px',  height: '30px', autoOpenPopup: false, mode: 'popup' });
+
+        
+        attachContextMenu();
+        $("#jqxMenuRoot").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Thêm mục con":
+                    dialog.dialog( "open" );
+                    break;
+            }
+        });
+        
+        $("#jqxMenuAll").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Thêm mục con":
+                    dialog.dialog( "open" );
+                    break;
+                case "Sửa mục này":
+                    dialogEdit.dialog( "open" );
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    $("#name_edit").val(selectedItem.label);
+                    if(photo!=""){
+                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+                    }
+                    else{
+                        $("#photo").hide();
+                    }
+                    break;
+                case "Xóa mục này":
+                    deleteItem('vieccanlam',level,id);
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    if (selectedItem != null) {
+                        $('#jqxTree').jqxTree('removeItem', selectedItem.element);
+                        attachContextMenu();
+                    }
+                    break;
+            }
+        });
+        
+        $("#jqxMenu").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Sửa mục này":
+                    dialogEdit.dialog( "open" );
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    $("#name_edit").val(selectedItem.label);
+                    if(photo!=""){
+                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+                    }
+                    else{
+                        $("#photo").hide();
+                    }
+                    break;
+                case "Xóa mục này":
+                    deleteItem('vieccanlam',level,id);
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    if (selectedItem != null) {
+                        $('#jqxTree').jqxTree('removeItem', selectedItem.element);
+                        attachContextMenu();
+                    }
+                    break;
+            }
+        });
+
+        // disable the default browser's context menu.
+        $(document).on('contextmenu', function (e) {
+            if ($(e.target).parents('.jqx-tree').length > 0) {
+                return false;
+            }
+            return true;
+        });
+
+        
+        
+        dialog = $( "#dialog-form" ).dialog({
+            open: function( event, ui ) {
+                    $("#picture").val('');
+                    $("#name_show").val('');
+                    $("#is_show_at_home_page").prop('checked',false);
+                },
+              autoOpen: false,
+              height: 400,
+              width: 550,
+              modal: true,
+              buttons: [
+                {
+                  text: "Ok",
+                  click: function() {
+                    addMucCon('vieccanlam',$("#name"))
+                  }
+                },
+                {
+                  text: "Hủy",
+                  click: function() {
+                    dialog.dialog( "close" );
+                  }
+                }
+              ],
+              close: function() {
+                  $("#name").val('');
+              }
+            });
+            
+            dialogEdit = $( "#dialog-form-edit" ).dialog({
+                open: function( event, ui ) {
+                    $("#picture_edit").val('');
+                    $("#name_show_edit").val(name_show);
+                    if(is_show_at_home_page=='1'){
+                        $("#is_show_at_home_page_edit").prop('checked',true);
+                    }
+                    else{
+                        $("#is_show_at_home_page_edit").prop('checked',false);
+                    }
+                },
+              autoOpen: false,
+              height: 400,
+              width: 550,
+              modal: true,
+              buttons: [
+                {
+                  text: "Ok",
+                  click: function() {
+                    editItem('vieccanlam',$("#name_edit"))
+                  }
+                },
+                {
+                  text: "Hủy",
+                  click: function() {
+                    dialogEdit.dialog( "close" );
+                  }
+                }
+              ],
+              close: function() {
+                  $("#name_edit").val('');
+              }
+            });
+
+    });
+</script>
+
+<?php echo $this->render('common/dialog_muc.phtml'); ?>
+
+<div class="row-fluid" style="padding-top:20px;margin-bottom: 50px;">
+
+    <div class="col-lg-12 col-md-12">
+        <?php 
+        echo $this->tree('Việc cần làm',$this->level_1_items,$this->level_2_items,$this->level_3_items);
+        ?>
+    </div>
+</div>
+

@@ -1,0 +1,161 @@
+<?php echo $this->render('common/tree.phtml'); ?>
+<script type="text/javascript">
+        
+    var clickedItem = null;
+    var dialog,dialogEdit;
+    
+    $(document).ready(function () {
+        // Create jqxTree
+        $('#jqxTree').jqxTree({ height: '400px', width: '300px' });
+        $('#jqxTree').css('visibility', 'visible');
+        
+        contextMenuAll = $("#jqxMenuAll").jqxMenu({ width: '200px',  height: '86px', autoOpenPopup: false, mode: 'popup' });
+        contextMenu = $("#jqxMenu").jqxMenu({ width: '200px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+        contextMenuRoot = $("#jqxMenuRoot").jqxMenu({ width: '200px',  height: '30px', autoOpenPopup: false, mode: 'popup' });
+
+        
+        attachContextMenu();
+        $("#jqxMenuRoot").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Thêm mục con":
+                    dialog.dialog( "open" );
+                    break;
+            }
+        });
+        
+        $("#jqxMenuAll").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Thêm mục con":
+                    dialog.dialog( "open" );
+                    break;
+                case "Sửa mục này":
+                    dialogEdit.dialog( "open" );
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    $("#name_edit").val(selectedItem.label);
+                    break;
+                case "Xóa mục này":
+                    deleteItem(level,id);
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    if (selectedItem != null) {
+                        $('#jqxTree').jqxTree('removeItem', selectedItem.element);
+                        attachContextMenu();
+                    }
+                    break;
+            }
+        });
+        
+        $("#jqxMenu").on('itemclick', function (event) {
+            var item = $.trim($(event.args).text());
+            switch (item) {
+                case "Sửa mục này":
+                    dialogEdit.dialog( "open" );
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    $("#name_edit").val(selectedItem.label);
+                    break;
+                case "Xóa mục này":
+                    deleteItem(level,id);
+                    var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                    if (selectedItem != null) {
+                        $('#jqxTree').jqxTree('removeItem', selectedItem.element);
+                        attachContextMenu();
+                    }
+                    break;
+            }
+        });
+
+        // disable the default browser's context menu.
+        $(document).on('contextmenu', function (e) {
+            if ($(e.target).parents('.jqx-tree').length > 0) {
+                return false;
+            }
+            return true;
+        });
+
+        
+        
+        dialog = $( "#dialog-form" ).dialog({
+              autoOpen: false,
+              height: 400,
+              width: 350,
+              modal: true,
+              buttons: [
+                {
+                  text: "Ok",
+                  click: function() {
+                    addMucCon('city',$("#name"))
+                  }
+                },
+                {
+                  text: "Hủy",
+                  click: function() {
+                    dialog.dialog( "close" );
+                  }
+                }
+              ],
+              close: function() {
+                  $("#name").val('');
+              }
+            });
+            
+            dialogEdit = $( "#dialog-form-edit" ).dialog({
+              autoOpen: false,
+              height: 400,
+              width: 350,
+              modal: true,
+              buttons: [
+                {
+                  text: "Ok",
+                  click: function() {
+                    editItem('city',$("#name_edit"))
+                  }
+                },
+                {
+                  text: "Hủy",
+                  click: function() {
+                    dialogEdit.dialog( "close" );
+                  }
+                }
+              ],
+              close: function() {
+                  $("#name_edit").val('');
+              }
+            });
+
+    });
+</script>
+
+<div id="dialog-form" title="Thêm mục con">
+    <fieldset>
+      <label for="name">Tên vùng miền, tỉnh thành: </label>
+      <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+
+      <input type="hidden" name="level" id="level">
+      <input type="hidden" name="id" id="id">
+ 
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+</div>
+
+<div id="dialog-form-edit" title="Sửa">
+    <fieldset>
+      <label for="name">Tên vùng miền, tỉnh thành: </label>
+      <input type="text" name="name_edit" id="name_edit" class="text ui-widget-content ui-corner-all">
+
+      <input type="hidden" name="level_edit" id="level_edit">
+      <input type="hidden" name="id_edit" id="id_edit">
+ 
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+</div>
+
+<div class="row-fluid" style="padding-top:20px;margin-bottom: 50px;">
+
+    <div class="col-lg-12 col-md-12">
+        <?php 
+        echo $this->tree('Vùng miền, tỉnh thành',$this->level_1_items,$this->level_2_items,$this->level_3_items);
+        ?>
+    </div>
+</div>
+

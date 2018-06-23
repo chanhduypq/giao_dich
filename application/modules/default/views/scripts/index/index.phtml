@@ -1,0 +1,22 @@
+<?php 
+$items = $this->items;
+?>
+<h1 class="sec-title">Khám phá danh mục</h1>
+<ul>
+    <?php 
+    if(is_array($items)&&count($items)){
+        foreach ($items as $item){
+            if (trim($item['photo']) != "" && file_exists(UPLOAD . '/public/uploads/' . $item['photo'])) {
+            ?>
+            <li>
+                <a href="#">
+                    <img itemprop="image" class="img-responsive" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']); ?>">
+                    <div class="cate-item"><span><?php echo $item['name_show'];?></span></div>
+                </a>
+            </li>
+    <?php 
+            }
+        }
+    }
+    ?>    
+</ul>

@@ -1,0 +1,450 @@
+@import '../option/variable';
+@import '../option/mixin';
+
+.page-content{
+	&.category-page{
+		.content-cate{
+			background: #ffffff;
+			.cate-ad{
+				display: block;
+				clear: both;
+				padding: 20px;
+				background: #ffffff;
+				.cate-ad-wr{
+					overflow: hidden;
+				}
+				.cate-ad-heading{
+					font-weight: 700;
+					padding: 10px 0 20px 0;
+				}
+				.cate-ad-list{
+					@include reset-ul;
+					margin-left: -10px;
+					margin-right: -10px;
+					.cate-ad-i{
+						float: left;
+						width: 30%;
+						padding: 0 10px;
+						.cate-ad-ii{
+							&::after{
+								content: '';
+								display: table;
+								clear: both;
+							}
+						}
+
+						.cai-thumb{
+							height: 200px;
+							text-align: center;
+							overflow: hidden;
+							img{
+								height: 100%;
+								display: inline-block;
+							}
+						}
+
+						.cai-tit{
+							padding: 5px 0;
+							a{
+								color: $cl-black;
+								font-weight: 700;
+								line-height: 1;
+								white-space: nowrap;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								display: block;
+
+								&:hover{
+									color: $cl-orange;
+								}
+							}
+						}
+
+						.cai-desc{
+							font-size: 14px;
+							color: $cl-silver;
+							margin-top: 15px;
+
+							p{
+								margin: 0 0 5px 0;
+								line-height: 1.15;
+							}
+
+							span{
+								display: block;
+							}
+
+							.cai-phone{
+								a{
+									font-weight: 700;
+									font-size: 14px;
+								}
+							}
+
+						}
+
+						.cai-col{
+							float: left;
+						}
+
+						.cai-cl{
+							width: 70%;
+						}
+
+						.cai-cr{
+							width: 30%;
+						}
+						.cai-btn-project{
+							height: 40px;
+							width: 40px;
+							text-align: center;
+							border: 1px solid;
+							color: $cl-silver;
+							display: table;
+							margin-right: 1px;
+							margin-left: auto;
+							background: transparent url('../images/layout/bookmark-light.png') no-repeat center;
+							background-size: 18px 20px;
+
+							&:hover{
+								background: $cl-green url('../images/layout/bookmark-white.png') no-repeat center;
+								background-size: 18px 20px;
+								color: #ffffff;
+							}
+						}
+					}
+				}
+			}
+			.cate-tabs{
+				clear: both;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: block;
+				width: 100%;
+				position: relative;
+				&::after{
+					content:'';
+					display: table;
+					clear: both;
+				}
+				> li{
+					float: left;
+				}
+				.tab-drop{
+					background: $cl-black;
+					.list-drop{
+						padding: 30px 20px 10px 20px;
+						position: relative;
+						width: 150px;
+						.text-drop{
+							color: #ffffff;
+							width: 100%;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+							cursor: pointer;
+							position: relative;
+
+
+						}
+						.drop-drop{
+							background: #ffffff;
+							list-style: none;
+							padding: 0;
+							margin: 0;
+							position: absolute;
+							top: 100%;
+							left: 0;
+							width: 100%;
+							z-index: 1;
+							visibility: hidden;
+							backface-visibility: hidden;
+							opacity: 0;
+							filter: alpha(opacity=0);
+							box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.2);
+							-webkit-transition: 0.2s;
+								-o-transition: 0.2s;
+								transition: 0.2s;
+							> li{
+								padding: 5px 20px;
+								a{
+									display: block;
+									color: $cl-black;
+								}
+							}
+
+							&._expand{
+								visibility: visible;
+								backface-visibility: visible;
+								opacity: 1;
+								filter: alpha(opacity=1);
+								-webkit-transition: 0.2s;
+								-o-transition: 0.2s;
+								transition: 0.2s;
+							}
+						}
+
+						&::before{
+							position: absolute;
+							right: 30px;
+							top: 35px;
+							content: "\f107";
+							display: inline-block;
+    						font: normal normal normal 14px/1 FontAwesome;
+    						width: 10px;
+    						text-align: center;
+    						line-height: 10px;
+    						color: #ffffff;
+    						font-size: 20px;
+    					}
+
+    					&::after{
+							position: absolute;
+							left: 0;
+							top: 100%;
+							content: "";
+    						width: 100%;
+    						height: 0;
+    						border-style: solid;
+    						border-width: 15px 75px 0px 75px;
+    						border-color: $cl-black transparent transparent transparent;
+    					}
+					}
+				}// End tab drop
+
+				.tab-link{
+					width: calc(100% - 95px);
+					.cv-tab-link{
+						position: absolute;
+						top: 0;
+						left: 0;
+						line-height: 30px;
+						width: 30px;
+						text-align: center;
+						cursor: pointer;
+						display: none;
+						span{
+							height: 5px;
+							width: 5px;
+							display: inline-block;
+							background: $cl-black;
+							border-radius: 100%;
+						}
+
+						&:hover{
+							span{
+								background: $cl-yellow;
+							}
+						}
+					}
+
+					ul{
+						list-style: none;
+						padding: 0;
+						margin: 0;
+						display: table;
+						width: 100%;
+
+						li{
+							float: left;
+							padding: 15px 20px;
+							text-align: left;
+							width: calc(100% / 4);
+							a{
+								display: block;
+								color: $cl-silver;
+								padding-bottom: 7px;
+								line-height: 1;
+								text-decoration: none;
+								-webkit-transition: none;
+								-o-transition: none;
+								transition: none;
+								border-bottom: 2px solid transparent;
+								width: 100%;
+								&._current, &:hover{
+									color: $cl-yellow;
+									border-bottom: 2px solid;
+								}
+							}
+						}
+					}
+				}// ENd tab link
+
+				.tab-show{
+					float: none;
+					position: absolute;
+					right: 0;
+					top: 0;
+					padding-right: 20px;
+					ul{
+						list-style: none;
+						padding: 0;
+						margin: 0;
+						display: table;
+
+						li{
+							float: left;
+							padding: 15px 5px;
+							a{
+								font-size: 17px;
+								color: #999999;
+								line-height: 1;
+								margin-left: 10px;
+								-webkit-transition: none;
+								-o-transition: none;
+								transition: none;
+
+								&._current, &:hover{
+									color: $cl-black;
+									-webkit-transition: none;
+									-o-transition: none;
+									transition: none;
+								}
+							}
+
+						}
+					}
+
+				}// End tab show
+			}//Cate tabs
+
+			.cate-list{
+				padding: 0 20px 20px 20px;
+				.cate-wr{
+					padding: 0px 0px 20px 0;
+					&._ct_grid{
+						margin-left: -10px;
+						margin-right: -10px;
+
+						&::after{
+							content: '';
+							display: table;
+							clear: both;
+						}
+
+						.cate-item{
+							float: left;
+							width: 50%;
+							padding-left: 10px;
+							padding-right: 10px;
+							.cate-item-i{
+								display: block;
+							}
+							.cit-part{
+								float: none;
+								width: 100%;
+							}
+
+							.cit-right{
+								padding: 5px 7px;
+							}
+
+							.cit-title{
+								height: 40px;
+							}
+
+							.cit-desc{
+								.cit-desc-l, .cit-desc-r{
+									padding: 5px 0;
+								}
+							}
+						}
+					}
+					.cate-item{
+						.cate-item-i{
+							background:#ffffff;
+							display: block;
+							width: 100%;
+							overflow: hidden;
+							border: 1px solid #efefef;
+							margin-top: 15px;
+							margin-bottom: 15px;
+							-webkit-transition: 0.3s;
+							-o-transition: 0.3s;
+							transition: 0.3s;
+
+							&:hover{
+								box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+								-webkit-transition: 0.3s;
+								-o-transition: 0.3s;
+								transition: 0.3s;
+							}
+
+							&::after{
+								content: '';
+								display: table;
+							}
+						}
+						
+						.cit-part{
+							float: left;
+							position: relative;
+
+							.cit-mark{
+								display: inline-block;
+								position: absolute;
+								padding: 0 15px;
+								line-height: 34px;
+								color: #ffffff;
+								left: 0;
+								top: 20px;
+								background: $cl-orange;
+							}
+						}
+
+						.cit-right{
+							width: 55%;
+							padding: 20px;
+						}
+						.cit-left{
+							width: 45%;
+							overflow: hidden;
+						}
+						
+						.cit-title{
+							height: 90px;
+							a{
+								color: $cl-black;
+								font-weight: 700;
+								display: block;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								color: $cl-black;
+								font-weight: 700;
+								white-space: nowrap;
+							}
+						}
+
+						.cit-desc{
+							.cit-desc-l{
+								float: left;
+								p{
+									color: $cl-silver;
+									font-size: 14px;
+									margin: 0 0 4px 0;
+									font-weight: 300;
+								}
+							}
+							.cit-desc-r{
+								float: right;
+							}
+						}
+
+						.cit-btn{
+							@include btn-project;
+							&:hover{
+								@include btn-project-hover;
+							}
+						}
+
+						img{
+							min-width: 100%;
+							height: 200px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

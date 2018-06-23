@@ -1,0 +1,211 @@
+<script type="text/javascript">
+    function deleteItem(controller_name,level,id){
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/delete',
+            type:'POST',
+            data:{'level':level,'id':id},
+            async: true,
+            success: function (data1, textStatus, jqXHR) {
+                
+            }
+        });
+    }
+    function addMucCon(controller_name,name_element) {
+      if ( $.trim($(name_element).val())!='' ) {
+          var name_value=$.trim($(name_element).val());
+          var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+            if (selectedItem != null) {
+                var id_new;
+                $.ajax({
+                    url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/add',
+                    type:'POST',
+                    data:{'level':level,'id':id,'name':$.trim($(name_element).val()),'name_show':$.trim($("#name_show").val()),'is_show_at_home_page':($("#is_show_at_home_page").is(":checked")?'1':'0')},
+                    async: false,
+                    success: function (data1, textStatus, jqXHR) {
+                        $('#jqxTree').jqxTree('addTo', { label: $.trim($(name_element).val()) }, selectedItem.element);
+
+                        lis=$("#jqxTree li");
+                        for(i=0;i<lis.length;i++){
+                            if($(lis[i]).find('div').eq(0).html()==$.trim($(name_element).val())){
+                                $(lis[i]).addClass('level_'+(parseInt(level)+1)).addClass('id_'+$.trim(data1));
+                                $(lis[i]).attr('name_show',$.trim($("#name_show").val()));
+                                if($("#is_show_at_home_page").is(":checked")){
+                                    $(lis[i]).attr('is_show_at_home_page','1');
+                                }
+                                else{
+                                    $(lis[i]).attr('is_show_at_home_page','0');
+                                }
+                                
+                            }
+                        }
+                        
+                        id_new=data1;
+
+                        attachContextMenu();
+                    }
+                });
+
+                if(controller_name!="city"){
+                    var file_data = $('#picture').prop('files')[0];   
+                    var form_data = new FormData();                  
+                    form_data.append('file', file_data);
+                    form_data.append('id', id_new);
+                    form_data.append('level',parseInt(level)+1);
+                    $.ajax({
+                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
+                        dataType: 'text',  
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,                         
+                        type: 'post',
+                        success: function(php_script_response){
+                            lis=$("#jqxTree li");
+                            for(i=0;i<lis.length;i++){
+                                if($(lis[i]).find('div').eq(0).html()==name_value){
+                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
+                                }
+                            }
+                        }
+                    });
+                }
+                
+            }
+          dialog.dialog( "close" );
+
+      }
+      else{
+          if(controller_name!="city"){
+              alert('Vui lòng nhập tên mục');
+          }
+          else{
+              alert('Vui lòng nhập tên vùng miền, tỉnh thành');
+          }
+          $(name_element).focus();
+      }
+
+    }
+    
+    function editItem(controller_name,name_element) {
+      if ( $.trim($(name_element).val())!='' ) {
+          var name_value=$.trim($(name_element).val());
+          var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+            if (selectedItem != null) {
+                $.ajax({
+                    url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/edit',
+                    type:'POST',
+                    data:{'level':level,'id':id,'name':$.trim($(name_element).val()),'name_show':$.trim($("#name_show_edit").val()),'is_show_at_home_page':($("#is_show_at_home_page_edit").is(":checked")?'1':'0')},
+                    async: false,
+                    success: function (data1, textStatus, jqXHR) {
+                        $('#jqxTree').jqxTree('updateItem',selectedItem.element, { label: $.trim($(name_element).val()) } );
+                        attachContextMenu();
+                        lis=$("#jqxTree li");
+                        for(i=0;i<lis.length;i++){
+                            if($(lis[i]).find('div').eq(0).html()==$.trim($(name_element).val())){
+                                $(lis[i]).attr('name_show',$.trim($("#name_show_edit").val()));
+                                if($("#is_show_at_home_page_edit").is(":checked")){
+                                    $(lis[i]).attr('is_show_at_home_page','1');
+                                }
+                                else{
+                                    $(lis[i]).attr('is_show_at_home_page','0');
+                                }
+                                
+                            }
+                        }
+                    }
+                });
+                
+                if(controller_name!="city"){
+                    var file_data = $('#picture_edit').prop('files')[0];   
+                    var form_data = new FormData();                  
+                    form_data.append('file', file_data);
+                    form_data.append('id', id);
+                    form_data.append('level',level);
+                    $.ajax({
+                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
+                        dataType: 'text',  
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,                         
+                        type: 'post',
+                        success: function(php_script_response){
+                            lis=$("#jqxTree li");
+                            for(i=0;i<lis.length;i++){
+                                if($(lis[i]).find('div').eq(0).html()==name_value){
+                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+          dialogEdit.dialog( "close" );
+
+      }
+      else{
+          if(controller_name!="city"){
+              alert('Vui lòng nhập tên mục');
+          }
+          else{
+              alert('Vui lòng nhập tên vùng miền, tỉnh thành');
+          }
+          
+          $(name_element).focus();
+      }
+
+    }
+    
+    function isRightClick(event) {
+        var rightclick;
+        if (!event) var event = window.event;
+        if (event.which) rightclick = (event.which == 3);
+        else if (event.button) rightclick = (event.button == 2);
+        return rightclick;
+    }
+    var attachContextMenu = function () {
+        // open the context menu when the user presses the mouse right button.
+        $("#jqxTree li").on('mousedown', function (event) {
+            var target = $(event.target).parents('li:first')[0];
+            temp=$(this).attr('class').split(' ');
+            photo='';
+            name_show=$(this).attr('name_show');
+            is_show_at_home_page=$(this).attr('is_show_at_home_page');
+            for(i=0;i<temp.length;i++){
+                if(temp[i].indexOf('id_')!=-1){
+                    temp1=temp[i].split('_');
+                    id=temp1[1];
+                    $("#id").val(id);
+                }
+                else if(temp[i].indexOf('level_')!=-1){
+                    temp1=temp[i].split('_');
+                    level=temp1[1];
+                    $("#level").val(level);
+                }
+                else if(temp[i].indexOf('photo_')!=-1){
+                    temp1=temp[i].split('_');
+                    photo=temp1[1];
+                }
+            }
+
+            var rightClick = isRightClick(event);
+            if (rightClick && target != null) {
+                $("#jqxTree").jqxTree('selectItem', target);
+                var scrollTop = $(window).scrollTop();
+                var scrollLeft = $(window).scrollLeft();
+
+                if(level=='0'){
+                    contextMenuRoot.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                }
+                else if(level=='3'){
+                    contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                }
+                else{
+                    contextMenuAll.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                }
+
+                return false;
+            }
+        });
+    }
+</script>

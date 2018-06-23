@@ -1,0 +1,117 @@
+@import '../option/variable';
+@import '../option/mixin';
+
+// Custom slick slider
+.slick-dots {
+    position: absolute;
+    bottom: 20px;
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    width: 100%
+}
+
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    margin: 0 3px;
+    padding: 0
+}
+
+.slick-dots li,
+.slick-dots li button {
+    cursor: pointer
+}
+
+.slick-dots li button {
+    border: 0;
+    background: transparent;
+    display: block;
+    outline: none;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    padding: 5px
+}
+
+.slick-dots li button:focus,
+.slick-dots li button:hover {
+    outline: none
+}
+
+.slick-dots li button:focus:before,
+.slick-dots li button:hover:before {
+    opacity: 1
+}
+
+.slick-dots li button:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "\2022";
+    font-family: slick;
+    font-size: 38px;
+    line-height: 1;
+    text-align: center;
+    color: #cccccc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+/*    height: 10px;
+    width: 10px;*/
+
+}
+
+.slick-dots li.slick-active button:before {
+    color: $cl-yellow;
+    opacity: .75
+}
+
+
+// Slick arrow
+.slick-arrow{
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    visibility: hidden;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    z-index: 1;
+    &::before{
+        content: '';
+        height: 100%;
+        width: 100%;
+        visibility: visible;
+        display: inline-block;
+        opacity: 0.7;
+        filter: alpha(opacity=0.7);
+        -webkit-transition: 0.4s;
+        -o-transition: 0.4s;
+        transition: 0.4s;
+    }
+    &:hover{
+        &::before{
+            opacity: 1;
+            filter: alpha(opacity=1);
+            -webkit-transition: 0.4s;
+            -o-transition: 0.4s;
+            transition: 0.4s;
+        }
+    }
+    &.slick-prev{
+        left: 3px;
+        &::before{
+            background: #ffffff url('../images/layout/arrow-left-black.png') no-repeat center;
+        }
+    }
+    &.slick-next{
+        right: 3px;
+        &::before{
+            right: 0;
+            background: #ffffff url('../images/layout/arrow-right-black.png') no-repeat center;
+        }
+    }
+}

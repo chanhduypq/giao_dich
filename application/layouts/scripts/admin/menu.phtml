@@ -1,0 +1,9 @@
+<nav class="navbar navbar-default" style="margin-bottom: 5px;background: none;width: auto;border: none;">
+    <ul class="nav navbar-nav" id="topnav">
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'vieccanlam') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/vieccanlam">Việc cần làm</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'congnhanlaodong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/congnhanlaodong">Công nhân lao động</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'thietbivattu') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/thietbivattu">Thiết bị vật tư</a></li>
+    </ul>
+</nav>
