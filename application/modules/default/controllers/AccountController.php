@@ -12,20 +12,47 @@ class AccountController extends Core_Controller_Action
     
     public function loginAction() 
     {
-        $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) {
-            $this->_helper->redirector('index', 'index', 'default');
-            exit;
-        }
+//        $auth = Zend_Auth::getInstance();
+//        if ($auth->hasIdentity()) {
+//            $this->_helper->redirector('index', 'index', 'default');
+//            exit;
+//        }
     }
     
     public function registAction() 
     {
-        $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) {
-            $this->_helper->redirector('index', 'index', 'default');
-            exit;
-        }
+//        $auth = Zend_Auth::getInstance();
+//        if ($auth->hasIdentity()) {
+//            $this->_helper->redirector('index', 'index', 'default');
+//            exit;
+//        }
+    }
+    
+    public function infoAction() 
+    {
+//        $auth = Zend_Auth::getInstance();
+//        if (!$auth->hasIdentity()) {
+//            $this->_helper->redirector('index', 'index', 'default');
+//            exit;
+//        }
+    }
+    
+    public function newsuploadedAction() 
+    {
+//        $auth = Zend_Auth::getInstance();
+//        if (!$auth->hasIdentity()) {
+//            $this->_helper->redirector('index', 'index', 'default');
+//            exit;
+//        }
+    }
+    
+    public function newscancelAction() 
+    {
+//        $auth = Zend_Auth::getInstance();
+//        if (!$auth->hasIdentity()) {
+//            $this->_helper->redirector('index', 'index', 'default');
+//            exit;
+//        }
     }
 
     public function logoutAction() 
