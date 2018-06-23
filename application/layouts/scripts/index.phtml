@@ -1,246 +1,287 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
-    <?php echo $this->headTitle() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="<?php echo $this->baseUrl();?>/front_end/css/normalize.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="<?php echo $this->baseUrl();?>/front_end/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" >
-    <link href="<?php echo $this->baseUrl();?>/front_end/css/include/top-slider-banner.css" rel="stylesheet" type="text/css" >
-    <link href="<?php echo $this->baseUrl();?>/front_end/css/slick.css" rel="stylesheet" type="text/css" >
-    <link href="<?php echo $this->baseUrl();?>/front_end/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" charset="UTF-8">
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    <meta charset="UTF-8">
+    <?php echo $this->headTitle(); ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css">
 </head>
 <body>
-    <div id="content">
-        <div data-reactroot="" id="app">
-            <div id="universal-main-container" class="">
-                <!-- Header banner -->
-                <div class="header-banner ">
-                    <nav class="navbar navbar-default top-nav">
-                        <div class="container nav-container">
+    <div id="app">
+        <div id="sec1" class="main-wrapper">
+            <!-- Start Top  -->
+            <div class="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
-                                <a href="#">
-                                    <div>
-                                        <div class="logo"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="top-new-article">
-                                <a href="#">
-                                    <div class="btn-new-article">Đăng tin</div>
-                                </a>
-                            </div>
-                            <div class="top-dropdown">
-                                <div class="inner-dropdown">
-                                    <i class="icon-dropdown"></i><span class="hidden-xs hidden-sm">Thêm</span>
-                                    <div class="menu-dropdown">
-                                        <div class="drd-item-user">
-                                            <a href="#">
-                                                <div class="item-group-user">
-                                                    <div class="icon-item icon-item-user"></div>
-                                                    <div class="text-item-user">Đăng nhập / Đăng ký</div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="drd-tem-search">
-                                            <ul>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconSaveSearchItem"></i><span class="drd-item-text">Tìm kiếm đã lưu</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- Menu Dropdown Ad -->
-                                        <div class="drd-item-ad">
-                                            <ul>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconCreateShop"></i><span class="drd-item-text">Tạo Cửa hàng/Chuyên trang</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconSSA"></i><span class="drd-item-text">Quảng cáo Tốt</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Menu Dropdown Ad -->
-                                        <!-- Menu Dropdown Discount -->
-                                        <div class="drd-item-discount">
-                                            <ul>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconInvite"></i><span class="drd-item-text">Rủ bạn &amp; nhận quà</span>
-                                                            <div class="drd-item-expl">Mới</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconGift"></i><span class="drd-item-text">Nhập mã nhận thưởng</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconDownApp"></i><span class="drd-item-text">Tải ứng dụng miễn phí</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Menu Dropdown Discount -->
-                                        <div class="drd-item-help">
-                                            <ul>
-                                                <li class="">
-                                                    <a href="#">
-                                                        <div><i class="icon iconHelp"></i><span class="drd-item-text">Trợ giúp</span>
-                                                            <div></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div class="logo-link">
+                                    <a href="#">DANGTINXAYDUNG</a>
+                                </div>
+                                <div class="cv-menu">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="mobile-top-icon">
+                                    <ul>
+                                        <li><a href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
+                                        <li>
+                                            <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="menu-login">
-                                <a href="#">
-                                    <div class="inner-login ">
-                                        <div class="login-icon"><i class="icon-face-user"></i></div>
-                                        <div class="login-expl hidden-xs hidden-sm">Tôi bán</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="menu-notify">
-                                <div>
-                                    <div>
-                                        <div class="inner-notify">
-                                            <div><i class="iconNotify"></i><span class="icon-notify hidden-xs hidden-sm">Thông báo</span></div>
-                                            <div class="no-notify" style="display: none;">
-                                                <div></div>
-                                                <div id="noptify-list"></div>
-                                            </div>
-                                            <div></div>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="col-sm-7 col-md-8 col-opt">
+                            <div class="top-poc">
+                                <div class="top-oc top-login">
+                                    <a href="#" data-bg="" id="login_click">Đăng nhập</a>
+                                </div>
+                                <div class="top-oc top-project">
+                                    <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
+
+                                    <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                </div>
+                                <div class="oc-dropdown">
+                                    <ul>
+                                        <li><a href="#">Đăng nhập</a></li>
+                                        <li><a href="#">Đăng ký tài khoản</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="menu-search">
-                                <div class="search-group "><i class="iconSearch"></i><span class="icon-search hidden-xs hidden-sm">Tìm rao vặt</span></div>
-                            </div>
                         </div>
-                    </nav>
-                </div>
-                <!-- End header banner -->
-                <!-- Main Content -->
-                <div class="universal-content">
-                    <div class="container home-header">
-                        <!-- Header slider -->
-                        <div class="home-header-slider">
-                            <div class="header-slider">
-                                <!-- Item slide -->
-                                <div class="item-slider">
-                                    <a itemprop="url">
-                                    <img class="img-responsive img-mgn" alt="" src="<?php echo $this->baseUrl();?>/front_end/images/layout/property_desktop.png"></a>
-                                </div>
-                                <!-- End Item slide -->
-                                <!-- Item slide -->
-                                <div class="item-slider">
-                                    <a itemprop="url">
-                                    <img class="img-responsive img-mgn" alt="" src="<?php echo $this->baseUrl();?>/front_end/images/layout/property_desktop.png"></a>
-                                </div>
-                                <!-- End Item slide -->
-                            </div>
-                        </div>
-                        <!-- End header slider -->
-                        <!-- Header banner -->
-                        <div class="home-header-login">
-                            <div class="wr-img"><img class="img-responsive" src="<?php echo $this->baseUrl();?>/front_end/images/layout/sub-banner.png" alt=""></div>
-                            <div class="home-group-login">
-                               <h2 class="home-login-text">Đăng nhập để không bỏ lỡ món hời giá tốt!</h2>
-                               <a class="header-btn-login" href="#" >Đăng nhập ngay</a><a class="header-btn-regis" href="#">Đăng ký tài khoản</a>
-                            </div>
-                        </div>
-                        <!-- End header banner -->
-                        <!-- Home category -->
-                        <div class="home-cate" id="boxListCate">
-                            <?php echo $this->layout()->content; ?>                            
-                        </div>
-                        <!-- End Home category -->
                     </div>
                 </div>
-                <!-- End Main Content -->
-                <!-- Footer -->
-                <footer class="footer">
-                    <div class="footer-link footer-responsive">
-                        <section class="list-link">
-                           <a target="_blank" href="#"">Trợ giúp</a><span>-</span><a target="_blank" href="#">Quy định cần biết</a><span>-</span><a target="_blank" href="#">Liên hệ</a><span>-</span><a target="_blank" href="#">Về Chợ Tốt</a>
-                        </section>
-                        <section class="footer-copyright">Copyright 2013 © Chotot.com</section>
-                    </div>
-                    <div class="footer-social container">
-                        <!-- Footer section -->
-                        <div class="wr-social">
-                            <!-- List social -->
-                            <section class="social-list">
-                                <h2 class="footer-tit text-left">Liên kết</h2>
-                                <a target="_blank" href="#" class="footer-fb" rel="nofollow">
-                                   <div class="footer-text"></div>
-                                   <span>Facebook</span>
-                                </a>
-                                <a target="_blank" href="#" class="footer-gg" rel="nofollow">
-                                   <div class="footer-text"></div>
-                                   <span>Google+</span>
-                                </a>
-                                <a target="_blank" href="#" class="footer-yt" rel="nofollow">
-                                   <div class="footer-text"></div>
-                                   <span>Youtube</span>
-                                </a>
-                            </section>
-                            <!-- End list social -->
-                            <!-- List link -->
-                            <section>
-                               <h2 class="footer-tit text-left">Hỗ trợ khách hàng</h2>
-                               <a rel="nofollow" target="_blank" href="#">Trung tâm trợ giúp</a><a rel="nofollow" target="_blank" href="#">An toàn mua bán</a><a rel="nofollow" target="_blank" href="#">Quy định cần biết</a><a rel="nofollow" target="_blank" href="#">Liên hệ hỗ trợ</a>
-                            </section>
-                            <!-- End List link -->
-                            <!-- Copyright Réponsive -->
-                            <section>
-                                <h2 class="footer-tit text-left">Về Chotot.com</h2>
-                                <a rel="nofollow" target="_blank" href="#">Giới thiệu</a><a rel="nofollow" target="_blank" href="#">Tuyển dụng</a><a rel="nofollow" target="_blank" href="#">Truyền thông</a><a target="_blank" href="#">Blog</a>
-                            </section>
-                            <!-- End Copyright Réponsive -->
-                        </div>
-                        <!-- End footer section -->
-                        <!-- Address -->
-                        <address class="footer-address">
-                            CÔNG TY TNHH CHỢ TỐT - Địa chỉ: Phòng 1808, Tầng 18, Mê Linh Point Tower, 02 Ngô Đức Kế, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh
-                            <br>
-                            Giấy chứng nhận đăng ký doanh nghiệp số 0312120782 do Sở Kế Hoạch và Đầu Tư TPHCM cấp ngày 11/01/2013
-                            
-                            <br>
-                            Email: trogiup@chotot.vn - Đường dây nóng: (028)38664041
-                        </address>
-                        <!-- End Address -->
-                    </div>
-                </footer>
-                <!-- End Footer -->
             </div>
+            <!-- End Top -->
+            <!-- Start Search -->
+            <div class="top-search">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="search-block">
+                                <form action="#">
+                                    <div class="form-list">
+                                        <div class="form-item">
+                                            <div class="form-input form-text">
+                                                <input type="text" value="Nhập tìm kiếm..." class="focus-text">
+                                            </div>
+                                        </div>
+                                        <div class="form-item">
+                                            <ul class="form-right">
+                                                <li>
+                                                    <div class="form-input form-select form-select-city">
+                                                        <div class="input-nt">Tất cả danh mục</div>
+                                                        <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category">
+                                                        <div class="search-dropdown four-col">
+                                                            <div class="wrap-select">
+                                                                <ul class="nav-dropdown parent-dropdown">
+                                                                    <li data-id="#">Dân dụng</li>
+                                                                    <li data-id="#">Hoàn thiện nội thất</li>
+                                                                    <li data-id="#">Hoàn thiện nội thất</li>
+                                                                    <li data-id="#">Nhà thầu phụ</li>
+                                                                    <li data-id="#">Hạ tầng</li>
+                                                                    <li data-id="#">Hạ tầng</li>
+                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
+                                                                    <li data-id="#">Cầu đường</li>
+                                                                    <li data-id="#">Điện nước</li>
+                                                                    <li data-id="#">Cầu đường</li>
+                                                                    <li data-id="#">Hạ tầng</li>
+                                                                    <li data-id="#">Hạ tầng</li>
+                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
+                                                                    <li data-id="#">Cầu đường</li>
+                                                                    <li data-id="#">Điện nước</li>
+                                                                    <li data-id="#">Cầu đường</li>
+                                                                </ul>
+                                                                <div class="nav-dropdown sub-dropdown">
+                                                                    <span class="btn-back-parent"></span>
+                                                                    <ul>
+                                                                        <li class="item-select" data-id="#">Điện dân dụng 1</li>
+                                                                        <li class="item-select" data-id="#">Cầu đường 2</li>
+                                                                        <li class="item-select" data-id="#">Hạ tầng 3</li>
+                                                                        <li class="item-select" data-id="#">Cầu đường</li>
+                                                                    </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-input form-select form-select-city">
+                                                        <div class="input-nt">Khu vực</div>
+                                                        <input type="hidden" value="Khu vực" class="input-dropdown value-category">
+                                                        <div class="search-dropdown two-col">
+                                                            <div class="wrap-select">
+                                                                <ul class="nav-dropdown parent-dropdown">
+                                                                    <li data-id="#">Đà Nẵng</li>
+                                                                    <li data-id="#">Quảng Nam</li>
+                                                                </ul>
+                                                                <div class="nav-dropdown sub-dropdown">
+                                                                    <span class="btn-back-parent"></span>
+                                                                    <ul>
+                                                                        <li class="item-select" data-id="#">Quận Hải Châu</li>
+                                                                        <li class="item-select" data-id="#">Quận Thanh Khê</li>
+                                                                        <li class="item-select" data-id="#">Quận Cẩm Lệ</li>
+                                                                        <li class="item-select" data-id="#">Quận Liên CHiểu</li>
+                                                                        <li class="item-select" data-id="#">Quận Sơn Trà</li>
+                                                                        <li class="item-select" data-id="#">Quận Ngũ Hành Sơn</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="btn-link">
+                                                    <a href="#" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search -->
+            <?php echo $this->layout()->content; ?>
+            <!-- footer -->
+            <footer class="footer">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="row row-eq-height">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
+                               <div class="ft-block company-social">
+                                    <div class="ft-tit">LIÊN KẾT</div>
+                                    <ul>
+                                       <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
+                                       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+                                       <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
+                                       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                                    </ul>
+                               </div>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="ft-block">
+                                    <div class="ft-tit">VỀ CÔNG TY</div>
+                                    <ul>
+                                       <li><a href="#">Giới thiệu</a></li>
+                                       <li><a href="#">Tuyển dụng</a></li>
+                                       <li><a href="#">Blog</a></li>
+                                    </ul>
+                               </div>
+                            </div>
+                            <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
+                               <div class="ft-block">
+                                    <div class="ft-tit">VỀ KHÁCH HÀNG</div>
+                                    <ul>
+                                       <li><a href="#">Chính sách quảng cáo</a></li>
+                                       <li><a href="#">Dịch vụ hậu mãi</a></li>
+                                       <li><a href="#">Bảo mật thông tin</a></li>
+                                    </ul>
+                               </div>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                               <div class="ft-block">
+                                    <div class="ft-img"><a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/dadangky.png" alt=""></a></div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End footer top -->
+                <!-- Footer bottom -->
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="ftbt-i">
+                                    <div class="ftbt-col ftbt-left">
+                                        © 2018 Copyright by DungLV
+                                    </div>
+                                    <div class="ftbt-col ftbt-right">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Footer bottom -->
+            </footer>
+            <!-- End footer -->
         </div>
     </div>
-    <script src="<?php echo $this->baseUrl();?>/front_end/js/libs/jquery-1.11.0.js"></script>
-    <script src="<?php echo $this->baseUrl();?>/front_end/js/libs/slick.min.js"></script>
-    <script src="<?php echo $this->baseUrl();?>/front_end/js/main.js"></script>
+    <!-- Mobile menu -->
+    <div class="mobile-menu">
+        <div class="mb-top">
+            <div class="mb-menu-wr">
+                <div class="mb-menu-l">
+                    <span class="mb-u"></span>
+                </div>
+                <div class="mb-menu-r">
+                    <p>ĐĂNG NHẬP</p>
+                    <p>Đăng nhập để bắt đầu đăng tin</p>
+                </div>
+            </div>
+        </div>
+        <!-- End top mobile menu -->
+        <div class="mb-over">
+            <!-- Link menu mobile -->
+            <div class="mb-menu-link">
+                <div class="mb-menu-wr">
+                    <ul>
+                        <li>
+                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/home.png" alt=""></span>VỀ TRANG CHỦ</a>
+                        </li>
+                        <li>
+                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/pencil-dark.png" alt=""></span>ĐĂNG TIN CỦA BẠN</a>
+                        </li>
+                        <li>
+                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong>2</strong></a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="#">GIỚI THIỆU</a>
+                        </li>
+                        <li>
+                            <a href="#">TUYỂN DỤNG</a>
+                        </li>
+                        <li>
+                            <a href="#">BLOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End moblie menu link -->
+            <!-- Social menu -->
+            <div class="mb-menu-social">
+                <div class="mb-menu-wr">
+                     <ul>
+                       <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                       <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Social menu -->
+        </div>
+    </div>
+    <!-- End Mobile menu -->
+    <div class="go-top">
+    </div>
+    <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js"></script>
 </body>
+
 </html>
