@@ -3,14 +3,15 @@
 class Admin_Model_IndexMapper 
 {
 
-    public function login($username, $password) 
+
+    public function login($phone, $password) 
     {
 
         try {
             $db = $this->getDB();
             $select = $db->select();
             $select->from("user", array("*"))
-                    ->where("email=?", $username, "STRING")
+                    ->where("phone=?", $phone, "STRING")
                     ->where("password=?", sha1($password), "STRING")
             ;
 
@@ -27,51 +28,18 @@ class Admin_Model_IndexMapper
             $auth->clearIdentity();
         }
         
-        if ($result['is_admin'] == '1') {
-            $result['user'] = 'admin';
-        }
 
         $auth->getStorage()->write($result);
         return true;
     }
 
-    public function loginAdmin($username, $password) 
-    {
-
-        try {
-            $db = $this->getDB();
-            $select = $db->select();
-            $select->from("user", array("*"))
-                    ->where("email=?", $username, "STRING")
-                    ->where("password=?", sha1($password), "STRING")
-                    ->where('is_admin=1')
-            ;
-
-            $result = $db->fetchRow($select);
-        } catch (Exception $e) {
-            
-        }
-
-        if (!is_array($result) || count($result) == 0) {
-            return false;
-        }
-        $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) {
-            $auth->clearIdentity();
-        }
-        $result['user'] = 'admin';
-
-        $auth->getStorage()->write($result);
-        return true;
-    }
-
-    public function changePassword($username, $newPassword, $table_name) 
+    public function changePassword($phone, $newPassword, $table_name) 
     {
         $db = $this->getDB();
         $data = array();
         $data['password'] = sha1($newPassword);
         try {
-            $where = $db->quoteInto('email=?', $username, 'STRING');
+            $where = $db->quoteInto('phone=?', $phone, 'STRING');
             $db->update($table_name, $data, $where);
             $auth = Zend_Auth::getInstance();
             $identity = $auth->getIdentity();
@@ -84,10 +52,10 @@ class Admin_Model_IndexMapper
         return true;
     }
 
-    public function signup($username, $password, $firstName, $lastName, $middleName) 
+    public function signup($phone, $password, $firstName, $lastName, $middleName) 
     {
         $user = array();
-        $user['username'] = $username;
+        $user['phone'] = $phone;
         $user['password'] = $password;
         $user['first_name'] = $firstName;
         $user['last_name'] = $lastName;
@@ -105,7 +73,7 @@ class Admin_Model_IndexMapper
         }
     }
 
-    public function sendEmailByIdhoso($email, $password, $firstName, $lastName, $middleName, $username) 
+    public function sendEmailByIdhoso($email, $password, $firstName, $lastName, $middleName, $phone) 
     {
         require_once 'Zend/Mail.php';
         require_once 'Zend/Mail/Transport/Smtp.php';
@@ -115,7 +83,7 @@ class Admin_Model_IndexMapper
             'auth' => 'login',
             'ssl' => 'ssl',
             'port' => '465',
-            'username' => 'chanhduypq@gmail.com',
+            'phone' => 'chanhduypq@gmail.com',
             'password' => '826498meyeu'
         );
         $transport = new Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);

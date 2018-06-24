@@ -1,16 +1,16 @@
 <script type="text/javascript">
     jQuery(function () {
-        jQuery("#username").focus();
+        jQuery("#phone").focus();
     });
-    function validate(form, username, password) {
-        if ($.trim($(username).val()) == "") {
-            username.setAttribute('style', "border-color: red;");
-            username.focus();
+    function validate(form, phone, password) {
+        if ($.trim($(phone).val()) == "") {
+            phone.setAttribute('style', "border-color: red;");
+            phone.focus();
             return false;
         }
-        if ($.trim($(username).val()).indexOf(" ", 0) != -1) {
-            username.setAttribute('style', "border-color: red;");
-            username.focus();
+        if ($.trim($(phone).val()).indexOf(" ", 0) != -1) {
+            phone.setAttribute('style', "border-color: red;");
+            phone.focus();
             return false;
         }
         if (password.value == null || password.value == "") {
@@ -42,16 +42,16 @@ if($this->loginResult!=''){?>
 <div class="row">
     <div class="col-lg-2 col-md-2">&nbsp;</div>
     <div class="col-lg-8 col-md-8">
-        <form action="<?php echo $this->baseUrl('/admin/index/login'); ?>" method="post" onsubmit="return validate(this, this.username, this.password);">
+        <form action="<?php echo $this->baseUrl('/admin/index/login'); ?>" method="post" onsubmit="return validate(this, this.phone, this.password);">
             <table width="40%" class="tblogin">
                 <tr>
                     <td colspan="2" style="text-align: center">  <h2>Admin</h2> </td> 
                 </tr>
                 <tr>
-                    <td><label for="firstname">email:</label></td> <td ><input id="username" name="username" type="text" value="<?php echo $this->username;?>" /></td>
+                    <td><label for="phone">phone:</label></td> <td ><input id="phone" name="phone" type="text" value="<?php echo $this->phone;?>" /></td>
                 </tr>
                 <tr>
-                    <td><label for="firstname">password:</label></td> <td><input name="password" type="password" value="<?php echo $this->password;?>"/></td>
+                    <td><label for="password">password:</label></td> <td><input id="password" name="password" type="password" value="<?php echo $this->password;?>"/></td>
                 </tr>    
                 <tr>
                     <td> </td><td > <input type="submit" id="btnLogin" class="btn" value="Log in"  /></td>

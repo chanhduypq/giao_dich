@@ -284,7 +284,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
                     $this->_helper->redirector('index', 'index', 'admin');
                 } else {
                     $identity = $auth->getIdentity();
-                    if (!isset($identity['user']) || $identity['user'] != 'admin') {
+                    if ($identity['type'] != '1') {
                         $this->turnSessionPrevController();
                         $this->_helper->redirector('index', 'index', 'admin');
                     }

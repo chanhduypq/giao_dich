@@ -10,11 +10,11 @@ class Admin_IndexController extends Core_Controller_Action
 
     public function indexAction() 
     {
-        $username = $password = '';
+        $phone = $password = '';
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
             $identity = $auth->getIdentity();
-            if (isset($identity['user']) && $identity['user'] == 'admin') {
+            if ($identity['type'] == '1') {
                 $this->_helper->redirector('index', 'nhanvien', 'admin');
             }
         }
@@ -23,30 +23,30 @@ class Admin_IndexController extends Core_Controller_Action
         if ($loginResult == '0') {
             $this->view->loginResult = "Thông tin bạn vừa nhập không đúng.";
             $session=new Zend_Session_Namespace('login');
-            $username=$session->username;
+            $phone=$session->phone;
             $password=$session->password;
             $session->unsetAll();
         }
-        $this->view->username = $username;
+        $this->view->phone = $phone;
         $this->view->password = $password;
     }
 
     public function loginAction() 
     {
-        $username = $this->_request->getParam('username', null);
+        $phone = $this->_request->getParam('phone', null);
         $password = $this->_request->getParam('password', null);
-        if ($username == null || $password == NULL) {
+        if ($phone == null || $password == NULL) {
             $this->_helper->redirector('index', 'index', 'admin');
         } else {
             $index = new Admin_Model_IndexMapper();
-            if ($index->loginAdmin($username, $password)) {
+            if ($index->login($phone, $password)) {
                 $session = new Zend_Session_Namespace('url');
                 $controller = $session->controller;
                 $session->unsetAll();
                 $this->_helper->redirector('index', $controller, 'admin');
             } else {
                 $session=new Zend_Session_Namespace('login');
-                $session->username=$this->_getParam('username');
+                $session->phone=$this->_getParam('phone');
                 $session->password=$this->_getParam('password');
                 $this->_helper->redirector('index', 'index', 'admin', array('loginResult' => '0'));
             }
