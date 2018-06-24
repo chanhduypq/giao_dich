@@ -3,7 +3,7 @@
 class Default_Model_Nhanvien extends Core_Db_Table_Abstract 
 {
 
-    public $_name = "nhan_vien";
+    public $_name = "user";
 
     public function __construct() 
     {
