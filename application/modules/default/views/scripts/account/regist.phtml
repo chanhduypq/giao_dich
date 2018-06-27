@@ -1,89 +1,152 @@
-<div class="page-content page-option register-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-page form-register">
-                    <div class="fp-heading">
-                        <div class="fp-tit">ĐĂNG KÝ</div>
-                        <div class="fp-extra">Tạo tài khoản và bắt đầu đăng tin của bạn ngay</div>
-                    </div>
-                    <div class="fp-content">
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-label fp-label-require">CHỌN LOẠI HÌNH<span class="s-star">*</span></div>
-                            <div class="fp-input fp-tab">
-                                <!-- FP tab item -->
-                                <div class="fp-tab-i">
-                                    <div class="fp-tab-ii">
-                                        <input type="radio" name="select_loaihinh" class="hd-check-tab">
-                                        <div class="fp-tab-select">
-                                            Nhân viên
-                                            <span class="fp-tab-check"></span>
+<form action="<?php echo $this->baseUrl('/default/account/regist'); ?>" method="post" onsubmit="return validate();">
+    <div class="page-content page-option register-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-page form-register">
+                        
+                        <div class="fp-heading">
+                            <div class="fp-tit">ĐĂNG KÝ</div>
+                            <div class="fp-extra">Tạo tài khoản và bắt đầu đăng tin của bạn ngay</div>
+                        </div>
+                        <div class="fp-content">
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label fp-label-require">CHỌN LOẠI HÌNH<span class="s-star">*</span></div>
+                                <div class="fp-input fp-tab">
+                                    <!-- FP tab item -->
+                                    <div class="fp-tab-i">
+                                        <div class="fp-tab-ii">
+                                            <input type="radio" name="select_loaihinh" class="hd-check-tab" value="2">
+                                            <div class="fp-tab-select">
+                                                Nhân viên
+                                                <span class="fp-tab-check"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- End FP Tab Item -->
-                                <!-- FP tab item -->
-                                <div class="fp-tab-i">
-                                    <div class="fp-tab-ii">
-                                        <input type="radio" name="select_loaihinh" class="hd-check-tab">
-                                        <div class="fp-tab-select">
-                                            Đối tác
-                                            <span class="fp-tab-check"></span>
+                                    <!-- End FP Tab Item -->
+                                    <!-- FP tab item -->
+                                    <div class="fp-tab-i">
+                                        <div class="fp-tab-ii">
+                                            <input type="radio" name="select_loaihinh" class="hd-check-tab" value="4">
+                                            <div class="fp-tab-select">
+                                                Đối tác
+                                                <span class="fp-tab-check"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- End FP Tab Item -->
-                                <!-- FP tab item -->
-                                <div class="fp-tab-i">
-                                    <div class="fp-tab-ii">
-                                        <input type="radio" name="select_loaihinh" class="hd-check-tab">
-                                        <div class="fp-tab-select">
-                                            Cá nhân
-                                            <span class="fp-tab-check"></span>
+                                    <!-- End FP Tab Item -->
+                                    <!-- FP tab item -->
+                                    <div class="fp-tab-i">
+                                        <div class="fp-tab-ii">
+                                            <input type="radio" name="select_loaihinh" class="hd-check-tab" value="3">
+                                            <div class="fp-tab-select">
+                                                Cá nhân
+                                                <span class="fp-tab-check"></span>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- End FP Tab Item -->
                                 </div>
-                                <!-- End FP Tab Item -->
+                                <div class="row" style="margin-top: 20px;display: none;">
+                                    <div id="error1" class="col-lg-12 col-md-12" style='padding-bottom:20px;color: red;margin-bottom: 20px;text-align: center;'>
+                                        Vui lòng chọn loại hình.
+                                    </div>
+                                </div>   
                             </div>
-                        </div>
-                        <!-- End Fp Group -->
-                        <!-- Fp Group -->
-                        <div class="fp-group fp-error">
-                            <div class="fp-label fp-label-require">SỐ ĐIỆN THOẠI<span class="s-star">*</span></div>
-                            <div class="fp-input fp-textbox">
-                                <input type="text" class="fp-control" placeholder="Nhập số điện thoại">
-                                <span class="s-error">Số điện thoại đã sử dụng</span>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group fp-error">
+                                <div class="fp-label fp-label-require">SỐ ĐIỆN THOẠI<span class="s-star">*</span></div>
+                                <div class="fp-input fp-textbox">
+                                    <input value="<?php echo $this->phone;?>" id="phone" name="phone" type="text" style="width: 100%;line-height: 43px;<?php if(isset($this->phone_is_used)&&$this->phone_is_used=='1') echo 'border-color:red;';?>" placeholder="Nhập số điện thoại">
+                                    <?php if(isset($this->phone_is_used)&&$this->phone_is_used=='1'){?>
+                                    <span class="s-error">Số điện thoại đã sử dụng</span>
+                                    <?php }?>
+                                    <?php if(isset($this->phone_is_not_numeric)&&$this->phone_is_not_numeric=='1'){?>
+                                    <span class="s-error">Số điện thoại chỉ được nhập bằng các chữ số.</span>
+                                    <?php }?>
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Fp Group -->
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-label fp-label-require">MẬT KHẨU<span class="s-star">*</span></div>
-                            <div class="fp-input fp-textbox">
-                                <input type="password" class="fp-control" placeholder="Nhập mật khẩu">
-                                <span class="fp-btn-hide"></span>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label fp-label-require">MẬT KHẨU<span class="s-star">*</span></div>
+                                <div class="fp-input fp-textbox">
+                                    <input id="password" name="password" type="password" class="fp-control" placeholder="Nhập mật khẩu">
+                                    <!--<span class="fp-btn-hide"></span>-->
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Fp Group -->
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-label fp-label-require">NHẬP LẠI MẬT KHẨU<span class="s-star">*</span></div>
-                            <div class="fp-input fp-textbox">
-                                <input type="password" class="fp-control" placeholder="Nhập mật khẩu">
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label fp-label-require">NHẬP LẠI MẬT KHẨU<span class="s-star">*</span></div>
+                                <div class="fp-input fp-textbox">
+                                    <input id="confirm_password" type="password" class="fp-control" placeholder="Nhập mật khẩu">
 
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Fp Group -->
-                        <div class="fp-submit">
-                            <button class="fp-btn fp-btn-register">ĐĂNG KÝ</button>
-                        </div>
-                        <div class="fp-desc">
-                            Bạn đã có tài khoản?<a href="#">ĐĂNG NHẬP</a>
+                            
+                            <div class="row" style="margin-top: 20px;display: none;">
+                                <div id="error" class="col-lg-12 col-md-12" style='padding-bottom:20px;color: red;margin-bottom: 20px;text-align: center;'>
+                                    &nbsp;
+                                </div>
+                            </div>     
+                            <!-- End Fp Group -->
+                            <div class="fp-submit">
+                                <button class="fp-btn fp-btn-register">ĐĂNG KÝ</button>
+                            </div>
+                            <div class="fp-desc">
+                                Bạn đã có tài khoản?<a href="#">ĐĂNG NHẬP</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+<script type="text/javascript">
+    jQuery(function () {
+        $("#phone").focus();        
+    });
+    function validate() {
+        $("#error").parent().hide();
+        $("#phone").css('border-color','inherit');
+        $("#password").css('border-color','inherit');
+        $("#confirm_password").css('border-color','inherit');
+        $("#error1").parent().hide();
+        if ($("input:checked").length == 0) {
+            $("#error1").parent().show();            
+            return false;
+        }
+        if ($.trim($("#phone").val()) == "") {
+            $("#phone").css('border-color','red');
+            $("#phone").focus();
+            return false;
+        }
+        if ($.trim($("#phone").val()).indexOf(" ", 0) != -1) {
+            $("#phone").css('border-color','red');
+            $("#phone").focus();
+            return false;
+        }
+        if ($("#password").val() == "") {
+            $("#password").css('border-color','red');
+            $("#password").focus();
+            return false;
+        }
+        if ($("#confirm_password").val() == "") {
+            $("#confirm_password").css('border-color','red');
+            $("#confirm_password").focus();
+            return false;
+        }
+        if ($("#confirm_password").val() != $("#password").val()) {
+            $("#password").css('border-color','red');
+            $("#confirm_password").css('border-color','red');
+            $("#confirm_password").focus();
+            $("#error").html("Mật khẩu chưa trùng khớp nhau.").parent().show();
+            return false;
+        }
+        return true;
+    }
+</script>

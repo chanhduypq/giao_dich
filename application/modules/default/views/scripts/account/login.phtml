@@ -1,38 +1,76 @@
-<div class="page-content page-option login-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-page form-login">
-                    <div class="fp-heading">
-                        <div class="fp-tit">ĐĂNG NHẬP</div>
-                        <div class="fp-extra">Đăng nhập để bắt đầu đăng tin của bạn ngay</div>
-                    </div>
-                    <div class="fp-content">
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-label fp-label-require">SỐ ĐIỆN THOẠI<span class="s-star">*</span></div>
-                            <div class="fp-input fp-textbox">
-                                <input type="text" class="fp-control" placeholder="Nhập số điện thoại">
+<form action="<?php echo $this->baseUrl('/default/account/login'); ?>" method="post" onsubmit="return validate();">
+    <div class="page-content page-option login-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-page form-login">
+                        <?php 
+                        if($this->loginResult=='0'){?>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12" style='padding-bottom:20px;color: red;margin-bottom: 20px;text-align: center;'>
+                                    &nbsp;Thông tin đăng nhập của bạn không chính xác.
+                                </div>
                             </div>
+                        <?php } ?>
+                        <div class="fp-heading">
+                            <div class="fp-tit">ĐĂNG NHẬP</div>
+                            <div class="fp-extra">Đăng nhập để bắt đầu đăng tin của bạn ngay</div>
                         </div>
-                        <!-- End Fp Group -->
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-label fp-label-require">MẬT KHẨU<span class="s-star">*</span></div>
-                            <div class="fp-input fp-textbox">
-                                <input type="password" class="fp-control" placeholder="Nhập mật khẩu">
+                        <div class="fp-content">
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label fp-label-require">SỐ ĐIỆN THOẠI<span class="s-star">*</span></div>
+                                <div class="fp-input fp-textbox">
+                                    <input id="phone" name="phone" type="text" class="fp-control" placeholder="Nhập số điện thoại">
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Fp Group -->
-                        <div class="fp-submit">
-                            <button class="fp-btn fp-btn-register">ĐĂNG NHẬP</button>
-                        </div>
-                        <div class="fp-desc">
-                            <a href="#">Quên mật khẩu?</a>Bạn chưa có tài khoản?<a href="#">ĐĂNG KÝ</a>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label fp-label-require">MẬT KHẨU<span class="s-star">*</span></div>
+                                <div class="fp-input fp-textbox">
+                                    <input id="password" name="password" type="password" class="fp-control" placeholder="Nhập mật khẩu">
+                                </div>
+                            </div>
+                            <!-- End Fp Group -->
+                            <div class="fp-submit">
+                                <button class="fp-btn fp-btn-register">ĐĂNG NHẬP</button>
+                            </div>
+                            <div class="fp-desc">
+                                <a href="#">Quên mật khẩu?</a>Bạn chưa có tài khoản?<a href="#">ĐĂNG KÝ</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+<script type="text/javascript">
+    jQuery(function () {
+        $("#phone").focus();        
+    });
+    function validate() {
+        $("#phone").css('border-color','inherit');
+        $("#password").css('border-color','inherit');
+        if ($.trim($("#phone").val()) == "") {
+            $("#phone").css('border-color','red');
+            $("#phone").focus();
+            return false;
+        }
+        if ($.trim($("#phone").val()).indexOf(" ", 0) != -1) {
+            $("#phone").css('border-color','red');
+            $("#phone").focus();
+            return false;
+        }
+        if ($("#password").val() == "") {
+            $("#password").css('border-color','red');
+            $("#password").focus();
+            return false;
+        }
+        return true;
+    }
+    
+
+</script>

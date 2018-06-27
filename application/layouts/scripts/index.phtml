@@ -1,3 +1,6 @@
+<?php 
+$auth = Zend_Auth::getInstance();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +23,7 @@
                         <div class="col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
                                 <div class="logo-link">
-                                    <a href="#">DANGTINXAYDUNG</a>
+                                    <a href="/">DANGTINXAYDUNG</a>
                                 </div>
                                 <div class="cv-menu">
                                     <span></span>
@@ -39,20 +42,33 @@
                         </div>
                         <div class="col-sm-7 col-md-8 col-opt">
                             <div class="top-poc">
+                                <?php if (!$auth->hasIdentity()) {?>
                                 <div class="top-oc top-login">
-                                    <a href="#" data-bg="" id="login_click">Đăng nhập</a>
+                                    <a href="javascript:void(0)" data-bg="" id="login_click">Đăng nhập</a>
                                 </div>
+                                <?php 
+                                }  
+                                else{
+                                ?>
+                                <div class="top-oc top-login">
+                                    <a href="<?php echo $this->baseUrl();?>/account/logout" data-bg="" id="login_click">Đăng xuất</a>
+                                </div>
+                                <?php 
+                                } 
+                                ?>
                                 <div class="top-oc top-project">
                                     <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
 
                                     <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                                 </div>
+                                <?php if (!$auth->hasIdentity()) {?>
                                 <div class="oc-dropdown">
                                     <ul>
-                                        <li><a href="#">Đăng nhập</a></li>
-                                        <li><a href="#">Đăng ký tài khoản</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/account/login">Đăng nhập</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/account/regist">Đăng ký tài khoản</a></li>
                                     </ul>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
