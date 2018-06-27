@@ -59,7 +59,7 @@ $auth = Zend_Auth::getInstance();
                                 <div class="top-oc top-project">
                                     <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
 
-                                    <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    <a href="<?php echo $this->baseUrl();?>/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                                 </div>
                                 <?php if (!$auth->hasIdentity()) {?>
                                 <div class="oc-dropdown">
@@ -152,7 +152,7 @@ $auth = Zend_Auth::getInstance();
                                                     </div>
                                                 </li>
                                                 <li class="btn-link">
-                                                    <a href="#" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                                    <a href="<?php echo $this->baseUrl();?>/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
                                                 </li>
                                             </ul>
                                         </div>

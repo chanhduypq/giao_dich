@@ -263,7 +263,11 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         if ($this->_request->getModuleName() == 'admin') {
             $option = array('layout' => 'admin');
         } else {
-            $option = array('layout' => 'index');
+            if ($this->_request->getControllerName() == 'news') {
+                $option = array('layout' => 'news');
+            } else {
+                $option = array('layout' => 'index');
+            }
         }
 
         $layout = Zend_Layout::getMvcInstance();
