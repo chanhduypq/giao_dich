@@ -14,24 +14,23 @@ class NewsController extends Core_Controller_Action {
 
     public function step1Action() {
         if ($this->_request->isPost()) {
-            if($this->_getParam('type')=='duan'){
+            if ($this->_getParam('type') == 'duan') {
                 $this->_helper->redirector('duan2', 'news', 'default');
-            }
-            else{
+            } else {
                 $this->_helper->redirector('nhathauthicong2', 'news', 'default');
             }
-        } 
+        }
     }
 
     public function duan2Action() {
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
-        $this->view->items=$items;
+        $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
+        $this->view->items = $items;
     }
 
     public function duan3Action() {
         if ($this->_request->isPost()) {
-            $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='".$this->_getParam('muc','0')."'");
-            $this->view->items=$items;
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -39,8 +38,8 @@ class NewsController extends Core_Controller_Action {
 
     public function duan4Action() {
         if ($this->_request->isPost()) {
-            $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3 where du_an_cap_2_id='".$this->_getParam('muc','0')."'");
-            $this->view->items=$items;
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3 where du_an_cap_2_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -48,7 +47,8 @@ class NewsController extends Core_Controller_Action {
 
     public function duan5Action() {
         if ($this->_request->isPost()) {
-            
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_4 where du_an_cap_3_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -56,21 +56,26 @@ class NewsController extends Core_Controller_Action {
 
     public function duan6Action() {
         if ($this->_request->isPost()) {
-            
+            $muc = $this->_getParam('muc');
+            if (!is_array($muc)) {
+                $this->_helper->redirector('index', 'index', 'default');
+                exit;
+            }
+            $this->view->mucs = $muc;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
     }
 
     public function nhathauthicong2Action() {
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
-        $this->view->items=$items;
+        $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
+        $this->view->items = $items;
     }
 
     public function nhathauthicong3Action() {
         if ($this->_request->isPost()) {
-            $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_2 where nha_thau_thi_cong_cap_1_id='".$this->_getParam('muc','0')."'");
-            $this->view->items=$items;
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_2 where nha_thau_thi_cong_cap_1_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -78,9 +83,8 @@ class NewsController extends Core_Controller_Action {
 
     public function nhathauthicong4Action() {
         if ($this->_request->isPost()) {
-            $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_3 where nha_thau_thi_cong_cap_2_id='".$this->_getParam('muc','0')."'");
-            $this->view->items=$items;
-            
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_3 where nha_thau_thi_cong_cap_2_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -88,7 +92,8 @@ class NewsController extends Core_Controller_Action {
 
     public function nhathauthicong5Action() {
         if ($this->_request->isPost()) {
-            
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_4 where nha_thau_thi_cong_cap_3_id='" . $this->_getParam('muc', '0') . "'");
+            $this->view->items = $items;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -96,7 +101,12 @@ class NewsController extends Core_Controller_Action {
 
     public function nhathauthicong6Action() {
         if ($this->_request->isPost()) {
-            
+            $muc = $this->_getParam('muc');
+            if (!is_array($muc)) {
+                $this->_helper->redirector('index', 'index', 'default');
+                exit;
+            }
+            $this->view->mucs = $muc;
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }

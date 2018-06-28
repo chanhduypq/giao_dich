@@ -141,4 +141,8 @@
             </div>
         </div>
     </div>
+    <?php 
+    foreach ($this->mucs as $muc){?>
+        <input type="hidden" name="muc[]" value="<?php echo $muc;?>"/>
+    <?php } ?>
 </form>

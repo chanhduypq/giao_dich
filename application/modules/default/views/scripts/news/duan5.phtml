@@ -12,66 +12,23 @@
                             <!-- Fp Group -->
                             <div class="fp-group">
                                 <div class="fp-input fp-list">
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" checked="checked" class="fp-list-chckbox">
-                                        <span>Sơn</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" checked="checked" class="fp-list-chckbox">
-                                        <span>Cốt pha</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Thép</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Chống thấm</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Sơn</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Cốt pha</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Thép</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Chống thấm</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Sơn</span>
-                                    </div>
-                                    <!-- End FP List Item -->
-                                    <!-- FP List item -->
-                                    <div class="fp-list-i">
-                                        <input type="checkbox" name="check0" class="fp-list-chckbox">
-                                        <span>Cốt pha</span>
-                                    </div>
-                                    <!-- End FP List Item -->
+                                    <?php 
+                                    $items=$this->items;
+                                    for($i=0,$n=count($items);$i<$n;$i++){
+                                        if($i==0||$i==1){
+                                            $checked=' checked="checked"';
+                                        }
+                                        else{
+                                            $checked='';
+                                        }
+                                        ?>
+                                        <div class="fp-list-i">
+                                            <input value="<?php echo $items[$i]['id'];?>" type="checkbox" name="muc[]"<?php echo $checked;?> class="fp-list-chckbox">
+                                            <span><?php echo $items[$i]['name'];?></span>
+                                        </div>
+                                    <?php 
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <!-- End Fp Group -->
