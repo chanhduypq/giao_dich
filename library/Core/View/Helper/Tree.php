@@ -15,7 +15,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
      * @param array $level_3_items
      * @return string $html
      */
-    public function tree($header_text,$level_1_items,$level_2_items,$level_3_items) 
+    public function tree($header_text,$level_1_items,$level_2_items,$level_3_items,$level_4_items) 
     {
         ?>
         <div id='jqxWidget'>
@@ -25,7 +25,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
                         <?php 
                         echo $header_text;
                         if(is_array($level_1_items)&&count($level_1_items)>0){
-                            $this->echoMuc($level_1_items, $level_2_items, $level_3_items);
+                            $this->echoMuc($level_1_items, $level_2_items, $level_3_items,$level_4_items);
                         }
                         ?>
                     </li>
@@ -55,7 +55,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
 
     }
     
-    private function echoMuc($level_1_items,$level_2_items,$level_3_items){?>
+    private function echoMuc($level_1_items,$level_2_items,$level_3_items,$level_4_items){?>
         <ul>
             <?php                     
             foreach ($level_1_items as $id_cap_1=>$item){?>
@@ -63,7 +63,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
                     <?php 
                     echo $item['name'];
                     if($item['has_children']){
-                        $this->echoMucCap2($id_cap_1, $level_2_items, $level_3_items);
+                        $this->echoMucCap2($id_cap_1, $level_2_items, $level_3_items,$level_4_items);
                     }
                     ?>
                 </li>
@@ -74,7 +74,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
     <?php 
     }
     
-    private function echoMucCap2($id_cap_1,$level_2_items,$level_3_items){?>
+    private function echoMucCap2($id_cap_1,$level_2_items,$level_3_items,$level_4_items){?>
         <ul>
             <?php                     
             foreach ($level_2_items as $id_cap_2=>$item){
@@ -84,7 +84,7 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
                         <?php 
                         echo $item['name'];
                         if($item['has_children']){
-                            $this->echoMucCap3($id_cap_2,$level_3_items);
+                            $this->echoMucCap3($id_cap_2,$level_3_items,$level_4_items);
                         }
                         ?>
                     </li>
@@ -96,13 +96,35 @@ class Core_View_Helper_Tree extends Zend_View_Helper_Abstract
     <?php 
     }
     
-    private function echoMucCap3($id_cap_2,$level_3_items){?>
+    private function echoMucCap3($id_cap_2,$level_3_items,$level_4_items){?>
         <ul>
             <?php                     
             foreach ($level_3_items as $id_cap_3=>$item){
                 if($item['parent_id']==$id_cap_2){
                 ?>
                     <li name_show="<?php echo $item['name_show'];?>" is_show_at_home_page="<?php echo $item['is_show_at_home_page'];?>" class="level_3 id_<?php echo $id_cap_3;if(isset($item['photo'])&&$item['photo']!='') echo ' photo_'.$item['photo'];?>">                                                    
+                        <?php 
+                        echo $item['name'];
+                        if($item['has_children']){
+                            $this->echoMucCap4($id_cap_3,$level_4_items);
+                        }
+                        ?>
+                    </li>
+            <?php 
+                }
+            }
+            ?>
+        </ul>
+    <?php 
+    }
+    
+    private function echoMucCap4($id_cap_3,$level_4_items){?>
+        <ul>
+            <?php                     
+            foreach ($level_4_items as $id_cap_4=>$item){
+                if($item['parent_id']==$id_cap_3){
+                ?>
+                    <li name_show="<?php echo $item['name_show'];?>" is_show_at_home_page="<?php echo $item['is_show_at_home_page'];?>" class="level_3 id_<?php echo $id_cap_4;if(isset($item['photo'])&&$item['photo']!='') echo ' photo_'.$item['photo'];?>">                                                    
                         <?php echo $item['name'];?>
                     </li>
             <?php 

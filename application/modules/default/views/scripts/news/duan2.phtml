@@ -1,64 +1,44 @@
-<div class="page-content page-option step-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-page form-step fp-mt0">
-                    <div class="fp-heading">
-                        <div class="fp-tit">Danh mục 1<span>*</span></div>
-                        <div class="fp-extra">Phần ưu tiên bắt buộc chọn một mục</div>
-                    </div>
-                    <div class="fp-content">
-                        <!-- Fp Group -->
-                        <div class="fp-group">
-                            <div class="fp-input fp-list">
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" checked="checked" class="fp-list-chckbox">
-                                    <span>Dân dụng</span>
+<form action="<?php echo $this->baseUrl();?>/news/duan3" id="frm" method="POST">
+    <div class="page-content page-option step-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-page form-step fp-mt0">
+                        <div class="fp-heading">
+                            <div class="fp-tit">Danh mục 1<span>*</span></div>
+                            <div class="fp-extra">Phần ưu tiên bắt buộc chọn một mục</div>
+                        </div>
+                        <div class="fp-content">
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-input fp-list">
+                                    <?php 
+                                    $items=$this->items;
+                                    for($i=0,$n=count($items);$i<$n;$i++){
+                                        if($i==0){
+                                            $checked=' checked="checked"';
+                                        }
+                                        else{
+                                            $checked='';
+                                        }
+                                        ?>
+                                        <div class="fp-list-i">
+                                            <input value="<?php echo $items[$i]['id'];?>" type="radio" name="muc"<?php echo $checked;?> class="fp-list-chckbox">
+                                            <span><?php echo $items[$i]['name'];?></span>
+                                        </div>
+                                    <?php 
+                                    }
+                                    ?>
                                 </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Cao tầng</span>
-                                </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Biệt thự</span>
-                                </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Nhà tiền chế</span>
-                                </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Nhà xưởng</span>
-                                </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Nhà xưởng</span>
-                                </div>
-                                <!-- End FP List Item -->
-                                <!-- FP List item -->
-                                <div class="fp-list-i">
-                                    <input type="radio" name="check0" class="fp-list-chckbox">
-                                    <span>Nhà xưởng</span>
-                                </div>
-                                <!-- End FP List Item -->
+                            </div>
+                            <!-- End Fp Group -->
+                            <div class="fp-submit">
+                                <button class="fp-btn fp-btn-register">Tiếp</button>
                             </div>
                         </div>
-                        <!-- End Fp Group -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

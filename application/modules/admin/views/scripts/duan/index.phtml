@@ -3,7 +3,7 @@
         
     var clickedItem = null;
     var dialog,dialogEdit;
-    
+ 
     $(document).ready(function () {
         // Create jqxTree
         $('#jqxTree').jqxTree({ height: '400px', width: '300px' });
@@ -42,7 +42,7 @@
                     }
                     break;
                 case "Xóa mục này":
-                    deleteItem('congnhanlaodong',level,id);
+                    deleteItem('duan',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -67,7 +67,7 @@
                     }
                     break;
                 case "Xóa mục này":
-                    deleteItem('congnhanlaodong',level,id);
+                    deleteItem('duan',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -88,7 +88,7 @@
         
         
         dialog = $( "#dialog-form" ).dialog({
-                open: function( event, ui ) {
+            open: function( event, ui ) {
                     $("#picture").val('');
                     $("#name_show").val('');
                     $("#is_show_at_home_page").prop('checked',false);
@@ -101,7 +101,7 @@
                 {
                   text: "Ok",
                   click: function() {
-                    addMucCon('congnhanlaodong',$("#name"))
+                    addMucCon('duan',$("#name"))
                   }
                 },
                 {
@@ -135,7 +135,7 @@
                 {
                   text: "Ok",
                   click: function() {
-                    editItem('congnhanlaodong',$("#name_edit"))
+                    editItem('duan',$("#name_edit"))
                   }
                 },
                 {
@@ -159,7 +159,7 @@
 
     <div class="col-lg-12 col-md-12">
         <?php 
-        echo $this->tree('Công nhân lao động',$this->level_1_items,$this->level_2_items,$this->level_3_items);
+        echo $this->tree('Dự án',$this->level_1_items,$this->level_2_items,$this->level_3_items,$this->level_4_items);
         ?>
     </div>
 </div>
