@@ -25,9 +25,6 @@ class AccountController extends Core_Controller_Action {
                 if ($index->login($phone, $password)) {
                     $this->_helper->redirector('index', 'index', 'default');
                 } else {
-                    $session = new Zend_Session_Namespace('login');
-                    $session->phone = $this->_getParam('phone');
-                    $session->password = $this->_getParam('password');
                     $this->_helper->redirector('login', 'account', 'default', array('loginResult' => '0'));
                 }
             }

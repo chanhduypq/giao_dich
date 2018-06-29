@@ -300,44 +300,44 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
     /**
      * upload photo cho mỗi mục tại admin/vieccanlam,thietbivattu,congnhanlaodong
      */
-    public function uploadAction() {
-        if(!isset($_FILES['file'])){
-            exit;
-        }
-        
-        $this->disableLayout();
-        $this->disableRender();
-        $path = UPLOAD . "/public/uploads/";
-        @mkdir($path);
-        $temp = explode(".", $_FILES['file']['name']);
-        $file_name = md5(uniqid(rand(), true)) . '.' . $temp[count($temp) - 1];
-        if ( 0 < $_FILES['file']['error'] ) {
-            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
-        }
-        else {
-            move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $file_name);
-            $table_name='';
-            if($this->_request->getControllerName()=='vieccanlam'){
-                $table_name='viec_can_lam_cap_';
-            }
-            else if($this->_request->getControllerName()=='congnhanlaodong'){
-                $table_name='cong_nhan_lao_dong_cap_';
-            }
-            else if($this->_request->getControllerName()=='thietbivattu'){
-                $table_name='thiet_bi_vat_tu_cap_';
-            }
-            if($table_name!=''){
-                $table_name .= $this->_getParam('level');
-                $photo = Core_Db_Table::getDefaultAdapter()->fetchOne("select photo from $table_name where id=" . $this->_getParam('id'));
-                if (trim($photo) != "") {
-                    @unlink("uploads/$photo");
-                }
-                Core_Db_Table::getDefaultAdapter()->update($table_name, array('photo' => $file_name), 'id=' . $this->_getParam('id'));
-            }
-            echo $file_name;
-        }
-        exit;
-    }
+//    public function uploadAction() {
+//        if(!isset($_FILES['file'])){
+//            exit;
+//        }
+//        
+//        $this->disableLayout();
+//        $this->disableRender();
+//        $path = UPLOAD . "/public/uploads/";
+//        @mkdir($path);
+//        $temp = explode(".", $_FILES['file']['name']);
+//        $file_name = md5(uniqid(rand(), true)) . '.' . $temp[count($temp) - 1];
+//        if ( 0 < $_FILES['file']['error'] ) {
+//            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+//        }
+//        else {
+//            move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $file_name);
+//            $table_name='';
+//            if($this->_request->getControllerName()=='vieccanlam'){
+//                $table_name='viec_can_lam_cap_';
+//            }
+//            else if($this->_request->getControllerName()=='congnhanlaodong'){
+//                $table_name='cong_nhan_lao_dong_cap_';
+//            }
+//            else if($this->_request->getControllerName()=='thietbivattu'){
+//                $table_name='thiet_bi_vat_tu_cap_';
+//            }
+//            if($table_name!=''){
+//                $table_name .= $this->_getParam('level');
+//                $photo = Core_Db_Table::getDefaultAdapter()->fetchOne("select photo from $table_name where id=" . $this->_getParam('id'));
+//                if (trim($photo) != "") {
+//                    @unlink("uploads/$photo");
+//                }
+//                Core_Db_Table::getDefaultAdapter()->update($table_name, array('photo' => $file_name), 'id=' . $this->_getParam('id'));
+//            }
+//            echo $file_name;
+//        }
+//        exit;
+//    }
 
     /**
      * khởi tạo lại session ban đầu

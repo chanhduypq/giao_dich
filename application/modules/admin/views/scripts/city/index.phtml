@@ -36,7 +36,7 @@
                     $("#name_edit").val(selectedItem.label);
                     break;
                 case "Xóa mục này":
-                    deleteItem(level,id);
+                    deleteItem('city',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -55,7 +55,7 @@
                     $("#name_edit").val(selectedItem.label);
                     break;
                 case "Xóa mục này":
-                    deleteItem(level,id);
+                    deleteItem('city',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -154,7 +154,7 @@
 
     <div class="col-lg-12 col-md-12">
         <?php 
-        echo $this->tree('Vùng miền, tỉnh thành',$this->level_1_items,$this->level_2_items,$this->level_3_items);
+        echo $this->treecity('Vùng miền, tỉnh thành',$this->level_1_items,$this->level_2_items,$this->level_3_items);
         ?>
     </div>
 </div>

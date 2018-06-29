@@ -34,12 +34,12 @@
                     dialogEdit.dialog( "open" );
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     $("#name_edit").val(selectedItem.label);
-                    if(photo!=""){
-                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
-                    }
-                    else{
-                        $("#photo").hide();
-                    }
+//                    if(photo!=""){
+//                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+//                    }
+//                    else{
+//                        $("#photo").hide();
+//                    }
                     break;
                 case "Xóa mục này":
                     deleteItem('duan',level,id);
@@ -59,12 +59,12 @@
                     dialogEdit.dialog( "open" );
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     $("#name_edit").val(selectedItem.label);
-                    if(photo!=""){
-                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
-                    }
-                    else{
-                        $("#photo").hide();
-                    }
+//                    if(photo!=""){
+//                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+//                    }
+//                    else{
+//                        $("#photo").hide();
+//                    }
                     break;
                 case "Xóa mục này":
                     deleteItem('duan',level,id);
@@ -89,9 +89,9 @@
         
         dialog = $( "#dialog-form" ).dialog({
             open: function( event, ui ) {
-                    $("#picture").val('');
-                    $("#name_show").val('');
-                    $("#is_show_at_home_page").prop('checked',false);
+//                    $("#picture").val('');
+//                    $("#name_show").val('');
+//                    $("#is_show_at_home_page").prop('checked',false);
                 },
               autoOpen: false,
               height: 400,
@@ -118,14 +118,14 @@
             
             dialogEdit = $( "#dialog-form-edit" ).dialog({
                 open: function( event, ui ) {
-                    $("#picture_edit").val('');
-                    $("#name_show_edit").val(name_show);
-                    if(is_show_at_home_page=='1'){
-                        $("#is_show_at_home_page_edit").prop('checked',true);
-                    }
-                    else{
-                        $("#is_show_at_home_page_edit").prop('checked',false);
-                    }
+//                    $("#picture_edit").val('');
+//                    $("#name_show_edit").val(name_show);
+//                    if(is_show_at_home_page=='1'){
+//                        $("#is_show_at_home_page_edit").prop('checked',true);
+//                    }
+//                    else{
+//                        $("#is_show_at_home_page_edit").prop('checked',false);
+//                    }
                 },
               autoOpen: false,
               height: 400,

@@ -19,7 +19,7 @@
                 $.ajax({
                     url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/add',
                     type:'POST',
-                    data:{'level':level,'id':id,'name':$.trim($(name_element).val())},//'name_show':$.trim($("#name_show").val()),'is_show_at_home_page':($("#is_show_at_home_page").is(":checked")?'1':'0')},
+                    data:{'level':level,'id':id,'name':$.trim($(name_element).val()),'name_show':$.trim($("#name_show").val()),'is_show_at_home_page':($("#is_show_at_home_page").is(":checked")?'1':'0')},
                     async: false,
                     success: function (data1, textStatus, jqXHR) {
                         $('#jqxTree').jqxTree('addTo', { label: $.trim($(name_element).val()) }, selectedItem.element);
@@ -28,13 +28,13 @@
                         for(i=0;i<lis.length;i++){
                             if($(lis[i]).find('div').eq(0).html()==$.trim($(name_element).val())){
                                 $(lis[i]).addClass('level_'+(parseInt(level)+1)).addClass('id_'+$.trim(data1));
-//                                $(lis[i]).attr('name_show',$.trim($("#name_show").val()));
-//                                if($("#is_show_at_home_page").is(":checked")){
-//                                    $(lis[i]).attr('is_show_at_home_page','1');
-//                                }
-//                                else{
-//                                    $(lis[i]).attr('is_show_at_home_page','0');
-//                                }
+                                $(lis[i]).attr('name_show',$.trim($("#name_show").val()));
+                                if($("#is_show_at_home_page").is(":checked")){
+                                    $(lis[i]).attr('is_show_at_home_page','1');
+                                }
+                                else{
+                                    $(lis[i]).attr('is_show_at_home_page','0');
+                                }
                                 
                             }
                         }
@@ -46,28 +46,28 @@
                 });
 
                 if(controller_name!="city"){
-//                    var file_data = $('#picture').prop('files')[0];   
-//                    var form_data = new FormData();                  
-//                    form_data.append('file', file_data);
-//                    form_data.append('id', id_new);
-//                    form_data.append('level',parseInt(level)+1);
-//                    $.ajax({
-//                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
-//                        dataType: 'text',  
-//                        cache: false,
-//                        contentType: false,
-//                        processData: false,
-//                        data: form_data,                         
-//                        type: 'post',
-//                        success: function(php_script_response){
-//                            lis=$("#jqxTree li");
-//                            for(i=0;i<lis.length;i++){
-//                                if($(lis[i]).find('div').eq(0).html()==name_value){
-//                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
-//                                }
-//                            }
-//                        }
-//                    });
+                    var file_data = $('#picture').prop('files')[0];   
+                    var form_data = new FormData();                  
+                    form_data.append('file', file_data);
+                    form_data.append('id', id_new);
+                    form_data.append('level',parseInt(level)+1);
+                    $.ajax({
+                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
+                        dataType: 'text',  
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,                         
+                        type: 'post',
+                        success: function(php_script_response){
+                            lis=$("#jqxTree li");
+                            for(i=0;i<lis.length;i++){
+                                if($(lis[i]).find('div').eq(0).html()==name_value){
+                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
+                                }
+                            }
+                        }
+                    });
                 }
                 
             }
@@ -94,7 +94,7 @@
                 $.ajax({
                     url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/edit',
                     type:'POST',
-                    data:{'level':level,'id':id,'name':$.trim($(name_element).val())},//'name_show':$.trim($("#name_show_edit").val()),'is_show_at_home_page':($("#is_show_at_home_page_edit").is(":checked")?'1':'0')},
+                    data:{'level':level,'id':id,'name':$.trim($(name_element).val()),'name_show':$.trim($("#name_show_edit").val()),'is_show_at_home_page':($("#is_show_at_home_page_edit").is(":checked")?'1':'0')},
                     async: false,
                     success: function (data1, textStatus, jqXHR) {
                         $('#jqxTree').jqxTree('updateItem',selectedItem.element, { label: $.trim($(name_element).val()) } );
@@ -102,13 +102,13 @@
                         lis=$("#jqxTree li");
                         for(i=0;i<lis.length;i++){
                             if($(lis[i]).find('div').eq(0).html()==$.trim($(name_element).val())){
-//                                $(lis[i]).attr('name_show',$.trim($("#name_show_edit").val()));
-//                                if($("#is_show_at_home_page_edit").is(":checked")){
-//                                    $(lis[i]).attr('is_show_at_home_page','1');
-//                                }
-//                                else{
-//                                    $(lis[i]).attr('is_show_at_home_page','0');
-//                                }
+                                $(lis[i]).attr('name_show',$.trim($("#name_show_edit").val()));
+                                if($("#is_show_at_home_page_edit").is(":checked")){
+                                    $(lis[i]).attr('is_show_at_home_page','1');
+                                }
+                                else{
+                                    $(lis[i]).attr('is_show_at_home_page','0');
+                                }
                                 
                             }
                         }
@@ -116,28 +116,28 @@
                 });
                 
                 if(controller_name!="city"){
-//                    var file_data = $('#picture_edit').prop('files')[0];   
-//                    var form_data = new FormData();                  
-//                    form_data.append('file', file_data);
-//                    form_data.append('id', id);
-//                    form_data.append('level',level);
-//                    $.ajax({
-//                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
-//                        dataType: 'text',  
-//                        cache: false,
-//                        contentType: false,
-//                        processData: false,
-//                        data: form_data,                         
-//                        type: 'post',
-//                        success: function(php_script_response){
-//                            lis=$("#jqxTree li");
-//                            for(i=0;i<lis.length;i++){
-//                                if($(lis[i]).find('div').eq(0).html()==name_value){
-//                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
-//                                }
-//                            }
-//                        }
-//                    });
+                    var file_data = $('#picture_edit').prop('files')[0];   
+                    var form_data = new FormData();                  
+                    form_data.append('file', file_data);
+                    form_data.append('id', id);
+                    form_data.append('level',level);
+                    $.ajax({
+                        url:'<?php echo $this->baseUrl();?>/admin/'+controller_name+'/upload',
+                        dataType: 'text',  
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,                         
+                        type: 'post',
+                        success: function(php_script_response){
+                            lis=$("#jqxTree li");
+                            for(i=0;i<lis.length;i++){
+                                if($(lis[i]).find('div').eq(0).html()==name_value){
+                                    $(lis[i]).addClass('photo_'+$.trim(php_script_response));
+                                }
+                            }
+                        }
+                    });
                 }
             }
           dialogEdit.dialog( "close" );
@@ -197,7 +197,7 @@
                 if(level=='0'){
                     contextMenuRoot.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                 }
-                else if(level=='4'){
+                else if(level=='3'){
                     contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                 }
                 else{

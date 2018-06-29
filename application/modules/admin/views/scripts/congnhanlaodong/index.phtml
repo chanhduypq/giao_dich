@@ -3,7 +3,7 @@
         
     var clickedItem = null;
     var dialog,dialogEdit;
- 
+    
     $(document).ready(function () {
         // Create jqxTree
         $('#jqxTree').jqxTree({ height: '400px', width: '300px' });
@@ -34,15 +34,15 @@
                     dialogEdit.dialog( "open" );
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     $("#name_edit").val(selectedItem.label);
-//                    if(photo!=""){
-//                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
-//                    }
-//                    else{
-//                        $("#photo").hide();
-//                    }
+                    if(photo!=""){
+                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+                    }
+                    else{
+                        $("#photo").hide();
+                    }
                     break;
                 case "Xóa mục này":
-                    deleteItem('nhathauthicong',level,id);
+                    deleteItem('congnhanlaodong',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -59,15 +59,15 @@
                     dialogEdit.dialog( "open" );
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     $("#name_edit").val(selectedItem.label);
-//                    if(photo!=""){
-//                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
-//                    }
-//                    else{
-//                        $("#photo").hide();
-//                    }
+                    if(photo!=""){
+                        $("#photo").show().find('img').attr('src','<?php echo $this->baseUrl();?>/uploads/'+photo);
+                    }
+                    else{
+                        $("#photo").hide();
+                    }
                     break;
                 case "Xóa mục này":
-                    deleteItem('nhathauthicong',level,id);
+                    deleteItem('congnhanlaodong',level,id);
                     var selectedItem = $('#jqxTree').jqxTree('selectedItem');
                     if (selectedItem != null) {
                         $('#jqxTree').jqxTree('removeItem', selectedItem.element);
@@ -88,10 +88,10 @@
         
         
         dialog = $( "#dialog-form" ).dialog({
-            open: function( event, ui ) {
-//                    $("#picture").val('');
-//                    $("#name_show").val('');
-//                    $("#is_show_at_home_page").prop('checked',false);
+                open: function( event, ui ) {
+                    $("#picture").val('');
+                    $("#name_show").val('');
+                    $("#is_show_at_home_page").prop('checked',false);
                 },
               autoOpen: false,
               height: 400,
@@ -101,7 +101,7 @@
                 {
                   text: "Ok",
                   click: function() {
-                    addMucCon('nhathauthicong',$("#name"))
+                    addMucCon('congnhanlaodong',$("#name"))
                   }
                 },
                 {
@@ -118,14 +118,14 @@
             
             dialogEdit = $( "#dialog-form-edit" ).dialog({
                 open: function( event, ui ) {
-//                    $("#picture_edit").val('');
-//                    $("#name_show_edit").val(name_show);
-//                    if(is_show_at_home_page=='1'){
-//                        $("#is_show_at_home_page_edit").prop('checked',true);
-//                    }
-//                    else{
-//                        $("#is_show_at_home_page_edit").prop('checked',false);
-//                    }
+                    $("#picture_edit").val('');
+                    $("#name_show_edit").val(name_show);
+                    if(is_show_at_home_page=='1'){
+                        $("#is_show_at_home_page_edit").prop('checked',true);
+                    }
+                    else{
+                        $("#is_show_at_home_page_edit").prop('checked',false);
+                    }
                 },
               autoOpen: false,
               height: 400,
@@ -135,7 +135,7 @@
                 {
                   text: "Ok",
                   click: function() {
-                    editItem('nhathauthicong',$("#name_edit"))
+                    editItem('congnhanlaodong',$("#name_edit"))
                   }
                 },
                 {
@@ -159,7 +159,7 @@
 
     <div class="col-lg-12 col-md-12">
         <?php 
-        echo $this->tree('Nhà thầu thi công',$this->level_1_items,$this->level_2_items,$this->level_3_items,$this->level_4_items);
+        echo $this->tree('Công nhân lao động',$this->level_1_items,$this->level_2_items,$this->level_3_items);
         ?>
     </div>
 </div>

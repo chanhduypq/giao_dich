@@ -11,7 +11,7 @@ class Admin_CityController extends Core_Controller_Action {
         $sql = "SELECT city_cap_1.id as id,city_cap_2.id as id1,city_cap_3.id as id2,city_cap_1.name as name,city_cap_2.name as name1,city_cap_3.name as name2,city_cap_2.city_cap_1_id,city_cap_3.city_cap_2_id from city_cap_1 left join city_cap_2 on city_cap_1.id=city_cap_2.city_cap_1_id left JOIN city_cap_3 ON city_cap_2.id=city_cap_3.city_cap_2_id";
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll($sql);
 
-        Admin_Model_Common::build_array_for_level($items, $level_1_items, $level_2_items, $level_3_items);
+        Admin_Model_Common::build_array_for_level_for_city($items, $level_1_items, $level_2_items, $level_3_items);
 
         $this->view->level_1_items = $level_1_items;
         $this->view->level_2_items = $level_2_items;

@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>     
+<script src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-vi.js"></script>
 <form action="<?php echo $this->baseUrl();?>/news/savenhathauthicong" id="frm" method="POST">
     <div class="page-content page-option step-content">
         <div class="container">
@@ -13,7 +16,7 @@
                             <div class="fp-group">
                                 <div class="fp-label">TIÊU ĐỀ</div>
                                 <div class="fp-input fp-textbox">
-                                    <input type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                    <input name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
                                 </div>
                             </div>
                             <!-- End Fp Group -->
@@ -22,7 +25,7 @@
                                 <div class="col-sm-6 col-md-3 col-area">
                                     <div class="fp-label">KHU VỰC</div>
                                     <div class="fp-input fp-select">
-                                        <select name="" id="" class="fp-control fp-input-select">
+                                        <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select">
                                             <option value="">Đà Nẵng</option>
                                             <option value="">Quảng Nam</option>
                                         </select>
@@ -31,7 +34,7 @@
                                 <div class="col-sm-6 col-md-3 col-addr">
                                     <div class="fp-label">QUẬN/HUYỆN</div>
                                     <div class="fp-input fp-select">
-                                        <select name="" id="" class="fp-control fp-input-select">
+                                        <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select">
                                             <option value="">Sơn Trà</option>
                                             <option value="">Ngũ Hành Sơn</option>
                                             <option value="">Hải Châu</option>
@@ -44,6 +47,9 @@
                                 <div class="col-sm-12 col-md-6 col-time">
                                     <div class="fp-label">NGÀY ĐÁP ỨNG DỰ ÁN</div>
                                     <div class="fp-input fp-date">
+                                        <input readonly="readonly" type="text" id="ngay" name="ngay">
+                                    </div>
+<!--                                    <div class="fp-input fp-date">
                                         <div class="fp-control fp-date-w">
                                             <input type="text" name="day" class="fp-d-d" maxlength="2" placeholder="dd">
                                             <span></span>
@@ -51,7 +57,7 @@
                                             <span></span>
                                             <input type="text" name="year" class="fp-d-y" maxlength="2" placeholder="yy">
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <!-- End Fp Group -->
@@ -62,23 +68,23 @@
                                         <div class="col-sm-6 col-md-6 col-area">
                                             <div class="fp-label">Phân loại</div>
                                             <div class="fp-input fp-select">
-                                                <select name="" id="" class="fp-control fp-input-select">
-                                                    <option value="">Nhân viên</option>
-                                                    <option value="">Đối tác</option>
+                                                <select name="phan_loai" id="phan_loai" class="fp-control fp-input-select">
+                                                    <option value="1">Nhân viên</option>
+                                                    <option value="2">Đối tác</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-addr">
                                             <div class="fp-label">Dụng cụ thi công</div>
                                             <div class="fp-input fp-textbox">
-                                                <input type="text" class="fp-control" placeholder="VD: 20 xe múc,...">
+                                                <input name="dich_vu_thi_cong" type="text" class="fp-control" placeholder="VD: 20 xe múc,...">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="fp-sub-group">
                                         <div class="fp-label fp-label-require">THÔNG TIN YÊU CẦU<span class="s-star">*</span></div>
                                         <div class="fp-input fp-textarea">
-                                            <textarea name="" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
+                                            <textarea name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -88,9 +94,9 @@
                                         <div class="fp-input fp-file">
                                             <div class="fp-f-choose">
                                                 <div class="fp-f-main">
-                                                    <input type="file" name="fileee" class="fp-f-input">
+                                                    <input type="file" name="fileee" id="fileee" class="fp-f-input">
                                                     <div class="fp-f-m-before">
-                                                        <img src="assets/images/layout/upload-to-cloud.png" alt="">
+                                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/layout/upload-to-cloud.png" alt="">
                                                         <span>Tải ảnh lên</span>
                                                         <span>(tối đa 5 ảnh)</span>
                                                     </div>
@@ -101,33 +107,49 @@
                                                 <ul class="fp-f-lstchip">
                                                     <li class="fp-f-chip-i _done">
                                                         <div class="fp-f-chip-ii">
-                                                            <img src="assets/images/form/chip-1.png" alt="">
-                                                            <div class="fp-f-stips">
+                                                            <img id="img1" alt="">
+                                                            <div class="fp-f-stips" style="display: none;">
                                                                 <span class="fp-f-stip stip-ok"></span>
                                                                 <span class="fp-f-stip stip-remove"></span>
                                                             </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="fp-f-chip-i _loading">
-                                                        <div class="fp-f-chip-ii">
-                                                            <img src="assets/images/form/chip-1.png" alt="">
-                                                            <span class="fp-f-loading" data-percent="30%"></span>
                                                         </div>
                                                     </li>
                                                     <li class="fp-f-chip-i _done">
                                                         <div class="fp-f-chip-ii">
-                                                            <img src="assets/images/form/chip-1.png" alt="">
-                                                            <div class="fp-f-stips">
+                                                            <img id="img2" alt="">
+                                                            <!--<span class="fp-f-loading" data-percent="30%"></span>-->
+                                                            <div class="fp-f-stips" style="display: none;">
                                                                 <span class="fp-f-stip stip-ok"></span>
                                                                 <span class="fp-f-stip stip-remove"></span>
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="fp-f-chip-i _unselect">
-                                                        <div class="fp-f-chip-ii"></div>
+                                                    <li class="fp-f-chip-i _done">
+                                                        <div class="fp-f-chip-ii">
+                                                            <img id="img3" alt="">
+                                                            <div class="fp-f-stips" style="display: none;">
+                                                                <span class="fp-f-stip stip-ok"></span>
+                                                                <span class="fp-f-stip stip-remove"></span>
+                                                            </div>
+                                                        </div>
                                                     </li>
-                                                    <li class="fp-f-chip-i _unselect">
-                                                        <div class="fp-f-chip-ii"></div>
+                                                    <li class="fp-f-chip-i _done">
+                                                        <div class="fp-f-chip-ii">
+                                                            <img id="img4" alt="">
+                                                            <div class="fp-f-stips" style="display: none;">
+                                                                <span class="fp-f-stip stip-ok"></span>
+                                                                <span class="fp-f-stip stip-remove"></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="fp-f-chip-i _done">
+                                                        <div class="fp-f-chip-ii">
+                                                            <img id="img5" alt="">
+                                                            <div class="fp-f-stips" style="display: none;">
+                                                                <span class="fp-f-stip stip-ok"></span>
+                                                                <span class="fp-f-stip stip-remove"></span>
+                                                            </div>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -146,8 +168,87 @@
             </div>
         </div>
     </div>
-    <?php 
-    foreach ($this->mucs as $muc){?>
-        <input type="hidden" name="muc[]" value="<?php echo $muc;?>"/>
-    <?php } ?>
 </form>
+<script>
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+//
+//        reader.onload = function(e) {
+//            imgs=$(".fp-f-chip-ii img");
+//            for(i=0;i<imgs.length;i++){
+//                if($(imgs[i]).attr('src')==undefined||$(imgs[i]).attr('src')=='undefined'||$(imgs[i]).attr('src')==''){
+//                    $(imgs[i]).attr('src', e.target.result);
+//                    $(imgs[i]).next().show();
+//                    break;
+//                }
+//            }
+//          
+//        }
+//
+//        reader.readAsDataURL(input.files[0]);
+        
+        var file_data = $('#fileee').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('file', file_data);
+        form_data.append('type', 'nha_thau_thi_cong');
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/news/upload',
+            dataType: 'text',  
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,                         
+            type: 'post',
+            success: function(php_script_response){
+                imgs=$(".fp-f-chip-ii img");
+                for(i=0;i<imgs.length;i++){
+                    if($(imgs[i]).attr('src')==undefined||$(imgs[i]).attr('src')=='undefined'||$(imgs[i]).attr('src')==''){
+                        $(imgs[i]).attr('src', '<?php echo $this->baseUrl();?>/uploads/'+$.trim(php_script_response)).css('width','100%').css('height','auto');
+                        $(imgs[i]).next().show();
+                        break;
+                    }
+                }
+            }
+        });
+      }
+    }
+    
+    jQuery(function ($){
+        $( "#ngay" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: "dd/mm/yy",
+          showWeek: true,
+            showOn: "button",
+            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
+            buttonImageOnly: true,
+            buttonText: 'Click để chọn ngày',
+            option:$.datepicker.regional['vi']
+        });
+        
+        $('img.ui-datepicker-trigger').css('margin-left','10px').css('margin-bottom','10px').css('cursor','pointer');
+        
+        $("#fileee").change(function() {
+          readURL(this);
+        });
+        
+        $('.fp-f-stip.stip-remove').click(function (){
+            photo=$(this).parent().prev().attr('src');
+            $(this).parent().prev().removeAttr('src');
+            $(this).parent().hide();
+            console.log(photo);
+//            var form_data = new FormData();                  
+//            form_data.append('photo', photo);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/news/deletephoto',
+                data: {'photo':photo},                         
+                type: 'post',
+                success: function(php_script_response){
+                    
+                }
+            });
+        });
+    });
+</script>

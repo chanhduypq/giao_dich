@@ -40,15 +40,15 @@ class Admin_NhathauthicongController extends Core_Controller_Action {
         if ($data['level'] == '0') {
             $bind = array(
                 'name' => $data['name'],
-                'name_show' => $data['name_show'],
-                'is_show_at_home_page' => $data['is_show_at_home_page'],
+//                'name_show' => $data['name_show'],
+//                'is_show_at_home_page' => $data['is_show_at_home_page'],
             );
         } else {
             $bind = array(
                 'name' => $data['name'],
                 'nha_thau_thi_cong_cap_' . $data['level'] . '_id' => $data['id'],
-                'name_show' => $data['name_show'],
-                'is_show_at_home_page' => $data['is_show_at_home_page'],
+//                'name_show' => $data['name_show'],
+//                'is_show_at_home_page' => $data['is_show_at_home_page'],
             );
         }
 
@@ -64,8 +64,8 @@ class Admin_NhathauthicongController extends Core_Controller_Action {
         $model = new $class_name();
         $bind = array(
             'name' => $data['name'],
-            'name_show' => $data['name_show'],
-            'is_show_at_home_page' => $data['is_show_at_home_page'],
+//            'name_show' => $data['name_show'],
+//            'is_show_at_home_page' => $data['is_show_at_home_page'],
         );
         $model->update($bind, "id=".$data['id']);
         exit;
