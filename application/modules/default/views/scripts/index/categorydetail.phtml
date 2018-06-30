@@ -1,3 +1,6 @@
+<?php 
+$items = $this->items;
+?>
 <div class="page-content detail-page category-page">
     <div class="container">
         <div class="row">
@@ -20,42 +23,37 @@
                     <div class="dt-thumb">
                         <div class="dt-main-thumb">
                             <div class="ct-replace-img">
-                                <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-detail-main.png" alt="">
+                                <?php 
+                                if($items[0]['photo']!=''){?>
+                                    <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
+                                <?php 
+                                }
+                                else{?>
+                                    <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-detail-main.png" alt="">
+                                <?php 
+                                }
+                                ?>
                             </div>
-                            <span>03</span>
+<!--                            tuetc
+                            <span>03</span>-->
                         </div>
                         <div class="dt-chip-thumb">
                             <div class="chip-thumb chip-thumb-slider">
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="chip-thumb-pi">
-                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png">
-                                        <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-chip.png" alt="">
-                                    </div>
-                                </div>
+                                <?php 
+                                //ít nhất user phải upload 2 ảnh, thi mới cho hiển thị vùng này
+                                if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){
+                                    foreach ($items as $item){
+                                        if($item['photo']!=''){?>
+                                            <div class="chip-thumb-pi">
+                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
+                                                    <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                </div>
+                                            </div>
+                                <?php 
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="dt-share">
@@ -86,25 +84,42 @@
                     </div>
                     <div class="dt-content">
                         <div class="dt-title">
-                            <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
+                            <a><?php echo $items[0]['title'];?></a>
                             <a href="#" class="cit-btn">Chọn dự án</a>
                         </div>
                         <div class="dt-desc">
-                            Yêu cầu đội thi công đáp ứng công việc 2 ca trong một ngày: Số lượng 30 người Máy thi công đáp ứng đúng yêu cầu công việc Thời gian dự kiến thi công 30 ngày kể từ ngày bàn giao mặt bằng Được tạm ứng 30% khi ký hợp đồng và vận chuyển dụng cụ máy móc thiết bị đến công trình Thanh toán 90 % mỗi tầng hoàn thành khi đã nghiệm thu bàn giao, 10% cong lại khi đã hoàn thành sau thời gian nghiệm thu 1 tháng.
+                            <?php echo $items[0]['content'];?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
-                                <p>Thời gian thi công: 04/06/2018</p>
-                                <p>Cộng tác viên</p>
+                                <p>Thời gian thi công: <?php echo $items[0]['content'];?></p>
+<!--                                tuetc
+                                <p>Cộng tác viên</p>-->
                             </div>
                             <div class="dt-pos-r">
                                 <p>Khu vực</p>
-                                <p>Ngũ  Hành Sơn</p>
+                                <p>
+                                    <?php 
+                                    echo $items[0]['city_cap_1'];
+                                    if($items[0]['city_cap_2']!=''){
+                                        echo ' - '.$items[0]['city_cap_2'];
+                                    }
+                                    if($items[0]['city_cap_3']!=''){
+                                        echo ' - '.$items[0]['city_cap_3'];
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         </div>
                         <div class="dt-cast">
                             <ul>
-                                <li><a href="#">Phần hoàn thiện</a></li>
+                                <?php 
+//                                tuetc
+                                echo '<li><a>'.$items[0]['du_an_cap_1'].'</a></li>';
+                                echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
+                                echo '<li><a>'.$items[0]['du_an_cap_3'].'</a></li>';
+                                ?>
+<!--                                <li><a href="#">Phần hoàn thiện</a></li>
                                 <li><a href="#">Thạch cao</a></li>
                                 <li><a href="#">Sản phẩm nổi</a></li>
                                 <li><a href="#">Dự án dự trù</a></li>
@@ -114,13 +129,13 @@
                                 <li><a href="#">Phàn hoàn thiện</a></li>
                                 <li><a href="#">Thạch cao</a></li>
                                 <li><a href="#">Phàn hoàn thiện</a></li>
-                                <li><a href="#">Thạch cao</a></li>
+                                <li><a href="#">Thạch cao</a></li>-->
                             </ul>
                         </div>
                         <div class="dt-btn">
                             <div class="dt-btn-cl">
                                 <div class="dt-mark">
-                                    Tổng đầu tư 500 triệu
+                                    Tổng đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
                                 </div>
                             </div>
                             <div class="dt-btn-cl">
