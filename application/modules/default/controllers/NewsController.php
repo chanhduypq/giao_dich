@@ -165,6 +165,8 @@ class NewsController extends Core_Controller_Action {
             }
             
             $session_tin_nha_thau_thi_cong->unsetAll();
+            $this->_helper->redirector('complete', 'news', 'default');
+            exit;
         }
         $this->_helper->redirector('index', 'index', 'default');
     }
@@ -219,6 +221,8 @@ class NewsController extends Core_Controller_Action {
             }
             
             $session_tin_du_an->unsetAll();
+            $this->_helper->redirector('complete', 'news', 'default');
+            exit;
         }
         $this->_helper->redirector('index', 'index', 'default');
     }
@@ -266,6 +270,9 @@ class NewsController extends Core_Controller_Action {
             }
         }
         exit;
+    }
+    public function completeAction() {
+        
     }
 
 }

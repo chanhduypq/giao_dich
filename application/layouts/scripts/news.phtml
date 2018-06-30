@@ -127,6 +127,13 @@
 
 <?php 
 function echoStep($action){
+    if ($action == 'complete') {
+        for ($i = 1; $i <= 6; $i++) {
+            echo '<li class="ct-step-i _done"><span></span></li>';
+        }
+        return;
+    }
+    
     if ($action == 'step1') {
         $step = 1;
     } else if ($action == 'duan2' || $action == 'nhathauthicong2') {
@@ -139,7 +146,7 @@ function echoStep($action){
         $step = 5;
     } else if ($action == 'duan6' || $action == 'nhathauthicong6') {
         $step = 6;
-    }
+    } 
     for ($i = 1; $i <= 6; $i++) {
         if ($i < $step) {
             $class = ' _done';
