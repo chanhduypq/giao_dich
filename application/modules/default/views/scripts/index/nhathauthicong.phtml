@@ -1,3 +1,8 @@
+<?php 
+$auth = Zend_Auth::getInstance();
+$identity = $auth->getIdentity();
+$items=$this->items;
+?>
 <div class="page-content category-page">
     <div class="container">
         <div class="row">
@@ -203,90 +208,59 @@
                                 TIN QUẢNG CÁO
                             </div>
                             <div id="cate-ad-slider" class="cate-ad-list">
-                                <!-- Cate Ad Item -->
-                                <div class="cate-ad-i">
-                                    <div class="cate-ad-ii">
-                                        <div class="cai-thumb">
-                                            <img src="<?php echo $this->baseUrl(); ?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="">
-                                        </div>
-                                        <div class="cai-tit">
-                                            <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
-                                        </div>
-                                        <div class="cai-desc">
-                                            <div class="cai-col cai-cl">
-                                                <p>Tổng đầu tư: <span>500 triệu</span></p>
-                                                <p class="cai-phone"><a href="#">0905 123 456</a></p>
+                                <?php 
+                                if(is_array($items)&& count($items)>0){
+                                    foreach ($items as $item){
+                                        if($item['is_quang_cao']=='1'&&$item['allow_show_quang_cao']=='1'){
+                                            if($item['photo']==''){
+                                                $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                            }
+                                            else{
+                                                $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                            }
+                                            ?>
+                                            <div class="cate-ad-i">
+                                                <div class="cate-ad-ii">
+                                                    <div class="cai-thumb">
+                                                        <img src="<?php echo $item['photo']; ?>" alt="">
+                                                    </div>
+                                                    <div class="cai-tit">
+                                                        <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
+                                                    </div>
+                                                    <div class="cai-desc">
+                                                        <div class="cai-col cai-cl">
+                                                            <!--<p>Tổng đầu tư: <span></span></p>-->
+                                                            <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
+                                                        </div>
+                                                        <div class="cai-col cai-cr">
+                                                            <?php 
+//                                                            if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+//                                                                if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                                ?>
+                                                                <!--<a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>-->
+                                                            <?php 
+//                                                                }
+//                                                            }
+//                                                            else{
+//                                                                if(!$auth->hasIdentity()){
+                                                                ?>
+                                                                <!--<a href="<?php echo $this->baseUrl();?>/account/login" class="cai-btn-project"></a>-->
+                                                            <?php    
+//                                                                }
+//
+//                                                            }
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="cai-col cai-cr">
-                                                <a class="cai-btn-project" href="#"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Cate Ad Item -->
-                                <!-- Cate Ad Item -->
-                                <div class="cate-ad-i">
-                                    <div class="cate-ad-ii">
-                                        <div class="cai-thumb">
-                                            <img src="<?php echo $this->baseUrl(); ?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="">
-                                        </div>
-                                        <div class="cai-tit">
-                                            <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
-                                        </div>
-                                        <div class="cai-desc">
-                                            <div class="cai-col cai-cl">
-                                                <p class="p-opening">Đang thi công</p>
-                                                <p class="cai-phone"><a href="#">0905 123 456</a></p>
-                                            </div>
-                                            <div class="cai-col cai-cr">
-                                                <a class="cai-btn-project" href="#"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Cate Ad Item -->
-                                <!-- Cate Ad Item -->
-                                <div class="cate-ad-i">
-                                    <div class="cate-ad-ii">
-                                        <div class="cai-thumb">
-                                            <img src="<?php echo $this->baseUrl(); ?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="">
-                                        </div>
-                                        <div class="cai-tit">
-                                            <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
-                                        </div>
-                                        <div class="cai-desc">
-                                            <div class="cai-col cai-cl">
-                                                <p>Tổng đầu tư: <span>500 triệu</span></p>
-                                                <p class="cai-phone"><a href="#">0905 123 456</a></p>
-                                            </div>
-                                            <div class="cai-col cai-cr">
-                                                <a class="cai-btn-project" href="#"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Cate Ad Item -->
-                                <!-- Cate Ad Item -->
-                                <div class="cate-ad-i">
-                                    <div class="cate-ad-ii">
-                                        <div class="cai-thumb">
-                                            <img src="<?php echo $this->baseUrl(); ?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="">
-                                        </div>
-                                        <div class="cai-tit">
-                                            <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
-                                        </div>
-                                        <div class="cai-desc">
-                                            <div class="cai-col cai-cl">
-                                                <p>Tổng đầu tư: <span>500 triệu</span></p>
-                                                <p class="cai-phone"><a href="#">0905 123 456</a></p>
-                                            </div>
-                                            <div class="cai-col cai-cr">
-                                                <a class="cai-btn-project" href="#"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Cate Ad Item -->
+                                <?php 
+                                        }
+                                    }
+                                }
+                                        
+                                ?>
+                                
                             </div>
                         </div>
                     </div>
@@ -315,7 +289,7 @@
                         <div id="cate_display" class="cate-wr"> 
                             <!-- Item cate -->
                             <?php 
-                            $items=$this->items;
+                            
                             if(is_array($items)&& count($items)>0){
                                 foreach ($items as $item){
                                     if($item['photo']==''){
