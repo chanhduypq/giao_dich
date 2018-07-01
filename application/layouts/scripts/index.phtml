@@ -1,5 +1,6 @@
 <?php 
 $auth = Zend_Auth::getInstance();
+$identity = $auth->getIdentity();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +59,20 @@ $auth = Zend_Auth::getInstance();
                                 } 
                                 ?>
                                 <div class="top-oc top-project">
-                                    <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
+                                    <?php 
+                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                        
+                                        $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
+                                        $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                        ?>
+                                    <a class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                    <?php 
+                                    }  
+                                    else{?>
+                                        <a style="visibility: hidden;" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon">0</span></a>
+                                    <?php 
+                                    }
+                                    ?>
 
                                     <a href="<?php echo $this->baseUrl();?>/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                                 </div>

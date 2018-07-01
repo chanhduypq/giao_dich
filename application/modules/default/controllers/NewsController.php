@@ -272,5 +272,13 @@ class NewsController extends Core_Controller_Action {
     public function completeAction() {
         
     }
+    
+    public function chonduanAction() {
+        if ($this->_request->isPost()) {
+            if(ctype_digit($this->_getParam('tin_du_an_id'))){
+                Core_Db_Table::getDefaultAdapter()->insert('du_an_da_chon', array('tin_du_an_id'=> $this->_getParam('tin_du_an_id'),'user_id'=> $this->getUserId()));
+            }
+        } 
+    }
 
 }

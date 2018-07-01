@@ -1,5 +1,7 @@
 <?php 
 $items = $this->items;
+$auth = Zend_Auth::getInstance();
+$identity = $auth->getIdentity();
 ?>
 <div class="page-content detail-page category-page">
     <div class="container">
@@ -85,7 +87,25 @@ $items = $this->items;
                     <div class="dt-content">
                         <div class="dt-title">
                             <a><?php echo $items[0]['title'];?></a>
-                            <a href="#" class="cit-btn">Chọn dự án</a>
+                            <?php 
+                            if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."' and tin_du_an_id='".$items[0]['id']."'");
+                                $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                if($number_du_an_da_chon=='0'){
+                                ?>
+                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an">Chọn dự án</a>
+                            <?php 
+                                }
+                            }
+                            else{
+                                if(!$auth->hasIdentity()){
+                                ?>
+                                <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                            <?php    
+                                }
+                                
+                            }
+                            ?>
                         </div>
                         <div class="dt-desc">
                             <?php echo $items[0]['content'];?>
@@ -413,5 +433,21 @@ jQuery(function ($){
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
    } 
+   $(".chon_du_an").click(function (){
+        id=$(this).attr('id').replace("chon_du_an_","");
+        $(this).hide();
+        number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
+        number_of_du_an_da_chon++;
+        $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/news/chonduan',
+            data: {'tin_du_an_id':id},                         
+            type: 'post',
+            async: true,
+            success: function(php_script_response){
+
+            }
+        });
+   });
 });
 </script>
