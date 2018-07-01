@@ -349,9 +349,7 @@ $identity = $auth->getIdentity();
                                                     <div class="cit-desc-r">
                                                         <?php 
                                                         if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                                            $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."' and tin_du_an_id='".$item['id']."'");
-                                                            $number_du_an_da_chon=$number_du_an_da_chon[0];
-                                                            if($number_du_an_da_chon=='0'){
+                                                            if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                             ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
                                                         <?php 

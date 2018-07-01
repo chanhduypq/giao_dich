@@ -20,6 +20,19 @@ class IndexController extends Core_Controller_Action {
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
                 . "group by tin_du_an.id");
+        
+        //lấy danh sách dự án mà user đã chọn (user đã đăng nhập rồi)
+        $du_an_da_chon_ids = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "tin_du_an_id "
+                . "from du_an_da_chon "
+                . "where user_id='" . $this->getUserId() . "'");
+        $temp = array();
+        if (is_array($du_an_da_chon_ids) && count($du_an_da_chon_ids) > 0) {
+            foreach ($du_an_da_chon_ids as $du_an_da_chon_id) {
+                $temp[] = $du_an_da_chon_id['tin_du_an_id'];
+            }
+        }
+        $this->view->du_an_da_chon_ids = $temp;
     }
     public function nhathauthicongAction() {
         $this->view->items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
