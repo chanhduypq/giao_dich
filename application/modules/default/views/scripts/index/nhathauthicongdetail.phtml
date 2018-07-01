@@ -85,16 +85,27 @@ $items = $this->items;
                     <div class="dt-content">
                         <div class="dt-title">
                             <a><?php echo $items[0]['title'];?></a>
-                            <a href="#" class="cit-btn">Chọn dự án</a>
+                            <!--tuetc-->
+                            <!--<a href="#" class="cit-btn">Chọn dự án</a>-->
                         </div>
                         <div class="dt-desc">
                             <?php echo $items[0]['content'];?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
-                                <p>Thời gian thi công: <?php echo $items[0]['content'];?></p>
+                                <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
 <!--                                tuetc
                                 <p>Cộng tác viên</p>-->
+                                <p>
+                                    <?php 
+                                    if($items[0]['phan_loai']=='1'){
+                                        echo 'Nhân viên';
+                                    }
+                                    else{
+                                        echo 'Đối tác';
+                                    }
+                                    ?>
+                                </p>
                             </div>
                             <div class="dt-pos-r">
                                 <p>Khu vực</p>

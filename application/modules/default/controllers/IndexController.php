@@ -26,6 +26,7 @@ class IndexController extends Core_Controller_Action {
                 . "title,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                 . "photo,"
+                . "phan_loai,"
                 . "tin_nha_thau_thi_cong.id "
                 . "from tin_nha_thau_thi_cong "
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
@@ -81,6 +82,7 @@ class IndexController extends Core_Controller_Action {
                 Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"
                         . "title,"
+                        . "phan_loai,"
                         . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                         . "tinnhathauthicong_photo.photo,"
                         . "tin_nha_thau_thi_cong.id,"

@@ -329,7 +329,6 @@
                                         <div class="cate-item-i">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>" alt="#">
-                                                <!--<span class="cit-mark">Tổng đầu tư: <?php // echo $item['tong_dau_tu'];?></span>-->
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
@@ -341,11 +340,20 @@
                                                 <div class="cit-desc">
                                                     <div class="cit-desc-l">
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
-                                                        <!--tuetc-->
-                                                        <!--<p>Đối tác</p>-->
+                                                        <p>
+                                                            <?php 
+                                                            if($item['phan_loai']=='1'){
+                                                                echo 'Nhân viên';
+                                                            }
+                                                            else{
+                                                                echo 'Đối tác';
+                                                            }
+                                                            ?>
+                                                        </p>
                                                     </div>
                                                     <div class="cit-desc-r">
-                                                        <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
+                                                        <!--tuetc-->
+                                                        <!--<a href="#" class="cit-btn"><span>Chọn dự án</span></a>-->
                                                     </div>
                                                 </div>
                                             </div>
