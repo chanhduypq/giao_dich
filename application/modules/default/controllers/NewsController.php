@@ -65,6 +65,8 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $session_tin_du_an->du_an_cap_4 = $this->_getParam('muc');
+            $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+            $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -112,6 +114,8 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4 = $this->_getParam('muc');
+            $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+            $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
         } else {
             $this->_helper->redirector('index', 'index', 'default');
         }
@@ -124,9 +128,6 @@ class NewsController extends Core_Controller_Action {
             unset($data['controller']);
             unset($data['action']);
             unset($data['module']);
-            
-            unset($data['city_cap_1']);
-            unset($data['city_cap_2']);
             
             list($d,$m,$y)= explode("/", $data['ngay']);
             $data['ngay'] = "$y-$m-$d";
@@ -180,9 +181,6 @@ class NewsController extends Core_Controller_Action {
             unset($data['controller']);
             unset($data['action']);
             unset($data['module']);
-            
-            unset($data['city_cap_1']);
-            unset($data['city_cap_2']);
             
             list($d,$m,$y)= explode("/", $data['ngay']);
             $data['ngay'] = "$y-$m-$d";

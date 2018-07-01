@@ -8,11 +8,11 @@ $items = $this->items;
                 <div class="ct-breadcrumb">
                     <ul>
                         <li><a>DANGTINXAYDUNG</a></li>
-                        <li><a>Dự án</a></li>
+                        <li><a>Nhà thầu thi công</a></li>
                         <?php 
-                        echo '<li><a>'.$items[0]['du_an_cap_1'].'</a></li>';
-                        echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
-                        echo '<li><a>'.$items[0]['du_an_cap_3'].'</a></li>';
+                        echo '<li><a>'.$items[0]['nha_thau_thi_cong_cap_1'].'</a></li>';
+                        echo '<li><a>'.$items[0]['nha_thau_thi_cong_cap_2'].'</a></li>';
+                        echo '<li><a>'.$items[0]['nha_thau_thi_cong_cap_3'].'</a></li>';
                         ?>
                     </ul>
                 </div>
@@ -114,21 +114,23 @@ $items = $this->items;
                         <div class="dt-cast">
                             <ul>
                                 <?php 
-                                $du_an_cap_4s=$this->du_an_cap_4s;
-                                if(is_array($du_an_cap_4s)&&count($du_an_cap_4s)>0){
-                                    foreach ($du_an_cap_4s as $du_an_cap_4){
-                                        echo '<li><a>'.$du_an_cap_4['name'].'</a></li>';
+                                
+                                $nha_thau_thi_cong_cap_4s=$this->nha_thau_thi_cong_cap_4s;
+                                if(is_array($nha_thau_thi_cong_cap_4s)&&count($nha_thau_thi_cong_cap_4s)>0){
+                                    foreach ($nha_thau_thi_cong_cap_4s as $nha_thau_thi_cong_cap_4){
+                                        echo '<li><a>'.$nha_thau_thi_cong_cap_4['name'].'</a></li>';
                                     }
                                 }
                                 ?>
                             </ul>
                         </div>
                         <div class="dt-btn">
-                            <div class="dt-btn-cl">
+                            <!--tuetc-->
+<!--                            <div class="dt-btn-cl">
                                 <div class="dt-mark">
-                                    Tổng đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
+                                    Tổng đầu tư: <?php // echo $items[0]['tong_dau_tu'];?>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="dt-btn-cl">
                                 <div class="dt-phone">
                                     <!--  <div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div> -->
@@ -415,3 +417,4 @@ jQuery(function ($){
    } 
 });
 </script>
+

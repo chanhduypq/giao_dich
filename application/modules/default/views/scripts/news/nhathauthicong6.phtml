@@ -26,21 +26,31 @@
                                     <div class="fp-label">KHU VỰC</div>
                                     <div class="fp-input fp-select">
                                         <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select">
-                                            <option value="">Đà Nẵng</option>
-                                            <option value="">Quảng Nam</option>
+                                            <option value="">---Chọn khu vực---</option>
+                                            <?php 
+                                            $city_cap_1s=$this->city_cap_1s;
+                                            if(is_array($city_cap_1s)&&count($city_cap_1s)>0){
+                                                foreach ($city_cap_1s as $city_cap_1){
+                                                    echo '<option value="'.$city_cap_1['id'].'">'.$city_cap_1['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3 col-addr">
+                                <div style="visibility: hidden;" class="col-sm-6 col-md-3 col-addr">
                                     <div class="fp-label">QUẬN/HUYỆN</div>
                                     <div class="fp-input fp-select">
                                         <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select">
-                                            <option value="">Sơn Trà</option>
-                                            <option value="">Ngũ Hành Sơn</option>
-                                            <option value="">Hải Châu</option>
-                                            <option value="">Liên Chiểu</option>
-                                            <option value="">Cẩm Lệ</option>
-                                            <option value="">Thanh Khê</option>
+                                            <option value="">---Chọn quận/huyện---</option>
+                                            <?php 
+                                            $city_cap_2s=$this->city_cap_2s;
+                                            if(is_array($city_cap_2s)&&count($city_cap_2s)>0){
+                                                foreach ($city_cap_2s as $city_cap_2){
+                                                    echo '<option class="city_cap_2_'.$city_cap_2['city_cap_1_id'].'" value="'.$city_cap_2['id'].'">'.$city_cap_2['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -216,6 +226,8 @@
     }
     
     jQuery(function ($){
+        $("#city_cap_2 option").hide();
+    
         $( "#ngay" ).datepicker({
           changeMonth: true,
           changeYear: true,
@@ -238,9 +250,6 @@
             photo=$(this).parent().prev().attr('src');
             $(this).parent().prev().removeAttr('src');
             $(this).parent().hide();
-            console.log(photo);
-//            var form_data = new FormData();                  
-//            form_data.append('photo', photo);
             $.ajax({
                 url:'<?php echo $this->baseUrl();?>/news/deletephoto',
                 data: {'photo':photo},                         
@@ -249,6 +258,19 @@
                     
                 }
             });
+        });
+        
+        $("#city_cap_1").change(function (){
+            if($(this).val()==''||$("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').length==0){
+                $("#city_cap_2").parent().parent().css('visibility','hidden');
+                $("#city_cap_2").val('');
+            }
+            else{
+                $("#city_cap_2").parent().parent().css('visibility','visible');
+                $("#city_cap_2 option").hide();
+                $("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').show();
+            }
+            
         });
     });
 </script>
