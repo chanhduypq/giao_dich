@@ -10,7 +10,38 @@ class IndexController extends Core_Controller_Action {
     public function indexAction() {
     }
     public function duanAction() {
-        $this->view->items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+        $muc = $this->_getParam('muc');
+        $muccap2 = $this->_getParam('muccap2', '0');
+        if ($muc == 'dan-dung') {
+            $du_an_cap_1 = '1';
+        } else if ($muc == 'ha-tang') {
+            $du_an_cap_1 = '2';
+        } else if ($muc == 'cau-duong') {
+            $du_an_cap_1 = '3';
+        } else if ($muc == 'hoan-thien-noi-ngoai-that') {
+            $du_an_cap_1 = '4';
+        } else if ($muc == 'kien-truc') {
+            $du_an_cap_1 = '5';
+        } else if ($muc == 'dien-nuoc') {
+            $du_an_cap_1 = '6';
+        } else if ($muc == 'sua-chua') {
+            $du_an_cap_1 = '7';
+        } else if ($muc == 'cay-xanh') {
+            $du_an_cap_1 = '8';
+        } else if ($muc == 'dich-vu-ve-sinh') {
+            $du_an_cap_1 = '9';
+        } else {
+            $du_an_cap_1 = '0';
+        }
+        if ($du_an_cap_1 == '0') {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        $where = "tin_du_an.du_an_cap_1='$du_an_cap_1'";
+        if (ctype_digit($muccap2) && $muccap2 != '0') {
+            $where .= " and tin_du_an.du_an_cap_2='$muccap2'";
+        }
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                 . "tong_dau_tu,"
@@ -22,8 +53,23 @@ class IndexController extends Core_Controller_Action {
                 . "from tin_du_an "
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
+                . "where $where "
                 . "group by tin_du_an.id");
-        
+        $quangcao_items = array();
+
+        if (is_array($items) && count($items) > 0) {
+            foreach ($items as $item) {
+                if ($item['is_quang_cao'] == '1' && $item['allow_show_quang_cao'] == '1') {
+                    $quangcao_items[] = $item;
+                }
+            }
+        }
+        $this->view->items = $items;
+        $this->view->quangcao_items = $quangcao_items;
+        $this->view->muc = $muc;
+        $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$du_an_cap_1'");
+        $this->view->du_an_cap_2_selected = $muccap2;
+
         //lấy danh sách dự án mà user đã chọn (user đã đăng nhập rồi)
         $du_an_da_chon_ids = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "tin_du_an_id "
@@ -38,7 +84,14 @@ class IndexController extends Core_Controller_Action {
         $this->view->du_an_da_chon_ids = $temp;
     }
     public function nhathauthicongAction() {
-        $this->view->items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+        $muc = $this->_getParam('muc', '0');
+        if (ctype_digit($muc) && $muc != '0') {
+            $where = "tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1='$muc'";
+        }
+        else{
+            $where = '1=1';
+        }
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                 . "photo,"
@@ -50,7 +103,21 @@ class IndexController extends Core_Controller_Action {
                 . "from tin_nha_thau_thi_cong "
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
+                . "where $where "
                 . "group by tin_nha_thau_thi_cong.id");
+        $quangcao_items = array();
+
+        if (is_array($items) && count($items) > 0) {
+            foreach ($items as $item) {
+                if ($item['is_quang_cao'] == '1' && $item['allow_show_quang_cao'] == '1') {
+                    $quangcao_items[] = $item;
+                }
+            }
+        }
+        $this->view->items = $items;
+        $this->view->quangcao_items = $quangcao_items;
+        $this->view->muc_selected = $muc;
+        $this->view->mucs = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
     }
     public function duandetailAction() {
         if(!ctype_digit($this->_getParam('id'))){

@@ -1,7 +1,10 @@
 <?php 
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
-$items=$this->items;
+$items = $this->items;
+$quangcao_items = $this->quangcao_items;
+$mucs = $this->mucs;
+$muc_selected = $this->muc_selected;
 ?>
 <div class="page-content category-page">
     <div class="container">
@@ -10,32 +13,22 @@ $items=$this->items;
                 <div class="ct-sidebar">
                     <!-- Menu side -->
                     <div class="menu-side">
-                        <ul class="mn-parent-side">
-                            <li>
-                                <a href="#"><span>Thiết kế</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiế gkasgfkh gahsgfahsgfh asfajsghfjahgsfhgt bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="_current">
+                        <ul class="mn-parent-side1">
+                            <?php 
+                            foreach ($mucs as $muc){
+                                if($muc['id']==$muc_selected){
+                                    $class=' class="_current"';
+                                }
+                                else{
+                                    $class='';
+                                }?>
+                                <li<?php echo $class;?>>
+                                    <a href="<?php echo $this->baseUrl('/index/nhathauthicong/muc/'.$muc['id']);?>"><span><?php echo $muc['name'];?></span></a>
+                                </li>
+                            <?php 
+                            } 
+                            ?>
+<!--                            <li class="_current">
                                 <a  href="#"><span>Phần thô</span></a>
                                 <div class="mn-dropdown-side">
                                     <div class="btn-back-parent"></div>
@@ -58,127 +51,8 @@ $items=$this->items;
                                         <li><a href="#">Nhà bếp</a></li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#"><span>Phần hoàn thiện</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span>Sân vườn</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span>Thiết bị gia dụng</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span>Nhà bếp</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span>Nhà vệ sinh</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                            </li>-->
+                            
                         </ul>
                     </div>
                     <!-- End Menu side -->
@@ -202,6 +76,8 @@ $items=$this->items;
             </div>
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="content-cate">
+                    <?php 
+                    if(is_array($quangcao_items)&&count($quangcao_items)>0){?>
                     <div class="cate-ad">
                         <div class="cate-ad-wr">
                             <div class="cate-ad-heading">
@@ -209,61 +85,59 @@ $items=$this->items;
                             </div>
                             <div id="cate-ad-slider" class="cate-ad-list">
                                 <?php 
-                                if(is_array($items)&& count($items)>0){
-                                    foreach ($items as $item){
-                                        if($item['is_quang_cao']=='1'&&$item['allow_show_quang_cao']=='1'){
-                                            if($item['photo']==''){
-                                                $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
-                                            }
-                                            else{
-                                                $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
-                                            }
-                                            ?>
-                                            <div class="cate-ad-i">
-                                                <div class="cate-ad-ii">
-                                                    <div class="cai-thumb">
-                                                        <img src="<?php echo $item['photo']; ?>" alt="">
-                                                    </div>
-                                                    <div class="cai-tit">
-                                                        <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
-                                                    </div>
-                                                    <div class="cai-desc">
-                                                        <div class="cai-col cai-cl">
-                                                            <!--<p>Tổng đầu tư: <span></span></p>-->
-                                                            <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
-                                                        </div>
-                                                        <div class="cai-col cai-cr">
-                                                            <?php 
+                                foreach ($quangcao_items as $item){
+                                    if($item['photo']==''){
+                                        $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                    }
+                                    else{
+                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                    }
+                                    ?>
+                                    <div class="cate-ad-i">
+                                        <div class="cate-ad-ii">
+                                            <div class="cai-thumb">
+                                                <img src="<?php echo $item['photo']; ?>" alt="">
+                                            </div>
+                                            <div class="cai-tit">
+                                                <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
+                                            </div>
+                                            <div class="cai-desc">
+                                                <div class="cai-col cai-cl">
+                                                    <!--<p>Tổng đầu tư: <span></span></p>-->
+                                                    <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
+                                                </div>
+                                                <div class="cai-col cai-cr">
+                                                    <?php 
 //                                                            if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
 //                                                                if(!in_array($item['id'], $this->du_an_da_chon_ids)){
-                                                                ?>
-                                                                <!--<a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>-->
-                                                            <?php 
+                                                        ?>
+                                                        <!--<a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>-->
+                                                    <?php 
 //                                                                }
 //                                                            }
 //                                                            else{
 //                                                                if(!$auth->hasIdentity()){
-                                                                ?>
-                                                                <!--<a href="<?php echo $this->baseUrl();?>/account/login" class="cai-btn-project"></a>-->
-                                                            <?php    
+                                                        ?>
+                                                        <!--<a href="<?php echo $this->baseUrl();?>/account/login" class="cai-btn-project"></a>-->
+                                                    <?php    
 //                                                                }
 //
 //                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
+                                                    ?>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
                                 <?php 
-                                        }
-                                    }
                                 }
-                                        
                                 ?>
                                 
                             </div>
                         </div>
                     </div>
+                    <?php 
+                    }
+                    ?>
                     <ul class="cate-tabs">
                         <!-- Tab link -->
                         <li class="tab-link">
