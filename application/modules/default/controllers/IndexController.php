@@ -4,32 +4,41 @@ class IndexController extends Core_Controller_Action {
 
     public function init() {
         parent::init();
-        $this->view->headTitle('Trang chủ', true);
+        $this->view->headTitle('Xây dựng', true);
     }
 
     public function indexAction() {
     }
     public function duanAction() {
         $muc = $this->_getParam('muc');
-        $muccap2 = $this->_getParam('muccap2', '0');
+        
         if ($muc == 'dan-dung') {
             $du_an_cap_1 = '1';
+            $this->view->headTitle('Dự án - dân dụng', true);
         } else if ($muc == 'ha-tang') {
             $du_an_cap_1 = '2';
+            $this->view->headTitle('Dự án - hạ tầng', true);
         } else if ($muc == 'cau-duong') {
             $du_an_cap_1 = '3';
+            $this->view->headTitle('Dự án - cầu đường', true);
         } else if ($muc == 'hoan-thien-noi-ngoai-that') {
             $du_an_cap_1 = '4';
+            $this->view->headTitle('Dự án - hoàn thiện nội ngoại thất', true);
         } else if ($muc == 'kien-truc') {
             $du_an_cap_1 = '5';
+            $this->view->headTitle('Dự án - kiến trúc', true);
         } else if ($muc == 'dien-nuoc') {
             $du_an_cap_1 = '6';
+            $this->view->headTitle('Dự án - điện nước', true);
         } else if ($muc == 'sua-chua') {
             $du_an_cap_1 = '7';
+            $this->view->headTitle('Dự án - sửa chữa', true);
         } else if ($muc == 'cay-xanh') {
             $du_an_cap_1 = '8';
+            $this->view->headTitle('Dự án - cây xanh', true);
         } else if ($muc == 'dich-vu-ve-sinh') {
             $du_an_cap_1 = '9';
+            $this->view->headTitle('Dự án - dịch vụ vệ sinh', true);
         } else {
             $du_an_cap_1 = '0';
         }
@@ -38,6 +47,8 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
         $where = "tin_du_an.du_an_cap_1='$du_an_cap_1'";
+        
+        $muccap2 = $this->_getParam('muccap2', '0');
         if (ctype_digit($muccap2) && $muccap2 != '0') {
             $where .= " and tin_du_an.du_an_cap_2='$muccap2'";
         }
@@ -84,6 +95,7 @@ class IndexController extends Core_Controller_Action {
         $this->view->du_an_da_chon_ids = $temp;
     }
     public function nhathauthicongAction() {
+        $this->view->headTitle('Nhà thầu thi công', true);
         $muc = $this->_getParam('muc', '0');
         if (ctype_digit($muc) && $muc != '0') {
             $where = "tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1='$muc'";
@@ -117,14 +129,23 @@ class IndexController extends Core_Controller_Action {
         $this->view->items = $items;
         $this->view->quangcao_items = $quangcao_items;
         $this->view->muc_selected = $muc;
-        $this->view->mucs = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
+        $mucs = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
+        if(ctype_digit($muc) && $muc != '0'){
+            foreach ($mucs as $m){
+                if($m['id']==$muc){
+                    $this->view->headTitle('Nhà thầu thi công - '.$m['name'], true);
+                    break;
+                }
+            }
+        }
+        $this->view->mucs=$mucs;
     }
     public function duandetailAction() {
         if(!ctype_digit($this->_getParam('id'))){
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
-        $this->view->items= 
+        $items= 
                 Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"
                         . "title,"
@@ -152,6 +173,7 @@ class IndexController extends Core_Controller_Action {
                         . "left join du_an_cap_3 on du_an_cap_3.id=tin_du_an.du_an_cap_3 "
                         . "where tin_du_an.id='".$this->_getParam('id',0)."'");
         
+        $this->view->headTitle('Dự án - '.html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
         $this->view->du_an_cap_4s= 
                 Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select "
@@ -159,7 +181,7 @@ class IndexController extends Core_Controller_Action {
                         . "from du_an_cap_4 "
                         . "join tinduan_duancap4 on tinduan_duancap4.du_an_cap_4=du_an_cap_4.id "
                         . "where tinduan_duancap4.tin_du_an_id='".$this->_getParam('id',0)."'");
-        
+        $this->view->items=$items;
     }
     
     public function nhathauthicongdetailAction() {
@@ -167,7 +189,7 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
-        $this->view->items= 
+        $items= 
                 Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"
                         . "title,"
@@ -194,6 +216,9 @@ class IndexController extends Core_Controller_Action {
                         . "left join nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_2.id=tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_2 "
                         . "left join nha_thau_thi_cong_cap_3 on nha_thau_thi_cong_cap_3.id=tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_3 "
                         . "where tin_nha_thau_thi_cong.id='".$this->_getParam('id',0)."'");
+        
+        $this->view->items=$items;
+        $this->view->headTitle('Nhà thầu thi công - '.html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
         
         $this->view->nha_thau_thi_cong_cap_4s= 
                 Core_Db_Table::getDefaultAdapter()

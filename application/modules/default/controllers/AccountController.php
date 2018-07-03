@@ -4,10 +4,10 @@ class AccountController extends Core_Controller_Action {
 
     public function init() {
         parent::init();
-        $this->view->headTitle('Trang chủ', true);
     }
 
     public function loginAction() {
+        $this->view->headTitle('Xây dựng - đăng nhập', true);
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
@@ -32,6 +32,7 @@ class AccountController extends Core_Controller_Action {
     }
 
     public function registAction() {
+        $this->view->headTitle('Xây dựng - đăng ký', true);
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
@@ -72,6 +73,7 @@ class AccountController extends Core_Controller_Action {
     }
 
     public function infoAction() {
+        $this->view->headTitle('Xây dựng - thông tin cá nhân', true);
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
@@ -80,6 +82,7 @@ class AccountController extends Core_Controller_Action {
     }
 
     public function newsuploadedAction() {
+        $this->view->headTitle('Xây dựng - các tin đã đăng', true);
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
@@ -88,6 +91,7 @@ class AccountController extends Core_Controller_Action {
     }
 
     public function newscancelAction() {
+        $this->view->headTitle('Xây dựng - các tin đã hủy', true);
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
