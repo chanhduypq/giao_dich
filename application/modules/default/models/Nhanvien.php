@@ -15,12 +15,12 @@ class Default_Model_Nhanvien extends Core_Db_Table_Abstract
 
         
         if (Core_Common_Numeric::isInteger($limit) && Core_Common_Numeric::isInteger($start)) {
-            $items = $this->select("*")->order(array('id'))->limit($limit, $start)->fetchAll();
+            $items = $this->select("*")->where("type<>1")->order(array('id'))->limit($limit, $start)->fetchAll();
         } else {
-            $items = $this->select("*")->order(array('id'))->fetchAll();
+            $items = $this->select("*")->where("type<>1")->order(array('id'))->fetchAll();
         }
 
-        $total = $this->select("count(*)")->fetchOne();
+        $total = $this->select("count(*)")->where("type<>1")->fetchOne();
 
         return $items;
     }

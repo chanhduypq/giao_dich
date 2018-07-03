@@ -17,6 +17,9 @@ class Admin_IndexController extends Core_Controller_Action
             if ($identity['type'] == '1') {
                 $this->_helper->redirector('index', 'nhanvien', 'admin');
             }
+            else{
+                $this->disableRender();
+            }
         }
 
         $loginResult = $this->_request->getParam('loginResult');
@@ -29,6 +32,15 @@ class Admin_IndexController extends Core_Controller_Action
         }
         $this->view->phone = $phone;
         $this->view->password = $password;
+        
+        if ($auth->hasIdentity()) {
+            $identity = $auth->getIdentity();
+            if ($identity['type'] != '1') {
+                $this->disableRender();
+            }
+            
+        }
+        
     }
 
     public function loginAction() 
@@ -40,8 +52,12 @@ class Admin_IndexController extends Core_Controller_Action
         } else {
             $index = new Admin_Model_IndexMapper();
             if ($index->login($phone, $password)) {
+                
                 $session = new Zend_Session_Namespace('url');
                 $controller = $session->controller;
+                if ($controller == '') {
+                    $controller = 'index';
+                }
                 $session->unsetAll();
                 $this->_helper->redirector('index', $controller, 'admin');
             } else {
@@ -78,7 +94,7 @@ class Admin_IndexController extends Core_Controller_Action
         }
         $newPassword = $this->_request->getParam('newPassword');
         $index = new Admin_Model_IndexMapper();
-        $index->changePassword($identity['email'], $newPassword, 'user');
+        $index->changePassword($identity['phone'], $newPassword, 'user');
         echo "";
     }
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-02 15:45:10
+Date: 2018-07-03 15:42:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -280,10 +280,6 @@ INSERT INTO `tinduan_duancap4` VALUES ('1', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('1', '2');
 INSERT INTO `tinduan_duancap4` VALUES ('2', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('2', '2');
-INSERT INTO `tinduan_duancap4` VALUES ('3', '3');
-INSERT INTO `tinduan_duancap4` VALUES ('3', '4');
-INSERT INTO `tinduan_duancap4` VALUES ('4', '3');
-INSERT INTO `tinduan_duancap4` VALUES ('4', '4');
 
 -- ----------------------------
 -- Table structure for tinduan_photo
@@ -294,16 +290,13 @@ CREATE TABLE `tinduan_photo` (
   `tin_du_an_id` int(11) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tinduan_photo
 -- ----------------------------
-INSERT INTO `tinduan_photo` VALUES ('1', '1', '9ce1d8d1e4fade41673038d6eb8eee1c.jpg');
-INSERT INTO `tinduan_photo` VALUES ('2', '1', 'fc571748e6c943cdcfc983acdbbc0af3.jpg');
-INSERT INTO `tinduan_photo` VALUES ('3', '2', '2da5081cd4da47f40ca652d1a3e330df.jpg');
-INSERT INTO `tinduan_photo` VALUES ('4', '3', '75e51b73fba4e462b1f4c1b4c56f606a.jpg');
-INSERT INTO `tinduan_photo` VALUES ('5', '4', 'fc6de72f8f95235f5f473254bfcefbc6.jpg');
+INSERT INTO `tinduan_photo` VALUES ('1', '1', 'ad56312aa8953f9f8d55ae0b451650c5.jpg');
+INSERT INTO `tinduan_photo` VALUES ('2', '2', '636fc95993490a701525f149720e343e.jpg');
 
 -- ----------------------------
 -- Table structure for tinnhathauthicong_nhathauthicongcap4
@@ -328,13 +321,12 @@ CREATE TABLE `tinnhathauthicong_photo` (
   `tin_nha_thau_thi_cong_id` int(11) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tinnhathauthicong_photo
 -- ----------------------------
-INSERT INTO `tinnhathauthicong_photo` VALUES ('1', '1', 'd81b583e5dae02bd5f84ba183c27477d.jpg');
-INSERT INTO `tinnhathauthicong_photo` VALUES ('2', '2', 'fb2f35557cf91c665b05214d02283ff8.jpg');
+INSERT INTO `tinnhathauthicong_photo` VALUES ('1', '1', '3a06f1c5aa183731a56d522a84743573.jpg');
 
 -- ----------------------------
 -- Table structure for tin_du_an
@@ -362,15 +354,13 @@ CREATE TABLE `tin_du_an` (
   `is_quang_cao` tinyint(1) DEFAULT NULL,
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
-INSERT INTO `tin_du_an` VALUES ('1', 'dân dụng 1 (có chọn quảng cáo)', ' sdf sdf s fsd f s f sdf ', null, '2018-07-02 14:18:24', '2018-07-02 14:43:57', '3', '2', '2018-07-02 00:00:00', '2', null, null, '1', '1', '1', 'một tỷ', null, null, '1', '1');
-INSERT INTO `tin_du_an` VALUES ('2', 'dân dụng 2 (k chọn quảng cáo)', 'sdfsd s fsf sd fs fs fs fs fs s fs f ', null, '2018-07-02 14:19:21', '2018-07-02 14:19:21', '3', '2', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1', 'hai tỷ', null, null, null, null);
-INSERT INTO `tin_du_an` VALUES ('3', 'dân dụng 3 (có chọn quảng cáo)', 'sfsdfsdf s s s fsd s ', null, '2018-07-02 14:20:18', '2018-07-02 15:09:09', '3', '2', '2018-07-02 00:00:00', '1', '2', null, '1', '3', '2', '500 triệu', null, null, '1', null);
-INSERT INTO `tin_du_an` VALUES ('4', 'dân dụng 4 (k chọn quảng cáo)', 'fsfsdfsdfsdf', null, '2018-07-02 14:21:01', '2018-07-02 15:09:17', '3', '2', '2018-07-19 00:00:00', '2', null, null, '1', '3', '2', '1 tỉ rưỡi', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('1', 'đây là tin của nhân viên Luân đăng', 'sfsdfds', null, '2018-07-03 14:57:04', '2018-07-03 14:57:04', '14', '2', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1', '1 tỉ rưỡi', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('2', 'đây là tin do khách hàng lựu đăng', 'gfdgdf', null, '2018-07-03 15:13:37', '2018-07-03 15:13:37', '16', '4', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1', '4353', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -399,13 +389,12 @@ CREATE TABLE `tin_nha_thau_thi_cong` (
   `is_quang_cao` tinyint(1) DEFAULT NULL,
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_nha_thau_thi_cong
 -- ----------------------------
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'mục 1', 'sdfsdfsd', null, '2018-07-02 15:41:25', '2018-07-02 15:43:20', '10', '4', '2018-07-25 00:00:00', '1', '2', null, '3', '3', '0', '1', 'sdfdf', null, null, '1', '1');
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('2', 'mục 2', 'ấdsa', null, '2018-07-02 15:41:48', '2018-07-02 15:41:48', '10', '4', '2018-07-10 00:00:00', '2', null, null, '4', '0', '0', '1', 'adasd', null, null, null, null);
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'lựu đăng', 'sdfsdfsd', null, '2018-07-03 15:39:09', '2018-07-03 15:39:09', '16', '4', '2018-07-03 00:00:00', '1', '2', null, '4', '0', '0', '1', 'sfsdfs', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for user
@@ -419,15 +408,51 @@ CREATE TABLE `user` (
   `phone` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `type` tinyint(1) NOT NULL COMMENT '1: admin; 2: nhân viên; 3: khách hàng; 4: đối tác; ',
-  `active` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('3', 'anh ', 'Dũng', '', '0905022640', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1', '1');
-INSERT INTO `user` VALUES ('10', null, null, null, '01269259744', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '1');
+INSERT INTO `user` VALUES ('1', 'anh ', 'Dũng', '', '0971553559', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1', '1');
+INSERT INTO `user` VALUES ('14', null, 'Luân', null, '01269259744', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '1');
+INSERT INTO `user` VALUES ('15', null, 'Tuệ', null, '0905022640', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '1');
+INSERT INTO `user` VALUES ('16', null, null, null, '01286435303', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '1');
+
+-- ----------------------------
+-- Table structure for user_duan
+-- ----------------------------
+DROP TABLE IF EXISTS `user_duan`;
+CREATE TABLE `user_duan` (
+  `du_an_cap_1_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`du_an_cap_1_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_duan
+-- ----------------------------
+INSERT INTO `user_duan` VALUES ('1', '13');
+INSERT INTO `user_duan` VALUES ('1', '15');
+INSERT INTO `user_duan` VALUES ('2', '14');
+
+-- ----------------------------
+-- Table structure for user_nhathauthicong
+-- ----------------------------
+DROP TABLE IF EXISTS `user_nhathauthicong`;
+CREATE TABLE `user_nhathauthicong` (
+  `nha_thau_thi_cong_cap_1_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`nha_thau_thi_cong_cap_1_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_nhathauthicong
+-- ----------------------------
+INSERT INTO `user_nhathauthicong` VALUES ('3', '13');
+INSERT INTO `user_nhathauthicong` VALUES ('3', '15');
+INSERT INTO `user_nhathauthicong` VALUES ('4', '14');
 
 -- ----------------------------
 -- View structure for hang_muc_hien_thi_at_home_page

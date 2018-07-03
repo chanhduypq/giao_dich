@@ -150,12 +150,43 @@ $identity = $auth->getIdentity();
                                     Tổng đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
                                 </div>
                             </div>
-                            <div class="dt-btn-cl">
-                                <div class="dt-phone">
-                                    <!--  <div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div> -->
-                                    <div class="ct-btn-phone ct-btn-mobile"><a href="tel:01228559193">Gọi điện</a></div>
+                            <?php 
+                            if(!$auth->hasIdentity()){
+                                ?>                            
+                                <div class="dt-btn-cl">
+                                    <div class="dt-phone">
+                                          <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
+                                          <div class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php 
+                            }
+                            else{
+                                if($identity['id']==$items[0]['user_id']){
+                                    //k hiển thị
+                                }
+                                else{
+                                    if($identity['type']== Default_Model_User::ADMIN){?>
+                                        <div class="dt-btn-cl">
+                                            <div class="dt-phone">
+                                                <?php echo $items[0]['phone'];?>
+                                            </div>
+                                        </div>
+                                    <?php                                     
+                                    }
+                                    else if($identity['type']== Default_Model_User::NHAN_VIEN){
+                                        if(in_array($items[0]['du_an_cap_1_id'], $identity['du_an_cap_1_ids'])){?>
+                                            <div class="dt-btn-cl">
+                                                <div class="dt-phone">
+                                                    <?php echo $items[0]['phone'];?>
+                                                </div>
+                                            </div>
+                                    <?php 
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
                         <div class="dt-share dt-share-mobile">
                             <div class="dt-t">Chia sẻ dự án tới:</div>

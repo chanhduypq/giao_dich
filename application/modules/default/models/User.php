@@ -5,7 +5,7 @@ class Default_Model_User extends Core_Db_Table_Abstract
 
     public $_name = "user";
     
-    const ADMIN='2';
+    const ADMIN='1';
     const NHAN_VIEN='2';
     const KHACH_HANG='3';
     const DOI_TAC='4';

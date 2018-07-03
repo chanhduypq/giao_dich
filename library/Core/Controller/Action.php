@@ -128,11 +128,13 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         parent::postDispatch();
         if ($this->_request->getActionName() == 'index') {
             $this->processForIndexAction();
-        } else if ($this->_request->getActionName() == 'add') {
-            $this->processForAddAction();
-        } else if ($this->_request->getActionName() == 'edit') {
-            $this->processForEditAction();
-        } else if ($this->_request->getActionName() == 'delete') {
+        } 
+//        else if ($this->_request->getActionName() == 'add') {
+//            $this->processForAddAction();
+//        } else if ($this->_request->getActionName() == 'edit') {
+//            $this->processForEditAction();
+//        } 
+        else if ($this->_request->getActionName() == 'delete') {
             $this->processForDeleteAction();
         }
     }
@@ -288,10 +290,10 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
                     $this->_helper->redirector('index', 'index', 'admin');
                 } else {
                     $identity = $auth->getIdentity();
-                    if ($identity['type'] != '1') {
-                        $this->turnSessionPrevController();
-                        $this->_helper->redirector('index', 'index', 'admin');
-                    }
+//                    if ($identity['type'] != '1') {
+//                        $this->turnSessionPrevController();
+//                        $this->_helper->redirector('index', 'index', 'admin');
+//                    }
                 }
             }
         } 

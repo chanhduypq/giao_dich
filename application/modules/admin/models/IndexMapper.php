@@ -16,6 +16,7 @@ class Admin_Model_IndexMapper
             ;
 
             $result = $db->fetchRow($select);
+            
         } catch (Exception $e) {
             
         }
@@ -28,6 +29,20 @@ class Admin_Model_IndexMapper
             $auth->clearIdentity();
         }
         
+        $temp = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from user_duan where user_id='" . $result['id'] . "'");
+        $user_duans = array();
+        foreach ($temp as $t) {
+            $user_duans[] = $t['du_an_cap_1_id'];
+        }
+        
+        $temp = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from user_nhathauthicong where user_id='" . $result['id'] . "'");
+        $user_nhathauthicongs = array();
+        foreach ($temp as $t) {
+            $user_nhathauthicongs[] = $t['nha_thau_thi_cong_cap_1_id'];
+        }
+        
+        $result['du_an_cap_1_ids']=$user_duans;
+        $result['nha_thau_thi_cong_cap_1_ids']=$user_nhathauthicongs;
 
         $auth->getStorage()->write($result);
         return true;
