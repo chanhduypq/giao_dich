@@ -9,6 +9,56 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
     {
         parent::__construct();
     }
+    
+    public static function getTinNhaThauThiCongs($where){
+        return Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "title,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "photo,"
+                . "is_quang_cao,"
+                . "allow_show_quang_cao,"
+                . "phone,"
+                . "user.type,"
+                . "phan_loai,"
+                . "tin_nha_thau_thi_cong.id "
+                . "from tin_nha_thau_thi_cong "
+                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
+                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
+                . "where $where "
+                . "group by tin_nha_thau_thi_cong.id");
+        
+    }
+    
+    public static function getTinNhaThauThiCongDetail($id){
+        return Core_Db_Table::getDefaultAdapter()
+                ->fetchAll("select content,"
+                        . "title,"
+                        . "phan_loai,"
+                        . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                        . "tinnhathauthicong_photo.photo,"
+                        . "tin_nha_thau_thi_cong.id,"
+                        . "tin_nha_thau_thi_cong.user_id,"
+                        . "user.phone,"
+                        . "user.type,"
+                        . "city_cap_1.name as city_cap_1,"
+                        . "city_cap_2.name as city_cap_2,"
+                        . "city_cap_3.name as city_cap_3, "
+                        . "tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 as nha_thau_thi_cong_cap_1_id,"
+                        . "nha_thau_thi_cong_cap_1.name as nha_thau_thi_cong_cap_1,"
+                        . "nha_thau_thi_cong_cap_2.name as nha_thau_thi_cong_cap_2,"
+                        . "nha_thau_thi_cong_cap_3.name as nha_thau_thi_cong_cap_3 "
+                        . "from tin_nha_thau_thi_cong "
+                        . "join user on user.id=tin_nha_thau_thi_cong.user_id "
+                        . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
+                        . "left join city_cap_1 on city_cap_1.id=tin_nha_thau_thi_cong.city_cap_1 "
+                        . "left join city_cap_2 on city_cap_2.id=tin_nha_thau_thi_cong.city_cap_2 "
+                        . "left join city_cap_3 on city_cap_3.id=tin_nha_thau_thi_cong.city_cap_3 "
+                        . "left join nha_thau_thi_cong_cap_1 on nha_thau_thi_cong_cap_1.id=tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 "
+                        . "left join nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_2.id=tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_2 "
+                        . "left join nha_thau_thi_cong_cap_3 on nha_thau_thi_cong_cap_3.id=tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_3 "
+                        . "where tin_nha_thau_thi_cong.id='$id'");
+        
+    }
 
     
 
