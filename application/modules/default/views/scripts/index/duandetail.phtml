@@ -156,7 +156,17 @@ $identity = $auth->getIdentity();
                                 <div class="dt-btn-cl">
                                     <div class="dt-phone">
                                           <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
-                                          <div class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                          <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                          <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
+                                          <?php 
+                                          $user_duan=$this->user_duan;
+                                          if(is_array($user_duan)&&count($user_duan)>0){
+                                              foreach ($user_duan as $temp){
+                                                  echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
+                                              }
+                                          }
+                                          ?>
+                                          </div>
                                     </div>
                                 </div>
                             <?php 

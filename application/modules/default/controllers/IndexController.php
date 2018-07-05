@@ -54,17 +54,32 @@ class IndexController extends Core_Controller_Action {
         if (ctype_digit($muccap2) && $muccap2 != '0') {
             $where .= " and tin_du_an.du_an_cap_2='$muccap2'";
         }
-
-
-        $items = Default_Model_Tinduan::getTinDuAns($where);
         
-        $this->setCountType($items, $nhanVienCount, $doiTacCount, $khachHangCount);
+        $where_target_type='';
+        if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
+            $tab=$this->_getParam('tab','tatCa');
+            if($tab=='doiTac'){
+                $where_target_type .= " tin_du_an.target_type=4";
+            }
+            else if($tab=='nhanVien'){
+                $where_target_type .= " tin_du_an.target_type=2";
+            }
+            else if($tab=='khachHang'){
+                $where_target_type .= " tin_du_an.target_type=3";
+            }
+        }
+
+
+        $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        
+        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
 
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($items);
         $this->view->muc = $muc;
         $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$du_an_cap_1'");
         $this->view->du_an_cap_2_selected = $muccap2;
+        $this->view->allCount = count($allItems);
         $this->view->nhanVienCount = $nhanVienCount;
         $this->view->doiTacCount = $doiTacCount;
         $this->view->khachHangCount = $khachHangCount;
@@ -85,9 +100,24 @@ class IndexController extends Core_Controller_Action {
         } else {
             $where = '1=1';
         }
-        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where);
+        
+        $where_target_type='';
+        if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
+            $tab=$this->_getParam('tab','tatCa');
+            if($tab=='doiTac'){
+                $where_target_type .= " tin_nha_thau_thi_cong.target_type=4";
+            }
+            else if($tab=='nhanVien'){
+                $where_target_type .= " tin_nha_thau_thi_cong.target_type=2";
+            }
+            else if($tab=='khachHang'){
+                $where_target_type .= " tin_nha_thau_thi_cong.target_type=3";
+            }
+        }
+        
+        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
 
-        $this->setCountType($items, $nhanVienCount, $doiTacCount, $khachHangCount);
+        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
         
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($items);
@@ -102,6 +132,7 @@ class IndexController extends Core_Controller_Action {
             }
         }
         $this->view->mucs = $mucs;
+        $this->view->allCount = count($allItems);
         $this->view->nhanVienCount = $nhanVienCount;
         $this->view->doiTacCount = $doiTacCount;
         $this->view->khachHangCount = $khachHangCount;
@@ -124,6 +155,9 @@ class IndexController extends Core_Controller_Action {
                 . "join tinduan_duancap4 on tinduan_duancap4.du_an_cap_4=du_an_cap_4.id "
                 . "where tinduan_duancap4.tin_du_an_id='" . $this->_getParam('id', 0) . "'");
         $this->view->items = $items;
+        
+        $user_duan= Core_Db_Table::getDefaultAdapter()->fetchAll("select phone,full_name from user join user_duan on user_duan.user_id=user.id where user_duan.du_an_cap_1_id='".$items[0]['du_an_cap_1_id']."'");
+        $this->view->user_duan = $user_duan;
     }
 
     public function nhathauthicongdetailAction() {
@@ -142,6 +176,9 @@ class IndexController extends Core_Controller_Action {
                 . "from nha_thau_thi_cong_cap_4 "
                 . "join tinnhathauthicong_nhathauthicongcap4 on tinnhathauthicong_nhathauthicongcap4.nha_thau_thi_cong_cap_4=nha_thau_thi_cong_cap_4.id "
                 . "where tinnhathauthicong_nhathauthicongcap4.tin_nha_thau_thi_cong_id='" . $this->_getParam('id', 0) . "'");
+        
+        $user_nhathauthicong= Core_Db_Table::getDefaultAdapter()->fetchAll("select phone,full_name from user join user_nhathauthicong on user_nhathauthicong.user_id=user.id where user_nhathauthicong.nha_thau_thi_cong_cap_1_id='".$items[0]['nha_thau_thi_cong_cap_1_id']."'");
+        $this->view->user_nhathauthicong = $user_nhathauthicong;
     }
 
     protected function getTinQuangCaos($items) {

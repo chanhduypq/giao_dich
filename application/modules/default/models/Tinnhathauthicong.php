@@ -10,8 +10,14 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
         parent::__construct();
     }
     
-    public static function getTinNhaThauThiCongs($where){
-        return Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+    public static function getTinNhaThauThiCongs($where,$where_target_type,&$allItems,&$total, $limit = null, $start = null){
+        if (Core_Common_Numeric::isInteger($limit) && Core_Common_Numeric::isInteger($start)) {
+            $limit="limit $start,$limit";
+        }
+        else{
+            $limit="";
+        }
+        $allItems = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                 . "photo,"
@@ -26,6 +32,42 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
                 . "where $where "
                 . "group by tin_nha_thau_thi_cong.id");
+        
+        $allItems_target_type = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "title,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "photo,"
+                . "is_quang_cao,"
+                . "allow_show_quang_cao,"
+                . "phone,"
+                . "user.type,"
+                . "phan_loai,"
+                . "tin_nha_thau_thi_cong.id "
+                . "from tin_nha_thau_thi_cong "
+                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
+                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
+                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
+                . "group by tin_nha_thau_thi_cong.id");
+        
+        $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "title,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "photo,"
+                . "is_quang_cao,"
+                . "allow_show_quang_cao,"
+                . "phone,"
+                . "user.type,"
+                . "phan_loai,"
+                . "tin_nha_thau_thi_cong.id "
+                . "from tin_nha_thau_thi_cong "
+                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
+                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
+                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
+                . "group by tin_nha_thau_thi_cong.id $limit");
+        
+        $total = count($allItems_target_type);
+        
+        return $items;
         
     }
     

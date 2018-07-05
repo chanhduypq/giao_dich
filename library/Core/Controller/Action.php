@@ -109,8 +109,8 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
         $this->initPaginator();
 
-        if ($this->_request->getActionName() == 'index') {
-            $this->limit = $this->_getParam('limit', 5);
+        if ($this->_request->getActionName() == 'index'||$this->_request->getActionName() == 'duan'||$this->_request->getActionName() == 'nhathauthicong') {
+            $this->limit = $this->_getParam('limit', 1);
             $this->page = $this->_getParam('page', 1);
             if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
                 $this->page = 1;
@@ -126,7 +126,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
     public function postDispatch() {
         parent::postDispatch();
-        if ($this->_request->getActionName() == 'index') {
+        if ($this->_request->getActionName() == 'index'||$this->_request->getActionName() == 'duan'||$this->_request->getActionName() == 'nhathauthicong') {
             $this->processForIndexAction();
         } 
 //        else if ($this->_request->getActionName() == 'add') {
