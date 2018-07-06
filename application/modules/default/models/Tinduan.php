@@ -71,6 +71,28 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         
     }
     
+    public static function getTinDuAnLienQuans($id,$du_an_cap_1_id){
+        
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "title,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "tong_dau_tu,"
+                . "photo,"
+                . "is_quang_cao,"
+                . "allow_show_quang_cao,"
+                . "phone,"
+                . "user.type,"
+                . "tin_du_an.id "
+                . "from tin_du_an "
+                . "join user on user.id=tin_du_an.user_id "
+                . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
+                . "where tin_du_an.du_an_cap_1='$du_an_cap_1_id' and tin_du_an.id<>$id "
+                . "group by tin_du_an.id limit 0,10");
+        
+        return $items;
+        
+    }
+    
     public static function getTinDuAnDetail($id){
         return Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"

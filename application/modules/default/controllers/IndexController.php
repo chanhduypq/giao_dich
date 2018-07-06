@@ -158,6 +158,10 @@ class IndexController extends Core_Controller_Action {
         
         $user_duan= Core_Db_Table::getDefaultAdapter()->fetchAll("select phone,full_name from user join user_duan on user_duan.user_id=user.id where user_duan.du_an_cap_1_id='".$items[0]['du_an_cap_1_id']."'");
         $this->view->user_duan = $user_duan;
+        
+        $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
+        $this->view->items_lienquan = $items_lienquan;
+        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
     }
 
     public function nhathauthicongdetailAction() {
@@ -179,6 +183,9 @@ class IndexController extends Core_Controller_Action {
         
         $user_nhathauthicong= Core_Db_Table::getDefaultAdapter()->fetchAll("select phone,full_name from user join user_nhathauthicong on user_nhathauthicong.user_id=user.id where user_nhathauthicong.nha_thau_thi_cong_cap_1_id='".$items[0]['nha_thau_thi_cong_cap_1_id']."'");
         $this->view->user_nhathauthicong = $user_nhathauthicong;
+        
+        $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
+        $this->view->items_lienquan = $items_lienquan;
     }
 
     protected function getTinQuangCaos($items) {

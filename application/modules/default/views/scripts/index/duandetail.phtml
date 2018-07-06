@@ -286,7 +286,7 @@ $identity = $auth->getIdentity();
                         <div class="dt-rl-cate cate-list">
                             <div class="cate-wr _ct_grid">
                                 <!-- Cate Item -->
-                                <div class="cate-item">
+<!--                                <div class="cate-item">
                                     <div class="cate-item-i">
                                         <div class="cit-part cit-left">
                                             <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
@@ -305,162 +305,67 @@ $identity = $auth->getIdentity();
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <!-- End Item -->
                                 <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
+                                <?php 
+                                $items_lienquan=$this->items_lienquan;
+                                foreach ($items_lienquan as $item){
+                                    if($item['photo']==''){
+                                        $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                    }
+                                    else{
+                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                    }
+                                    ?>
+                                    
+                                
+                                    <div class="cate-item">
+                                        <div class="cate-item-i">
+                                            <div class="cit-part cit-left">
+                                                <img src="<?php echo $item['photo']; ?>" alt="#">
+                                                <span class="cit-mark">Tổng đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                            </div>
+                                            <div class="cit-part cit-right">
+                                                <div class="cit-title">
+                                                    <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
+                                                        <!--<span class="tap-hot">Hot</span>tuetc-->
+                                                            <?php echo $item['title'];?>
+                                                    </a>
                                                 </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
+                                                <div class="cit-desc">
+                                                    <div class="cit-desc-l">
+                                                        <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                    </div>
+                                                    <div class="cit-desc-r">
+                                                        <?php 
+                                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                            if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                            ?>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
+                                                        <?php 
+                                                            }
+                                                        }
+                                                        else{
+                                                            if(!$auth->hasIdentity()){
+                                                            ?>
+                                                            <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                        <?php    
+                                                            }
+                                                            
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#"><span class="tap-hot">Hot</span>Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main p-opening">Đang thi công</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
-                                <!-- Cate Item -->
-                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item -->
+                                <?php 
+                                    
+                                }
+                                
+                                        
+                                ?>
                             </div>
                         </div>
                     </div>

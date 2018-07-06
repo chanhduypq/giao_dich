@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-03 15:42:43
+Date: 2018-07-06 16:58:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -166,7 +166,11 @@ CREATE TABLE `du_an_da_chon` (
 -- Records of du_an_da_chon
 -- ----------------------------
 INSERT INTO `du_an_da_chon` VALUES ('1', '10');
+INSERT INTO `du_an_da_chon` VALUES ('1', '16');
 INSERT INTO `du_an_da_chon` VALUES ('2', '10');
+INSERT INTO `du_an_da_chon` VALUES ('2', '16');
+INSERT INTO `du_an_da_chon` VALUES ('3', '16');
+INSERT INTO `du_an_da_chon` VALUES ('7', '16');
 
 -- ----------------------------
 -- Table structure for khach_hang
@@ -280,6 +284,18 @@ INSERT INTO `tinduan_duancap4` VALUES ('1', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('1', '2');
 INSERT INTO `tinduan_duancap4` VALUES ('2', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('2', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('3', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('3', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('4', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('4', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('5', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('5', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('6', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('6', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('7', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('7', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('8', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('8', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_photo
@@ -290,13 +306,14 @@ CREATE TABLE `tinduan_photo` (
   `tin_du_an_id` int(11) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tinduan_photo
 -- ----------------------------
 INSERT INTO `tinduan_photo` VALUES ('1', '1', 'ad56312aa8953f9f8d55ae0b451650c5.jpg');
 INSERT INTO `tinduan_photo` VALUES ('2', '2', '636fc95993490a701525f149720e343e.jpg');
+INSERT INTO `tinduan_photo` VALUES ('3', '8', '2e202766a67ffe8d852072b5971b106d.jpg');
 
 -- ----------------------------
 -- Table structure for tinnhathauthicong_nhathauthicongcap4
@@ -311,6 +328,10 @@ CREATE TABLE `tinnhathauthicong_nhathauthicongcap4` (
 -- ----------------------------
 -- Records of tinnhathauthicong_nhathauthicongcap4
 -- ----------------------------
+INSERT INTO `tinnhathauthicong_nhathauthicongcap4` VALUES ('3', '4');
+INSERT INTO `tinnhathauthicong_nhathauthicongcap4` VALUES ('3', '5');
+INSERT INTO `tinnhathauthicong_nhathauthicongcap4` VALUES ('4', '4');
+INSERT INTO `tinnhathauthicong_nhathauthicongcap4` VALUES ('4', '5');
 
 -- ----------------------------
 -- Table structure for tinnhathauthicong_photo
@@ -354,13 +375,19 @@ CREATE TABLE `tin_du_an` (
   `is_quang_cao` tinyint(1) DEFAULT NULL,
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
 INSERT INTO `tin_du_an` VALUES ('1', 'đây là tin của nhân viên Luân đăng', 'sfsdfds', null, '2018-07-03 14:57:04', '2018-07-03 14:57:04', '14', '2', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1', '1 tỉ rưỡi', null, null, null, null);
 INSERT INTO `tin_du_an` VALUES ('2', 'đây là tin do khách hàng lựu đăng', 'gfdgdf', null, '2018-07-03 15:13:37', '2018-07-03 15:13:37', '16', '4', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1', '4353', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('3', 'sdfsdfs', 'adasda', null, '2018-07-06 10:48:46', '2018-07-06 15:54:27', '16', '4', '2018-07-12 00:00:00', '2', null, null, '1', '1', '1', '1 tỉ rưỡi', null, null, '1', '1');
+INSERT INTO `tin_du_an` VALUES ('4', 'sdfsdfs', 'sdfsdfs', null, '2018-07-06 10:49:08', '2018-07-06 10:49:08', '16', '4', '2018-07-05 00:00:00', '2', null, null, '1', '1', '1', '1 tỉ rưỡi', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('5', 'sdfsdfs', 'sdfdsfs', null, '2018-07-06 10:49:30', '2018-07-06 10:49:30', '16', '4', '2018-07-05 00:00:00', '2', null, null, '1', '1', '1', '500', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('6', 'sdfsdfs', 'ádsada', null, '2018-07-06 10:49:53', '2018-07-06 10:49:53', '16', '4', '2018-07-06 00:00:00', '2', null, null, '1', '1', '1', 'ádasda', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('7', 'sdfsdfs', 'dfgdf', null, '2018-07-06 10:50:13', '2018-07-06 10:50:13', '16', '4', '2018-07-06 00:00:00', '2', null, null, '1', '1', '1', 'dfgdfgd', null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('8', '111111111', 'ádasdas', null, '2018-07-06 16:55:57', '2018-07-06 16:56:21', '1', '4', '0000-00-00 00:00:00', '1', '2', null, '1', '1', '1', 'âd', null, null, '1', null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -389,12 +416,15 @@ CREATE TABLE `tin_nha_thau_thi_cong` (
   `is_quang_cao` tinyint(1) DEFAULT NULL,
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_nha_thau_thi_cong
 -- ----------------------------
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'lựu đăng', 'sdfsdfsd', null, '2018-07-03 15:39:09', '2018-07-03 15:39:09', '16', '4', '2018-07-03 00:00:00', '1', '2', null, '4', '0', '0', '1', 'sfsdfs', null, null, null, null);
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('2', 'fdgdfgdfgd', 'dfgdf', null, '2018-07-06 10:50:34', '2018-07-06 10:50:34', '16', '4', '2018-07-06 00:00:00', '1', '2', null, '3', '3', '0', '1', 'dgdfgdf', null, null, null, null);
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('3', 'dfgdfgd', 'dfgd', null, '2018-07-06 10:51:12', '2018-07-06 10:51:12', '16', '4', '0000-00-00 00:00:00', '1', '2', null, '3', '3', '3', '2', 'sđfsfsdf', null, null, null, null);
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('4', '123456', 'ádasdas', null, '2018-07-06 15:25:46', '2018-07-06 15:54:29', '16', '4', '2018-07-06 00:00:00', '2', null, null, '3', '3', '3', '2', 'ádsada', null, null, '1', '1');
 
 -- ----------------------------
 -- Table structure for user
