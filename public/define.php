@@ -16,3 +16,5 @@ define('FILE_CACHE_DIRECTORY', APPLICATION_PATH ."/../var/cache");
 define('BLOCK_PATH',APPLICATION_PATH . '/blocks');
 //------------KHAI BAO DUONG DAN URL DEN CAC THU MUC --------------
 define('APPLICATION_URL', '');
+
+define('PHOTO_DEFAULT', '/front_end/images/category-detail/cate-detail-main.png');

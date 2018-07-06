@@ -48,7 +48,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      *
      * @var integer
      */
-    public $limit;
+    public $limit=null;
 
     /**
      *
@@ -91,6 +91,12 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      * @var string
      */
     public $renderScript = NULL;
+    
+    /**
+     *
+     * @var array
+     */
+    public $actionsForList = array('index','duan','nhathauthicong');
 
     /**
      *  Main init
@@ -109,15 +115,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
         $this->initPaginator();
 
-        if ($this->_request->getActionName() == 'index'||$this->_request->getActionName() == 'duan'||$this->_request->getActionName() == 'nhathauthicong') {
-            $this->limit = $this->_getParam('limit', 1);
-            $this->page = $this->_getParam('page', 1);
-            if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
-                $this->page = 1;
-            }
-
-            $this->start = (($this->page - 1) * $this->limit);
-        } else if ($this->_request->getActionName() == 'add' || $this->_request->getActionName() == 'edit') {
+        if ($this->_request->getActionName() == 'add' || $this->_request->getActionName() == 'edit') {
             $this->formData = $this->_request->getPost();
         }
     }
@@ -126,7 +124,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
     public function postDispatch() {
         parent::postDispatch();
-        if ($this->_request->getActionName() == 'index'||$this->_request->getActionName() == 'duan'||$this->_request->getActionName() == 'nhathauthicong') {
+        if (in_array($this->_request->getActionName(), $this->actionsForList)){
             $this->processForIndexAction();
         } 
 //        else if ($this->_request->getActionName() == 'add') {
@@ -373,6 +371,16 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
     }
     
     private function processForIndexAction() {
+        if($this->limit==NULL){
+            $this->limit = $this->_getParam('limit', 5);
+        }
+        
+        $this->page = $this->_getParam('page', 1);
+        if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
+            $this->page = 1;
+        }
+
+        $this->start = (($this->page - 1) * $this->limit);
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($this->total));
 
         $paginator->setDefaultScrollingStyle();

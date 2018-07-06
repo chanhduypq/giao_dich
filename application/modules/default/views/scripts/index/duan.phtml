@@ -89,7 +89,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                 <?php 
                                 foreach ($quangcao_items as $item){
                                     if($item['photo']==''){
-                                        $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
                                     }
                                     else{
                                         $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
@@ -170,7 +170,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                             if(is_array($items)&& count($items)>0){
                                 foreach ($items as $item){
                                     if($item['photo']==''){
-                                        $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
                                     }
                                     else{
                                         $item['photo']=$this->baseUrl("/uploads/".$item['photo']);

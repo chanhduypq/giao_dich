@@ -17,53 +17,11 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         else{
             $limit="";
         }
-        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "tong_dau_tu,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "tin_du_an.id "
-                . "from tin_du_an "
-                . "join user on user.id=tin_du_an.user_id "
-                . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . "where $where "
-                . "group by tin_du_an.id");
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where");
+                
+        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":""));
         
-        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "tong_dau_tu,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "tin_du_an.id "
-                . "from tin_du_an "
-                . "join user on user.id=tin_du_an.user_id "
-                . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
-                . "group by tin_du_an.id");
-        
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "tong_dau_tu,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "tin_du_an.id "
-                . "from tin_du_an "
-                . "join user on user.id=tin_du_an.user_id "
-                . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
-                . "group by tin_du_an.id $limit");
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." $limit");
         
         $total = count($allItems_target_type);
         

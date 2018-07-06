@@ -17,53 +17,11 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
         else{
             $limit="";
         }
-        $allItems = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "phan_loai,"
-                . "tin_nha_thau_thi_cong.id "
-                . "from tin_nha_thau_thi_cong "
-                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
-                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                . "where $where "
-                . "group by tin_nha_thau_thi_cong.id");
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where");
+                
+        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":""));
         
-        $allItems_target_type = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "phan_loai,"
-                . "tin_nha_thau_thi_cong.id "
-                . "from tin_nha_thau_thi_cong "
-                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
-                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
-                . "group by tin_nha_thau_thi_cong.id");
-        
-        $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
-                . "photo,"
-                . "is_quang_cao,"
-                . "allow_show_quang_cao,"
-                . "phone,"
-                . "user.type,"
-                . "phan_loai,"
-                . "tin_nha_thau_thi_cong.id "
-                . "from tin_nha_thau_thi_cong "
-                . "join user on user.id=tin_nha_thau_thi_cong.user_id "
-                . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                . "where $where ".($where_target_type!=''?"and $where_target_type ":"")
-                . "group by tin_nha_thau_thi_cong.id $limit");
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":"")." $limit");
         
         $total = count($allItems_target_type);
         

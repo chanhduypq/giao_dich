@@ -12,6 +12,7 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function duanAction() {
+        $this->limit = $this->_getParam('limit', 5);
         $muc = $this->_getParam('muc');
 
         if ($muc == 'dan-dung') {
@@ -48,34 +49,33 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
-        $where = "tin_du_an.du_an_cap_1='$du_an_cap_1'";
+        $where = "du_an_cap_1='$du_an_cap_1'";
 
         $muccap2 = $this->_getParam('muccap2', '0');
         if (ctype_digit($muccap2) && $muccap2 != '0') {
-            $where .= " and tin_du_an.du_an_cap_2='$muccap2'";
+            $where .= " and du_an_cap_2='$muccap2'";
         }
         
         $where_target_type='';
         if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
             $tab=$this->_getParam('tab','tatCa');
             if($tab=='doiTac'){
-                $where_target_type .= " tin_du_an.target_type=4";
+                $where_target_type .= " target_type=4";
             }
             else if($tab=='nhanVien'){
-                $where_target_type .= " tin_du_an.target_type=2";
+                $where_target_type .= " target_type=2";
             }
             else if($tab=='khachHang'){
-                $where_target_type .= " tin_du_an.target_type=3";
+                $where_target_type .= " target_type=3";
             }
         }
-
 
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
         
         $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
 
         $this->view->items = $items;
-        $this->view->quangcao_items = $this->getTinQuangCaos($items);
+        $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
         $this->view->muc = $muc;
         $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$du_an_cap_1'");
         $this->view->du_an_cap_2_selected = $muccap2;
@@ -93,10 +93,11 @@ class IndexController extends Core_Controller_Action {
     
 
     public function nhathauthicongAction() {
+        $this->limit = $this->_getParam('limit', 5);
         $this->view->headTitle('Nhà thầu thi công', true);
         $muc = $this->_getParam('muc', '0');
         if (ctype_digit($muc) && $muc != '0') {
-            $where = "tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1='$muc'";
+            $where = "nha_thau_thi_cong_cap_1='$muc'";
         } else {
             $where = '1=1';
         }
@@ -105,13 +106,13 @@ class IndexController extends Core_Controller_Action {
         if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
             $tab=$this->_getParam('tab','tatCa');
             if($tab=='doiTac'){
-                $where_target_type .= " tin_nha_thau_thi_cong.target_type=4";
+                $where_target_type .= " target_type=4";
             }
             else if($tab=='nhanVien'){
-                $where_target_type .= " tin_nha_thau_thi_cong.target_type=2";
+                $where_target_type .= " target_type=2";
             }
             else if($tab=='khachHang'){
-                $where_target_type .= " tin_nha_thau_thi_cong.target_type=3";
+                $where_target_type .= " target_type=3";
             }
         }
         
@@ -120,7 +121,7 @@ class IndexController extends Core_Controller_Action {
         $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
         
         $this->view->items = $items;
-        $this->view->quangcao_items = $this->getTinQuangCaos($items);
+        $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
         $this->view->muc_selected = $muc;
         $mucs = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
         if (ctype_digit($muc) && $muc != '0') {

@@ -108,7 +108,7 @@ else{
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
                              <?php }
                              else{?>
-                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');?>"/>
+                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>"/>
                              <?php 
                              }
                              ?>
@@ -198,9 +198,12 @@ else{
                 type: 'post',
                 async: false,
                 success: function(php_script_response){
-                      $(node).toggleClass( "allow_show" );
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
                       $(node).toggleClass( "cancel_show" );
                       $(node).html("Hủy hiển thị");
+                    }
+                      
                 }
             });
         });
@@ -222,9 +225,12 @@ else{
                 type: 'post',
                 async: false,
                 success: function(php_script_response){
-                      $(node).toggleClass( "allow_show" );
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
                       $(node).toggleClass( "cancel_show" );
                       $(node).html("Cho hiển thị");
+                    }
+                      
                 }
             });
         });

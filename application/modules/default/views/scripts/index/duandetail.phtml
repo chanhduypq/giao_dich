@@ -12,9 +12,17 @@ $identity = $auth->getIdentity();
                         <li><a>DANGTINXAYDUNG</a></li>
                         <li><a>Dự án</a></li>
                         <?php 
-                        echo '<li><a>'.$items[0]['du_an_cap_1'].'</a></li>';
-                        echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
-                        echo '<li><a>'.$items[0]['du_an_cap_3'].'</a></li>';
+                        if(trim($items[0]['du_an_cap_1'])!=''){
+                            echo '<li><a>'.$items[0]['du_an_cap_1'].'</a></li>';
+                        }
+                        
+                        if(trim($items[0]['du_an_cap_2'])!=''){
+                            echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
+                        }
+                        
+                        if(trim($items[0]['du_an_cap_3'])!=''){
+                            echo '<li><a>'.$items[0]['du_an_cap_3'].'</a></li>';
+                        }
                         ?>
                     </ul>
                 </div>
@@ -31,7 +39,7 @@ $identity = $auth->getIdentity();
                                 <?php 
                                 }
                                 else{?>
-                                    <img src="<?php echo $this->baseUrl();?>/front_end/images/category-detail/cate-detail-main.png" alt="">
+                                    <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
                                 <?php 
                                 }
                                 ?>
@@ -274,6 +282,10 @@ $identity = $auth->getIdentity();
             </div>
         </div>
     </div>
+    <?php 
+    $items_lienquan=$this->items_lienquan;
+    if(is_array($items_lienquan)&&count($items_lienquan)>0){
+    ?>
     <div class="detail-bottom">
         <div class="container">
             <div class="row">
@@ -285,34 +297,12 @@ $identity = $auth->getIdentity();
                         </div>
                         <div class="dt-rl-cate cate-list">
                             <div class="cate-wr _ct_grid">
-                                <!-- Cate Item -->
-<!--                                <div class="cate-item">
-                                    <div class="cate-item-i">
-                                        <div class="cit-part cit-left">
-                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/category/cacti-gardening-grow-707194.png" alt="#">
-                                            <span class="cit-mark">Tổng đầu tư: 500 triệu</span>
-                                        </div>
-                                        <div class="cit-part cit-right">
-                                            <div class="cit-title"><a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a></div>
-                                            <div class="cit-desc">
-                                                <div class="cit-desc-l">
-                                                    <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
-                                                    <p>Cộng tác viên</p>
-                                                </div>
-                                                <div class="cit-desc-r">
-                                                    <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <!-- End Item -->
-                                <!-- Cate Item -->
+                                
                                 <?php 
-                                $items_lienquan=$this->items_lienquan;
+                                
                                 foreach ($items_lienquan as $item){
                                     if($item['photo']==''){
-                                        $item['photo']=$this->baseUrl('/front_end/images/category/cacti-gardening-grow-707194.png');
+                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
                                     }
                                     else{
                                         $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
@@ -374,6 +364,9 @@ $identity = $auth->getIdentity();
             </div>
         </div>
     </div>
+    <?php 
+    }
+    ?>
     <div class="ct-ad-mobile">
         <div class="ct-ad-mobile-i">
             <span>BANNER</span> DỊCH VỤ HẬU MÃI
