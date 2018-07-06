@@ -144,14 +144,15 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                     ?>
                     <ul class="cate-tabs">
                         <!-- Tab link -->
-                        <li class="tab-link">
-                            <ul class="list-link">
-                                <li><a class="tab-link-i<?php if($this->tab=='tatCa') echo ' _current';?>"<?php if($this->allCount>0) echo ' href="'.$this->baseUrl('/index/duan/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get).'"';?>>Tất cả(<?php echo $this->allCount;?>)</a></li>
-                                <li><a class="tab-link-i<?php if($this->tab=='nhanVien') echo ' _current';?>"<?php if($this->nhanVienCount>0) echo ' href="'.$this->baseUrl('/index/duan/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get).'"';?>>Nhân viên(<?php echo $this->nhanVienCount;?>)</a></li>
-                                <li><a class="tab-link-i<?php if($this->tab=='doiTac') echo ' _current';?>"<?php if($this->doiTacCount>0) echo ' href="'.$this->baseUrl('/index/duan/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get).'"';?>>Đối tác(<?php echo $this->doiTacCount;?>)</a></li>
-                                <li><a class="tab-link-i<?php if($this->tab=='khachHang') echo ' _current';?>"<?php if($this->khachHangCount>0) echo ' href="'.$this->baseUrl('/index/duan/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get).'"';?>>Cá nhân(<?php echo $this->khachHangCount;?>)</a></li>
-                            </ul>
-                        </li>
+                        <?php 
+                        echo $this->tab($this->tab,array(
+                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get),
+                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get),
+                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get),
+                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get),
+                                                    ),
+                                $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
+                        ?>
                         <!-- End Tab link -->
                         <!-- Tab show -->
                         <li class="tab-show">

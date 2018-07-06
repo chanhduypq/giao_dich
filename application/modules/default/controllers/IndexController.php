@@ -12,7 +12,7 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function duanAction() {
-        $this->limit = $this->_getParam('limit', 5);
+        $this->limit = $this->_getParam('limit', 1);
         $muc = $this->_getParam('muc');
 
         if ($muc == 'dan-dung') {
@@ -93,7 +93,7 @@ class IndexController extends Core_Controller_Action {
     
 
     public function nhathauthicongAction() {
-        $this->limit = $this->_getParam('limit', 5);
+        $this->limit = $this->_getParam('limit', 1);
         $this->view->headTitle('Nhà thầu thi công', true);
         $muc = $this->_getParam('muc', '0');
         if (ctype_digit($muc) && $muc != '0') {

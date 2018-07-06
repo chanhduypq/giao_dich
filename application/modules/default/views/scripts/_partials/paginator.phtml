@@ -59,7 +59,7 @@ if($selectItem > 100){
             <?php if ($page != $this->current): ?>
             <li><a href='#' onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $page; ?>");jQuery(this).parents("form").submit();return false;'><?php echo $page;?></a></li>
             <?php else: ?>
-            <li<?php if($page==$this->current) echo ' class="active"';?>><a onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $page; ?>");jQuery(this).parents("form").submit();return false;'><?php echo $page;?></a></li>
+            <li<?php if($page==$this->current) echo ' class="active"';?>><span><?php echo $page;?></span></li>
             <?php endif; ?>
         <?php endforeach; ?>
         
