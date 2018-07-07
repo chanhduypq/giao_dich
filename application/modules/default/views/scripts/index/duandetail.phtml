@@ -20,9 +20,6 @@ $identity = $auth->getIdentity();
                             echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
                         }
                         
-                        if(trim($items[0]['du_an_cap_3'])!=''){
-                            echo '<li><a>'.$items[0]['du_an_cap_3'].'</a></li>';
-                        }
                         ?>
                     </ul>
                 </div>
@@ -143,6 +140,12 @@ $identity = $auth->getIdentity();
                         <div class="dt-cast">
                             <ul>
                                 <?php 
+                                $du_an_cap_3s=$this->du_an_cap_3s;
+                                if(is_array($du_an_cap_3s)&&count($du_an_cap_3s)>0){
+                                    foreach ($du_an_cap_3s as $du_an_cap_3){
+                                        echo '<li><a>'.$du_an_cap_3['name'].'</a></li>';
+                                    }
+                                }
                                 $du_an_cap_4s=$this->du_an_cap_4s;
                                 if(is_array($du_an_cap_4s)&&count($du_an_cap_4s)>0){
                                     foreach ($du_an_cap_4s as $du_an_cap_4){

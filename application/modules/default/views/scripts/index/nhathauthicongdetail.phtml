@@ -20,10 +20,6 @@ $identity = $auth->getIdentity();
                             echo '<li><a>'.$items[0]['nha_thau_thi_cong_cap_2'].'</a></li>';
                         }
                         
-                        if(trim($items[0]['nha_thau_thi_cong_cap_3'])!=''){
-                            echo '<li><a>'.$items[0]['nha_thau_thi_cong_cap_3'].'</a></li>';
-                        }
-                        
                         ?>
                     </ul>
                 </div>
@@ -136,6 +132,12 @@ $identity = $auth->getIdentity();
                         <div class="dt-cast">
                             <ul>
                                 <?php 
+                                $nha_thau_thi_cong_cap_3s=$this->nha_thau_thi_cong_cap_3s;
+                                if(is_array($nha_thau_thi_cong_cap_3s)&&count($nha_thau_thi_cong_cap_3s)>0){
+                                    foreach ($nha_thau_thi_cong_cap_3s as $nha_thau_thi_cong_cap_3){
+                                        echo '<li><a>'.$nha_thau_thi_cong_cap_3['name'].'</a></li>';
+                                    }
+                                }
                                 
                                 $nha_thau_thi_cong_cap_4s=$this->nha_thau_thi_cong_cap_4s;
                                 if(is_array($nha_thau_thi_cong_cap_4s)&&count($nha_thau_thi_cong_cap_4s)>0){

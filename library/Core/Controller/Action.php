@@ -115,10 +115,19 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
         $this->initPaginator();
 
+        if (in_array($this->_request->getActionName(), $this->actionsForList)){
+            $this->limit = $this->_getParam('limit', 5);
+            $this->page = $this->_getParam('page', 1);
+            if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
+                $this->page = 1;
+            }
+
+            $this->start = (($this->page - 1) * $this->limit);
+        } 
+        
         if ($this->_request->getActionName() == 'add' || $this->_request->getActionName() == 'edit') {
             $this->formData = $this->_request->getPost();
         }
-        
     }
 
     
@@ -127,7 +136,6 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         parent::postDispatch();
         if (in_array($this->_request->getActionName(), $this->actionsForList)){
             $this->processForIndexAction();
-            echo '1';
         } 
 //        else if ($this->_request->getActionName() == 'add') {
 //            $this->processForAddAction();
@@ -136,10 +144,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 //        } 
         else if ($this->_request->getActionName() == 'delete') {
             $this->processForDeleteAction();
-            echo '2';
         }
-//        echo 'tuetc';
-//        exit;
     }
 
     public function getUserId() {
@@ -376,16 +381,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
     }
     
     private function processForIndexAction() {
-        if($this->limit==NULL){
-            $this->limit = $this->_getParam('limit', 5);
-        }
         
-        $this->page = $this->_getParam('page', 1);
-        if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
-            $this->page = 1;
-        }
-
-        $this->start = (($this->page - 1) * $this->limit);
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($this->total));
 
         $paginator->setDefaultScrollingStyle();

@@ -12,7 +12,6 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function searchAction() {
-        $this->limit = $this->_getParam('limit', 1);
         $muc = $this->_getParam('muc','0');
         $city=$this->_getParam('city','0');
         if(strpos($muc, '_')!==FALSE){
@@ -120,7 +119,6 @@ class IndexController extends Core_Controller_Action {
     }
     
     public function duanAction() {
-        $this->limit = $this->_getParam('limit', 1);
         $muc = $this->_getParam('muc');
 
         if ($muc == 'dan-dung') {
@@ -201,7 +199,6 @@ class IndexController extends Core_Controller_Action {
     
 
     public function nhathauthicongAction() {
-        $this->limit = $this->_getParam('limit', 1);
         $this->view->headTitle('Nhà thầu thi công', true);
         $muc = $this->_getParam('muc', '0');
         if (ctype_digit($muc) && $muc != '0') {
@@ -257,6 +254,12 @@ class IndexController extends Core_Controller_Action {
         $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
 
         $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
+        $this->view->du_an_cap_3s = Core_Db_Table::getDefaultAdapter()
+                ->fetchAll("select "
+                . "name "
+                . "from du_an_cap_3 "
+                . "join tinduan_duancap3 on tinduan_duancap3.du_an_cap_3=du_an_cap_3.id "
+                . "where tinduan_duancap3.tin_du_an_id='" . $this->_getParam('id', 0) . "'");
         $this->view->du_an_cap_4s = Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select "
                 . "name "
@@ -283,6 +286,12 @@ class IndexController extends Core_Controller_Action {
         $this->view->items = $items;
         $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
 
+        $this->view->nha_thau_thi_cong_cap_3s = Core_Db_Table::getDefaultAdapter()
+                ->fetchAll("select "
+                . "name "
+                . "from nha_thau_thi_cong_cap_3 "
+                . "join tinnhathauthicong_nhathauthicongcap3 on tinnhathauthicong_nhathauthicongcap3.nha_thau_thi_cong_cap_3=nha_thau_thi_cong_cap_3.id "
+                . "where tinnhathauthicong_nhathauthicongcap3.tin_nha_thau_thi_cong_id='" . $this->_getParam('id', 0) . "'");
         $this->view->nha_thau_thi_cong_cap_4s = Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select "
                 . "name "
