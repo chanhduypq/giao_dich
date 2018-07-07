@@ -96,7 +96,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      *
      * @var array
      */
-    public $actionsForList = array('index','duan','nhathauthicong');
+    public $actionsForList = array('index','duan','nhathauthicong','search');
 
     /**
      *  Main init

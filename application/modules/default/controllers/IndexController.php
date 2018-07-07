@@ -11,6 +11,114 @@ class IndexController extends Core_Controller_Action {
         
     }
 
+    public function searchAction() {
+        $this->limit = $this->_getParam('limit', 1);
+        $muc = $this->_getParam('muc','0');
+        $city=$this->_getParam('city','0');
+        if(strpos($muc, '_')!==FALSE){
+            list($muc,$muccap2)= explode('_', $muc);
+        }
+        else{
+            $muccap2=$this->_getParam('muccap2','0');
+        }
+        if(strpos($city, '_')!==FALSE){
+            list($city,$citycap2)= explode('_', $city);
+        }
+        else{
+            $citycap2=$this->_getParam('citycap2','0');
+        }
+        if (($muc!='0'&&!ctype_digit($muc))||!ctype_digit($muccap2)) {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        if (($city!='0'&&!ctype_digit($city))||!ctype_digit($citycap2)) {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+
+        if ($muc == '1') {
+            $du_an_cap_1 = '1';
+            $this->view->headTitle('Dự án - dân dụng', true);
+        } else if ($muc == '2') {
+            $du_an_cap_1 = '2';
+            $this->view->headTitle('Dự án - hạ tầng', true);
+        } else if ($muc == '3') {
+            $du_an_cap_1 = '3';
+            $this->view->headTitle('Dự án - cầu đường', true);
+        } else if ($muc == '4') {
+            $du_an_cap_1 = '4';
+            $this->view->headTitle('Dự án - hoàn thiện nội ngoại thất', true);
+        } else if ($muc == '5') {
+            $du_an_cap_1 = '5';
+            $this->view->headTitle('Dự án - kiến trúc', true);
+        } else if ($muc == '6') {
+            $du_an_cap_1 = '6';
+            $this->view->headTitle('Dự án - điện nước', true);
+        } else if ($muc == '7') {
+            $du_an_cap_1 = '7';
+            $this->view->headTitle('Dự án - sửa chữa', true);
+        } else if ($muc == '8') {
+            $du_an_cap_1 = '8';
+            $this->view->headTitle('Dự án - cây xanh', true);
+        } else if ($muc == '9') {
+            $du_an_cap_1 = '9';
+            $this->view->headTitle('Dự án - dịch vụ vệ sinh', true);
+        } else {
+            $du_an_cap_1 = '0';
+        }
+        
+        $where = "title like '%".trim($this->_getParam('q'),'')."%'";
+        if ($muc!=''&&!ctype_digit($muc)){
+            $where = " and du_an_cap_1='$du_an_cap_1'";
+        }
+        if (ctype_digit($muccap2) && $muccap2 != '0') {
+            $where .= " and du_an_cap_2='$muccap2'";
+        }
+        
+        if ($city!='0'&&!ctype_digit($city)){
+            $where = " and city_cap_1='$city'";
+        }
+        if (ctype_digit($citycap2) && $citycap2 != '0') {
+            $where .= " and city_cap_2='$citycap2'";
+        }
+        
+        $where_target_type='';
+        if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
+            $tab=$this->_getParam('tab','tatCa');
+            if($tab=='doiTac'){
+                $where_target_type .= " target_type=4";
+            }
+            else if($tab=='nhanVien'){
+                $where_target_type .= " target_type=2";
+            }
+            else if($tab=='khachHang'){
+                $where_target_type .= " target_type=3";
+            }
+        }
+
+        $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        
+        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
+
+        $this->view->items = $items;
+        $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
+        $this->view->muc = $muc;
+//        $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$muc'");
+//        $this->view->du_an_cap_2_selected = $muccap2;
+        $this->view->allCount = count($allItems);
+        $this->view->nhanVienCount = $nhanVienCount;
+        $this->view->doiTacCount = $doiTacCount;
+        $this->view->khachHangCount = $khachHangCount;
+
+        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
+        $this->view->tab= $this->_getParam('tab','tatCa');
+        $this->view->mucCap2Get= (ctype_digit($muccap2))?"muccap2/$muccap2":"";
+        $this->view->mucGet= "muc/$muc";
+        $this->view->cityGet= "city/$city";
+        $this->view->cityCap2Get= (ctype_digit($citycap2) && $citycap2 != '0')?"citycap2/$citycap2":"";
+        $this->view->q=trim($this->_getParam('q'),'');
+    }
+    
     public function duanAction() {
         $this->limit = $this->_getParam('limit', 1);
         $muc = $this->_getParam('muc');

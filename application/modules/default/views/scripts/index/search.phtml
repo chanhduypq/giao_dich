@@ -1,0 +1,262 @@
+<?php 
+$auth = Zend_Auth::getInstance();
+$identity = $auth->getIdentity();
+$items = $this->items;
+$quangcao_items = $this->quangcao_items;
+//$du_an_cap_2s = $this->du_an_cap_2s;
+//$du_an_cap_2_selected = $this->du_an_cap_2_selected;
+?>
+<div class="page-content category-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="ct-sidebar">
+                    <!-- Menu side -->
+<!--                    <div class="menu-side">
+                        <ul class="mn-parent-side1">
+                            <?php 
+//                            foreach ($du_an_cap_2s as $du_an_cap_2){
+//                                if($du_an_cap_2['id']==$du_an_cap_2_selected){
+//                                    $class=' class="_current"';
+//                                }
+//                                else{
+//                                    $class='';
+//                                }
+                            ?>
+                                <li<?php // echo $class;?>>
+                                    <a href="<?php // echo $this->baseUrl('/index/duan/muc/'.$this->muc.'/muccap2/'.$du_an_cap_2['id']);?>"><span><?php // echo $du_an_cap_2['name'];?></span></a>
+                                </li>
+                            <?php 
+//                            } 
+                            ?>
+                        </ul>
+                    </div>-->
+                    <!-- End Menu side -->
+                    <!-- Banner 1 side -->
+                    <div class="banner-side banner-1">
+                        <div class="banner-wr">
+                            <span>BANNER</span>
+                            DỊCH VỤ HẬU MÃI
+                        </div>
+                    </div>
+                    <!-- End Banner 1 side -->
+                    <!-- Banner 2 side -->
+                    <div class="banner-side banner-2">
+                        <div class="banner-wr">
+                            <span>BANNER</span>
+                            TUYỂN DỤNG
+                        </div>
+                    </div>
+                    <!-- End Banner 2 side -->
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <div class="content-cate">
+                    <?php 
+                    if(is_array($quangcao_items)&&count($quangcao_items)>0){?>
+                    <div class="cate-ad">
+                        <div class="cate-ad-wr">
+                            <div class="cate-ad-heading">
+                                TIN QUẢNG CÁO
+                            </div>
+                            <div id="cate-ad-slider" class="cate-ad-list">
+                                <?php 
+                                foreach ($quangcao_items as $item){
+                                    if($item['photo']==''){
+                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
+                                    }
+                                    else{
+                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                    }
+                                    ?>
+                                    <div class="cate-ad-i">
+                                        <div class="cate-ad-ii">
+                                            <div class="cai-thumb">
+                                                <img src="<?php echo $item['photo']; ?>" alt="">
+                                            </div>
+                                            <div class="cai-tit">
+                                                <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
+                                            </div>
+                                            <div class="cai-desc">
+                                                <div class="cai-col cai-cl">
+                                                    <p>Tổng đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
+                                                    <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
+                                                </div>
+                                                <div class="cai-col cai-cr">
+                                                    <?php 
+                                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                        if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                        ?>
+                                                        <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>
+                                                    <?php 
+                                                        }
+                                                    }
+                                                    else{
+                                                        if(!$auth->hasIdentity()){
+                                                        ?>
+                                                        <a href="<?php echo $this->baseUrl();?>/account/login" class="cai-btn-project"></a>
+                                                    <?php    
+                                                        }
+
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php 
+                                    
+                                }
+                                
+                                        
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php 
+                    }
+                    ?>
+                    <ul class="cate-tabs">
+                        <!-- Tab link -->
+                        <?php 
+                        echo $this->tab($this->tab,array(
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
+                                                    ),
+                                $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
+                        ?>
+                        <!-- End Tab link -->
+                        <!-- Tab show -->
+                        <li class="tab-show">
+                            <ul class="ct-display list-show">
+                                <li><a class="i-display _current" data-display="_ct_list"  href="#cate_display"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+                                <li><a class="i-display" data-display="_ct_grid" data-container="cate_display" href="#cate_display"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </li>
+                        <!-- End Tab show -->
+                    </ul>
+                    <div class="cate-list">
+                        <!-- Wrap cate Add _ct_grid to show grid -->
+                        <div id="cate_display" class="cate-wr"> 
+                            <!-- Item cate -->
+                            <?php 
+                            if(is_array($items)&& count($items)>0){
+                                foreach ($items as $item){
+                                    if($item['photo']==''){
+                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
+                                    }
+                                    else{
+                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                    }
+                                    ?>
+                                    <div class="cate-item">
+                                        <div class="cate-item-i">
+                                            <div class="cit-part cit-left">
+                                                <img src="<?php echo $item['photo']; ?>" alt="#">
+                                                <span class="cit-mark">Tổng đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                            </div>
+                                            <div class="cit-part cit-right">
+                                                <div class="cit-title">
+                                                    <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
+                                                        <!--<span class="tap-hot">Hot</span>tuetc-->
+                                                            <?php echo $item['title'];?>
+                                                    </a>
+                                                </div>
+                                                <div class="cit-desc">
+                                                    <div class="cit-desc-l">
+                                                        <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                    </div>
+                                                    <div class="cit-desc-r">
+                                                        <?php 
+                                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                            if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                            ?>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
+                                                        <?php 
+                                                            }
+                                                        }
+                                                        else{
+                                                            if(!$auth->hasIdentity()){
+                                                            ?>
+                                                            <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                        <?php    
+                                                            }
+                                                            
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php 
+                                }
+                            }
+                            ?>
+                            
+                            <!-- End cate item -->
+                            
+                        </div>
+                        <!-- End wrap cate -->
+                        <!-- Cate paginate -->
+                        <!--tuetc-->
+<!--                        <div class="ct-paginate cate-paginate">
+                            <ul>
+                                <li class="pg-prev"><a href="#" title="Trước đó"></a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><span>2</span></li>
+                                <li><span class="unlink">...</span></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li class="pg-next"><a href="#" title="Tiếp theo"></a></li>
+                            </ul>
+                        </div>-->
+                        <!-- End Cate paginate -->
+                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get); ?>">
+                            <div class="ct-paginate cate-paginate">
+                                    <?php if ($this->total > $this->limit) { ?>
+                                        <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>
+                                        <?php
+                                    }
+                                    ?>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ct-ad-mobile">
+                        <div class="ct-ad-mobile-i">
+                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
+                        </div>
+                        <div class="ct-ad-mobile-i">
+                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+jQuery(function ($){
+   $(".chon_du_an").click(function (){
+        id=$(this).attr('id').replace("chon_du_an_","");
+        $(this).hide();
+        
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/news/chonduan',
+            data: {'tin_du_an_id':id},                         
+            type: 'post',
+            async: false,
+            success: function(php_script_response){
+                if($.trim(php_script_response)=='ok'){
+                    number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
+                    number_of_du_an_da_chon++;
+                    $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
+                }
+
+            }
+        });
+   });
+});
+</script>
