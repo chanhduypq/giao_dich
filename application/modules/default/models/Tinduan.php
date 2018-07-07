@@ -67,8 +67,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                         . "city_cap_3.name as city_cap_3, "
                         . "tin_du_an.du_an_cap_1 as du_an_cap_1_id,"
                         . "du_an_cap_1.name as du_an_cap_1,"
-                        . "du_an_cap_2.name as du_an_cap_2,"
-                        . "du_an_cap_3.name as du_an_cap_3 "
+                        . "du_an_cap_2.name as du_an_cap_2 "
                         . "from tin_du_an "
                         . "join user on user.id=tin_du_an.user_id "
                         . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
@@ -77,7 +76,6 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                         . "left join city_cap_3 on city_cap_3.id=tin_du_an.city_cap_3 "
                         . "left join du_an_cap_1 on du_an_cap_1.id=tin_du_an.du_an_cap_1 "
                         . "left join du_an_cap_2 on du_an_cap_2.id=tin_du_an.du_an_cap_2 "
-                        . "left join du_an_cap_3 on du_an_cap_3.id=tin_du_an.du_an_cap_3 "
                         . "where tin_du_an.id='$id'");
         
     }
