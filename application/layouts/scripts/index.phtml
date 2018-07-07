@@ -108,34 +108,28 @@ $identity = $auth->getIdentity();
                                                 <li>
                                                     <div class="form-input form-select form-select-city">
                                                         <div class="input-nt">Tất cả danh mục</div>
-                                                        <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category">
+                                                        <input type="hidden" value="" class="input-dropdown value-category">
                                                         <div class="search-dropdown four-col">
                                                             <div class="wrap-select">
                                                                 <ul class="nav-dropdown parent-dropdown">
-                                                                    <li data-id="#">Dân dụng</li>
-                                                                    <li data-id="#">Hoàn thiện nội thất</li>
-                                                                    <li data-id="#">Hoàn thiện nội thất</li>
-                                                                    <li data-id="#">Nhà thầu phụ</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Điện nước</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Điện nước</li>
-                                                                    <li data-id="#">Cầu đường</li>
+                                                                    <?php 
+                                                                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
+                                                                    foreach ($du_an_cap_1s as $dac1){?>
+                                                                        <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
+                                                                    <?php                                                                         
+                                                                    }
+                                                                    ?>
                                                                 </ul>
                                                                 <div class="nav-dropdown sub-dropdown">
                                                                     <span class="btn-back-parent"></span>
                                                                     <ul>
-                                                                        <li class="item-select" data-id="#">Điện dân dụng 1</li>
-                                                                        <li class="item-select" data-id="#">Cầu đường 2</li>
-                                                                        <li class="item-select" data-id="#">Hạ tầng 3</li>
-                                                                        <li class="item-select" data-id="#">Cầu đường</li>
+                                                                        <?php 
+                                                                        $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
+                                                                        foreach ($du_an_cap_2s as $dac2){?>
+                                                                            <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                        <?php                                                                         
+                                                                        }
+                                                                        ?>
                                                                     </ul>
                                                             </div>
                                                         </div>
@@ -144,22 +138,28 @@ $identity = $auth->getIdentity();
                                                 <li>
                                                     <div class="form-input form-select form-select-city">
                                                         <div class="input-nt">Khu vực</div>
-                                                        <input type="hidden" value="Khu vực" class="input-dropdown value-category">
+                                                        <input type="hidden" value="" class="input-dropdown value-category">
                                                         <div class="search-dropdown two-col">
                                                             <div class="wrap-select">
                                                                 <ul class="nav-dropdown parent-dropdown">
-                                                                    <li data-id="#">Đà Nẵng</li>
-                                                                    <li data-id="#">Quảng Nam</li>
+                                                                    <?php 
+                                                                    $city_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+                                                                    foreach ($city_cap_1s as $dac1){?>
+                                                                        <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
+                                                                    <?php                                                                         
+                                                                    }
+                                                                    ?>
                                                                 </ul>
                                                                 <div class="nav-dropdown sub-dropdown">
                                                                     <span class="btn-back-parent"></span>
                                                                     <ul>
-                                                                        <li class="item-select" data-id="#">Quận Hải Châu</li>
-                                                                        <li class="item-select" data-id="#">Quận Thanh Khê</li>
-                                                                        <li class="item-select" data-id="#">Quận Cẩm Lệ</li>
-                                                                        <li class="item-select" data-id="#">Quận Liên CHiểu</li>
-                                                                        <li class="item-select" data-id="#">Quận Sơn Trà</li>
-                                                                        <li class="item-select" data-id="#">Quận Ngũ Hành Sơn</li>
+                                                                        <?php 
+                                                                        $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
+                                                                        foreach ($city_cap_2s as $dac2){?>
+                                                                            <li data-value="<?php echo $dac2['city_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['city_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                        <?php                                                                         
+                                                                        }
+                                                                        ?>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -312,7 +312,7 @@ $identity = $auth->getIdentity();
     <!-- End Mobile menu -->
     <div class="go-top">
     </div>
-    <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js"></script>
+    <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
 </body>
 
 </html>
