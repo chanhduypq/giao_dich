@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-07 16:51:23
+Date: 2018-07-08 00:22:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,13 +122,14 @@ CREATE TABLE `du_an_cap_3` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_3
 -- ----------------------------
 INSERT INTO `du_an_cap_3` VALUES ('1', 'Dân dụng con 2', '1', null, null, '0');
 INSERT INTO `du_an_cap_3` VALUES ('2', 'Hạ tầng con 2', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('3', 'a', '3', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_cap_4
@@ -142,7 +143,7 @@ CREATE TABLE `du_an_cap_4` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_4
@@ -151,6 +152,7 @@ INSERT INTO `du_an_cap_4` VALUES ('1', 'Dân dụng con 3 1', '1', null, null, '
 INSERT INTO `du_an_cap_4` VALUES ('2', 'Dân dụng con 3 2', '1', null, null, '0');
 INSERT INTO `du_an_cap_4` VALUES ('3', 'hạ tầng con 3 1', '2', null, null, '0');
 INSERT INTO `du_an_cap_4` VALUES ('4', 'Hạ tầng con 3 2', '2', null, null, '0');
+INSERT INTO `du_an_cap_4` VALUES ('5', 'a1', '3', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_da_chon
@@ -366,7 +368,7 @@ CREATE TABLE `tin_du_an` (
   `is_quang_cao` tinyint(1) DEFAULT NULL,
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
@@ -376,6 +378,7 @@ INSERT INTO `tin_du_an` VALUES ('2', 'đây là tin do khách hàng lựu đăng
 INSERT INTO `tin_du_an` VALUES ('3', 'sdffsfs', 'sfsfsd', null, '2018-07-05 22:31:27', '2018-07-05 22:31:27', '14', '2', '2018-07-19 00:00:00', '2', null, null, '1', '1', '1', '500', null, null, null, null);
 INSERT INTO `tin_du_an` VALUES ('4', 'cgfdgd', 'fdgdgdfg', null, '2018-07-05 22:44:32', '2018-07-05 22:44:32', '14', '2', '2018-07-25 00:00:00', '1', '2', null, '1', '1', '1', '1000', null, null, null, null);
 INSERT INTO `tin_du_an` VALUES ('5', 'tuetc', 'yêu cầu', null, '2018-07-06 23:51:56', '2018-07-07 00:05:01', '15', '2', '2018-07-06 00:00:00', '2', null, null, '1', '1', '1', '10 tỉ', null, null, '1', '0');
+INSERT INTO `tin_du_an` VALUES ('6', '11111111111111111111', 'cxxcxc', null, '2018-07-07 22:23:07', '2018-07-07 22:23:07', '15', '2', '2018-07-24 00:00:00', null, null, null, '1', '3', null, 'cxc', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong

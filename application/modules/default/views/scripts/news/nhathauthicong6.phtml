@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
 <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>     
 <script src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-vi.js"></script>
-<form action="<?php echo $this->baseUrl();?>/news/savenhathauthicong" id="frm" method="POST">
+<form action="<?php echo $this->baseUrl();?>/default/news/savenhathauthicong" id="frm" method="POST">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
@@ -210,7 +210,7 @@
         form_data.append('file', file_data);
         form_data.append('type', 'nha_thau_thi_cong');
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/news/upload',
+            url:'<?php echo $this->baseUrl();?>/default/news/upload',
             dataType: 'text',  
             cache: false,
             contentType: false,
@@ -257,7 +257,7 @@
             $(this).parent().prev().removeAttr('src');
             $(this).parent().hide();
             $.ajax({
-                url:'<?php echo $this->baseUrl();?>/news/deletephoto',
+                url:'<?php echo $this->baseUrl();?>/default/news/deletephoto',
                 data: {'photo':photo},                         
                 type: 'post',
                 success: function(php_script_response){

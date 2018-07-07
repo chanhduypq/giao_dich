@@ -16,9 +16,9 @@ class NewsController extends Core_Controller_Action {
     public function step1Action() {
         if ($this->_request->isPost()) {
             if ($this->_getParam('type') == 'duan') {
-                $this->_helper->redirector('duan2', 'news', 'default');
+                $this->_helper->redirector->gotoUrl('/default/news/duan2');
             } else {
-                $this->_helper->redirector('nhathauthicong2', 'news', 'default');
+                $this->_helper->redirector->gotoUrl('/default/news/nhathauthicong2');
             }
         }
     }

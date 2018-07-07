@@ -108,7 +108,7 @@ $identity = $auth->getIdentity();
                             else{
                                 if(!$auth->hasIdentity()){
                                 ?>
-                                <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
                             <?php    
                                 }
                                 
@@ -339,7 +339,7 @@ $identity = $auth->getIdentity();
                                                         else{
                                                             if(!$auth->hasIdentity()){
                                                             ?>
-                                                            <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
                                                         <?php    
                                                             }
                                                             
@@ -388,7 +388,7 @@ jQuery(function ($){
         number_of_du_an_da_chon++;
         $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/news/chonduan',
+            url:'<?php echo $this->baseUrl();?>/default/news/chonduan',
             data: {'tin_du_an_id':id},                         
             type: 'post',
             async: true,

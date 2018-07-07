@@ -118,6 +118,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         if ($this->_request->getActionName() == 'add' || $this->_request->getActionName() == 'edit') {
             $this->formData = $this->_request->getPost();
         }
+        
     }
 
     
@@ -126,6 +127,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         parent::postDispatch();
         if (in_array($this->_request->getActionName(), $this->actionsForList)){
             $this->processForIndexAction();
+            echo '1';
         } 
 //        else if ($this->_request->getActionName() == 'add') {
 //            $this->processForAddAction();
@@ -134,7 +136,10 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 //        } 
         else if ($this->_request->getActionName() == 'delete') {
             $this->processForDeleteAction();
+            echo '2';
         }
+//        echo 'tuetc';
+//        exit;
     }
 
     public function getUserId() {

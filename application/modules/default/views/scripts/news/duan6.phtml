@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
 <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>     
 <script src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-vi.js"></script>
-<form action="<?php echo $this->baseUrl();?>/news/saveduan" id="frm" method="POST" enctype="multipart/form-data">
+<form action="<?php echo $this->baseUrl();?>/default/news/saveduan" id="frm" method="POST" enctype="multipart/form-data">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
@@ -199,7 +199,7 @@
         form_data.append('file', file_data);
         form_data.append('type', 'du_an');
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/news/upload',
+            url:'<?php echo $this->baseUrl();?>/default/news/upload',
             dataType: 'text',  
             cache: false,
             contentType: false,
@@ -246,7 +246,7 @@
             $(this).parent().prev().removeAttr('src');
             $(this).parent().hide();
             $.ajax({
-                url:'<?php echo $this->baseUrl();?>/news/deletephoto',
+                url:'<?php echo $this->baseUrl();?>/default/news/deletephoto',
                 data: {'photo':photo},                         
                 type: 'post',
                 success: function(php_script_response){

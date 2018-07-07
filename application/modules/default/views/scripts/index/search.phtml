@@ -94,7 +94,7 @@ $quangcao_items = $this->quangcao_items;
                                                     else{
                                                         if(!$auth->hasIdentity()){
                                                         ?>
-                                                        <a href="<?php echo $this->baseUrl();?>/account/login" class="cai-btn-project"></a>
+                                                        <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cai-btn-project"></a>
                                                     <?php    
                                                         }
 
@@ -180,7 +180,7 @@ $quangcao_items = $this->quangcao_items;
                                                         else{
                                                             if(!$auth->hasIdentity()){
                                                             ?>
-                                                            <a href="<?php echo $this->baseUrl();?>/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
                                                         <?php    
                                                             }
                                                             
@@ -244,7 +244,7 @@ jQuery(function ($){
         $(this).hide();
         
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/news/chonduan',
+            url:'<?php echo $this->baseUrl();?>/default/news/chonduan',
             data: {'tin_du_an_id':id},                         
             type: 'post',
             async: false,

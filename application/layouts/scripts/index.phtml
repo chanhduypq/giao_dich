@@ -53,7 +53,7 @@ $identity = $auth->getIdentity();
                                 else{
                                 ?>
                                 <div class="top-oc top-login">
-                                    <a href="<?php echo $this->baseUrl();?>/account/logout" data-bg="" id="login_click">Đăng xuất</a>
+                                    <a href="<?php echo $this->baseUrl();?>/default/account/logout" data-bg="" id="login_click">Đăng xuất</a>
                                 </div>
                                 <?php 
                                 } 
@@ -74,13 +74,13 @@ $identity = $auth->getIdentity();
                                     }
                                     ?>
 
-                                    <a href="<?php echo $this->baseUrl();?>/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                                 </div>
                                 <?php if (!$auth->hasIdentity()) {?>
                                 <div class="oc-dropdown">
                                     <ul>
-                                        <li><a href="<?php echo $this->baseUrl();?>/account/login">Đăng nhập</a></li>
-                                        <li><a href="<?php echo $this->baseUrl();?>/account/regist">Đăng ký tài khoản</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
                                     </ul>
                                 </div>
                                 <?php } ?>
@@ -167,7 +167,7 @@ $identity = $auth->getIdentity();
                                                     </div>
                                                 </li>
                                                 <li class="btn-link">
-                                                    <a href="<?php echo $this->baseUrl();?>/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                                    <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
                                                 </li>
                                             </ul>
                                         </div>
