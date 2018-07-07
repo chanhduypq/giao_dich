@@ -1002,6 +1002,16 @@ a:hover {
     background: #111 url(../images/layout/arrow-left.png) no-repeat 50%;
 }
 
+.ct-paginate ul li.pg-first a {
+    width: 30px;
+    height: 30px
+}
+
+.ct-paginate ul li.pg-first:hover a,
+.ct-paginate ul li.pg-first a {
+    background: #111 url(../images/layout/arrow-left.png) no-repeat 50%;
+}
+
 .ct-paginate ul li.pg-next a {
     width: 30px;
     height: 30px
@@ -1010,6 +1020,17 @@ a:hover {
 
 .ct-paginate ul li.pg-next:hover a,
 .ct-paginate ul li.pg-next a {
+    background: #111 url(../images/layout/arrow-right.png) no-repeat 50%;
+}
+
+.ct-paginate ul li.pg-last a {
+    width: 30px;
+    height: 30px
+}
+
+
+.ct-paginate ul li.pg-last:hover a,
+.ct-paginate ul li.pg-last a {
     background: #111 url(../images/layout/arrow-right.png) no-repeat 50%;
 }
 

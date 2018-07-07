@@ -41,9 +41,9 @@ if($selectItem > 100){
         <?php if($selectItem!=200){?>
         <!-- First page link -->
         <?php if (isset($this->previous)): ?>
-                <!--<li class="pg-prev"><a onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $this->first; ?>");jQuery(this).parents("form").submit();return false;' href="#" title="Trang đầu"></a></li>-->
+        <li class="pg-first"><a onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $this->first; ?>");jQuery(this).parents("form").submit();return false;' href="#" title="Trang đầu">&Lt;</a></li>
         <?php else: ?>
-			<!--<li class="pg-prev"><a></a></li>-->
+			<li class="pg-first active"><a>&Lt;</a></li>
         <?php endif; ?>
 
         <!-- Previous page link -->
@@ -71,9 +71,9 @@ if($selectItem > 100){
         <?php endif; ?>
         <!-- Last page link -->
         <?php if (isset($this->next)): ?>
-              <!--<li class="pg-next"><a onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $this->last; ?>");jQuery(this).parents("form").submit();return false;' href="#" title="Trang cuối"></a></li>-->
+        <li class="pg-last"><a onclick='javascript: jQuery("#<?php echo $idPage; ?>").val("<?php echo $this->last; ?>");jQuery(this).parents("form").submit();return false;' href="#" title="Trang cuối">&Gt;</a></li>
         <?php else: ?>
-              <!--<li class="pg-next"><a></a></li>-->
+              <li class="pg-last active"><a>&Gt;</a></li>
         <?php endif; ?>
 <!--        <div class="limit_last">
         &nbsp;<?php echo $this->current;?>&nbsp;/&nbsp;<?php echo $this->last; ?>

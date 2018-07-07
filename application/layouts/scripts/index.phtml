@@ -12,7 +12,7 @@ $identity = $auth->getIdentity();
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
     <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
 </head>
 <body>
