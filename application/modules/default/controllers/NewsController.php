@@ -314,5 +314,18 @@ class NewsController extends Core_Controller_Action {
             }
         } 
     }
+    
+    public function canceltindadangAction() {
+        $this->isAjax();
+        if ($this->_request->isPost()) {
+            if(ctype_digit($this->_getParam('id'))){
+                $affect=Core_Db_Table::getDefaultAdapter()->query("delete from ".$this->_getParam('table_name')." where id='".$this->_getParam('id')."'")->execute();
+                if($affect){
+                    echo 'ok';
+                    exit;
+                }
+            }
+        } 
+    }
 
 }

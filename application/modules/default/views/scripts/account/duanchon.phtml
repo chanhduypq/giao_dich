@@ -1,8 +1,3 @@
-<style>
-    .huy_dang_tin{
-        cursor: pointer;
-    }
-</style>
 <div class="page-content account-page category-page">
     <div class="container">
         <div class="row">
@@ -11,8 +6,8 @@
                     <div class="pc-col pc-menu">
                         <ul>
                             <li><a href="<?php echo $this->baseUrl('/default/account/info');?>">Thông tin cá nhân</a></li>
-                            <li class="_current"><a href="javascript:void(0)">Các tin đã đăng</a></li>
-                            <li><a href="<?php echo $this->baseUrl('/default/account/duanchon');?>">Các dự án đã chọn</a></li>
+                            <li><a href="<?php echo $this->baseUrl('/default/account/newsuploaded');?>">Các tin đã đăng</a></li>
+                            <li class="_current"><a href="javascript:void(0)">Các dự án đã chọn</a></li>
                         </ul>
                     </div>
                     <div class="pc-col pc-info">
@@ -20,6 +15,7 @@
                             <div class="cate-list">
                                 <!-- Wrap cate Add _ct_grid to show grid -->
                                 <div id="cate_display" class="cate-wr"> 
+                                    <!-- Item cate -->
                                     <?php 
                                     $items=$this->items;
                                     if(is_array($items)&&count($items)>0){
@@ -35,10 +31,7 @@
                                                 <div class="cate-item-i">
                                                     <div class="cit-part cit-left">
                                                         <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
-                                                        <?php 
-                                                        if($item['type_tin']=='du_an'){?>
                                                         <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
-                                                        <?php } ?>
                                                     </div>
                                                     <div class="cit-part cit-right">
                                                         <div class="cit-title">
@@ -50,43 +43,13 @@
                                                         </div>
                                                         <div class="cit-desc">
                                                             <div class="cit-desc-l">
-                                                                <p class="cdes-main">
-                                                                    <?php 
-                                                                    if($item['type_tin']=='du_an'){
-                                                                        echo 'Thời gian thi công: ';
-                                                                    }
-                                                                    else{
-                                                                        echo 'Ngày đáp ứng dự án: ';
-                                                                    }
-                                                                    echo $item['ngay'];
-                                                                    ?>
-                                                                </p>
-                                                                <?php 
-                                                                    if($item['type_tin']=='nha_thau_thi_cong'){
-                                                                        echo '<p>'.($item['phan_loai']=='1'?'Nhân viên':'Đối tác').'</p>';
-                                                                    }
-                                                                    ?>
+                                                                <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                                 <!--<p>Đối tác</p>-->
                                                             </div>
                                                             <!--tuetc-->
-                                                            <div class="cit-desc-r">
-                                                                <?php 
-                                                                if($item['is_active']=='1'){
-                                                                    echo 'Đã được duyệt';
-                                                                }
-                                                                else{
-                                                                    echo 'Chưa được duyệt';
-                                                                }
-                                                                echo '<br>';
-                                                                if($item['status']==''||$item['status']=='1'){
-                                                                ?>
-                                                                <a class="btn-green huy_dang_tin"><span>Hủy đăng tin</span></a>
-                                                                <?php 
-                                                                }
-                                                                ?>
-                                                                <input type="hidden" value="<?php echo $item['id'];?>"/>
-                                                                <input type="hidden" value="<?php echo 'tin_'.$item['type_tin'];?>"/>
-                                                            </div>
+<!--                                                            <div class="cit-desc-r">
+                                                                <a href="#" class="btn-green"><span>Khôi phục tin</span></a>
+                                                            </div>-->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,6 +58,9 @@
                                         }
                                     }
                                     ?>
+                                    
+                                    <!-- End cate item -->
+                                    
                                 </div>
                                 <!-- End wrap cate -->
                                 <form method="post" action="<?php echo $this->url(); ?>">
@@ -114,27 +80,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-jQuery(function ($){
-   if($(".dt-cast ul li").length<=3){
-       $(".dt-cast ul li").css('width','auto');
-   } 
-   $(".btn-green.huy_dang_tin").click(function (){
-       if(confirm('Bạn có chắc hủy tin này không?')){
-           $(this).parents('.cate-item').remove();
-           id=$(this).next().val();
-           table_name=$(this).next().next().val();
-           
-            $.ajax({
-                url:'<?php echo $this->baseUrl();?>/news/canceltindadang',
-                data: {'id':id,'table_name':table_name},                         
-                type: 'post',
-                async: true,
-                success: function(php_script_response){
-                }
-            });
-       }
-        
-   });
-});
-</script>

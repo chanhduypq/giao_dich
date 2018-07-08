@@ -98,6 +98,19 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         }
         return $temp;
     }
+    
+    /**
+     * lấy danh sách id của các tin đã được chọn bởi một user nào đó
+     * @param string|int $userId
+     * @return array
+     */
+    public static function getTinDuAnDuocChons($userId){
+        return Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "* "
+                . "from view_tin_du_an "
+                . "join du_an_da_chon on du_an_da_chon.tin_du_an_id=view_tin_du_an.id "
+                . "where du_an_da_chon.user_id='$userId'");
+    }
 
     
 

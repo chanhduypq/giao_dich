@@ -88,15 +88,23 @@ class AccountController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
+
+        $where="user_id='".$this->getUserId()."'";
+
+        $items = Default_Model_Tin::getTins($where,$this->total, $this->limit, $this->start);
+        
+        $this->view->items = $items;
     }
 
-    public function newscancelAction() {
-        $this->view->headTitle('Xây dựng - các tin đã hủy', true);
+    public function duanchonAction() {
+        $this->view->headTitle('Xây dựng - các dự án đã chọn', true);
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
+        
+        $this->view->items = Default_Model_Tinduan::getTinDuAnDuocChons($this->getUserId());
     }
 
     public function logoutAction() {

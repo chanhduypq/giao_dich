@@ -53,7 +53,7 @@ $identity = $auth->getIdentity();
                                 else{
                                 ?>
                                 <div class="top-oc top-login">
-                                    <a href="<?php echo $this->baseUrl();?>/default/account/logout" data-bg="" id="login_click">Đăng xuất</a>
+                                    <a href="javascript:void(0)" data-bg="" id="login_click">&nbsp;</a>
                                 </div>
                                 <?php 
                                 } 
@@ -65,7 +65,7 @@ $identity = $auth->getIdentity();
                                         $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
                                         $number_du_an_da_chon=$number_du_an_da_chon[0];
                                         ?>
-                                    <a class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                    <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
                                     <?php 
                                     }  
                                     else{?>
@@ -83,7 +83,19 @@ $identity = $auth->getIdentity();
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
                                     </ul>
                                 </div>
-                                <?php } ?>
+                                <?php }
+                                else{?>
+                                <div class="oc-dropdown">
+                                    <ul>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/logout">Đăng xuất</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/info">Thông tin cá nhân</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/newsuploaded">Các tin đã đăng</a></li>
+                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/duanchon">Các dự án đã chọn</a></li>
+                                    </ul>
+                                </div>
+                                <?php 
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
