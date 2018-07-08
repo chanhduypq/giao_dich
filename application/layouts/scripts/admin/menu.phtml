@@ -1,18 +1,28 @@
 <?php 
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
+if($auth->hasIdentity()){
 ?>
 <nav class="navbar navbar-default" style="margin-bottom: 5px;background: none;width: auto;border: none;">
     <ul class="nav navbar-nav" id="topnav">
         <?php 
         if($identity['type']== Default_Model_User::ADMIN){?>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+        
         <?php 
         }
+        if($identity['type']== Default_Model_User::NHAN_VIEN){
+        ?>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+        <?php 
+        } 
         ?>
     </ul>
 </nav>
+<?php 
+}
+?>

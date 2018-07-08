@@ -155,7 +155,7 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
-        $where = "du_an_cap_1='$du_an_cap_1'";
+        $where = "is_active=1 and du_an_cap_1='$du_an_cap_1'";
 
         $muccap2 = $this->_getParam('muccap2', '0');
         if (ctype_digit($muccap2) && $muccap2 != '0') {
@@ -202,9 +202,9 @@ class IndexController extends Core_Controller_Action {
         $this->view->headTitle('Nhà thầu thi công', true);
         $muc = $this->_getParam('muc', '0');
         if (ctype_digit($muc) && $muc != '0') {
-            $where = "nha_thau_thi_cong_cap_1='$muc'";
+            $where = "is_active=1 and nha_thau_thi_cong_cap_1='$muc'";
         } else {
-            $where = '1=1';
+            $where = 'is_active=1';
         }
         
         $where_target_type='';

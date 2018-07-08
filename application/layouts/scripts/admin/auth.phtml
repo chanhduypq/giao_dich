@@ -66,7 +66,7 @@ if ($auth->hasIdentity()) {
     <div id="admin-setting">
         <li class="a_li" style="cursor: auto;text-align: center;" id="danh_xung_full_name"><b><?php echo $identity['danh_xung'] . ' ' . $identity['full_name']; ?></b></li>
         <li class="a_li" id="changePassword"><p class="a_text">Đổi mật khẩu</p></li>
-        <li onclick="window.location = '<?php echo $this->baseUrl('/'.Zend_Controller_Front::getInstance()->getRequest()->getModuleName().'/index/logout'); ?>';" class="a_li"><p class="a_text">Sign out</p></li>
+        <li onclick="window.location = '<?php echo $this->baseUrl('/admin/index/logout'); ?>';" class="a_li"><p class="a_text">Sign out</p></li>
     </div>
     <?php
 } else {

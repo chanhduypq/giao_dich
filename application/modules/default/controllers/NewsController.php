@@ -301,5 +301,18 @@ class NewsController extends Core_Controller_Action {
             }
         } 
     }
+    
+    public function huychonduanAction() {
+        $this->isAjax();
+        if ($this->_request->isPost()) {
+            if(ctype_digit($this->_getParam('tin_du_an_id'))){
+                $affect=Core_Db_Table::getDefaultAdapter()->delete('du_an_da_chon','user_id='.$this->getUserId().' and tin_du_an_id='.$this->_getParam('tin_du_an_id'));
+                if($affect==1){
+                    echo 'ok';
+                    exit;
+                }
+            }
+        } 
+    }
 
 }

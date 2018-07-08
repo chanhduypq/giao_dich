@@ -105,7 +105,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                             </div>
                                             <div class="cai-desc">
                                                 <div class="cai-col cai-cl">
-                                                    <p>Tổng đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
+                                                    <p>Đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
                                                     <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
                                                 </div>
                                                 <div class="cai-col cai-cr">
@@ -113,8 +113,12 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                     if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
                                                         if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                         ?>
-                                                        <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>
+                                                        <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an">Chọn dự án</a>
                                                     <?php 
+                                                        }
+                                                        else{?>
+                                                         <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an huy">Hủy chọn</a>   
+                                                        <?php 
                                                         }
                                                     }
                                                     else{
@@ -181,7 +185,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                         <div class="cate-item-i">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>" alt="#">
-                                                <span class="cit-mark">Tổng đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                                <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
@@ -201,6 +205,10 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                             ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
                                                         <?php 
+                                                            }
+                                                            else{?>
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                            <?php 
                                                             }
                                                         }
                                                         else{
@@ -266,18 +274,32 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
 <script type="text/javascript">
 jQuery(function ($){
    $(".chon_du_an").click(function (){
+       node=$(this);
+        if(!$(this).hasClass('huy')){
+            action='chonduan';
+        }
+        else{
+            action='huychonduan';
+        }
         id=$(this).attr('id').replace("chon_du_an_","");
-        $(this).hide();
         
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/default/news/chonduan',
+            url:'<?php echo $this->baseUrl();?>/default/news/'+action,
             data: {'tin_du_an_id':id},                         
             type: 'post',
             async: false,
             success: function(php_script_response){
+                $(node).toggleClass('huy');
                 if($.trim(php_script_response)=='ok'){
                     number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
-                    number_of_du_an_da_chon++;
+                    if(action=='chonduan'){
+                        number_of_du_an_da_chon++;
+                        $(node).html('Hủy chọn');
+                    }
+                    else{
+                        number_of_du_an_da_chon--;
+                        $(node).html('Chọn dự án');
+                    }
                     $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
                 }
 

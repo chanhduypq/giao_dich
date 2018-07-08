@@ -101,6 +101,10 @@ $identity = $auth->getIdentity();
                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an">Chọn dự án</a>
                             <?php 
                                 }
+                                else{?>
+                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                <?php 
+                                }
                             }
                             else{
                                 if(!$auth->hasIdentity()){
@@ -158,7 +162,7 @@ $identity = $auth->getIdentity();
                         <div class="dt-btn">
                             <div class="dt-btn-cl">
                                 <div class="dt-mark">
-                                    Tổng đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
+                                    Đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
                                 </div>
                             </div>
                             <?php 
@@ -212,6 +216,25 @@ $identity = $auth->getIdentity();
                                             </div>
                                     <?php 
                                         }
+                                    }
+                                    else{?>
+                                        <div class="dt-btn-cl">
+                                            <div class="dt-phone">
+                                                  <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
+                                                  <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                                  <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
+                                                  <?php 
+                                                  $user_duan=$this->user_duan;
+                                                  if(is_array($user_duan)&&count($user_duan)>0){
+                                                      foreach ($user_duan as $temp){
+                                                          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
+                                                      }
+                                                  }
+                                                  ?>
+                                                  </div>
+                                            </div>
+                                        </div>
+                            <?php 
                                     }
                                 }
                             }
@@ -317,7 +340,7 @@ $identity = $auth->getIdentity();
                                         <div class="cate-item-i">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>" alt="#">
-                                                <span class="cit-mark">Tổng đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                                <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
@@ -385,18 +408,33 @@ jQuery(function ($){
        $(".dt-cast ul li").css('width','auto');
    } 
    $(".chon_du_an").click(function (){
+       node=$(this);
+        if(!$(this).hasClass('huy')){
+            action='chonduan';
+        }
+        else{
+            action='huychonduan';
+        }
         id=$(this).attr('id').replace("chon_du_an_","");
-        $(this).hide();
-        number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
-        number_of_du_an_da_chon++;
-        $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
+        
         $.ajax({
-            url:'<?php echo $this->baseUrl();?>/default/news/chonduan',
+            url:'<?php echo $this->baseUrl();?>/default/news/'+action,
             data: {'tin_du_an_id':id},                         
             type: 'post',
             async: true,
             success: function(php_script_response){
-
+                $(node).toggleClass('huy');
+                number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
+                if(action=='chonduan'){
+                    number_of_du_an_da_chon++;
+                    $(node).html('Hủy chọn');
+                }
+                else{
+                    number_of_du_an_da_chon--;
+                    $(node).html('Chọn dự án');
+                }
+                
+                $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
             }
         });
    });

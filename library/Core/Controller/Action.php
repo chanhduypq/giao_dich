@@ -291,19 +291,19 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
 
     private function redirectIfNotLogin() {
         if ($this->_request->getModuleName() == 'admin') {
-            if ($this->_request->getControllerName() != 'index') {
-                $auth = Zend_Auth::getInstance();
-                if (!$auth->hasIdentity()) {
-                    $this->turnSessionPrevController();
-                    $this->_helper->redirector('index', 'index', 'admin');
-                } else {
-                    $identity = $auth->getIdentity();
-//                    if ($identity['type'] != '1') {
-//                        $this->turnSessionPrevController();
-//                        $this->_helper->redirector('index', 'index', 'admin');
-//                    }
-                }
-            }
+//            if ($this->_request->getControllerName() != 'index') {
+//                $auth = Zend_Auth::getInstance();
+//                if (!$auth->hasIdentity()) {
+//                    $this->turnSessionPrevController();
+//                    $this->_helper->redirector('index', 'index', 'admin');
+//                } else {
+//                    $identity = $auth->getIdentity();
+////                    if ($identity['type'] != '1') {
+////                        $this->turnSessionPrevController();
+////                        $this->_helper->redirector('index', 'index', 'admin');
+////                    }
+//                }
+//            }
         } 
     }
     

@@ -103,7 +103,7 @@ else{
                 <?php 
                     foreach ($items as $item){?>
                     <tr id="tin_<?php echo $item['id'];?>">
-                        <td>
+                        <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
                              <?php }
