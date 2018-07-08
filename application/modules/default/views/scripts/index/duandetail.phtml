@@ -2,6 +2,10 @@
 $items = $this->items;
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
+if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) {
+    $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='" . $identity['id'] . "' and tin_du_an_id='" . $items[0]['id'] . "'");
+    $number_du_an_da_chon = $number_du_an_da_chon[0];
+}
 ?>
 <div class="page-content detail-page category-page">
     <div class="container">
@@ -89,14 +93,12 @@ $identity = $auth->getIdentity();
                             </ul>
                         </div>
                     </div>
-                    <div class="dt-content">
+                    <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';?>">
                         <div class="dt-title">
                             <a><?php echo $items[0]['title'];?></a>
                             <?php 
                             if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."' and tin_du_an_id='".$items[0]['id']."'");
-                                $number_du_an_da_chon=$number_du_an_da_chon[0];
-                                if($number_du_an_da_chon=='0'){
+                                if(isset($number_du_an_da_chon)&&$number_du_an_da_chon=='0'){
                                 ?>
                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an">Chọn dự án</a>
                             <?php 
@@ -337,7 +339,7 @@ $identity = $auth->getIdentity();
                                     
                                 
                                     <div class="cate-item">
-                                        <div class="cate-item-i">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>" alt="#">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
@@ -360,6 +362,10 @@ $identity = $auth->getIdentity();
                                                             ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
                                                         <?php 
+                                                            }
+                                                            else{?>
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                            <?php 
                                                             }
                                                         }
                                                         else{
@@ -435,6 +441,8 @@ jQuery(function ($){
                 }
                 
                 $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
+                $(node).parents('.dt-content').toggleClass('selected');
+                $(node).parents('.cate-item-i').toggleClass('selected');
             }
         });
    });

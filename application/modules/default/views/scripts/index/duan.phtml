@@ -108,7 +108,9 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                     <p>Đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
                                                     <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
                                                 </div>
-                                                <div class="cai-col cai-cr">
+                                                <!--tuetc-->
+<!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
+<!--                                                <div class="cai-col cai-cr">
                                                     <?php 
                                                     if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
                                                         if(!in_array($item['id'], $this->du_an_da_chon_ids)){
@@ -130,7 +132,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
 
                                                     }
                                                     ?>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -182,9 +184,9 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
-                                                <img src="<?php echo $item['photo']; ?>" alt="#">
+                                                <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">

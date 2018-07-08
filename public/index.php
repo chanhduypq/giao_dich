@@ -1,6 +1,6 @@
 <?php 
-header('Cache-Control: no cache'); //no cache
-session_cache_limiter('private_no_expire'); // works
+//header('Cache-Control: no cache'); //no cache
+//session_cache_limiter('private_no_expire'); // works
 //ini_set( 'magic_quotes_gpc', 0 );
 //iconv_set_encoding("internal_encoding", "UTF-8");
 require_once 'define.php';
