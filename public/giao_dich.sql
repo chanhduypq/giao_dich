@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-09 00:38:53
+Date: 2018-07-09 01:45:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -283,6 +283,8 @@ INSERT INTO `tinduan_duancap3` VALUES ('8', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('8', '4');
 INSERT INTO `tinduan_duancap3` VALUES ('9', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('9', '4');
+INSERT INTO `tinduan_duancap3` VALUES ('10', '1');
+INSERT INTO `tinduan_duancap3` VALUES ('10', '4');
 
 -- ----------------------------
 -- Table structure for tinduan_duancap4
@@ -313,6 +315,8 @@ INSERT INTO `tinduan_duancap4` VALUES ('8', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('8', '2');
 INSERT INTO `tinduan_duancap4` VALUES ('9', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('9', '2');
+INSERT INTO `tinduan_duancap4` VALUES ('10', '1');
+INSERT INTO `tinduan_duancap4` VALUES ('10', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_photo
@@ -420,19 +424,20 @@ CREATE TABLE `tin_du_an` (
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
 INSERT INTO `tin_du_an` VALUES ('1', 'đây là tin của nhân viên Luân đăng', 'sfsdfds', null, '2018-07-03 14:57:04', '2018-07-08 13:49:09', '14', '2', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '1 tỉ rưỡi', null, null, '1', '1', '1');
-INSERT INTO `tin_du_an` VALUES ('2', 'đây là tin do khách hàng lựu đăng', 'gfdgdf', null, '2018-07-03 15:13:37', '2018-07-08 16:34:32', '16', '4', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '4353', null, null, '1', '1', '1');
+INSERT INTO `tin_du_an` VALUES ('2', 'đây là tin do khách hàng lựu đăng', 'gfdgdf', null, '2018-07-03 15:13:37', '2018-07-09 00:52:51', '16', '4', '2018-07-03 00:00:00', '1', '1', null, '1', '1', '4353', null, null, '1', '0', '1');
 INSERT INTO `tin_du_an` VALUES ('3', 'sdffsfs', 'sfsfsd', null, '2018-07-05 22:31:27', '2018-07-08 16:34:32', '14', '2', '2018-07-19 00:00:00', '2', null, null, '1', '1', '500', null, null, '1', '1', '1');
-INSERT INTO `tin_du_an` VALUES ('4', 'cgfdgd', 'fdgdgdfg', null, '2018-07-05 22:44:32', '2018-07-08 16:34:34', '14', '2', '2018-07-25 00:00:00', '1', '2', null, '1', '1', '1000', null, null, '1', '1', '1');
+INSERT INTO `tin_du_an` VALUES ('4', 'cgfdgd', 'fdgdgdfg', null, '2018-07-05 22:44:32', '2018-07-09 00:52:53', '14', '2', '2018-07-25 00:00:00', '1', '2', null, '1', '1', '1000', null, null, '1', '0', '1');
 INSERT INTO `tin_du_an` VALUES ('5', 'tuetc', 'yêu cầu', null, '2018-07-06 23:51:56', '2018-07-08 16:34:26', '15', '2', '2018-07-06 00:00:00', '2', null, null, '1', '1', '10 tỉ', null, null, '1', '1', '1');
 INSERT INTO `tin_du_an` VALUES ('6', '11111111111111111111', 'cxxcxc', null, '2018-07-07 22:23:07', '2018-07-08 16:34:36', '15', '2', '2018-07-24 00:00:00', null, null, null, '1', '3', 'cxc', null, null, '1', '1', '1');
 INSERT INTO `tin_du_an` VALUES ('7', 'dự án cấp 3', 'xxvvcvxv', null, '2018-07-08 01:51:49', '2018-07-08 16:34:28', '1', '2', '2018-07-12 00:00:00', '2', null, null, '1', '1', '1000', null, null, '1', '1', '1');
 INSERT INTO `tin_du_an` VALUES ('9', 'aaaaaaaaaaaaaaaaaaaaaaaaa', 'adasda', null, '2018-07-08 23:25:18', '2018-07-08 23:25:18', '18', '3', '2018-07-31 00:00:00', '1', '1', null, '1', '1', 'sadasdasda', null, null, null, null, null);
+INSERT INTO `tin_du_an` VALUES ('10', 'huynh thi van', 'fhfhfhf', null, '2018-07-09 01:11:19', '2018-07-09 01:11:19', '22', '4', '2018-07-09 00:00:00', '1', '1', null, '1', '1', '1000', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -487,7 +492,7 @@ CREATE TABLE `user` (
   `type` tinyint(1) NOT NULL COMMENT '1: admin; 2: nhân viên; 3: khách hàng; 4: đối tác; ',
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
@@ -499,6 +504,7 @@ INSERT INTO `user` VALUES ('16', null, null, null, '01286435303', '7c4a8d09ca376
 INSERT INTO `user` VALUES ('17', null, 'Gia Phúc', null, '1', '356a192b7913b04c54574d18c28d46e6395428ab', '2', '1');
 INSERT INTO `user` VALUES ('18', null, null, null, '0913403178', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', '3', '1');
 INSERT INTO `user` VALUES ('19', null, 'Tâm', null, '0935348952', '0d5a2ea77c655974436fbcad3f380a6ef4e59831', '2', '1');
+INSERT INTO `user` VALUES ('22', null, null, null, '0913404003', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '1');
 
 -- ----------------------------
 -- Table structure for user_duan
@@ -517,8 +523,16 @@ INSERT INTO `user_duan` VALUES ('1', '13');
 INSERT INTO `user_duan` VALUES ('1', '15');
 INSERT INTO `user_duan` VALUES ('1', '17');
 INSERT INTO `user_duan` VALUES ('1', '19');
+INSERT INTO `user_duan` VALUES ('1', '20');
 INSERT INTO `user_duan` VALUES ('2', '14');
+INSERT INTO `user_duan` VALUES ('2', '19');
+INSERT INTO `user_duan` VALUES ('3', '19');
 INSERT INTO `user_duan` VALUES ('4', '19');
+INSERT INTO `user_duan` VALUES ('5', '19');
+INSERT INTO `user_duan` VALUES ('6', '19');
+INSERT INTO `user_duan` VALUES ('7', '19');
+INSERT INTO `user_duan` VALUES ('8', '19');
+INSERT INTO `user_duan` VALUES ('9', '19');
 
 -- ----------------------------
 -- Table structure for user_nhathauthicong
@@ -538,6 +552,7 @@ INSERT INTO `user_nhathauthicong` VALUES ('3', '15');
 INSERT INTO `user_nhathauthicong` VALUES ('3', '19');
 INSERT INTO `user_nhathauthicong` VALUES ('4', '14');
 INSERT INTO `user_nhathauthicong` VALUES ('4', '19');
+INSERT INTO `user_nhathauthicong` VALUES ('4', '20');
 
 -- ----------------------------
 -- View structure for view_tin

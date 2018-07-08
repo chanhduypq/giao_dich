@@ -1,3 +1,8 @@
+<style>
+    .password.hide{
+        display: none;
+    }
+</style>
 <div class="page-content account-page">
     <div class="container">
         <div class="row">
@@ -17,32 +22,43 @@
                                     <div class="fp-group">
                                         <div class="fp-label">HỌ TÊN</div>
                                         <div class="fp-input fp-textbox">
-                                            <input type="textbox" class="fp-control" placeholder="Họ tên">
+                                            <input name="full_name" type="textbox" class="fp-control" placeholder="Họ tên">
                                         </div>
                                     </div>
                                     <div class="fp-group fp-phone">
                                         <div class="fp-label">SỐ ĐIỆN THOẠI</div>
                                         <div class="fp-input fp-textbox">
-                                            <input type="textbox" class="fp-control" placeholder="Số điện thoại">
-                                            <div class="fp-handle">
-                                                <div class="fp-btn">GỬI MÃ XÁC THỰC</div>
-                                            </div>
+                                            <input name="phone" type="textbox" class="fp-control" placeholder="Số điện thoại">
                                         </div>
                                     </div>
                                     <div class="fp-group">
-                                        <div class="fp-label">MÃ XÁC THỰC</div>
+                                        <div class="fp-label">
+                                            <label style="cursor: pointer;">
+                                                <input type="checkbox" id="reset_password" class="fp-control">
+                                                ĐẶT LẠI MẬT KHẨU
+                                            </label>
+                                        </div>
+                                        <div class="fp-input fp-textbox">&nbsp;</div>
+                                    </div>
+                                    <div class="fp-group fp-phone password hide">
+                                        <div class="fp-label">MẬT KHẨU CŨ</div>
                                         <div class="fp-input fp-textbox">
-                                            <input type="textbox" class="fp-control" placeholder="Nhập mã xác thực gửi đến số điện thoại">
+                                            <input name="old_password" type="password" class="fp-control" placeholder="Số điện thoại">
                                         </div>
                                     </div>
-                                    <div class="fp-group">
-                                        <div class="fp-label"></div>
+                                    <div class="fp-group fp-phone password hide">
+                                        <div class="fp-label">MẬT KHẨU MỚI</div>
                                         <div class="fp-input fp-textbox">
-                                            <div class="fp-extra">
-                                                <a href="#">ĐẶT LẠI MẬT KHẨU</a>
-                                            </div>
+                                            <input name="new_password" type="password" class="fp-control" placeholder="Số điện thoại">
                                         </div>
                                     </div>
+                                    <div class="fp-group fp-phone password hide">
+                                        <div class="fp-label">NHẬP LẠI MẬT KHẨU MỚI</div>
+                                        <div class="fp-input fp-textbox">
+                                            <input name="confirm_new_password" type="password" class="fp-control" placeholder="Số điện thoại">
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -52,3 +68,12 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+jQuery(function ($){
+   
+   $("#reset_password").change(function (){
+       $(".password").toggleClass('hide');
+   });
+});
+</script>
