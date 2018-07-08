@@ -20,6 +20,9 @@ else{
         max-width:1600px;
         border-right:1px solid #999;
     }
+    tr.show{
+        background: #c8cedd;
+    }
 
     td{
         text-indent:5px;
@@ -102,7 +105,7 @@ else{
             <tbody>
                 <?php 
                     foreach ($items as $item){?>
-                    <tr id="tin_<?php echo $item['id'];?>">
+                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['allow_show_quang_cao']=='1') echo ' style="background: #c8cedd;"';?>>
                         <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>

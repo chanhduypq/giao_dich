@@ -18,14 +18,81 @@ if ($auth->hasIdentity()) {
 
 </script>
 <style>
-            .item:nth-child(odd) {
-                background: silver;
-            }
+    .center{
+        text-align:left;
+    }
 
-            .item:nth-child(even) {
-                background: white;
-            }
+    table{
+        width:100%;
+        max-width:1600px;
+        border-right:1px solid #999;
+    }
+
+    td{
+        text-indent:5px;
+        color:#444;
+        border-bottom:1px solid #bbb;
+        border-left:1px solid #bbb;
+    }
+
+    td.left{
+        border-left:1px solid #2e638e;
+    }
+
+    td.right{
+        border-right:1px solid #2e638e;
+    }
+
+    td.bottom{
+        border-bottom:1px solid #2e638e;
+    }
+    
+    .quangcao td,th{
+        text-align: center;
+    }
+
+    .grip{
+        width:20px;
+        height:15px;
+        margin-top:-3px;
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/grip.png');
+        margin-left:-5px;
+        position:relative;
+        z-index:88;
+        cursor:e-resize;
+    }
+
+    .grip:hover{
+        background-position-x:-20px;
+    }
+
+    .JCLRLastGrip .grip{
+        background-position-y:-18px;
+        left:-2px;
+    }
+
+    .dragging .grip{
+        background-position-x:-40px;
+    }
+
+    .sampleText{
+        position:relative;
+        width:100%;
+    }
+
+    .dotted{
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/dotted.png');
+        background-repeat:repeat-y;
+    }
 </style>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="<?php echo $this->baseUrl(); ?>/js/jquery.dataTables.min.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <link href="<?php echo $this->baseUrl('/css/form_search.css'); ?>?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>" media="screen" rel="stylesheet" type="text/css" />				 
+    <script src="<?php echo $this->baseUrl(); ?>/js/colResizable-1.6.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
 <?php
 
 if (isset($this->message)&&trim($this->message)!='') {
@@ -51,61 +118,72 @@ if (isset($this->message)&&trim($this->message)!='') {
         ?>
     </div>
 </div>
+    
+<div class="row-fluid">
+    <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
+            <thead>
+                <th>Họ và tên</th>
+                <th>Phone</th>
+                <th>&nbsp;</th>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($items as $item){?>
+                    <tr id="tin_<?php echo $item['id'];?>">
+                        <td style="width: 10%;">
+                            <?php echo $item['full_name'];?>
+                        </td>
+                        <td>
+                            <?php echo $item['phone'];?>
+                        </td>
+                        
+                        <?php 
+                        if(is_array($identity)&&$identity['type']== Default_Model_User::ADMIN){?>
+                        <td>
+                            <a class="remove" title="Click vào đây để xóa" href="<?php echo $this->baseUrl('/admin/nhanvien/delete/id/') . $item['id']; ?>">
+                                <img class="delete question" src="<?php echo $this->baseUrl("/images/icon/delete-icon.png"); ?>"/>                                                   
+                            </a>
 
-<div class="row-fluid list">
-
-    <?php
-    foreach ($items as $item) {
-        ?>
-
-        <div class="row item" id="<?php echo $item['id']; ?>">
-            <div class="col-lg-5 col-md-5">
-                <?php echo $item['full_name'] ?>
-            </div>
-            <div class="col-lg-5 col-md-5">
-                <?php echo $item['phone']; ?>
-            </div>
-            <div class="col-lg-2 col-md-2">
-                <a class="remove" title="Click vào đây để xóa" href="<?php echo $this->baseUrl('/admin/nhanvien/delete/id/') . $item['id']; ?>">
-                    <img class="delete question" src="<?php echo $this->baseUrl("/images/icon/delete-icon.png"); ?>"/>                                                   
-                </a>
-
-                <a href="<?php echo $this->baseUrl('/admin/nhanvien/edit/id/') . $item['id'] . '/page/' . $this->page; ?>">
-                    <img class="edit question" title="Click vào đây để sửa" style="cursor: pointer;" src="<?php echo $this->baseUrl("/images/icon/ico_edit.png"); ?>" onclick="editItem(this);"/>                                                   
-                </a>
-            </div>
-
-        </div>
-
-
-
-
-        <?php
-    }
-
-    $url = $this->url();
-    $temp = explode('page', $url);
-    if (is_array($temp) && count($temp) == 2) {
-        $url = $temp[0];
-    }
-    ?>
+                            <a href="<?php echo $this->baseUrl('/admin/nhanvien/edit/id/') . $item['id'] . '/page/' . $this->page; ?>">
+                                <img class="edit question" title="Click vào đây để sửa" style="cursor: pointer;" src="<?php echo $this->baseUrl("/images/icon/ico_edit.png"); ?>" onclick="editItem(this);"/>                                                   
+                            </a>
+                        </td>
+                        <?php 
+                        }
+                        ?>
+                    </tr>
+                    <?php 
+                    }
+                ?>
+            </tbody>
+        </table>
 
 </div>
-<form method="post" action="<?php echo $url; ?>">
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <?php if ($this->total > $this->limit) { ?>
-                <table style="width: 100%;">
-                    <tfoot>
-                        <tr>
-                            <td colspan="3" style="width: 100%;"><?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?></td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <?php
-            }
-            ?>
-        </div>
-    </div>
-</form>
 
+
+<script>
+        
+    $(window).load(function() {
+          $('#nanopool-table').show();
+          $('#nanopool-table').DataTable();
+          $('#nanopool-table_filter').find('input').eq(0).css('width','270px');
+          $('#nanopool-table td').css('text-align','center');
+          <?php 
+          if(is_array($items)&&count($items)>0){?>
+          $("table").colResizable({
+                liveDrag:true, 
+                gripInnerHtml:"<div class='grip'></div>", 
+                draggingClass:"dragging", 
+                resizeMode:'overflow',//'fit'
+                postbackSafe:true,
+                partialRefresh:true
+          });
+          <?php 
+          }
+          ?>
+    });
+    
+    
+    
+    
+</script>

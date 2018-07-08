@@ -14,9 +14,8 @@ class Admin_NhanvienController extends Core_Controller_Action {
     }
 
     public function indexAction() {
-        $this->limit = $this->_getParam('limit', 10);
-        $rows = $this->model->getNhanViens($this->total, $this->limit, $this->start);
-        $this->view->items = $rows;
+        $model=new Default_Model_User();
+        $this->view->items = $model->select('*')->where("type=2")->fetchAll();
     }
 
     public function addAction() {

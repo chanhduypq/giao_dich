@@ -123,7 +123,7 @@ else{
                             <?php echo $item['content'];?>
                         </td>
                         <td>
-                            <?php echo $item['type_tin'];?>
+                            <?php echo $item['type_tin_text'];?>
                         </td>
                         
                        
@@ -140,7 +140,7 @@ else{
                             }
                             ?>
                             <br>
-                            <a target="_blank" href="<?php echo $this->baseUrl("index/".($item['type_tin']=='Dự án'?'duandetail':'nhathauthicongdetail')."/id/4");?>">Xem chi tiết</a>
+                            <a target="_blank" href="<?php echo $this->baseUrl("index/".($item['type_tin']=='du_an'?'duandetail':'nhathauthicongdetail')."/id/4");?>">Xem chi tiết</a>
                         </td>
                     </tr>
                     <?php 

@@ -184,11 +184,7 @@ $identity = $auth->getIdentity();
                                     if($identity['type']== Default_Model_User::ADMIN){?>
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
-                                                <?php 
-                                                if($items[0]['type']!=Default_Model_User::ADMIN&&$items[0]['type']!=Default_Model_User::NHAN_VIEN){
-                                                    echo $items[0]['phone'];
-                                                }
-                                                ?>
+                                                <div class="ct-btn-phone ct-btn-mobile"><?php echo $items[0]['phone'];?></div>
                                             </div>
                                         </div>
                                     <?php                                     
@@ -197,11 +193,7 @@ $identity = $auth->getIdentity();
                                         if(in_array($items[0]['nha_thau_thi_cong_cap_1_id'], $identity['nha_thau_thi_cong_cap_1_ids'])){?>
                                             <div class="dt-btn-cl">
                                                 <div class="dt-phone">
-                                                    <?php 
-                                                    if($items[0]['type']!=Default_Model_User::ADMIN&&$items[0]['type']!=Default_Model_User::NHAN_VIEN){
-                                                        echo $items[0]['phone'];
-                                                    }
-                                                    ?>
+                                                    <div class="ct-btn-phone ct-btn-mobile"><?php echo $items[0]['phone'];?></div>                                                    
                                                 </div>
                                             </div>
                                     <?php 
