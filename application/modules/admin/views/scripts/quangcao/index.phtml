@@ -177,12 +177,6 @@ else{
           ?>
     });
     
-    function editItem(img) {
-        jQuery("form#edit-form").find('input[type="hidden"]').eq(0).val(jQuery(img).parent().parent().attr("id")).attr("name", "id");
-        jQuery("form#edit-form").submit();
-
-    }
-    
     jQuery(function ($){
         $( "body" ).delegate( ".allow_show", "click", function() {
           

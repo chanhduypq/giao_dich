@@ -28,7 +28,7 @@
                                             }
                                             ?>
                                             <div class="cate-item">
-                                                <div class="cate-item-i">
+                                                <div class="cate-item-i"<?php if($item['status']=='3') echo ' style="background: #c8cedd;"';?>>
                                                     <div class="cit-part cit-left">
                                                         <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
                                                         <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
@@ -47,9 +47,11 @@
                                                                 <!--<p>Đối tác</p>-->
                                                             </div>
                                                             <!--tuetc-->
-<!--                                                            <div class="cit-desc-r">
-                                                                <a href="#" class="btn-green"><span>Khôi phục tin</span></a>
-                                                            </div>-->
+                                                            <?php if($item['status']=='3'){?>
+                                                            <div class="cit-desc-r">
+                                                                <a class="btn-green"><span>Đã hoàn thành giao dịch</span></a>
+                                                            </div>
+                                                            <?php }?>
                                                         </div>
                                                     </div>
                                                 </div>

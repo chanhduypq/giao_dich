@@ -24,7 +24,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
                 . "where is_quang_cao=1 "
-//                . "where is_quang_cao=1 and (tin_du_an.target_type=3 or tin_du_an.target_type=4) "
+//                . "where is_quang_cao=1 and (tin_du_an.target_type=3 or tin_du_an.target_type=4) "  nếu tin này là khách hàng hoặc đối tác đăng
                 . "group by tin_du_an.id");
         
         $allItems1 = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
@@ -38,7 +38,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
                 . "where is_quang_cao=1 "
-//                . "where is_quang_cao=1 and (tin_nha_thau_thi_cong.target_type=3 or tin_nha_thau_thi_cong.target_type=4) "
+//                . "where is_quang_cao=1 and (tin_nha_thau_thi_cong.target_type=3 or tin_nha_thau_thi_cong.target_type=4) "  nếu tin này là khách hàng hoặc đối tác đăng
                 . "group by tin_nha_thau_thi_cong.id");
         
         $allItems= array_merge($allItems,$allItems1);

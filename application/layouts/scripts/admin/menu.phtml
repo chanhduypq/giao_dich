@@ -18,6 +18,7 @@ if($auth->hasIdentity()){
         if($identity['type']== Default_Model_User::NHAN_VIEN){
         ?>
         <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
         <?php 
         } 
         ?>

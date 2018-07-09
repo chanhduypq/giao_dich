@@ -135,9 +135,6 @@ class NewsController extends Core_Controller_Action {
             $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $data['nha_thau_thi_cong_cap_1'] = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_1;
             $data['nha_thau_thi_cong_cap_2'] = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_2;
-//            if (ctype_digit($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3)) {
-//                $data['nha_thau_thi_cong_cap_3'] = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3;
-//            }
             $du_an_cap_3 = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3;
             $du_an_cap_4 = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4;
             
@@ -146,6 +143,20 @@ class NewsController extends Core_Controller_Action {
             $auth = Zend_Auth::getInstance();
             $identity = $auth->getIdentity();
             $data['target_type'] = ($identity['type'] == '1' ? '2' : $identity['type']);
+            
+            /**
+             * nếu user vừa đăng là nhân viên và tin vừa đăng thuộc quyền quản lý của nhân viên này thi cho is_active=1 
+             * có nghĩa là tự động cho nó hiển thị lên hệ thống
+             */
+            $temp = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from user_nhathauthicong where user_id='" . $this->getUserId() . "'");
+            $user_duans = array();
+            foreach ($temp as $t) {
+                $user_duans[] = $t['nha_thau_thi_cong_cap_1_id'];
+            }
+            if(in_array($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_1, $user_duans)){
+                $data['is_active']='1';
+            }
+            //
 
             $model = new Default_Model_Tinnhathauthicong();
             $id = $model->insert($data);
@@ -196,9 +207,7 @@ class NewsController extends Core_Controller_Action {
             $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $data['du_an_cap_1'] = $session_tin_du_an->du_an_cap_1;
             $data['du_an_cap_2'] = $session_tin_du_an->du_an_cap_2;
-//            if (ctype_digit($session_tin_du_an->du_an_cap_3)) {
-//                $data['du_an_cap_3'] = $session_tin_du_an->du_an_cap_3;
-//            }
+
             $du_an_cap_3 = $session_tin_du_an->du_an_cap_3;
             $du_an_cap_4 = $session_tin_du_an->du_an_cap_4;
             
@@ -207,6 +216,20 @@ class NewsController extends Core_Controller_Action {
             $auth = Zend_Auth::getInstance();
             $identity = $auth->getIdentity();
             $data['target_type'] = ($identity['type'] == '1' ? '2' : $identity['type']);
+            
+            /**
+             * nếu user vừa đăng là nhân viên và dự án vừa đăng thuộc quyền quản lý của nhân viên này thi cho is_active=1 
+             * có nghĩa là tự động cho nó hiển thị lên hệ thống
+             */
+            $temp = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from user_duan where user_id='" . $this->getUserId() . "'");
+            $user_duans = array();
+            foreach ($temp as $t) {
+                $user_duans[] = $t['du_an_cap_1_id'];
+            }
+            if(in_array($session_tin_du_an->du_an_cap_1, $user_duans)){
+                $data['is_active']='1';
+            }
+            //
 
             $model = new Default_Model_Tinduan();
             $id = $model->insert($data);
@@ -289,6 +312,9 @@ class NewsController extends Core_Controller_Action {
         
     }
     
+    /**
+     * chọn dự án
+     */
     public function chonduanAction() {
         $this->isAjax();
         if ($this->_request->isPost()) {
@@ -302,6 +328,9 @@ class NewsController extends Core_Controller_Action {
         } 
     }
     
+    /**
+     * hủy chọn dự án
+     */
     public function huychonduanAction() {
         $this->isAjax();
         if ($this->_request->isPost()) {
@@ -315,6 +344,9 @@ class NewsController extends Core_Controller_Action {
         } 
     }
     
+    /**
+     * một user cảm thấy tin minh đăng không cần thiết hoặc đăng sai thi có thể hủy
+     */
     public function canceltindadangAction() {
         $this->isAjax();
         if ($this->_request->isPost()) {

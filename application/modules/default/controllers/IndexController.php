@@ -65,8 +65,8 @@ class IndexController extends Core_Controller_Action {
         } else {
             $du_an_cap_1 = '0';
         }
-        
-        $where = "title like '%".trim($this->_getParam('q'),'')."%'";
+        $where = "status<>3";
+        $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
         if ($muc!=''&&!ctype_digit($muc)){
             $where = " and du_an_cap_1='$du_an_cap_1'";
         }
@@ -155,7 +155,8 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
-        $where = "is_active=1 and du_an_cap_1='$du_an_cap_1'";
+        
+        $where = "status<>3 and is_active=1 and du_an_cap_1='$du_an_cap_1'";
 
         $muccap2 = $this->_getParam('muccap2', '0');
         if (ctype_digit($muccap2) && $muccap2 != '0') {

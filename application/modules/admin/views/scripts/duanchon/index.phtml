@@ -20,6 +20,9 @@ else{
         max-width:1600px;
         border-right:1px solid #999;
     }
+    tr.show{
+        background: #c8cedd;
+    }
 
     td{
         text-indent:5px;
@@ -93,16 +96,16 @@ else{
     <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
             <thead>
                 <th>Hình ảnh</th>
-                <th>Phone</th>
                 <th>Tựa đề</th>
                 <th>Nội dung</th>
-                <th>&nbsp;</th>
+                <th>Người đã chọn dự án</th>
+                <th>Tình trạng</th>
                 <th>&nbsp;</th>
             </thead>
             <tbody>
                 <?php 
-                    foreach ($items as $item){?>
-                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['is_active']=='1') echo ' style="background: #c8cedd;"';?>>
+                    foreach ($items as $id=>$item){?>
+                    <tr id="tin_<?php echo $id;?>"<?php if($item['status']=='2') echo ' style="background: #c8cedd;"'; else if($item['status']=='3') echo ' style="background: #9dfbd3;"';?>>
                         <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
@@ -114,34 +117,43 @@ else{
                              ?>
                         </td>
                         <td>
-                            <?php echo $item['phone'];?>
-                        </td>
-                        <td>
                             <?php echo $item['title'];?>
                         </td>
                         <td>
                             <?php echo $item['content'];?>
                         </td>
                         <td>
-                            <?php echo $item['type_tin_text'];?>
+                            <?php 
+                            echo implode("<br>", $item['users_da_chon']);
+                            ?>
                         </td>
-                        
-                       
                         <td>
                             <?php 
-                            if($item['is_active']=='1'){
-                            ?>
-                            <button class="cancel_show">Hủy hiển thị</button>
-                            <?php 
+                            if($item['status']==''||$item['status']=='1'){
+                                echo 'Chưa giao dịch';
                             }
-                            else {?> 
-                            <button class="allow_show">Cho hiển thị</button>
-                            <?php 
+                            else if($item['status']=='2'){
+                                echo 'Đang giao dịch';
+                            }
+                            else{
+                                echo 'Hoàn thành giao dịch';
                             }
                             ?>
-                            <br>
-                            <a target="_blank" href="<?php echo $this->baseUrl("index/".($item['type_tin']=='du_an'?'duandetail':'nhathauthicongdetail')."/id/4");?>">Xem chi tiết</a>
                         </td>
+                        <td>
+                            <?php 
+                            if($item['status']==''||$item['status']=='1'){
+                            ?>
+                            <button onclick="window.location='<?php echo $this->baseUrl("/admin/duanchon/batdaugiaodich/id/$id");?>';">Bắt đầu giao dịch</button>
+                            <?php 
+                            }
+                            else if($item['status']=='2'){?> 
+                            <button onclick="window.location='<?php echo $this->baseUrl("/admin/duanchon/hoanthanhgiaodich/id/$id");?>';">Hoàn thành giao dịch</button>
+                            <?php 
+                            }
+                            ?>
+                        </td>
+                        
                     </tr>
                     <?php 
                     }
@@ -172,65 +184,8 @@ else{
           ?>
     });
     
-    function editItem(img) {
-        jQuery("form#edit-form").find('input[type="hidden"]').eq(0).val(jQuery(img).parent().parent().attr("id")).attr("name", "id");
-        jQuery("form#edit-form").submit();
-
-    }
     
     jQuery(function ($){
-        $( "body" ).delegate( ".allow_show", "click", function() {
-          
-          var id=$(this).parent().parent().attr('id');
-          id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
-              table_name='tin_du_an';
-          }
-          else{
-              table_name='tin_nha_thau_thi_cong';
-          }
-          var node=$(this);
-            $.ajax({
-                url:'<?php echo $this->baseUrl();?>/admin/news/show',
-                data: {'id':id,'table_name':table_name},                         
-                type: 'post',
-                async: false,
-                success: function(php_script_response){
-                    if($.trim(php_script_response)=='ok'){
-                        $(node).toggleClass( "allow_show" );
-                      $(node).toggleClass( "cancel_show" );
-                      $(node).html("Hủy hiển thị");
-                    }
-                      
-                }
-            });
-        });
         
-        $( "body" ).delegate( ".cancel_show", "click", function() {
-          
-          var id=$(this).parent().parent().attr('id');
-          id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
-              table_name='tin_du_an';
-          }
-          else{
-              table_name='tin_nha_thau_thi_cong';
-          }
-          var node=$(this);
-            $.ajax({
-                url:'<?php echo $this->baseUrl();?>/admin/news/hide',
-                data: {'id':id,'table_name':table_name},                         
-                type: 'post',
-                async: false,
-                success: function(php_script_response){
-                    if($.trim(php_script_response)=='ok'){
-                        $(node).toggleClass( "allow_show" );
-                      $(node).toggleClass( "cancel_show" );
-                      $(node).html("Cho hiển thị");
-                    }
-                      
-                }
-            });
-        });
     });
 </script>
