@@ -44,6 +44,7 @@ $identity = $auth->getIdentity();
 <!--                            tuetc
                             <span>03</span>-->
                         </div>
+                        <?php if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){?>
                         <div class="dt-chip-thumb">
                             <div class="chip-thumb chip-thumb-slider">
                                 <?php 
@@ -63,7 +64,11 @@ $identity = $auth->getIdentity();
                                 ?>
                             </div>
                         </div>
-                        <div class="dt-share">
+                        <?php 
+                        }
+                        ?>
+                        <!--tuetc-->
+<!--                        <div class="dt-share">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
                                 <li>
@@ -87,7 +92,7 @@ $identity = $auth->getIdentity();
                                     <span>Link</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="dt-content">
                         <div class="dt-title">
@@ -222,7 +227,8 @@ $identity = $auth->getIdentity();
                             }
                             ?>
                         </div>
-                        <div class="dt-share dt-share-mobile">
+                        <!--tuetc-->
+<!--                        <div class="dt-share dt-share-mobile">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
                                 <li>
@@ -241,7 +247,7 @@ $identity = $auth->getIdentity();
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <!-- End detail Infor -->
