@@ -119,7 +119,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             ?>
                         </div>
                         <div class="dt-desc">
-                            <?php echo $items[0]['content'];?>
+                            <?php echo nl2br($items[0]['content']);?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
@@ -333,7 +333,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     <div class="cate-item">
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
-                                                <img src="<?php echo $item['photo']; ?>" alt="#">
+                                                <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">

@@ -53,7 +53,7 @@ $identity = $auth->getIdentity();
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
                                                 <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
                                                 </div>
                                             </div>
                                 <?php 
@@ -96,7 +96,7 @@ $identity = $auth->getIdentity();
                             <!--<a href="#" class="cit-btn">Chọn dự án</a>-->
                         </div>
                         <div class="dt-desc">
-                            <?php echo $items[0]['content'];?>
+                            <?php echo nl2br($items[0]['content']);?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
@@ -318,7 +318,7 @@ $identity = $auth->getIdentity();
                                         <div class="cate-item">
                                             <div class="cate-item-i">
                                                 <div class="cit-part cit-left">
-                                                    <img src="<?php echo $item['photo']; ?>" alt="#">
+                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">

@@ -77,6 +77,10 @@ else{
         background-image:url('<?php echo $this->baseUrl(); ?>/images/dotted.png');
         background-repeat:repeat-y;
     }
+    
+    .is_hien_thi{
+        background: #c8cedd;
+    }
 </style>
 
 
@@ -102,7 +106,7 @@ else{
             <tbody>
                 <?php 
                     foreach ($items as $item){?>
-                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['is_active']=='1') echo ' style="background: #c8cedd;"';?>>
+                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['is_active']=='1') echo ' class="is_hien_thi"';?>>
                         <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
@@ -200,6 +204,7 @@ else{
                         $(node).toggleClass( "allow_show" );
                       $(node).toggleClass( "cancel_show" );
                       $(node).html("Hủy hiển thị");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
                     }
                       
                 }
@@ -227,6 +232,7 @@ else{
                         $(node).toggleClass( "allow_show" );
                       $(node).toggleClass( "cancel_show" );
                       $(node).html("Cho hiển thị");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
                     }
                       
                 }
