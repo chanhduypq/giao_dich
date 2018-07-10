@@ -57,7 +57,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
                                                 <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
                                                 </div>
                                             </div>
                                 <?php 

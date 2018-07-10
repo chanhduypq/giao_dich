@@ -120,10 +120,10 @@ $quangcao_items = $this->quangcao_items;
                         <!-- Tab link -->
                         <?php 
                         echo $this->tab($this->tab,array(
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
                                                     ),
                                 $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
                         ?>
@@ -214,7 +214,7 @@ $quangcao_items = $this->quangcao_items;
                             </ul>
                         </div>-->
                         <!-- End Cate paginate -->
-                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get.'/'.$this->cityGet.'/'.$this->cityCap2Get); ?>">
+                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').'/'.$this->cityGet.'/'.$this->cityCap2Get); ?>">
                             <div class="ct-paginate cate-paginate">
                                     <?php if ($this->total > $this->limit) { ?>
                                         <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>

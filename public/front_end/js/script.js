@@ -6429,7 +6429,7 @@ function(n) {
             n = $(this).parent().parent().parent().parent().parent().children(".search-dropdown"),
             i = $(this).parent().parent().parent().parent().parent().children(".input-nt"),
             o = $(this).parent().parent().parent().parent().parent().children('input[type="hidden"]');
-        i.hasClass("_open") && ($(".input-nt").removeClass("_open"), t.removeClass("_expand"), i.html($(this).text()), o.val($(this).attr('data-value')), $(this).removeClass("_open"), n.removeClass("_expand"))
+        i.hasClass("_open") && ($(".input-nt").removeClass("_open"), t.removeClass("_expand"), i.html($(this).text()), o.val($(this).attr('data-value')), $(this).removeClass("_open"), n.removeClass("_expand")),$("#search").submit()
     }), $("#onClickSearch").on("click", function(e) {
         var t = $(".top-search");
         $(this).hasClass("_open") ? ($(this).removeClass("_open"), t.removeClass("_expand")) : ($(this).addClass("_open"), t.addClass("_expand"))
@@ -6508,7 +6508,11 @@ function(n) {
             $(this).parents(".wrap-select").animate({
                 left: 0
             }, 700);
+            $("#search").submit();
         }
+    
+    }), $(".top-search .search-block .form-list .form-item .form-input.form-select.form-select-city .sub-dropdown .btn-close").on("click", function(e) {
+        $("#search").submit();
         
     }), $(".search-dropdown .btn-back-parent").on("click", function(e) {
         $(this).parents(".sub-dropdown").find("ul");

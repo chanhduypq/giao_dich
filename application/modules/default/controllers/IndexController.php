@@ -111,11 +111,63 @@ class IndexController extends Core_Controller_Action {
 
         $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->tab= $this->_getParam('tab','tatCa');
-        $this->view->mucCap2Get= (ctype_digit($muccap2))?"muccap2/$muccap2":"";
+        $this->view->mucCap2Get= (ctype_digit($muccap2)&&$muccap2!='0')?"muccap2/$muccap2":"";
         $this->view->mucGet= "muc/$muc";
         $this->view->cityGet= "city/$city";
         $this->view->cityCap2Get= (ctype_digit($citycap2) && $citycap2 != '0')?"citycap2/$citycap2":"";
         $this->view->q=trim($this->_getParam('q'),'');
+        $this->view->muc=$muc;
+        $this->view->mucCap2=$muccap2;
+        $this->view->city=$city;
+        $this->view->cityCap2=$citycap2;
+        
+        $tenMuc = 'Tất cả danh mục';
+        if(ctype_digit($muccap2)&&$muccap2!='0'){
+            $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
+            foreach ($du_an_cap_2s as $du_an_cap_2){
+                if($du_an_cap_2['id']==$muccap2){
+                    $tenMuc=$du_an_cap_2['name'];
+                }
+            }
+        }
+        else{
+            if(ctype_digit($muc)&&$muc!='0'){
+                if($tenMuc=='Tất cả danh mục'){
+                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
+                    foreach ($du_an_cap_1s as $du_an_cap_1){
+                        if($du_an_cap_1['id']==$muc){
+                            $tenMuc=$du_an_cap_1['name'];
+                        }
+                    }
+                }
+            }
+        }
+        $this->view->tenMuc=$tenMuc;
+        
+        $tenKhuVuc = 'Khu vực';
+        if(ctype_digit($citycap2)&&$citycap2!='0'){
+            $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
+            foreach ($du_an_cap_2s as $du_an_cap_2){
+                if($du_an_cap_2['id']==$citycap2){
+                    $tenKhuVuc=$du_an_cap_2['name'];
+                }
+            }
+        }
+        else{
+            if(ctype_digit($city)&&$city!='0'){
+//                if($tenMuc=='Tất cả danh mục'){
+                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+                    foreach ($du_an_cap_1s as $du_an_cap_1){
+                        if($du_an_cap_1['id']==$city){
+                            $tenKhuVuc=$du_an_cap_1['name'];
+                        }
+                    }
+//                }
+            }
+        }
+        $this->view->tenKhuVuc=$tenKhuVuc;
+        
+        
     }
     
     public function duanAction() {
@@ -156,7 +208,7 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
         
-        $where = "status<>3 and is_active=1 and du_an_cap_1='$du_an_cap_1'";
+        $where = "(status<>3 OR status is null) and is_active=1 and du_an_cap_1='$du_an_cap_1'";
 
         $muccap2 = $this->_getParam('muccap2', '0');
         if (ctype_digit($muccap2) && $muccap2 != '0') {

@@ -112,15 +112,15 @@ $identity = $auth->getIdentity();
                                     <div class="form-list">
                                         <div class="form-item">
                                             <div class="form-input form-text">
-                                                <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text">
+                                                <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text" value="<?php if(isset($this->q)) echo trim($this->q); ?>">
                                             </div>
                                         </div>
                                         <div class="form-item">
                                             <ul class="form-right">
                                                 <li>
                                                     <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt">Tất cả danh mục</div>
-                                                        <input type="hidden" id="muc" name="muc" value="" class="input-dropdown value-category">
+                                                        <div class="input-nt<?php if(isset($this->muc)&&$this->muc!='0') echo ' _open';?>"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
+                                                        <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); ?>" class="input-dropdown value-category">
                                                         <div class="search-dropdown four-col">
                                                             <div class="wrap-select">
                                                                 <ul class="nav-dropdown parent-dropdown">
@@ -134,6 +134,7 @@ $identity = $auth->getIdentity();
                                                                 </ul>
                                                                 <div class="nav-dropdown sub-dropdown">
                                                                     <span class="btn-back-parent"></span>
+                                                                    <span class="btn-close"></span>
                                                                     <ul>
                                                                         <?php 
                                                                         $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
@@ -149,8 +150,8 @@ $identity = $auth->getIdentity();
                                                 </li>
                                                 <li>
                                                     <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt">Khu vực</div>
-                                                        <input type="hidden" name="city" value="" class="input-dropdown value-category">
+                                                        <div class="input-nt<?php if(isset($this->city)&&$this->city!='0') echo ' _open';?>"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
+                                                        <input type="hidden" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
                                                         <div class="search-dropdown two-col">
                                                             <div class="wrap-select">
                                                                 <ul class="nav-dropdown parent-dropdown">
@@ -164,6 +165,7 @@ $identity = $auth->getIdentity();
                                                                 </ul>
                                                                 <div class="nav-dropdown sub-dropdown">
                                                                     <span class="btn-back-parent"></span>
+                                                                    <span class="btn-close"></span>
                                                                     <ul>
                                                                         <?php 
                                                                         $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");

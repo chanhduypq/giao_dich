@@ -587,6 +587,23 @@ a:hover {
     background-size: 14px
 }
 
+.top-search .search-block .form-list .form-item .form-input.form-select.form-select-city .sub-dropdown .btn-close {
+    height: 20px;
+    width: 20px;
+    top: 5px;
+    left: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    display: block;
+    z-index: 2;
+    color: #111;
+    background: url(../images/layout/delete-icon.png) no-repeat 50%;
+    background-size: 14px;
+    float: right;
+    position: relative;
+    margin-right: 50px;
+}
+
 .top-search .search-block .form-list .form-item .form-right {
     padding: 0;
     list-style: none;

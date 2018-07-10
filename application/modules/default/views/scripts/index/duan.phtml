@@ -181,6 +181,8 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     }
                                     else{
                                         $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                        list($width, $height) = getimagesize(ltrim($item['photo'],'/'));
+                                        var_dump($width);
                                     }
                                     ?>
                                     <div class="cate-item">
