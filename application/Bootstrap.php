@@ -3,9 +3,21 @@
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     protected function _initConfig() {
+        
         $config = $this->getOptions();
         Zend_Registry::set('config', new Core_Config($config, true));
         return Core::config();
+    }
+    
+    public function run() {
+
+        try {
+            $frontController = $this->getResource('frontController');
+            $frontController->dispatch();
+        } catch (Exception $e) {
+            header('Location: /');
+            exit;
+        }
     }
 
     protected function _initDbAdapter() {
