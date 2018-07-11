@@ -29,14 +29,18 @@ $identity = $auth->getIdentity();
                 <div class="dt-info">
                     <div class="dt-thumb">
                         <div class="dt-main-thumb">
-                            <div class="ct-replace-img">
+                            <div class="ct-replace-img thumbnail">
                                 <?php 
                                 if($items[0]['photo']!=''){?>
-                                    <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
+                                    <a href="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']); ?>" rel="prettyPhoto">
+                                        <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
+                                    </a>
                                 <?php 
                                 }
                                 else{?>
-                                    <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
+                                    <a href="<?php echo $this->baseUrl(PHOTO_DEFAULT); ?>" rel="prettyPhoto">
+                                        <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
+                                    </a>
                                 <?php 
                                 }
                                 ?>
@@ -53,8 +57,10 @@ $identity = $auth->getIdentity();
                                     foreach ($items as $item){
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
-                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
-                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                <div class="chip-thumb-i thumbnail" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
+                                                    <a href="<?php echo $this->baseUrl('/uploads/'.$item['photo']); ?>" rel="prettyPhoto">
+                                                        <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                 <?php 
@@ -324,7 +330,7 @@ $identity = $auth->getIdentity();
                                         <div class="cate-item">
                                             <div class="cate-item-i">
                                                 <div class="cit-part cit-left">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
+                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">
@@ -382,6 +388,14 @@ $identity = $auth->getIdentity();
 </div>
 <script type="text/javascript">
 jQuery(function ($){
+    //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
+        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
+        //                            image.show(1000,after)
+        //                        }});
+           $('.thumnail').nailthumb({replaceAnimation:'animate'});
+
+           $("a[rel^='prettyPhoto']").prettyPhoto();
+        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
    } 

@@ -71,8 +71,10 @@ $quangcao_items = $this->quangcao_items;
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
-                                            <div class="cai-thumb">
-                                                <img src="<?php echo $item['photo']; ?>" alt="">
+                                            <div class="cai-thumb thumnail">
+                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                    <img src="<?php echo $item['photo']; ?>" alt="">
+                                                </a>
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -153,8 +155,10 @@ $quangcao_items = $this->quangcao_items;
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i">
-                                            <div class="cit-part cit-left">
-                                                <img src="<?php echo $item['photo']; ?>" alt="#">
+                                            <div class="cit-part cit-left thumnail">
+                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                    <img src="<?php echo $item['photo']; ?>">
+                                                </a>
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
@@ -239,6 +243,15 @@ $quangcao_items = $this->quangcao_items;
 </div>
 <script type="text/javascript">
 jQuery(function ($){
+    //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
+        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
+        //                            image.show(1000,after)
+        //                        }});
+           $('.thumnail').nailthumb({replaceAnimation:'animate'});
+
+           $("a[rel^='prettyPhoto']").prettyPhoto();
+        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+        
    $(".chon_du_an").click(function (){
         id=$(this).attr('id').replace("chon_du_an_","");
         $(this).hide();

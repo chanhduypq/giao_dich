@@ -97,8 +97,10 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
-                                            <div class="cai-thumb">
-                                                <img src="<?php echo $item['photo']; ?>" alt="">
+                                            <div class="cai-thumb thumnail">
+                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                    <img src="<?php echo $item['photo']; ?>" alt="">
+                                                </a>
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -181,14 +183,14 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     }
                                     else{
                                         $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
-                                        list($width, $height) = getimagesize(ltrim($item['photo'],'/'));
-                                        var_dump($width);
                                     }
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
-                                            <div class="cit-part cit-left">
-                                                <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>" alt="#">
+                                            <div class="cit-part cit-left thumnail">
+                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                </a>
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
@@ -238,20 +240,6 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                             
                         </div>
                         <!-- End wrap cate -->
-                        <!-- Cate paginate -->
-                        <!--tuetc-->
-<!--                        <div class="ct-paginate cate-paginate">
-                            <ul>
-                                <li class="pg-prev"><a href="#" title="Trước đó"></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><span>2</span></li>
-                                <li><span class="unlink">...</span></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li class="pg-next"><a href="#" title="Tiếp theo"></a></li>
-                            </ul>
-                        </div>-->
-                        <!-- End Cate paginate -->
                         <form method="post" action="<?php echo $this->url(); ?>">
                             <div class="ct-paginate cate-paginate">
                                     <?php if ($this->total > $this->limit) { ?>
@@ -277,6 +265,16 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
 </div>
 <script type="text/javascript">
 jQuery(function ($){
+
+//   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
+        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
+        //                            image.show(1000,after)
+        //                        }});
+           $('.thumnail').nailthumb({replaceAnimation:'animate'});
+
+           $("a[rel^='prettyPhoto']").prettyPhoto();
+        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+    
    $(".chon_du_an").click(function (){
        node=$(this);
         if(!$(this).hasClass('huy')){

@@ -79,6 +79,63 @@ class AccountController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
+        $identity=$auth->getIdentity();
+        $message='';
+        if ($this->_request->isPost()) {
+            
+            if(trim($this->_getParam('phone'))==''){
+                $message='Vui lòng nhập số điện thoại.';
+            }
+            else{
+                if(!ctype_digit($this->_getParam('phone'))){
+                    $message='Vui lòng nhập số điện thoại bằng chữ số.';
+                }
+                else{
+                    if(Core_Db_Table::getDefaultAdapter()->fetchOne("select count(*) from `user` where id<>".$this->getUserId()." and phone='".$this->_getParam('phone')."'")!='0'){
+                        $message="Số điện thoại này đã được sử dụng rồi. Vui lòng nhập số điện thoại khác";
+                    }
+                    else{
+                        $model=new Default_Model_User();
+                        $bind=array(
+                              'full_name'  =>$this->_getParam('full_name'),
+                            'phone'  =>$this->_getParam('phone'),
+                            'password'=> sha1($this->_getParam('password')),
+                        );                        
+                        $model->update($bind, 'id='. $this->getUserId());
+                        $auth->clearIdentity();
+                        $identity['full_name']=$this->_getParam('full_name');
+                        $identity['phone']=$this->_getParam('phone');
+                        $identity['password']=sha1($this->_getParam('password'));
+                        $auth->getStorage()->write($identity);
+                        $message='Chúc mừng bạn đã thay đổi thông tin cá nhân thành công.';
+                    }
+                }
+            }
+            
+            
+                    
+            $this->view->full_name= $this->_getParam('full_name');
+            $this->view->phone= $this->_getParam('phone');
+        }
+        else{
+            $this->view->full_name= $identity['full_name'];
+            $this->view->phone= $identity['phone'];
+        }
+        $this->view->$message= message;
+        
+    }
+    
+    public function checkpasswordAction() {
+        $this->isAjax();
+        $auth = Zend_Auth::getInstance();
+        $identity=$auth->getIdentity();
+        if(sha1($this->_getParam('password'))!=$identity['password']){
+            echo 'sai';
+        }
+        else{
+            echo 'dung';
+        }
+        exit;
     }
 
     public function newsuploadedAction() {
