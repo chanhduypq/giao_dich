@@ -102,6 +102,7 @@ else{
                 <th>Nội dung</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </thead>
             <tbody>
                 <?php 
@@ -146,6 +147,20 @@ else{
                             <br>
                             <a target="_blank" href="<?php echo $this->baseUrl("index/".($item['type_tin']=='du_an'?'duandetail':'nhathauthicongdetail')."/id/4");?>">Xem chi tiết</a>
                         </td>
+                        
+                        <td>
+                            <?php 
+                            if($item['is_hot']=='1'){
+                            ?>
+                            <button class="cancel_hot">Không hot</button>
+                            <?php 
+                            }
+                            else {?> 
+                            <button class="allow_hot">Hot</button>
+                            <?php 
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php 
                     }
@@ -176,11 +191,6 @@ else{
           ?>
     });
     
-    function editItem(img) {
-        jQuery("form#edit-form").find('input[type="hidden"]').eq(0).val(jQuery(img).parent().parent().attr("id")).attr("name", "id");
-        jQuery("form#edit-form").submit();
-
-    }
     
     jQuery(function ($){
         $( "body" ).delegate( ".allow_show", "click", function() {
@@ -233,6 +243,60 @@ else{
                       $(node).toggleClass( "cancel_show" );
                       $(node).html("Cho hiển thị");
                       $(node).parent().parent().toggleClass('is_hien_thi');
+                    }
+                      
+                }
+            });
+        });
+        
+        $( "body" ).delegate( ".allow_hot", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+              table_name='tin_du_an';
+          }
+          else{
+              table_name='tin_nha_thau_thi_cong';
+          }
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/news/hot',
+                data: {'id':id,'table_name':table_name},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_hot" );
+                      $(node).toggleClass( "cancel_hot" );
+                      $(node).html("Không hot");
+                    }
+                      
+                }
+            });
+        });
+        
+        $( "body" ).delegate( ".cancel_hot", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+              table_name='tin_du_an';
+          }
+          else{
+              table_name='tin_nha_thau_thi_cong';
+          }
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/news/nothot',
+                data: {'id':id,'table_name':table_name},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_hot" );
+                      $(node).toggleClass( "cancel_hot" );
+                      $(node).html("Hot");
                     }
                       
                 }

@@ -62,13 +62,12 @@ $list_action_thumnail=array(
                             </div>
                             <div class="col-sm-7 col-md-8 col-opt">
                                 <div class="top-poc">
-                                    <div class="top-oc top-login">
-                                        <a href="javascript:void(0)" id="login_click" class="ct-btn"  data-bg=""><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?></a>
+                                    <div class="top-oc top-login"<?php if ($auth->hasIdentity()&&trim($identity['full_name'])=='') {?> style="width: 60px;display: block;"<?php }?>>
+                                        <a href="javascript:void(0)" id="login_click" class="ct-btn"  data-bg=""><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?>&nbsp;&nbsp;</a>
                                     </div>
                                     
-                                    <div class="top-oc top-project">
+                                    <div class="top-oc top-project"<?php if (!$auth->hasIdentity()||($identity['type']== Default_Model_User::NHAN_VIEN||$identity['type']== Default_Model_User::ADMIN)) echo ' style="display:none;';?>>
                                         <?php 
-                                        
                                         if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
                                             $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
                                             $number_du_an_da_chon=$number_du_an_da_chon[0];

@@ -67,8 +67,8 @@ class IndexController extends Core_Controller_Action {
         }
         $where = "status<>3";
         $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
-        if ($muc!=''&&!ctype_digit($muc)){
-            $where = " and du_an_cap_1='$du_an_cap_1'";
+        if ($muc!='0'&&ctype_digit($muc)){
+            $where .= " and du_an_cap_1='$du_an_cap_1'";
         }
         if (ctype_digit($muccap2) && $muccap2 != '0') {
             $where .= " and du_an_cap_2='$muccap2'";
@@ -102,8 +102,6 @@ class IndexController extends Core_Controller_Action {
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
         $this->view->muc = $muc;
-//        $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$muc'");
-//        $this->view->du_an_cap_2_selected = $muccap2;
         $this->view->allCount = count($allItems);
         $this->view->nhanVienCount = $nhanVienCount;
         $this->view->doiTacCount = $doiTacCount;
@@ -155,14 +153,12 @@ class IndexController extends Core_Controller_Action {
         }
         else{
             if(ctype_digit($city)&&$city!='0'){
-//                if($tenMuc=='Tất cả danh mục'){
                     $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
                     foreach ($du_an_cap_1s as $du_an_cap_1){
                         if($du_an_cap_1['id']==$city){
                             $tenKhuVuc=$du_an_cap_1['name'];
                         }
                     }
-//                }
             }
         }
         $this->view->tenKhuVuc=$tenKhuVuc;

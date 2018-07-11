@@ -38,8 +38,10 @@
                                                     <div class="cit-part cit-right">
                                                         <div class="cit-title">
                                                             <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
-                                                                <!--tuetc-->
-                                                                <!--<span class="tap-hot">Hot</span>-->
+                                                                <?php 
+                                                        if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        <?php } ?>
                                                                 <?php echo $item['title'];?>
                                                             </a>
                                                         </div>
