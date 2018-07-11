@@ -45,6 +45,8 @@ class Admin_Model_IndexMapper
         $result['nha_thau_thi_cong_cap_1_ids']=$user_nhathauthicongs;
 
         $auth->getStorage()->write($result);
+        setcookie('phone',$phone, time() + (86400 * 30), "/");
+        setcookie('password',$password, time() + (86400 * 30), "/");
         return true;
     }
 

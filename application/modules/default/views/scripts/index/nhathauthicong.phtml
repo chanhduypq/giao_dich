@@ -254,7 +254,9 @@ jQuery(function ($){
         //                        }});
            $('.thumnail').nailthumb({replaceAnimation:'animate'});
 
-           $("a[rel^='prettyPhoto']").prettyPhoto();
+           $("a[rel^='prettyPhoto']").prettyPhoto({
+        social_tools:false,
+        deeplinking:false});
         //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
 });
 </script>

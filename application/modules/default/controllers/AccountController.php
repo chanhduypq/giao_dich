@@ -99,13 +99,17 @@ class AccountController extends Core_Controller_Action {
                         $bind=array(
                               'full_name'  =>$this->_getParam('full_name'),
                             'phone'  =>$this->_getParam('phone'),
-                            'password'=> sha1($this->_getParam('password')),
-                        );                        
+                        );       
+                        if($this->_getParam('reset_password')=='1'){
+                            $bind['password']=sha1($this->_getParam('new_password'));
+                        }
                         $model->update($bind, 'id='. $this->getUserId());
                         $auth->clearIdentity();
                         $identity['full_name']=$this->_getParam('full_name');
                         $identity['phone']=$this->_getParam('phone');
-                        $identity['password']=sha1($this->_getParam('password'));
+                        if($this->_getParam('reset_password')=='1'){
+                            $identity['password']=sha1($this->_getParam('new_password'));
+                        }                        
                         $auth->getStorage()->write($identity);
                         $message='Chúc mừng bạn đã thay đổi thông tin cá nhân thành công.';
                     }
@@ -121,7 +125,7 @@ class AccountController extends Core_Controller_Action {
             $this->view->full_name= $identity['full_name'];
             $this->view->phone= $identity['phone'];
         }
-        $this->view->$message= message;
+        $this->view->message= $message;
         
     }
     
@@ -167,6 +171,10 @@ class AccountController extends Core_Controller_Action {
     public function logoutAction() {
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
+        unset($_COOKIE['phone']);
+        unset($_COOKIE['password']);
+        setcookie('phone', null, -1, '/');
+        setcookie('password', null, -1, '/');
         $this->_helper->redirector('index', 'index', 'default');
     }
 

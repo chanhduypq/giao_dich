@@ -34,7 +34,9 @@
                                             <div class="cate-item">
                                                 <div class="cate-item-i">
                                                     <div class="cit-part cit-left">
-                                                        <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                        <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                            <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                        </a>
                                                         <?php 
                                                         if($item['type_tin']=='du_an'){?>
                                                         <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
@@ -116,6 +118,16 @@
 </div>
 <script type="text/javascript">
 jQuery(function ($){
+    //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
+        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
+        //                            image.show(1000,after)
+        //                        }});
+           $('.thumnail').nailthumb({replaceAnimation:'animate'});
+
+           $("a[rel^='prettyPhoto']").prettyPhoto({
+        social_tools:false,
+        deeplinking:false});
+        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
    } 

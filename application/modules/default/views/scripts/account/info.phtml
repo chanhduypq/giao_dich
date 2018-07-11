@@ -3,7 +3,7 @@
         display: none;
     }
 </style>
-
+<form id="change_info" action="<?php echo $this->url();?>" method="POST" onsubmit="return false;">
 <div class="page-content account-page">
     <div class="container">
         <div class="row">
@@ -18,24 +18,27 @@
                     </div>
                     <div class="pc-col pc-info">
                         <div class="page-option">
+                            <h3 style="text-align: center;width: 100%;">
+                                <?php if(isset($this->message)) echo $this->message;?>
+                            </h3>
                             <div class="form-page">
                                 <div class="fp-content">
                                     <div class="fp-group">
                                         <div class="fp-label">HỌ TÊN</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="full_name" type="textbox" class="fp-control" placeholder="Họ tên">
+                                            <input name="full_name" type="textbox" class="fp-control" placeholder="Họ tên" value="<?php if(isset($this->full_name)) echo $this->full_name;?>">
                                         </div>
                                     </div>
                                     <div class="fp-group fp-phone">
                                         <div class="fp-label">SỐ ĐIỆN THOẠI</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="phone" type="textbox" class="fp-control" placeholder="Số điện thoại">
+                                            <input name="phone" type="textbox" class="fp-control" placeholder="Số điện thoại" value="<?php if(isset($this->phone)) echo $this->phone;?>">
                                         </div>
                                     </div>
                                     <div class="fp-group">
                                         <div class="fp-label">
                                             <label style="cursor: pointer;">
-                                                <input type="checkbox" id="reset_password" class="fp-control">
+                                                <input type="checkbox" value="1" name="reset_password" id="reset_password" class="fp-control">
                                                 ĐẶT LẠI MẬT KHẨU
                                             </label>
                                         </div>
@@ -44,20 +47,24 @@
                                     <div class="fp-group fp-phone password hide">
                                         <div class="fp-label">MẬT KHẨU CŨ</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="old_password" type="password" class="fp-control" placeholder="Số điện thoại">
+                                            <input id="old_password" name="old_password" type="password" class="fp-control" placeholder="Mật khẩu cũ">
                                         </div>
                                     </div>
                                     <div class="fp-group fp-phone password hide">
                                         <div class="fp-label">MẬT KHẨU MỚI</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="new_password" type="password" class="fp-control" placeholder="Số điện thoại">
+                                            <input id="new_password" name="new_password" type="password" class="fp-control" placeholder="Mật khẩu mới">
                                         </div>
                                     </div>
                                     <div class="fp-group fp-phone password hide">
                                         <div class="fp-label">NHẬP LẠI MẬT KHẨU MỚI</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="confirm_new_password" type="password" class="fp-control" placeholder="Số điện thoại">
+                                            <input id="confirm_new_password" name="confirm_new_password" type="password" class="fp-control" placeholder="Nhập lại mật khẩu mới">
                                         </div>
+                                    </div>
+                                    
+                                    <div class="fp-group fp-submit" id="submit">
+                                        <button class="fp-btn fp-btn-register">Lưu</button>
                                     </div>
                                     
                                 </div>
@@ -69,12 +76,41 @@
         </div>
     </div>
 </div>
+</form>
 
 <script type="text/javascript">
 jQuery(function ($){
    
    $("#reset_password").change(function (){
        $(".password").toggleClass('hide');
+   });
+   
+   $("#submit").click(function (){
+       if($("#reset_password").is(':checked')){
+           if($("#new_password").val()!=$("#confirm_new_password").val()){
+               alert("password mới chưa trùng khớp.");
+               return;
+           }
+           error=false;
+           $.ajax({
+                url:'<?php echo $this->baseUrl();?>/default/account/checkpassword',
+                data: {'password':$("#old_password").val()},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='sai'){
+                        alert("password cũ không chính xác. Vui lòng nhập lại.");
+                        error=true;
+                    }
+                }
+            });
+            if(!error){
+                $("#change_info").attr('onsubmit','return true').submit();
+            }
+       }
+       else{
+           $("#change_info").attr('onsubmit','return true').submit();
+       }
    });
 });
 </script>

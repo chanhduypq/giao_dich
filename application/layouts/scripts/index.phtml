@@ -7,92 +7,86 @@ $list_action_thumnail=array(
         'duandetail',
         'nhathauthicongdetail',
         'search',
+        'duanchon',
+        'newsuploaded',
     );
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <?php echo $this->headTitle(); ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
-    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cho tot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
+        <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
     
-    <?php     
-    if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery.nailthumb.1.1.js"></script>    
-    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-    <script src="<?php echo $this->baseUrl(); ?>/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-    <?php 
-    }
-    ?>
-    
-</head>
-<body>
-    <div id="app">
-        <div id="sec1" class="main-wrapper">
-            <!-- Start Top  -->
-            <div class="top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
-                            <div class="top-logo">
-                                <div class="logo-link">
-                                    <a href="/">DANGTINXAYDUNG</a>
-                                </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png"><span>2</span></a>
-                                        </li>
-                                    </ul>
+        <?php     
+        if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery.nailthumb.1.1.js"></script>    
+        <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+        <script src="<?php echo $this->baseUrl(); ?>/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+        <?php 
+        }
+        ?>
+    </head>
+    <body>
+        <div id="app">
+            <div id="sec1" class="main-wrapper layout-3">
+                <!-- Start Top  -->
+                <div class="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-4 col-logo">
+                                <div class="top-logo">
+                                    <div class="logo-link">
+                                        <a href="/">DANGTINXAYDUNG</a>
+                                    </div>
+                                    <div class="cv-menu">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="mobile-top-icon">
+                                        <ul>
+                                            <li><a href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
+                                            <li>
+                                                <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-7 col-md-8 col-opt">
-                            <div class="top-poc">
-                                <?php if (!$auth->hasIdentity()) {?>
-                                <div class="top-oc top-login">
-                                    <a href="javascript:void(0)" data-bg="" id="login_click">Đăng nhập</a>
-                                </div>
-                                <?php 
-                                }  
-                                else{
-                                ?>
-                                <div class="top-oc top-login">
-                                    <a href="javascript:void(0)" data-bg="" id="login_click">&nbsp;</a>
-                                </div>
-                                <?php 
-                                } 
-                                ?>
-                                <div class="top-oc top-project">
-                                    <?php 
-                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                            <div class="col-sm-7 col-md-8 col-opt">
+                                <div class="top-poc">
+                                    <div class="top-oc top-login">
+                                        <a href="javascript:void(0)" id="login_click" class="ct-btn"  data-bg=""><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?></a>
+                                    </div>
+                                    
+                                    <div class="top-oc top-project">
+                                        <?php 
                                         
-                                        $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
-                                        $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                            $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
+                                            $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                            ?>
+                                            <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                        <?php 
+                                        }  
+                                        else{?>
+                                            <a style="visibility: hidden;" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span id="number_of_du_an_da_chon">0</span></a>
+                                        <?php 
+                                        }
                                         ?>
-                                    <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
-                                    <?php 
-                                    }  
-                                    else{?>
-                                        <a style="visibility: hidden;" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon">0</span></a>
-                                    <?php 
-                                    }
-                                    ?>
-
-                                    <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
-                                </div>
+                                    </div>
+                                    <div class="top-oc top-post">
+                                        <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
+                                
+                                
                                 <?php if (!$auth->hasIdentity()) {?>
                                 <div class="oc-dropdown">
                                     <ul>
@@ -113,254 +107,266 @@ $list_action_thumnail=array(
                                 <?php 
                                 }
                                 ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Top -->
-            <!-- Start Search -->
-            <div class="top-search">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-md-12">
-                            <div class="search-block">
-                                <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
-                                    <div class="form-list">
-                                        <div class="form-item">
-                                            <div class="form-input form-text">
-                                                <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text" value="<?php if(isset($this->q)) echo trim($this->q); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-item">
-                                            <ul class="form-right">
-                                                <li>
-                                                    <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt<?php if(isset($this->muc)&&$this->muc!='0') echo ' _open';?>"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
-                                                        <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); ?>" class="input-dropdown value-category">
-                                                        <div class="search-dropdown four-col">
-                                                            <div class="wrap-select">
-                                                                <ul class="nav-dropdown parent-dropdown">
-                                                                    <?php 
-                                                                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
-                                                                    foreach ($du_an_cap_1s as $dac1){?>
-                                                                        <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
-                                                                    <?php                                                                         
-                                                                    }
-                                                                    ?>
-                                                                </ul>
-                                                                <div class="nav-dropdown sub-dropdown">
-                                                                    <span class="btn-back-parent"></span>
-                                                                    <span class="btn-close"></span>
-                                                                    <ul>
-                                                                        <?php 
-                                                                        $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
-                                                                        foreach ($du_an_cap_2s as $dac2){?>
-                                                                            <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
-                                                                        <?php                                                                         
-                                                                        }
-                                                                        ?>
-                                                                    </ul>
-                                                            </div>
-                                                        </div>
+                <!-- End Top -->
+                <!-- Start Search -->
+                <div class="top-search">
+                    <div class="slider-block layout_3--slider-block">
+                        <div class="home-item">
+                            <img src="<?php echo $this->baseUrl();?>/front_end/images/home/bg_head_home_2.png" alt="">
+                        </div>
+                        <div class="home-item">
+                            <img src="<?php echo $this->baseUrl();?>/front_end/images/home/bg_head_home_2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="top-search-c">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    <div class="search-block">
+                                        <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
+                                            <div class="form-list">
+                                                <div class="form-item">
+                                                    <div class="form-input form-text">
+                                                        <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text" value="<?php if(isset($this->q)) echo trim($this->q); ?>">
                                                     </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt<?php if(isset($this->city)&&$this->city!='0') echo ' _open';?>"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
-                                                        <input type="hidden" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
-                                                        <div class="search-dropdown two-col">
-                                                            <div class="wrap-select">
-                                                                <ul class="nav-dropdown parent-dropdown">
-                                                                    <?php 
-                                                                    $city_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
-                                                                    foreach ($city_cap_1s as $dac1){?>
-                                                                        <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
-                                                                    <?php                                                                         
-                                                                    }
-                                                                    ?>
-                                                                </ul>
-                                                                <div class="nav-dropdown sub-dropdown">
-                                                                    <span class="btn-back-parent"></span>
-                                                                    <span class="btn-close"></span>
-                                                                    <ul>
-                                                                        <?php 
-                                                                        $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
-                                                                        foreach ($city_cap_2s as $dac2){?>
-                                                                            <li data-value="<?php echo $dac2['city_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['city_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
-                                                                        <?php                                                                         
-                                                                        }
-                                                                        ?>
-                                                                    </ul>
+                                                </div>
+                                                <div class="form-item">
+                                                    <ul class="form-right">
+                                                        <li>
+                                                            <div class="form-input form-select form-select-city">
+                                                                <div class="input-nt<?php if(isset($this->muc)&&$this->muc!='0') echo ' _open';?>"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
+                                                                <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); ?>" class="input-dropdown value-category">
+                                                                <div class="search-dropdown four-col">
+                                                                    <div class="wrap-select">
+                                                                        <ul class="nav-dropdown parent-dropdown">
+                                                                            <?php 
+                                                                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
+                                                                            foreach ($du_an_cap_1s as $dac1){?>
+                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
+                                                                            <?php                                                                         
+                                                                            }
+                                                                            ?>
+                                                                        </ul>
+                                                                        <div class="nav-dropdown sub-dropdown">
+                                                                            <span class="btn-back-parent"></span>
+                                                                            <span class="btn-close"></span>
+                                                                            <ul>
+                                                                                <?php 
+                                                                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
+                                                                                foreach ($du_an_cap_2s as $dac2){?>
+                                                                                    <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                                <?php                                                                         
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="form-input form-select form-select-city">
+                                                                <div class="input-nt<?php if(isset($this->city)&&$this->city!='0') echo ' _open';?>"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
+                                                                <input type="hidden" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
+                                                                <div class="search-dropdown two-col">
+                                                                    <div class="wrap-select">
+                                                                        <ul class="nav-dropdown parent-dropdown">
+                                                                            <?php 
+                                                                            $city_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+                                                                            foreach ($city_cap_1s as $dac1){?>
+                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
+                                                                            <?php                                                                         
+                                                                            }
+                                                                            ?>
+                                                                        </ul>
+                                                                        <div class="nav-dropdown sub-dropdown">
+                                                                            <span class="btn-back-parent"></span>
+                                                                            <span class="btn-close"></span>
+                                                                            <ul>
+                                                                                <?php 
+                                                                                $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
+                                                                                foreach ($city_cap_2s as $dac2){?>
+                                                                                    <li data-value="<?php echo $dac2['city_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['city_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                                <?php                                                                         
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="btn-link">
-                                                    <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Search -->
-            <?php echo $this->layout()->content; ?>
-            <!-- footer -->
-            <footer class="footer">
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row row-eq-height">
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
-                               <div class="ft-block company-social">
-                                    <div class="ft-tit">LIÊN KẾT</div>
-                                    <ul>
-                                       <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
-                                       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
-                                       <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
-                                       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
-                                    </ul>
-                               </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="ft-block">
-                                    <div class="ft-tit">VỀ CÔNG TY</div>
-                                    <ul>
-                                       <li><a href="#">Giới thiệu</a></li>
-                                       <li><a href="#">Tuyển dụng</a></li>
-                                       <li><a href="#">Blog</a></li>
-                                    </ul>
-                               </div>
-                            </div>
-                            <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
-                               <div class="ft-block">
-                                    <div class="ft-tit">VỀ KHÁCH HÀNG</div>
-                                    <ul>
-                                       <li><a href="#">Chính sách quảng cáo</a></li>
-                                       <li><a href="#">Dịch vụ hậu mãi</a></li>
-                                       <li><a href="#">Bảo mật thông tin</a></li>
-                                    </ul>
-                               </div>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                               <div class="ft-block">
-                                    <div class="ft-img"><a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/dadangky.png" alt=""></a></div>
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End footer top -->
-                <!-- Footer bottom -->
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="ftbt-i">
-                                    <div class="ftbt-col ftbt-left">
-                                        © 2018 Copyright by DungLV
-                                    </div>
-                                    <div class="ftbt-col ftbt-right">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        </ul>
+                                                        </li>
+                                                        <li class="btn-link">
+                                                            <!--tuetc-->
+                                                            <!--<button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>-->
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Footer bottom -->
-            </footer>
-            <!-- End footer -->
-        </div>
-    </div>
-    <!-- Mobile menu -->
-    <div class="mobile-menu">
-        <div class="mb-top">
-            <div class="mb-menu-wr">
-                <div class="mb-menu-l">
-                    <span class="mb-u"></span>
-                </div>
-                <div class="mb-menu-r">
-                    <p>ĐĂNG NHẬP</p>
-                    <p>Đăng nhập để bắt đầu đăng tin</p>
-                </div>
+                <!-- End Search -->
+                <!-- home page -->
+                <?php echo $this->layout()->content; ?>
+                <!-- End home page -->
+                <!-- footer -->
+                <footer class="footer">
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row row-eq-height">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
+                                    <div class="ft-block company-social">
+                                        <div class="ft-tit">LIÊN KẾT</div>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="ft-block">
+                                        <div class="ft-tit">VỀ CÔNG TY</div>
+                                        <ul>
+                                            <li><a href="#">Giới thiệu</a></li>
+                                            <li><a href="#">Tuyển dụng</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
+                                    <div class="ft-block">
+                                        <div class="ft-tit">VỀ KHÁCH HÀNG</div>
+                                        <ul>
+                                            <li><a href="#">Chính sách quảng cáo</a></li>
+                                            <li><a href="#">Dịch vụ hậu mãi</a></li>
+                                            <li><a href="#">Bảo mật thông tin</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="ft-block">
+                                        <div class="ft-img"><a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/dadangky.png" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End footer top -->
+                    <!-- Footer bottom -->
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="ftbt-i">
+                                        <div class="ftbt-col ftbt-left">
+                                            © 2018 Copyright by DungLV
+                                        </div>
+                                        <div class="ftbt-col ftbt-right">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Footer bottom -->
+                </footer>
+                <!-- End footer -->
             </div>
         </div>
-        <!-- End top mobile menu -->
-        <div class="mb-over">
-            <!-- Link menu mobile -->
-            <div class="mb-menu-link">
+        <!-- Mobile menu -->
+        <div class="mobile-menu">
+            <div class="mb-top">
                 <div class="mb-menu-wr">
-                    <ul>
-                        <li>
-                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/home.png" alt=""></span>VỀ TRANG CHỦ</a>
-                        </li>
-                        <li>
-                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/pencil-dark.png" alt=""></span>ĐĂNG TIN CỦA BẠN</a>
-                        </li>
-                        <li>
-                            <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong>2</strong></a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#">GIỚI THIỆU</a>
-                        </li>
-                        <li>
-                            <a href="#">TUYỂN DỤNG</a>
-                        </li>
-                        <li>
-                            <a href="#">BLOG</a>
-                        </li>
-                    </ul>
+                    <div class="mb-menu-l">
+                        <span class="mb-u"></span>
+                    </div>
+                    <div class="mb-menu-r">
+                        <p>ĐĂNG NHẬP</p>
+                        <p>Đăng nhập để bắt đầu đăng tin</p>
+                    </div>
                 </div>
             </div>
-            <!-- End moblie menu link -->
-            <!-- Social menu -->
-            <div class="mb-menu-social">
-                <div class="mb-menu-wr">
-                     <ul>
-                       <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                       <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
+            <!-- End top mobile menu -->
+            <div class="mb-over">
+                <!-- Link menu mobile -->
+                <div class="mb-menu-link">
+                    <div class="mb-menu-wr">
+                        <ul>
+                            <li>
+                                <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/home.png" alt=""></span>VỀ TRANG CHỦ</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl();?>/default/news/step1"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/pencil-dark.png" alt=""></span>ĐĂNG TIN CỦA BẠN</a>
+                            </li>
+                            <li>
+                                <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong>2</strong></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="#">GIỚI THIỆU</a>
+                            </li>
+                            <li>
+                                <a href="#">TUYỂN DỤNG</a>
+                            </li>
+                            <li>
+                                <a href="#">BLOG</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- End moblie menu link -->
+                <!-- Social menu -->
+                <div class="mb-menu-social">
+                    <div class="mb-menu-wr">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Social menu -->
             </div>
-            <!-- Social menu -->
         </div>
-    </div>
-    <!-- End Mobile menu -->
-    <div class="go-top">
-    </div>
-    <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
-    <script type="text/javascript">
-    jQuery(function ($){
-        <?php     
-        if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-        //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
-        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
-        //                            image.show(1000,after)
-        //                        }});
-//           $('.thumnail').nailthumb({replaceAnimation:'animate'});
-
-//           $("a[rel^='prettyPhoto']").prettyPhoto();
-        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-        <?php 
-        }
-        ?>
-    });
-    </script>
-</body>
+        <!-- End Mobile menu -->
+        <div class="go-top">
+        </div>
+        <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+        <script type="text/javascript">
+            jQuery(function ($){
+//                $("#login_click").click();
+//                $("#login_click text").click(function (){
+//                    var t = $(".oc-dropdown");
+//                    if($("#login_click").hasClass("_open")){
+//                        $("#login_click").removeClass("_open");
+//                        t.removeClass("_expand");
+//                    }
+//                    else{
+//                        $("#login_click").addClass("_open");
+//                        t.addClass("_expand")
+//                    }
+//                });
+            });
+        </script>
+    </body>
 
 </html>

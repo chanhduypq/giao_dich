@@ -103,6 +103,13 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      */
     public function init() {
         parent::init();
+        if (isset($_COOKIE['phone'])&&isset($_COOKIE['password'])) {
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                $index = new Admin_Model_IndexMapper();
+                $index->login($_COOKIE['phone'], $_COOKIE['password']);
+            }
+        }
         $this->setLayout();
         $this->redirectIfNotLogin();
 
