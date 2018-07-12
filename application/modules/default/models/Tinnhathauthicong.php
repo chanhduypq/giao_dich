@@ -17,11 +17,11 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
         else{
             $limit="";
         }
-        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where");
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where order by is_hot desc,id desc");
                 
-        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":""));
+        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc");
         
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":"")." $limit");
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_nha_thau_thi_cong where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc $limit");
         
         $total = count($allItems_target_type);
         
@@ -37,7 +37,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                 . "photo,"
                 . "is_quang_cao,"
                 . "allow_show_quang_cao,"
-                . "phone,"
+                . "phone,is_hot,"
                 . "user.type,"
                 . "phan_loai,tin_nha_thau_thi_cong.is_hot,"
                 . "tin_nha_thau_thi_cong.id "
@@ -45,7 +45,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
                 . "where tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1='$nha_thau_thi_cong_cap_1_id' and tin_nha_thau_thi_cong.id<>$id "
-                . "group by tin_nha_thau_thi_cong.id limit 0,10");
+                . "group by tin_nha_thau_thi_cong.id order by is_hot desc,id desc limit 0,10");
         
         return $items;
     }
@@ -60,7 +60,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                         . "tin_nha_thau_thi_cong.id,"
                         . "tin_nha_thau_thi_cong.user_id,tin_nha_thau_thi_cong.is_hot,"
                         . "user.phone,"
-                        . "user.type,"
+                        . "user.type,is_hot,"
                         . "city_cap_1.name as city_cap_1,"
                         . "city_cap_2.name as city_cap_2,"
                         . "city_cap_3.name as city_cap_3, "

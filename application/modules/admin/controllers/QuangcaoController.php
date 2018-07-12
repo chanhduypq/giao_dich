@@ -14,7 +14,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
 
     public function indexAction() {
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,content,'Dự án' as type_tin,"
+                . "title,content,'Dự án' as type_tin_text,'du_an' as type_tin,"
                 . "photo,"
                 . "allow_show_quang_cao,"
                 . "phone,"
@@ -28,7 +28,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
                 . "group by tin_du_an.id");
         
         $allItems1 = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,content,'Nhà thầu thi công' as type_tin,"
+                . "title,content,'Nhà thầu thi công' as type_tin_text,'nha_thau_thi_cong' as type_tin,"
                 . "photo,"
                 . "allow_show_quang_cao,"
                 . "phone,"

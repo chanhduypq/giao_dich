@@ -17,11 +17,11 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         else{
             $limit="";
         }
-        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where");
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where order by is_hot desc,id desc");
                 
-        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":""));
+        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc");
         
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." $limit");
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc $limit");
         
         $total = count($allItems_target_type);
         
@@ -45,7 +45,9 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
                 . "where tin_du_an.du_an_cap_1='$du_an_cap_1_id' and tin_du_an.id<>$id "
-                . "group by tin_du_an.id limit 0,10");
+                
+                . "group by tin_du_an.id order by is_hot desc,id desc limit 0,10"
+                );
         
         return $items;
         
@@ -61,7 +63,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                         . "tin_du_an.id,"
                         . "tin_du_an.user_id,tin_du_an.is_hot,"
                         . "user.phone,"
-                        . "user.type,"
+                        . "user.type,is_hot,"
                         . "city_cap_1.name as city_cap_1,"
                         . "city_cap_2.name as city_cap_2,"
                         . "city_cap_3.name as city_cap_3, "
@@ -109,7 +111,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                 . "* "
                 . "from view_tin_du_an "
                 . "join du_an_da_chon on du_an_da_chon.tin_du_an_id=view_tin_du_an.id "
-                . "where du_an_da_chon.user_id='$userId'");
+                . "where du_an_da_chon.user_id='$userId' order by is_hot desc,id desc");
     }
 
     

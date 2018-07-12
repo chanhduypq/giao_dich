@@ -105,6 +105,10 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                     </div>
                     <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';?>">
                         <div class="dt-title">
+                            <?php 
+                            if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1'){?>
+                            <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                            <?php } ?>
                             <a><?php echo $items[0]['title'];?></a>
                             <?php 
                             if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
@@ -268,47 +272,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                     </div>
                 </div>
                 <!-- End detail Infor -->
-                <!-- Detail Banner -->
-                <div class="dt-banner">
-                    <div class="dt-ls-banner dt-banner-slider">
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                    </div>
-                </div>
-                <!-- End Detail Banner -->
+                <?php // echo $this->render('index/dichvuhaumaislide.phtml'); ?>
 
             </div>
         </div>

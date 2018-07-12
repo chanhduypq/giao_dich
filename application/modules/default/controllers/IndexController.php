@@ -65,7 +65,7 @@ class IndexController extends Core_Controller_Action {
         } else {
             $du_an_cap_1 = '0';
         }
-        $where = "status<>3";
+        $where = "(status<>3 OR status is null) and is_active=1";
         $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
         if ($muc!='0'&&ctype_digit($muc)){
             $where .= " and du_an_cap_1='$du_an_cap_1'";

@@ -73,6 +73,10 @@ class Admin_IndexController extends Core_Controller_Action
     {
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
+		unset($_COOKIE['phone']);
+        unset($_COOKIE['password']);
+        setcookie('phone', null, -1, '/');
+        setcookie('password', null, -1, '/');
         $this->_helper->redirector('index', 'index', 'admin');
     }
 

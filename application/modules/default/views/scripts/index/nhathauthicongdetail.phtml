@@ -257,47 +257,7 @@ $identity = $auth->getIdentity();
                     </div>
                 </div>
                 <!-- End detail Infor -->
-                <!-- Detail Banner -->
-                <div class="dt-banner">
-                    <div class="dt-ls-banner dt-banner-slider">
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                        <!-- Banner Item -->
-                        <div class="dt-banner-i">
-                            <div class="dt-banner-wr">
-                                <span>Banner</span> dịch vụ hậu mãi
-                            </div>
-                        </div>
-                        <!-- End Banner Item -->
-                    </div>
-                </div>
-                <!-- End Detail Banner -->
+                <?php // echo $this->render('index/dichvuhaumaislide.phtml'); ?>
 
             </div>
         </div>
@@ -329,8 +289,10 @@ $identity = $auth->getIdentity();
                                         ?>
                                         <div class="cate-item">
                                             <div class="cate-item-i">
-                                                <div class="cit-part cit-left">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                <div class="cit-part cit-left thumbnail">
+                                                    <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
+                                                        <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                    </a>
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">

@@ -16,7 +16,7 @@ $list_action_thumnail=array(
 
     <head>
         <meta charset="UTF-8">
-        <title>Cho tot</title>
+        <?php echo $this->headTitle(); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -113,6 +113,8 @@ $list_action_thumnail=array(
                 </div>
                 <!-- End Top -->
                 <!-- Start Search -->
+                <?php 
+                if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
                 <div class="top-search">
                     <div class="slider-block layout_3--slider-block">
                         <div class="home-item">
@@ -213,6 +215,7 @@ $list_action_thumnail=array(
                         </div>
                     </div>
                 </div>
+                <?php } ?>
                 <!-- End Search -->
                 <!-- home page -->
                 <?php echo $this->layout()->content; ?>
@@ -224,7 +227,7 @@ $list_action_thumnail=array(
                             <div class="row row-eq-height">
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
                                     <div class="ft-block company-social">
-                                        <div class="ft-tit">LIÊN KẾT</div>
+                                        <div class="ft-tit"><b>LIÊN KẾT</b></div>
                                         <ul>
                                             <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
                                             <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
@@ -235,7 +238,7 @@ $list_action_thumnail=array(
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="ft-block">
-                                        <div class="ft-tit">VỀ CÔNG TY</div>
+                                        <div class="ft-tit"><b>VỀ CÔNG TY</b></div>
                                         <ul>
                                             <li><a href="#">Giới thiệu</a></li>
                                             <li><a href="#">Tuyển dụng</a></li>
@@ -245,7 +248,7 @@ $list_action_thumnail=array(
                                 </div>
                                 <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
                                     <div class="ft-block">
-                                        <div class="ft-tit">VỀ KHÁCH HÀNG</div>
+                                        <div class="ft-tit"><b>VỀ KHÁCH HÀNG</b></div>
                                         <ul>
                                             <li><a href="#">Chính sách quảng cáo</a></li>
                                             <li><a href="#">Dịch vụ hậu mãi</a></li>
