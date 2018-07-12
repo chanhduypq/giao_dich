@@ -8,7 +8,6 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function indexAction() {
-        
     }
 
     public function searchAction() {
