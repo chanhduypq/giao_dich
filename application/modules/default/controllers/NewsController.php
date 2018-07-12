@@ -92,6 +92,7 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_2 = $this->_getParam('muc', '0');
+            
             $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_3 where nha_thau_thi_cong_cap_2_id='" . $this->_getParam('muc', '0') . "'");
             $this->view->items = $items;
         } else {

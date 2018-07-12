@@ -8,7 +8,8 @@ class Admin_NewsController extends Core_Controller_Action {
         $this->view->headTitle('Duyệt tin', true);
     }
 
-    public function indexAction() {$this->view->headTitle('Duyêt tin', true);
+    public function indexAction() {
+        $this->view->headTitle('Duyêt tin', true);
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,content,'Dự án' as type_tin_text,'du_an' as type_tin,"
                 . "photo,"

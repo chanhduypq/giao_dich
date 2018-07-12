@@ -165,7 +165,7 @@ class IndexController extends Core_Controller_Action {
         
         
     }
-    
+
     public function duanAction() {
         $muc = $this->_getParam('muc');
 

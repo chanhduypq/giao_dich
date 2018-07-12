@@ -231,17 +231,7 @@ $quangcao_items = $this->quangcao_items;
 </div>
 <script type="text/javascript">
 jQuery(function ($){
-    //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
-        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
-        //                            image.show(1000,after)
-        //                        }});
-           $('.thumnail').nailthumb({replaceAnimation:'animate'});
-
-           $("a[rel^='prettyPhoto']").prettyPhoto({
-        social_tools:false,
-        deeplinking:false});
-        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-        
+            
    $(".chon_du_an").click(function (){
         id=$(this).attr('id').replace("chon_du_an_","");
         $(this).hide();
