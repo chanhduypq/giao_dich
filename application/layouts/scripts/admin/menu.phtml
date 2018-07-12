@@ -11,7 +11,7 @@ if($auth->hasIdentity()){
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+            
         
         <?php 
         }
@@ -19,6 +19,7 @@ if($auth->hasIdentity()){
         ?>
         <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
         <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
+        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
         <?php 
         } 
         ?>
