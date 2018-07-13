@@ -80,10 +80,8 @@ $muc_selected = $this->muc_selected;
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
-                                            <div class="cai-thumb thumnail">
-                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img src="<?php echo $item['photo']; ?>" alt="">
-                                                </a>
+                                            <div class="cai-thumb">
+                                                <img src="<?php echo $item['photo']; ?>" alt="">
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -163,10 +161,8 @@ $muc_selected = $this->muc_selected;
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i">
-                                            <div class="cit-part cit-left thumnail">
-                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
-                                                </a>
+                                            <div class="cit-part cit-left">
+                                                <img src="<?php echo $item['photo']; ?>">
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
@@ -219,14 +215,7 @@ $muc_selected = $this->muc_selected;
                             </div>
                         </form>
                     </div>
-                    <div class="ct-ad-mobile">
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                    </div>
+                    <?php // echo $this->render('index/dichvuhaumaimobile.phtml'); ?>
                 </div>
             </div>
         </div>

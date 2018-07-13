@@ -56,10 +56,8 @@ $quangcao_items = $this->quangcao_items;
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
-                                            <div class="cai-thumb thumnail">
-                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img src="<?php echo $item['photo']; ?>" alt="">
-                                                </a>
+                                            <div class="cai-thumb">
+                                                <img src="<?php echo $item['photo']; ?>" alt="">
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -140,10 +138,8 @@ $quangcao_items = $this->quangcao_items;
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i">
-                                            <div class="cit-part cit-left thumnail">
-                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img src="<?php echo $item['photo']; ?>">
-                                                </a>
+                                            <div class="cit-part cit-left">
+                                                <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
@@ -216,14 +212,7 @@ $quangcao_items = $this->quangcao_items;
                             </div>
                         </form>
                     </div>
-                    <div class="ct-ad-mobile">
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                    </div>
+                    <?php // echo $this->render('index/dichvuhaumaimobile.phtml'); ?>
                 </div>
             </div>
         </div>

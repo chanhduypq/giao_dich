@@ -33,18 +33,14 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <div class="dt-info">
                     <div class="dt-thumb">
                         <div class="dt-main-thumb">
-                            <div class="ct-replace-img thumnail">
+                            <div class="ct-replace-img">
                                 <?php 
                                 if($items[0]['photo']!=''){?>
-                                    <a href="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']); ?>" rel="prettyPhoto">
-                                        <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
-                                    </a>
+                                    <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
                                 <?php 
                                 }
                                 else{?>
-                                    <a href="<?php echo $this->baseUrl(PHOTO_DEFAULT); ?>" rel="prettyPhoto">
-                                        <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
-                                    </a>
+                                    <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
                                 <?php 
                                 }
                                 ?>
@@ -61,10 +57,8 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     foreach ($items as $item){
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
-                                                <div class="chip-thumb-i thumnail" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
-                                                    <a href="<?php echo $this->baseUrl('/uploads/'.$item['photo']); ?>" rel="prettyPhoto">
-                                                        <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
-                                                    </a>
+                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
+                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
                                                 </div>
                                             </div>
                                 <?php 
@@ -308,7 +302,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     <div class="cate-item">
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
-                                                <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
+                                                <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
@@ -369,14 +363,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     <?php 
     }
     ?>
-    <div class="ct-ad-mobile">
-        <div class="ct-ad-mobile-i">
-            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-        </div>
-        <div class="ct-ad-mobile-i">
-            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-        </div>
-    </div>
+    <?php // echo $this->render('index/dichvuhaumaimobile.phtml'); ?>
 </div>
 <script type="text/javascript">
 jQuery(function ($){

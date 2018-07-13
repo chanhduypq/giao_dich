@@ -84,10 +84,8 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
-                                            <div class="cai-thumb thumnail">
-                                                <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img src="<?php echo $item['photo']; ?>" alt="">
-                                                </a>
+                                            <div class="cai-thumb">
+                                                <img src="<?php echo $item['photo']; ?>" alt="">
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -174,13 +172,14 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
-                                            <div class="cit-part cit-left thumnail">
-                                                <a target="_blank" href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                    <img style="width: 100%;height: auto;" src="<?php echo $item['photo']; ?>">
-                                                </a>
+                                            <div class="cit-part cit-left">
+                                                <!--<span class="vertical-align-helper"></span>-->
+                                                <!--<a target="_blank" href="<?php echo $item['photo']; ?>" rel="prettyPhoto">-->
+                                                    <img src="<?php echo $item['photo']; ?>">
+                                                <!--</a>-->
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
-                                            <div class="cit-part cit-right">
+                                            <div class="cit-part cit-right" style="background: none;">
                                                 <div class="cit-title">
                                                     <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
                                                         <!--<span class="tap-hot">Hot</span> tuetc-->
@@ -241,14 +240,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                             </div>
                         </form>
                     </div>
-                    <div class="ct-ad-mobile">
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                        <div class="ct-ad-mobile-i">
-                            <span>BANNER</span> DỊCH VỤ HẬU MÃI
-                        </div>
-                    </div>
+                    <?php // echo $this->render('index/dichvuhaumaimobile.phtml'); ?>
                 </div>
             </div>
         </div>

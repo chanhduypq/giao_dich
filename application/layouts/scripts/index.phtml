@@ -294,7 +294,8 @@ $list_action_thumnail=array(
         </div>
         <!-- Mobile menu -->
         <div class="mobile-menu">
-            <div class="mb-top">
+            <!--tuetc-->
+<!--            <div class="mb-top">
                 <div class="mb-menu-wr">
                     <div class="mb-menu-l">
                         <span class="mb-u"></span>
@@ -304,7 +305,7 @@ $list_action_thumnail=array(
                         <p>Đăng nhập để bắt đầu đăng tin</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- End top mobile menu -->
             <div class="mb-over">
                 <!-- Link menu mobile -->
@@ -312,16 +313,27 @@ $list_action_thumnail=array(
                     <div class="mb-menu-wr">
                         <ul>
                             <li>
-                                <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/home.png" alt=""></span>VỀ TRANG CHỦ</a>
+                                <a href="/"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/home.png" alt=""></span>VỀ TRANG CHỦ</a>
                             </li>
                             <li>
                                 <a href="<?php echo $this->baseUrl();?>/default/news/step1"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/pencil-dark.png" alt=""></span>ĐĂNG TIN CỦA BẠN</a>
                             </li>
                             <li>
-                                <a href="#"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong>2</strong></a>
+                                <?php 
+                                if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                    ?>
+                                    <a href="<?php echo $this->baseUrl();?>/default/account/duanchon"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong><?php echo $number_du_an_da_chon;?></strong></a>
+                                <?php 
+                                }  
+                                else{?>
+                                    <a style="visibility: hidden;" href="<?php echo $this->baseUrl();?>/default/account/duanchon"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong>0</strong></a>
+                                <?php 
+                                }
+                                ?>
                             </li>
                         </ul>
-                        <ul>
+                        <!--tuetc-->
+<!--                        <ul>
                             <li>
                                 <a href="#">GIỚI THIỆU</a>
                             </li>
@@ -331,12 +343,13 @@ $list_action_thumnail=array(
                             <li>
                                 <a href="#">BLOG</a>
                             </li>
-                        </ul>
+                        </ul>-->
                     </div>
                 </div>
                 <!-- End moblie menu link -->
                 <!-- Social menu -->
-                <div class="mb-menu-social">
+                <!--tuetc-->
+<!--                <div class="mb-menu-social">
                     <div class="mb-menu-wr">
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -345,7 +358,7 @@ $list_action_thumnail=array(
                             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
                 <!-- Social menu -->
             </div>
         </div>
@@ -360,14 +373,16 @@ $list_action_thumnail=array(
 //                    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
 //                                    image.show(1000,after)
 //                                }});
-                       $('.thumnail').nailthumb({replaceAnimation:'animate'});
-
-                       $("a[rel^='prettyPhoto']").prettyPhoto(
-                                                               {
-                                                                    social_tools:false,
-                                                                    deeplinking:false
-                                                                }
-                        );
+//----------------------
+//                       $('.thumnail').nailthumb({replaceAnimation:'animate'});
+//
+//                       $("a[rel^='prettyPhoto']").prettyPhoto(
+//                                                               {
+//                                                                    social_tools:false,
+//                                                                    deeplinking:false
+//                                                                }
+//                        );
+//-----------------------------
                     //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
                     <?php 
                     }

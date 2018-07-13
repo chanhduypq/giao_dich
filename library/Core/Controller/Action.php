@@ -136,11 +136,11 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
             $this->formData = $this->_request->getPost();
         }
         
-        if ($this->_request->getModuleName() != 'default' || $this->_request->getControllerName() != 'news') {
-            $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
-            $session_tin_nha_thau_thi_cong->unsetAll();
-            $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
-            $session_tin_du_an->unsetAll();
+        if (!( $this->_request->getModuleName() == 'default' && $this->_request->getControllerName() == 'news')) {
+//            $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
+//            $session_tin_nha_thau_thi_cong->unsetAll();
+//            $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
+//            $session_tin_du_an->unsetAll();
         }
     }
 

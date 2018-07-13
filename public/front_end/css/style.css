@@ -1,4 +1,23 @@
 /* Slider */
+/*.thumbnail{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #eee;
+    background-image: url(https://static.chotot.com.vn/storage/NHA_CDN_PRODUCTION/c1dad15dd17554f6ecb65a123f62c52f.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    text-align: center;
+}
+.vertical-align-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 0;
+}*/
 .slick-slider {
   position: relative;
   display: block;
@@ -2012,7 +2031,12 @@ a {
             display: block; }
           .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-part {
             float: none;
-            width: 100%; }
+            width: 100%; 
+            text-align: center;
+          }
+          .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-part img {
+              object-fit: contain;
+          }
           .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-right {
             padding: 10px 7px 5px 7px; }
           .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-title {
@@ -2038,7 +2062,10 @@ a {
           display: table; }
       .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-part {
         float: left;
-        position: relative; }
+        position: relative; 
+        
+      }
+      
         .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-part .cit-mark {
           display: inline-block;
           position: absolute;
@@ -2052,12 +2079,15 @@ a {
         width: 55%;
         padding: 20px; }
       .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left {
-          /*    tuetc thêm !important vào để khi chạy nailthumb, width này vẫn dc giữ nguyên*/
-            width: 45% !important;
             overflow: hidden;
             height: 200px;
-/*        width: 45%;
-        overflow: hidden; */
+        width: 45%;
+        overflow: hidden; 
+        text-align: center;
+        background: #999999;
+      }
+      .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left img {
+          object-fit: contain;          
       }
       .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-title {
         height: 80px;
@@ -2381,11 +2411,14 @@ a {
       width: 462px;
       float: left; }
       .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb {
+          
         position: relative;
 /*  tuetc      height: 462px;*/
         height: 262px;
         width: 100%;
-        overflow: hidden; }
+        overflow: hidden; 
+        
+      }
         .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb span {
           position: absolute;
           right: 0;
@@ -2397,11 +2430,19 @@ a {
           line-height: 40px;
           background: rgba(0, 0, 0, 0.3); }
         .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb .ct-replace-img {
+            background:#999999;
+            text-align: center;
           width: 100%;
           height: 100%; }
+        .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb .ct-replace-img img {
+            max-width: 100%;
+          object-fit: contain;
+        }
         .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb img {
-          min-height: 100%;
-          min-width: 100%; }
+/*          min-height: 100%;
+          min-width: 100%;*/
+          
+        }
       .page-content.detail-page .dt-info .dt-thumb .dt-chip-thumb {
         overflow: hidden; }
         .page-content.detail-page .dt-info .dt-thumb .dt-chip-thumb .chip-thumb {
@@ -2751,7 +2792,7 @@ a {
     .page-content.detail-page .dt-info .dt-thumb {
       width: 100%; }
       .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb {
-        height: 50px; }
+        height: auto; }
       .page-content.detail-page .dt-info .dt-thumb .dt-share {
         padding: 0 10px; }
         .page-content.detail-page .dt-info .dt-thumb .dt-share .dt-li-share {
@@ -2795,7 +2836,7 @@ a {
     .page-content.detail-page .dt-info .dt-thumb {
       width: 100%; }
       .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb {
-        height: 50px; }
+        height: auto; }
       .page-content.detail-page .dt-info .dt-thumb .dt-share {
         padding: 0 10px; }
         .page-content.detail-page .dt-info .dt-thumb .dt-share .dt-li-share {
@@ -2908,11 +2949,16 @@ a {
       border-top: 5px solid #E8E8E8;
       border-bottom: 5px solid #E8E8E8; }
       .page-content.detail-page .dt-info .dt-content .dt-btn .dt-btn-cl {
-        padding: 0; }
+        padding: 0; 
+        padding-left: 2%;
+        padding-right: 2%;
+      }
         .page-content.detail-page .dt-info .dt-content .dt-btn .dt-btn-cl:first-child {
-          width: 65%; }
+            margin-left: 3%;
+            margin-right: 3%;
+          width: 45%; }
         .page-content.detail-page .dt-info .dt-content .dt-btn .dt-btn-cl:last-child {
-          width: 35%; }
+          width: 45%; }
       .page-content.detail-page .dt-info .dt-content .dt-btn .dt-mark {
         font-size: 16px; }
       .page-content.detail-page .dt-info .dt-content .dt-btn .dt-phone .ct-btn-phone {
