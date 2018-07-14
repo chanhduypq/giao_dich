@@ -1,0 +1,146 @@
+<?php 
+$items = $this->items;
+?>
+<link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>     
+<script src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-vi.js"></script>
+<form action="<?php echo $this->url();?>" id="frm" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+    <div class="page-content page-option step-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-page form-step form-white">
+                        <div class="fp-content" style="float: right;">
+                            <button class="fp-btn fp-btn-register" id="reset">Làm lại</button>
+                        </div>
+                        <?php if(isset($this->success)&&trim($this->success)!=""){?>
+                        <div class="fp-heading">
+                            <div class="fp-tit" style="color: blue;">Chỉnh sửa thành công</div>
+                        </div>
+                        <?php }?>
+                        <div class="fp-heading">
+                            <div class="fp-tit">Chi tiết <span>*</span></div>
+                        </div>
+                        <!-- FP COntent -->
+                        <div class="fp-content">
+                            <!-- Fp Group -->
+                            <div class="fp-group">
+                                <div class="fp-label">
+                                    TIÊU ĐỀ                                    
+                                </div>
+                                <div class="fp-input fp-textbox">
+                                    <input name="title" value="<?php echo $items[0]['title'];?>" type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                </div>
+                            </div>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group row">
+                                <div class="col-sm-6 col-md-3 col-area">
+                                    <div class="fp-label">KHU VỰC</div>
+                                    <div class="fp-input fp-select">
+                                        <?php echo $items[0]['city_cap_1'];?>
+                                    </div>
+                                </div>
+                                 <?php if(trim($items[0]['city_cap_2'])!=""){?>
+                                <div class="col-sm-6 col-md-3 col-addr">
+                                    <div class="fp-label">QUẬN/HUYỆN</div>
+                                    <div class="fp-input fp-select">
+                                        <?php echo $items[0]['city_cap_2'];?>
+                                    </div>
+                                </div>
+                                <?php } ?>
+                                <div class="col-sm-12 col-md-6 col-time">
+                                    <div class="fp-label">THỜI GIAN THI CÔNG</div>
+                                    <div class="fp-input fp-date">
+                                        <?php echo $items[0]['ngay'];?>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="fp-sub-group">
+                                        <div class="fp-label">TỔNG ĐẦU TƯ</div>
+                                        <div class="fp-input fp-textbox">
+                                            <input value="<?php echo $items[0]['tong_dau_tu'];?>" name="tong_dau_tu" type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
+                                        </div>
+                                    </div>
+                                    <div class="fp-sub-group">
+                                        <div class="fp-label">THÔNG TIN YÊU CẦU</div>
+                                        <div class="fp-input fp-textarea">
+                                            <textarea name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"><?php echo $items[0]['content'];?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="fp-sub-group">
+                                        <div class="fp-label">HÌNH ẢNH</div>
+                                        <div class="fp-input fp-file">
+                                            <div class="fp-f-chip">
+                                                <ul class="fp-f-lstchip">
+                                                    <?php 
+                                                    if(count($items)>0){
+                                                        foreach ($items as $item){
+                                                            if($item['photo']!=''){?>
+                                                                <li class="fp-f-chip-i _done">
+                                                                    <div class="fp-f-chip-ii" style="height: auto;">
+                                                                        <img style="object-fit: contain;width: 100%;height: auto;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" id="img1" alt="">
+                                                                        <div class="fp-f-stips">
+                                                                            <span class="fp-f-stip stip-ok"></span>
+                                                                            <span class="fp-f-stip stip-remove"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                    <?php 
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Fp Group -->
+                            <div class="fp-submit">
+                                <button class="fp-btn fp-btn-register" id="submit">Lưu</button>
+                            </div>
+                        </div>
+                        <!-- End FP Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="photos" id="photos"/>
+</form>
+<script>
+    
+
+    jQuery(function ($){
+        
+        $('.fp-f-stip.stip-remove').click(function (){
+            photo=$(this).parent().prev().attr('src').replace("/uploads/","");
+            $(this).parent().prev().removeAttr('src');
+            $(this).parent().hide();
+            photos=$("#photos").val();
+            if(photos==''){
+                photos+=photo;
+            }
+            else{
+                photos+=','+photo;
+            }
+            $("#photos").val(photos);
+        });
+        
+        $("#reset").click(function (){
+            window.location=$("#frm").attr('action');
+        })
+        $("#submit").click(function (){
+            $("#frm").attr('onsubmit','return true').submit();
+        })
+        
+    });
+</script>

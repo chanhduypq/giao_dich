@@ -2085,6 +2085,7 @@ a {
         overflow: hidden; 
         text-align: center;
         background: #999999;
+        
       }
       .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left img {
           object-fit: contain;          
@@ -2433,9 +2434,12 @@ a {
             background:#999999;
             text-align: center;
           width: 100%;
-          height: 100%; }
+          height: 100%; 
+          display: table-cell;
+          vertical-align: middle;
+        }
         .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb .ct-replace-img img {
-            max-width: 100%;
+            max-width: 30%;
           object-fit: contain;
         }
         .page-content.detail-page .dt-info .dt-thumb .dt-main-thumb img {
@@ -2946,8 +2950,16 @@ a {
         margin-bottom: 0; }
     .page-content.detail-page .dt-info .dt-content .dt-btn {
       padding: 0;
-      border-top: 5px solid #E8E8E8;
-      border-bottom: 5px solid #E8E8E8; }
+      /*tuetc*/
+/*      border-top: 5px solid #E8E8E8;
+      border-bottom: 5px solid #E8E8E8; */
+/*tuetc*/
+      position: fixed;
+      z-index: 99999;
+      bottom: 20%;
+      padding-left: 20%;
+      padding-right: 20%;
+    }
       .page-content.detail-page .dt-info .dt-content .dt-btn .dt-btn-cl {
         padding: 0; 
         padding-left: 2%;

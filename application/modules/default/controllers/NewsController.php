@@ -71,6 +71,8 @@ class NewsController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
         }
     }
+    
+    
 
     public function nhathauthicong2Action() {
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");

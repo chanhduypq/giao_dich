@@ -50,15 +50,31 @@ $list_action_thumnail=array(
                                         <span></span>
                                         <span></span>
                                     </div>
-                                    <!--tuetc-->
-<!--                                    <div class="mobile-top-icon">
+                                    <div class="mobile-top-icon">
                                         <ul>
                                             <li><a href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
+                                            <!--tuetc dự án-->
                                             <li>
-                                                <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
+                                                <!--<a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>-->
+                                                <?php 
+                                                if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                    $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
+                                                    $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                                    ?>
+                                                    <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span id="number_of_du_an_da_chon_mobile"><?php echo $number_du_an_da_chon;?></span></a>
+                                                <?php 
+                                                }  
+                                                else{?>
+                                                    <a style="visibility: hidden;"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span id="number_of_du_an_da_chon_mobile">0</span></a>
+                                                <?php 
+                                                }
+                                                ?>
                                             </li>
+                                            
+                                            
+                                            
                                         </ul>
-                                    </div>-->
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-7 col-md-8 col-opt">

@@ -353,6 +353,75 @@ class IndexController extends Core_Controller_Action {
         $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
     }
+    
+    public function editduanAction() {
+        if (!ctype_digit($this->_getParam('id'))) {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        if ($this->_request->isPost()) {
+            
+            $data= $this->_getAllParams();
+            
+            unset($data['controller']);
+            unset($data['action']);
+            unset($data['module']);
+            
+            $model = new Default_Model_Tinduan();
+            $model->update($data,"id='".$this->_getParam('id',0)."'");
+            
+            $photos= $this->_getParam('photos');
+            if(trim($photos)!=''){
+                $photos= explode(",", $photos);
+                foreach ($photos as $photo){
+                    Core_Db_Table::getDefaultAdapter()->delete('tinduan_photo',"tin_du_an_id='".$this->_getParam('id',0)."' and photo='$photo'");
+                    @unlink(UPLOAD . "/public/uploads/".$photo);
+                }
+            }
+            
+            $this->view->success='Chỉnh sửa thành công';
+        }
+        $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+
+        $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
+        $this->view->items = $items;
+    }
+    
+    public function editnhathauthicongAction() {
+        if (!ctype_digit($this->_getParam('id'))) {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        
+        if ($this->_request->isPost()) {
+            $data= $this->_getAllParams();
+            
+            unset($data['controller']);
+            unset($data['action']);
+            unset($data['module']);
+            
+
+            $model = new Default_Model_Tinnhathauthicong();
+            $model->update($data,"id='".$this->_getParam('id',0)."'");
+            
+            $photos= $this->_getParam('photos');
+            if(trim($photos)!=''){
+                $photos= explode(",", $photos);
+                foreach ($photos as $photo){
+                    Core_Db_Table::getDefaultAdapter()->delete('tinnhathauthicong_photo',"tin_nha_thau_thi_cong_id='".$this->_getParam('id',0)."' and photo='$photo'");
+                    @unlink(UPLOAD . "/public/uploads/".$photo);
+                }
+            }
+
+            $this->view->success='Chỉnh sửa thành công';
+        }
+        
+        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongDetail($this->_getParam('id', 0));
+
+        $this->view->items = $items;
+        $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
+
+    }
 
     protected function getTinQuangCaos($items) {
         $quangcao_items = array();

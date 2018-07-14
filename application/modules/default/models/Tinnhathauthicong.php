@@ -53,7 +53,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
     public static function getTinNhaThauThiCongDetail($id){
         return Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"
-                        . "title,"
+                        . "title,tin_nha_thau_thi_cong.dich_vu_thi_cong,"
                         . "phan_loai,"
                         . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
                         . "tinnhathauthicong_photo.photo,"
