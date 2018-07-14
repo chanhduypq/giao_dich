@@ -73,8 +73,8 @@ class IndexController extends Core_Controller_Action {
             $where .= " and du_an_cap_2='$muccap2'";
         }
         
-        if ($city!='0'&&!ctype_digit($city)){
-            $where = " and city_cap_1='$city'";
+        if ($city!='0'&&ctype_digit($city)){
+            $where .= " and city_cap_1='$city'";
         }
         if (ctype_digit($citycap2) && $citycap2 != '0') {
             $where .= " and city_cap_2='$citycap2'";

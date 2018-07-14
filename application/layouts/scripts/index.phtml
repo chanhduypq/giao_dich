@@ -52,7 +52,9 @@ $list_action_thumnail=array(
                                     </div>
                                     <div class="mobile-top-icon">
                                         <ul>
-                                            <li><a href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
+                                            <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
+                                            <li style="margin-right: 20px;"><a href="javascript:void(0)" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
+                                            <?php } ?>
                                             <!--tuetc dự án-->
                                             <li>
                                                 <!--<a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>-->
