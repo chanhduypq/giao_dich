@@ -151,7 +151,7 @@ if (isset($this->message)&&trim($this->message)!='') {
                         <?php 
                         if(is_array($identity)&&$identity['type']== Default_Model_User::ADMIN){?>
                         <td>
-                            <a class="remove" title="Click vào đây để xóa" href="<?php echo $this->baseUrl('/admin/dichvuhaumai/delete/id/') . $item['id']; ?>">
+                            <a class="remove" title="Click vào đây để xóa" href="<?php echo $this->baseUrl('/admin/dichvuhaumai/delete/id/'.$item['id'].'/photo/'.$item['photo']) ; ?>">
                                 <img class="delete question" src="<?php echo $this->baseUrl("/images/icon/delete-icon.png"); ?>"/>                                                   
                             </a>
 

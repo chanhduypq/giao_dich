@@ -70,6 +70,7 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
                     $file_name = md5(uniqid(rand(), true)) . '.' . $temp[count($temp) - 1];
                     move_uploaded_file($_FILES['photo']['tmp_name'], 'uploads/' . $file_name);
                     $data['photo'] = $file_name;
+                    @unlink('uploads/' . $this->_getParam('old_photo'));
                 }
                 $this->model->update($data, "id='" . $this->_getParam('id') . "'");
                 $this->_helper->redirector('index', 'dichvuhaumai', 'admin');
@@ -92,7 +93,7 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
     }
 
     public function deleteAction() {
-        
+        @unlink('uploads/' . $this->_getParam('photo'));
     }
 
 }

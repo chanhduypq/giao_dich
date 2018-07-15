@@ -355,6 +355,14 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             if(ctype_digit($this->_getParam('id'))){
                 $affect=Core_Db_Table::getDefaultAdapter()->query("delete from ".$this->_getParam('table_name')." where id='".$this->_getParam('id')."'")->execute();
+                $table_name= str_replace("_", "", $this->_getParam('table_name'))."_photo";
+                $photos= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from $table_name where ".$this->_getParam('table_name')."_id='".$this->_getParam('id')."'");
+                if(is_array($photos)&&count($photos)>0){
+                    foreach ($photos as $photo){
+                        @unlink('uploads/' . $photo['photo']);
+                    }
+                }
+                Core_Db_Table::getDefaultAdapter()->query("delete from $table_name where ".$this->_getParam('table_name')."_id='".$this->_getParam('id')."'")->execute();
                 if($affect){
                     echo 'ok';
                     exit;

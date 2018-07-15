@@ -74,6 +74,11 @@ if (isset($this->error) && trim($this->error) != '') {
                             <input type="file" name="photo" id="photo">					                 </td>
 
                     </tr>
+                    <tr>
+                        <td colspan="2" style="padding-left: 150px;">
+                            <img src="<?php echo $this->baseUrl('/uploads/'.$this->photo) ;?>" style="width: 100px;height: 100px;"/>
+                        </td>
+                    </tr>
                     
                 </tbody>
             </table>
@@ -81,7 +86,7 @@ if (isset($this->error) && trim($this->error) != '') {
         </div>
 
     </div>
-
+    <input type="hidden" name="old_photo" value="<?php echo $this->photo;?>"/>
 </form>   
 
 <script type="text/javascript">
