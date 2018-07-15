@@ -1,0 +1,118 @@
+<style>
+    table.history{
+        width: 100%;
+    }
+    table.history th,table.history td{
+        border: 1px solid black;
+    }
+</style>
+<?php
+if (isset($this->error) && trim($this->error) != '') {
+    ?>
+    <div class="row-fluid" style="margin-top: 20px;">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-6 col-md-6" align='center' style='color: red;'>
+            <?php
+            echo $this->error;
+            ?>
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
+    </div>
+    <?php
+}
+?>
+<div class="row-fluid" style="margin-top: 10px;">
+    <?php
+    $buttons[] = array('onclick' => "window.location = '" . $this->baseUrl('/admin/dichvuhaumai/index') . "'", 'label' => 'Quay lại');
+    $buttons[] = array('onclick' => 'document.form.submit();', 'label' => 'Lưu');
+    echo $this->toolbar($buttons);
+    ?>
+</div>
+<form name="form" enctype="multipart/form-data" id="form" action="<?php echo $this->url(); ?>" method="post">
+    <div class="row-fluid" style="margin-top: 10px;">
+        <div class="col-lg-4 col-md-4"></div>
+
+        <div class="col-lg-12 col-md-12">
+            <table width="100%"> 
+                <tbody>     
+                    <tr></tr><tr>                 
+                        <td align="right" nowrap="nowrap"><label for="title" class="optional">Tiêu đề:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <input type="text" name="title" id="title" value="<?php echo $this->title;?>">					                 </td>
+
+                    </tr><tr>                 
+                        <td align="right" nowrap="nowrap"><label for="content" class="required">Nội dung:</label>
+                        </td>
+                        <td nowrap="nowrap">
+                            <br>
+                            <textarea cols="50" rows="5" id="content" name="content"><?php echo $this->content;?></textarea>
+
+                    </tr>
+                    <tr>                 
+                        <td align="right" nowrap="nowrap"><label for="tu_ngay" class="optional">Từ ngày:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <input readonly="readonly" type="text" name="tu_ngay" id="tu_ngay" value="<?php echo $this->tu_ngay;?>">					                 </td>
+
+                    </tr>
+                    <tr>                 
+                        <td align="right" nowrap="nowrap"><label for="den_ngay" class="optional">Đến ngày:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <input readonly="readonly" type="text" name="den_ngay" id="den_ngay" value="<?php echo $this->den_ngay;?>">					                 </td>
+
+                    </tr>
+                    <tr>                 
+                        <td align="right" nowrap="nowrap"><label for="photo" class="optional">Hình ảnh:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <input type="file" name="photo" id="photo">					                 </td>
+
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+        </div>
+
+    </div>
+
+</form>   
+
+<script type="text/javascript">
+
+    jQuery(function ($) {
+        $("form").find("input").eq(0).focus();
+        $( "#tu_ngay" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: "dd/mm/yy",
+          showWeek: true,
+            showOn: "button",
+            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
+            buttonImageOnly: true,
+            buttonText: 'Click để chọn ngày',
+            option:$.datepicker.regional['vi']
+        });
+        $( "#den_ngay" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: "dd/mm/yy",
+          showWeek: true,
+            showOn: "button",
+            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
+            buttonImageOnly: true,
+            buttonText: 'Click để chọn ngày',
+            option:$.datepicker.regional['vi']
+        });
+    });
+
+</script>
+
+
+
