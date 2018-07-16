@@ -2965,7 +2965,7 @@ a {
 /*tuetc*/
       position: fixed;
       z-index: 99999;
-      bottom: 20%;
+      bottom: 0;
       padding-left: 20%;
       padding-right: 20%;
     }

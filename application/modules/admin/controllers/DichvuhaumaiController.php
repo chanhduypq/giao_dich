@@ -24,6 +24,8 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
             if (trim($this->_getParam('title')) != '') {
                 $data['title'] = $this->_getParam('title');
                 $data['content'] = trim($this->_getParam('content'));
+                $data['city_cap_1'] = trim($this->_getParam('city_cap_1'));
+                $data['city_cap_2'] = trim($this->_getParam('city_cap_2'));
                 list($d,$m,$y)= explode("/", $this->_getParam('tu_ngay'));
                 $data['tu_ngay']="$y-$m-$d";
                 list($d,$m,$y)= explode("/", $this->_getParam('den_ngay'));
@@ -51,6 +53,10 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
         $this->view->tu_ngay = date('d/m/Y');
         $this->view->den_ngay = date('d/m/Y');
         $this->view->photo = '';
+        $this->view->city_cap_1 = '';
+        $this->view->city_cap_2 = '';
+        $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+        $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
 //        $this->view->nha_thau_thi_cong_cap_1s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
 //        $this->view->du_an_cap_1s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
     }
@@ -61,6 +67,8 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
             if (trim($this->_getParam('title')) != '') {
                 $data['title'] = $this->_getParam('title');
                 $data['content'] = trim($this->_getParam('content'));
+                $data['city_cap_1'] = trim($this->_getParam('city_cap_1'));
+                $data['city_cap_2'] = trim($this->_getParam('city_cap_2'));
                 list($d,$m,$y)= explode("/", $this->_getParam('tu_ngay'));
                 $data['tu_ngay']="$y-$m-$d";
                 list($d,$m,$y)= explode("/", $this->_getParam('den_ngay'));
@@ -79,13 +87,17 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
                 $error = 'Vui lòng nhập tiêu đề.';
             }
         }
-        $dichvuhaumai = $this->model->select(array('id',"title","content","photo","DATE_FORMAT(tu_ngay,'%d/%m/%Y') AS tu_ngay","DATE_FORMAT(den_ngay,'%d/%m/%Y') AS den_ngay"))->fetchRow("id='" . $this->_getParam('id') . "'");
+        $dichvuhaumai = $this->model->select(array('city_cap_1','city_cap_2','id',"title","content","photo","DATE_FORMAT(tu_ngay,'%d/%m/%Y') AS tu_ngay","DATE_FORMAT(den_ngay,'%d/%m/%Y') AS den_ngay"))->fetchRow("id='" . $this->_getParam('id') . "'");
         $this->view->error = $error;
-        $this->view->title = $dichvuhaumai['title'];
+        $this->view->title =($error=='Vui lòng nhập tiêu đề.'?'':$dichvuhaumai['title']);
         $this->view->content = $dichvuhaumai['content'];
         $this->view->photo = $dichvuhaumai['photo'];
         $this->view->tu_ngay = $dichvuhaumai['tu_ngay'];
         $this->view->den_ngay = $dichvuhaumai['den_ngay'];
+        $this->view->city_cap_1 = $dichvuhaumai['city_cap_1'];
+        $this->view->city_cap_2 = $dichvuhaumai['city_cap_2'];
+        $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+        $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
 //        $this->view->nha_thau_thi_cong_cap_1s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
 //        $this->view->du_an_cap_1s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
 

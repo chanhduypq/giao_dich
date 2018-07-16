@@ -67,6 +67,59 @@ if (isset($this->error) && trim($this->error) != '') {
 
                     </tr>
                     <tr>                 
+                        <td align="right" nowrap="nowrap">
+                            <label for="city_cap_1" class="optional">Khu vực:</label>
+                        </td>
+                        <td nowrap="nowrap">
+                            <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select">
+                                            <option value="">---Chọn khu vực---</option>
+                                            <?php 
+                                            $city_cap_1s=$this->city_cap_1s;
+                                            if(is_array($city_cap_1s)&&count($city_cap_1s)>0){
+                                                foreach ($city_cap_1s as $city_cap_1){
+                                                    if($city_cap_1['id']==$this->city_cap_1){
+                                                        $select=' selected="selected"';
+                                                    }
+                                                    else{
+                                                        $select='';
+                                                    }
+                                                    
+                                                    echo '<option'.$select.' value="'.$city_cap_1['id'].'">'.$city_cap_1['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+
+                            </td>
+
+                    </tr>
+                    <tr style="visibility: <?php if($this->city_cap_2=='') echo 'hidden;';else echo 'visible;';?>">                 
+                        <td align="right" nowrap="nowrap">
+                            <label for="city_cap_2" class="optional">QUẬN/HUYỆN</label>
+                        </td>
+                        <td nowrap="nowrap">
+                            <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select">
+                                            <option value="">---Chọn quận/huyện---</option>
+                                            <?php 
+                                            $city_cap_2s=$this->city_cap_2s;
+                                            if(is_array($city_cap_2s)&&count($city_cap_2s)>0){
+                                                foreach ($city_cap_2s as $city_cap_2){
+                                                    if($city_cap_2['id']==$this->city_cap_2){
+                                                        $select=' selected="selected"';
+                                                    }
+                                                    else{
+                                                        $select='';
+                                                    }
+                                                    echo '<option'.$select.' class="city_cap_2_'.$city_cap_2['city_cap_1_id'].'" value="'.$city_cap_2['id'].'">'.$city_cap_2['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+
+                            </td>
+
+                    </tr>
+                    <tr>                 
                         <td align="right" nowrap="nowrap"><label for="photo" class="optional">Hình ảnh:</label>
                         </td>
                         <td nowrap="nowrap">
@@ -74,11 +127,13 @@ if (isset($this->error) && trim($this->error) != '') {
                             <input type="file" name="photo" id="photo">					                 </td>
 
                     </tr>
+                    <?php if($this->photo!=''){?>
                     <tr>
                         <td colspan="2" style="padding-left: 150px;">
                             <img src="<?php echo $this->baseUrl('/uploads/'.$this->photo) ;?>" style="width: 100px;height: 100px;"/>
                         </td>
                     </tr>
+                    <?php } ?>
                     
                 </tbody>
             </table>
@@ -114,6 +169,19 @@ if (isset($this->error) && trim($this->error) != '') {
             buttonImageOnly: true,
             buttonText: 'Click để chọn ngày',
             option:$.datepicker.regional['vi']
+        });
+        
+        $("#city_cap_1").change(function (){
+            if($(this).val()==''||$("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').length==0){
+                $("#city_cap_2").parent().parent().css('visibility','hidden');
+                $("#city_cap_2").val('');
+            }
+            else{
+                $("#city_cap_2").parent().parent().css('visibility','visible');
+                $("#city_cap_2 option").hide();
+                $("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').show();
+            }
+            
         });
     });
 
