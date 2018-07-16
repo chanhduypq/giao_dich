@@ -2959,15 +2959,8 @@ a {
         margin-bottom: 0; }
     .page-content.detail-page .dt-info .dt-content .dt-btn {
       padding: 0;
-      /*tuetc*/
-/*      border-top: 5px solid #E8E8E8;
-      border-bottom: 5px solid #E8E8E8; */
-/*tuetc*/
-      position: fixed;
-      z-index: 99999;
-      bottom: 0;
-      padding-left: 20%;
-      padding-right: 20%;
+      border-top: 5px solid #E8E8E8;
+      border-bottom: 5px solid #E8E8E8; 
     }
       .page-content.detail-page .dt-info .dt-content .dt-btn .dt-btn-cl {
         padding: 0; 
