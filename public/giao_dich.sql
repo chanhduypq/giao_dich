@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-15 12:23:04
+Date: 2018-07-16 23:48:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,13 +40,22 @@ CREATE TABLE `city_cap_2` (
   `name` varchar(255) DEFAULT NULL,
   `city_cap_1_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of city_cap_2
 -- ----------------------------
 INSERT INTO `city_cap_2` VALUES ('1', 'Ngũ Hành Sơn', '1');
 INSERT INTO `city_cap_2` VALUES ('2', 'Thanh Khê', '1');
+INSERT INTO `city_cap_2` VALUES ('3', 'Hải Châu', '1');
+INSERT INTO `city_cap_2` VALUES ('4', 'Sơn Trà', '1');
+INSERT INTO `city_cap_2` VALUES ('5', 'Liên Chiểu', '1');
+INSERT INTO `city_cap_2` VALUES ('6', 'Cẩm Lệ', '1');
+INSERT INTO `city_cap_2` VALUES ('7', 'Huyện Hoà Vang', '1');
+INSERT INTO `city_cap_2` VALUES ('8', 'Nam Hội An', '2');
+INSERT INTO `city_cap_2` VALUES ('9', 'Bắc Hội An', '2');
+INSERT INTO `city_cap_2` VALUES ('10', 'Tam Kỳ', '2');
+INSERT INTO `city_cap_2` VALUES ('11', 'Núi Thành', '2');
 
 -- ----------------------------
 -- Table structure for city_cap_3
@@ -74,13 +83,16 @@ CREATE TABLE `dich_vu_hau_mai` (
   `photo` varchar(255) DEFAULT NULL,
   `tu_ngay` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `den_ngay` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `city_cap_1` int(11) DEFAULT NULL,
+  `city_cap_2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dich_vu_hau_mai
 -- ----------------------------
-INSERT INTO `dich_vu_hau_mai` VALUES ('3', 'sadad1', 'sadadada1', 'f2d2a3c33778a2252f969b61ac86a5b4.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00');
+INSERT INTO `dich_vu_hau_mai` VALUES ('1', 'tiêu đề hậu mãi 1', 'nội dung\r\nhậu mãi 1', 'fc36856704325b7f696d9519dd170d5c.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '1', '1');
+INSERT INTO `dich_vu_hau_mai` VALUES ('2', 'nhà thầu thi công', 'dfsdfsdf', 'a62b9225dd16387572ea4b94ff041937.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '2', '8');
 
 -- ----------------------------
 -- Table structure for du_an_cap_1
@@ -120,11 +132,18 @@ CREATE TABLE `du_an_cap_2` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_2
 -- ----------------------------
+INSERT INTO `du_an_cap_2` VALUES ('1', 'Nhà dân', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('2', 'Biệt thự', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('3', 'Cao tầng', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('4', 'Nhà tiền chế', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('5', 'Nhà dịch vụ', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('6', 'Nhà dự án', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('7', 'khac ...', '1', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_cap_3
@@ -138,11 +157,45 @@ CREATE TABLE `du_an_cap_3` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_3
 -- ----------------------------
+INSERT INTO `du_an_cap_3` VALUES ('1', 'Thiết kế', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('2', 'Phần thô', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('3', 'Phần hoàn thiện', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('4', 'Sân vườn', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('5', 'Nhà bếp', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('6', 'Thiết bị gia dụng', '1', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('7', 'Thiết kế', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('8', 'Phần thô', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('9', 'Phần hoàn thiện', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('10', 'Sân vườn', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('11', 'Nhà bếp', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('12', 'Thiết bị gia dụng', '2', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('13', 'Thiết kế', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('14', 'Phần thô', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('15', 'Phần hoàn thiện', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('16', 'Sân vườn', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('17', 'Nhà bếp', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('18', 'Thiết bị gia dụng', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('19', 'Thiết kế', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('20', 'Phần thô', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('21', 'Phần hoàn thiện', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('22', 'Sân vườn', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('23', 'Nhà bếp', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('24', 'Thiết bị gia dụng', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('25', 'Thiết kế', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('26', 'Phần thô', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('27', 'Phần hoàn thiện', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('28', 'Sân vườn', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('29', 'Nhà bếp', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('30', 'Thiết bị phục vụ', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('31', 'Khác ...', '5', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('32', 'khác ...', '4', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('33', 'khác ...', '3', null, null, '0');
+INSERT INTO `du_an_cap_3` VALUES ('34', 'khác ...', '1', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_cap_4
@@ -179,23 +232,6 @@ CREATE TABLE `du_an_da_chon` (
 INSERT INTO `du_an_da_chon` VALUES ('1', '4', '2018-07-14 23:20:59');
 
 -- ----------------------------
--- Table structure for khach_hang
--- ----------------------------
-DROP TABLE IF EXISTS `khach_hang`;
-CREATE TABLE `khach_hang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(255) DEFAULT NULL,
-  `password` varchar(500) DEFAULT NULL,
-  `full_name` varchar(255) DEFAULT NULL,
-  `other_infomation` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of khach_hang
--- ----------------------------
-
--- ----------------------------
 -- Table structure for nha_thau_thi_cong_cap_1
 -- ----------------------------
 DROP TABLE IF EXISTS `nha_thau_thi_cong_cap_1`;
@@ -206,12 +242,15 @@ CREATE TABLE `nha_thau_thi_cong_cap_1` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nha_thau_thi_cong_cap_1
 -- ----------------------------
-INSERT INTO `nha_thau_thi_cong_cap_1` VALUES ('1', 'sádasd', null, null, '0');
+INSERT INTO `nha_thau_thi_cong_cap_1` VALUES ('1', 'Nhân công lao động', null, null, '0');
+INSERT INTO `nha_thau_thi_cong_cap_1` VALUES ('2', 'Thiết bị dụng cụ', null, null, '0');
+INSERT INTO `nha_thau_thi_cong_cap_1` VALUES ('3', 'Máy móc cơ giới', null, null, '0');
+INSERT INTO `nha_thau_thi_cong_cap_1` VALUES ('4', 'Vật tư', null, null, '0');
 
 -- ----------------------------
 -- Table structure for nha_thau_thi_cong_cap_2
