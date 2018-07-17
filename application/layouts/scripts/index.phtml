@@ -10,6 +10,13 @@ $list_action_thumnail=array(
         'duanchon',
         'newsuploaded',
     );
+
+if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) {
+    $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='" . $identity['id'] . "'");
+    $number_du_an_da_chon = $number_du_an_da_chon[0];
+} else {
+    $number_du_an_da_chon = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +68,6 @@ $list_action_thumnail=array(
                                                 <!--<a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>-->
                                                 <?php 
                                                 if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                                    $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
-                                                    $number_du_an_da_chon=$number_du_an_da_chon[0];
                                                     ?>
                                                     <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span id="number_of_du_an_da_chon_mobile"><?php echo $number_du_an_da_chon;?></span></a>
                                                 <?php 
@@ -89,8 +94,6 @@ $list_action_thumnail=array(
                                     <div class="top-oc top-project"<?php if (!$auth->hasIdentity()||($identity['type']== Default_Model_User::NHAN_VIEN||$identity['type']== Default_Model_User::ADMIN)) echo ' style="display:none;';?>>
                                         <?php 
                                         if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                            $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
-                                            $number_du_an_da_chon=$number_du_an_da_chon[0];
                                             ?>
                                             <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
                                         <?php 
@@ -138,7 +141,8 @@ $list_action_thumnail=array(
                 <div class="top-search">
                     <div class="slider-block layout_3--slider-block">
                         <?php 
-                        $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai");
+                        $now=date('Y-m-d');
+                        $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
                         if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
                             foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){?>
                                 <div class="home-item">
@@ -148,10 +152,6 @@ $list_action_thumnail=array(
                             }
                         }
                         ?>
-                        
-<!--                        <div class="home-item">
-                            <img src="<?php echo $this->baseUrl();?>/front_end/images/home/bg_head_home_2.png" alt="">
-                        </div>-->
                     </div>
                     <div class="top-search-c">
                         <div class="container">

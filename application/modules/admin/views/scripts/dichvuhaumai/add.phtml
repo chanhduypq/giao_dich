@@ -50,7 +50,7 @@ if (isset($this->error) && trim($this->error) != '') {
                             <textarea cols="50" rows="5" id="content" name="content"><?php echo $this->content;?></textarea>
 
                     </tr>
-                    <tr>                 
+                    <tr<?php if($this->is_to_roi=='1') echo ' style="display:none";';?>>                 
                         <td align="right" nowrap="nowrap"><label for="tu_ngay" class="optional">Từ ngày:</label>
                         </td>
                         <td nowrap="nowrap">
@@ -58,7 +58,7 @@ if (isset($this->error) && trim($this->error) != '') {
                             <input readonly="readonly" type="text" name="tu_ngay" id="tu_ngay" value="<?php echo $this->tu_ngay;?>">					                 </td>
 
                     </tr>
-                    <tr>                 
+                    <tr<?php if($this->is_to_roi=='1') echo ' style="display:none";';?>>                 
                         <td align="right" nowrap="nowrap"><label for="den_ngay" class="optional">Đến ngày:</label>
                         </td>
                         <td nowrap="nowrap">
@@ -117,6 +117,21 @@ if (isset($this->error) && trim($this->error) != '') {
                                         </select>
 
                             </td>
+
+                    </tr>
+                    <tr>                 
+                        <td align="right" nowrap="nowrap"><label class="optional">&nbsp;</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <label>
+                                <input type="radio" name="is_to_roi" value="1"<?php if($this->is_to_roi=='1') echo ' checked="checked"';?>>&nbsp;&nbsp;Tờ rơi
+                            </label>
+                            <label style="margin-left: 50px;">
+                                <input type="radio" name="is_to_roi" value="0"<?php if($this->is_to_roi!='1') echo ' checked="checked"';?>>&nbsp;&nbsp;Không phải tờ rơi
+                            </label>
+                            
+                        </td>
 
                     </tr>
                     <tr>                 
@@ -183,6 +198,17 @@ if (isset($this->error) && trim($this->error) != '') {
             }
             
         });
+        
+        $("[name='is_to_roi']").change(function (){
+            if($(this).val()=='1'){
+                $("#tu_ngay").parent().parent().hide();
+                $("#den_ngay").parent().parent().hide();
+            }
+            else{
+                $("#tu_ngay").parent().parent().show();
+                $("#den_ngay").parent().parent().show();
+            }
+        })
     });
 
 </script>

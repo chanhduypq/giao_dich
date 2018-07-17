@@ -67,22 +67,35 @@ $(function(){
 	});
 
 	$('.search-dropdown li.item-select').on('click', function(e){
-		var mn_drop = $('.search-dropdown');
-		var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
+//		var mn_drop = $('.search-dropdown');
+//		var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
+//
+//		var show_value = $(this).parents('.form-select').children('.input-nt');
+//		var input_value = $(this).parents('.form-select').children('input[type="hidden"]');
+//
+//		if (show_value.hasClass('_open')) {
+//			$('.input-nt').removeClass('_open');
+//			mn_drop.removeClass('_expand');
+//
+//			show_value.html($(this).text());
+//			input_value.val($(this).text());
+//			$(this).removeClass('_open');
+//			tmn_drop.removeClass('_expand');
+//                        $("#search").submit();
+//		}
 
-		var show_value = $(this).parents('.form-select').children('.input-nt');
-		var input_value = $(this).parents('.form-select').children('input[type="hidden"]');
-
-		if (show_value.hasClass('_open')) {
-			$('.input-nt').removeClass('_open');
-			mn_drop.removeClass('_expand');
-
-			show_value.html($(this).text());
-			input_value.val($(this).text());
-			$(this).removeClass('_open');
-			tmn_drop.removeClass('_expand');
-                        $("#search").submit();
-		}
+            var t = $(".search-dropdown"),
+            n = $(this).parent().parent().parent().parent().parent().children(".search-dropdown"),
+            i = $(this).parent().parent().parent().parent().parent().children(".input-nt"),
+            o = $(this).parent().parent().parent().parent().parent().children('input[type="hidden"]');
+            i.hasClass("_open") && 
+                    ($(".input-nt").removeClass("_open"), 
+            t.removeClass("_expand"), 
+            i.html($(this).text()), 
+            o.val($(this).attr('data-value')), 
+            $(this).removeClass("_open"), 
+            n.removeClass("_expand"));
+            $("#search").submit();
 	});
 
 	$('#onClickSearch').on('click', function(e){

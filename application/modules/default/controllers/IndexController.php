@@ -34,40 +34,10 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
 
-        if ($muc == '1') {
-            $du_an_cap_1 = '1';
-            $this->view->headTitle('Dự án - dân dụng', true);
-        } else if ($muc == '2') {
-            $du_an_cap_1 = '2';
-            $this->view->headTitle('Dự án - hạ tầng', true);
-        } else if ($muc == '3') {
-            $du_an_cap_1 = '3';
-            $this->view->headTitle('Dự án - cầu đường', true);
-        } else if ($muc == '4') {
-            $du_an_cap_1 = '4';
-            $this->view->headTitle('Dự án - hoàn thiện nội ngoại thất', true);
-        } else if ($muc == '5') {
-            $du_an_cap_1 = '5';
-            $this->view->headTitle('Dự án - kiến trúc', true);
-        } else if ($muc == '6') {
-            $du_an_cap_1 = '6';
-            $this->view->headTitle('Dự án - điện nước', true);
-        } else if ($muc == '7') {
-            $du_an_cap_1 = '7';
-            $this->view->headTitle('Dự án - sửa chữa', true);
-        } else if ($muc == '8') {
-            $du_an_cap_1 = '8';
-            $this->view->headTitle('Dự án - cây xanh', true);
-        } else if ($muc == '9') {
-            $du_an_cap_1 = '9';
-            $this->view->headTitle('Dự án - dịch vụ vệ sinh', true);
-        } else {
-            $du_an_cap_1 = '0';
-        }
         $where = "(status<>3 OR status is null) and is_active=1";
         $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
         if ($muc!='0'&&ctype_digit($muc)){
-            $where .= " and du_an_cap_1='$du_an_cap_1'";
+            $where .= " and du_an_cap_1='$muc'";
         }
         if (ctype_digit($muccap2) && $muccap2 != '0') {
             $where .= " and du_an_cap_2='$muccap2'";
@@ -100,7 +70,6 @@ class IndexController extends Core_Controller_Action {
 
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
-        $this->view->muc = $muc;
         $this->view->allCount = count($allItems);
         $this->view->nhanVienCount = $nhanVienCount;
         $this->view->doiTacCount = $doiTacCount;
@@ -117,6 +86,7 @@ class IndexController extends Core_Controller_Action {
         $this->view->mucCap2=$muccap2;
         $this->view->city=$city;
         $this->view->cityCap2=$citycap2;
+        $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($muc), true);
         
         $tenMuc = 'Tất cả danh mục';
         if(ctype_digit($muccap2)&&$muccap2!='0'){
@@ -168,36 +138,8 @@ class IndexController extends Core_Controller_Action {
     public function duanAction() {
         $muc = $this->_getParam('muc');
 
-        if ($muc == 'dan-dung') {
-            $du_an_cap_1 = '1';
-            $this->view->headTitle('Dự án - dân dụng', true);
-        } else if ($muc == 'ha-tang') {
-            $du_an_cap_1 = '2';
-            $this->view->headTitle('Dự án - hạ tầng', true);
-        } else if ($muc == 'cau-duong') {
-            $du_an_cap_1 = '3';
-            $this->view->headTitle('Dự án - cầu đường', true);
-        } else if ($muc == 'hoan-thien-noi-ngoai-that') {
-            $du_an_cap_1 = '4';
-            $this->view->headTitle('Dự án - hoàn thiện nội ngoại thất', true);
-        } else if ($muc == 'kien-truc') {
-            $du_an_cap_1 = '5';
-            $this->view->headTitle('Dự án - kiến trúc', true);
-        } else if ($muc == 'dien-nuoc') {
-            $du_an_cap_1 = '6';
-            $this->view->headTitle('Dự án - điện nước', true);
-        } else if ($muc == 'sua-chua') {
-            $du_an_cap_1 = '7';
-            $this->view->headTitle('Dự án - sửa chữa', true);
-        } else if ($muc == 'cay-xanh') {
-            $du_an_cap_1 = '8';
-            $this->view->headTitle('Dự án - cây xanh', true);
-        } else if ($muc == 'dich-vu-ve-sinh') {
-            $du_an_cap_1 = '9';
-            $this->view->headTitle('Dự án - dịch vụ vệ sinh', true);
-        } else {
-            $du_an_cap_1 = '0';
-        }
+        $du_an_cap_1= $this->getDuAnCap1IdBySlug($muc);
+        
         if ($du_an_cap_1 == '0') {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
@@ -242,6 +184,8 @@ class IndexController extends Core_Controller_Action {
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->mucCap2Get= (ctype_digit($muccap2) && $muccap2 != '0')?"muccap2/$muccap2":"";
         $this->view->mucGet= "muc/$muc";
+        $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($du_an_cap_1), true);
+        $this->view->background= $this->getBackgroundByDuAnCap1Id($du_an_cap_1);
     }
     
     
@@ -451,6 +395,78 @@ class IndexController extends Core_Controller_Action {
                     $khachHangCount++;
                 }
             }
+        }
+    }
+    
+    private function getHeadTitleByDuAnCap1Id($duAnCap1Id){
+        if ($duAnCap1Id == '1') {
+            return 'Dự án - dân dụng';
+        } else if ($duAnCap1Id == '2') {
+            return 'Dự án - hạ tầng';
+        } else if ($duAnCap1Id == '3') {
+            return 'Dự án - cầu đường';
+        } else if ($duAnCap1Id == '4') {
+            return 'Dự án - hoàn thiện nội ngoại thất';
+        } else if ($duAnCap1Id == '5') {
+            return 'Dự án - kiến trúc';
+        } else if ($duAnCap1Id == '6') {
+            return 'Dự án - điện nước';
+        } else if ($duAnCap1Id == '7') {
+            return 'Dự án - sửa chữa';
+        } else if ($duAnCap1Id == '8') {
+            return 'Dự án - cây xanh';
+        } else if ($duAnCap1Id == '9') {
+            return 'Dự án - dịch vụ vệ sinh';
+        } else {
+            return '';
+        }
+    }
+    
+    private function getBackgroundByDuAnCap1Id($duAnCap1Id){
+        if ($duAnCap1Id == '1') {
+            return 'cau-duong.png';
+        } else if ($duAnCap1Id == '2') {
+            return 'ha-tang.png';
+        } else if ($duAnCap1Id == '3') {
+            return 'cau-duong.png';
+        } else if ($duAnCap1Id == '4') {
+            return 'hoan-thien-noi-ngoai-that.png';
+        } else if ($duAnCap1Id == '5') {
+            return 'kien-truc.png';
+        } else if ($duAnCap1Id == '6') {
+            return 'dien-nuoc.png';
+        } else if ($duAnCap1Id == '7') {
+            return 'sua-chua.png';
+        } else if ($duAnCap1Id == '8') {
+            return 'cay-xanh.png';
+        } else if ($duAnCap1Id == '9') {
+            return 'dich-vu-ve-sinh.png';
+        } else {
+            return '';
+        }
+    }
+    
+    private function getDuAnCap1IdBySlug($slug){
+        if ($slug == 'dan-dung') {
+            return '1';
+        } else if ($slug == 'ha-tang') {
+            return '2';
+        } else if ($slug == 'cau-duong') {
+            return '3';
+        } else if ($slug == 'hoan-thien-noi-ngoai-that') {
+            return '4';
+        } else if ($slug == 'kien-truc') {
+            return '5';
+        } else if ($slug == 'dien-nuoc') {
+            return '6';
+        } else if ($slug == 'sua-chua') {
+            return '7';
+        } else if ($slug == 'cay-xanh') {
+            return '8';
+        } else if ($slug == 'dich-vu-ve-sinh') {
+            return '9';
+        } else {
+            return '0';
         }
     }
 

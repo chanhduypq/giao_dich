@@ -125,6 +125,7 @@ if (isset($this->message)&&trim($this->message)!='') {
                 <th>Hình ảnh</th>
                 <th>Tiêu đề</th>
                 <th>Nội dung</th>
+                <th>Tờ rơi</th>
                 <th>&nbsp;</th>
             </thead>
             <tbody>
@@ -146,6 +147,13 @@ if (isset($this->message)&&trim($this->message)!='') {
                         </td>
                         <td>
                             <?php echo $item['content'];?>
+                        </td>
+                        <td>
+                            <?php 
+                            if($item['is_to_roi']){
+                                echo 'X';
+                            }
+                            ?>
                         </td>
                         
                         <?php 
