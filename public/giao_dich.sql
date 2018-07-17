@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-16 23:48:13
+Date: 2018-07-17 14:29:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,18 +81,19 @@ CREATE TABLE `dich_vu_hau_mai` (
   `title` varchar(255) DEFAULT NULL,
   `content` tinytext,
   `photo` varchar(255) DEFAULT NULL,
-  `tu_ngay` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `den_ngay` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `tu_ngay` timestamp NULL DEFAULT NULL,
+  `den_ngay` timestamp NULL DEFAULT NULL,
   `city_cap_1` int(11) DEFAULT NULL,
   `city_cap_2` int(11) DEFAULT NULL,
+  `is_to_roi` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dich_vu_hau_mai
 -- ----------------------------
-INSERT INTO `dich_vu_hau_mai` VALUES ('1', 'tiêu đề hậu mãi 1', 'nội dung\r\nhậu mãi 1', 'fc36856704325b7f696d9519dd170d5c.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '1', '1');
-INSERT INTO `dich_vu_hau_mai` VALUES ('2', 'nhà thầu thi công', 'dfsdfsdf', 'a62b9225dd16387572ea4b94ff041937.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '2', '8');
+INSERT INTO `dich_vu_hau_mai` VALUES ('1', 'tiêu đề hậu mãi 1', 'nội dung\r\nhậu mãi 1', 'bd548f30679771c25b09c370fd4adef5.jpg', '2018-07-17 00:00:00', '2018-07-17 00:00:00', '1', '1', '0');
+INSERT INTO `dich_vu_hau_mai` VALUES ('2', 'nhà thầu thi công', 'dfsdfsdf', 'a62b9225dd16387572ea4b94ff041937.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '2', '8', null);
 
 -- ----------------------------
 -- Table structure for du_an_cap_1
@@ -132,7 +133,7 @@ CREATE TABLE `du_an_cap_2` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_2
@@ -422,14 +423,15 @@ CREATE TABLE `tin_du_an` (
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
   `is_hot` tinyint(1) DEFAULT NULL,
+  `is_dich_vu_hau_mai` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
-INSERT INTO `tin_du_an` VALUES ('1', 'dự án', 'nội dung dự án1', null, '2018-07-14 10:47:09', '2018-07-14 12:20:12', '4', '4', '2018-07-14 00:00:00', '1', '1', null, '1', '0', '1 tỉ rưỡi1', null, null, null, null, '1', null);
-INSERT INTO `tin_du_an` VALUES ('2', 'xvxcvxcvx', 'cbcbvbc', null, '2018-07-14 12:27:45', '2018-07-14 23:41:42', '3', '2', '0000-00-00 00:00:00', '1', '2', null, '1', null, '1000', null, null, null, null, '1', null);
+INSERT INTO `tin_du_an` VALUES ('1', 'dự án', 'nội dung dự án1', null, '2018-07-14 10:47:09', '2018-07-17 12:32:07', '4', '4', '2018-07-14 00:00:00', '1', '1', null, '1', '0', '1 tỉ rưỡi1', null, null, null, null, '1', null, '1');
+INSERT INTO `tin_du_an` VALUES ('2', 'xvxcvxcvx', 'cbcbvbc', null, '2018-07-14 12:27:45', '2018-07-17 12:32:06', '3', '2', '0000-00-00 00:00:00', '1', '2', null, '1', null, '1000', null, null, null, null, '1', null, '1');
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -458,13 +460,14 @@ CREATE TABLE `tin_nha_thau_thi_cong` (
   `allow_show_quang_cao` tinyint(1) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
   `is_hot` tinyint(1) DEFAULT NULL,
+  `is_dich_vu_hau_mai` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_nha_thau_thi_cong
 -- ----------------------------
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'nhà thầu thi công test', 'nội dung nhà thầu thi công test', null, '2018-07-14 10:46:20', '2018-07-15 08:59:04', '4', '4', '2018-07-14 00:00:00', '2', null, null, '1', '0', '2', 'dịch vụ thi công1', null, null, null, null, '1', null);
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'nhà thầu thi công test', 'nội dung nhà thầu thi công test', null, '2018-07-14 10:46:20', '2018-07-17 12:30:46', '4', '4', '2018-07-14 00:00:00', '2', null, null, '1', '0', '2', 'dịch vụ thi công1', null, null, null, null, '1', null, '0');
 
 -- ----------------------------
 -- Table structure for user
@@ -543,13 +546,13 @@ phan_loai,
 tin_nha_thau_thi_cong.id,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 as cap_1,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_2 as cap_2,
-target_type,'' as city_cap_1,'' as city_cap_2,is_active,'nha_thau_thi_cong' as type_tin,tin_nha_thau_thi_cong.status,tin_nha_thau_thi_cong.is_hot from tin_nha_thau_thi_cong join user on user.id=tin_nha_thau_thi_cong.user_id left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id group by tin_nha_thau_thi_cong.id ;
+target_type,'' as city_cap_1,'' as city_cap_2,is_active,'nha_thau_thi_cong' as type_tin,tin_nha_thau_thi_cong.status,tin_nha_thau_thi_cong.is_hot from tin_nha_thau_thi_cong join user on user.id=tin_nha_thau_thi_cong.user_id left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id group by tin_nha_thau_thi_cong.id ; ;
 
 -- ----------------------------
 -- View structure for view_tin_du_an
 -- ----------------------------
 DROP VIEW IF EXISTS `view_tin_du_an`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin_du_an` AS select title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,tong_dau_tu,photo,is_quang_cao,allow_show_quang_cao,phone,user.type,tin_du_an.id,tin_du_an.du_an_cap_1,tin_du_an.du_an_cap_2,target_type,city_cap_1,city_cap_2,is_active,tin_du_an.status,tin_du_an.is_hot from tin_du_an join user on user.id=tin_du_an.user_id left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id group by tin_du_an.id ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin_du_an` AS select title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,tong_dau_tu,photo,is_quang_cao,allow_show_quang_cao,phone,user.type,tin_du_an.id,tin_du_an.du_an_cap_1,tin_du_an.du_an_cap_2,target_type,city_cap_1,city_cap_2,is_active,tin_du_an.status,tin_du_an.is_hot from tin_du_an join user on user.id=tin_du_an.user_id left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id group by tin_du_an.id ; ;
 
 -- ----------------------------
 -- View structure for view_tin_nha_thau_thi_cong

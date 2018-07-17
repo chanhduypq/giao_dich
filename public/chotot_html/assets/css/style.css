@@ -788,6 +788,22 @@ a:hover, a:focus {
     left: -30px;
     top: 50%;
     margin-top: -8px; }
+/*tuetc*/
+.ct-sidebar .menu-side .mn-parent-side1 > li > a::before {
+    content: '';
+    height: 16px;
+    width: 16px;
+    background: #ffffff;
+    border: 1px solid #707070;
+    border-radius: 100%;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    margin-top: -8px; }
+/*tuetc*/
+.ct-sidebar .menu-side .mn-parent-side1 > li > a {
+    position: relative;
+    line-height: 1; }
 .ct-sidebar .menu-side .mn-parent-side > li > a span {
     display: block;
     white-space: nowrap;
