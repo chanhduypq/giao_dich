@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-17 14:29:46
+Date: 2018-07-18 17:01:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -92,8 +92,8 @@ CREATE TABLE `dich_vu_hau_mai` (
 -- ----------------------------
 -- Records of dich_vu_hau_mai
 -- ----------------------------
-INSERT INTO `dich_vu_hau_mai` VALUES ('1', 'tiêu đề hậu mãi 1', 'nội dung\r\nhậu mãi 1', 'bd548f30679771c25b09c370fd4adef5.jpg', '2018-07-17 00:00:00', '2018-07-17 00:00:00', '1', '1', '0');
-INSERT INTO `dich_vu_hau_mai` VALUES ('2', 'nhà thầu thi công', 'dfsdfsdf', 'a62b9225dd16387572ea4b94ff041937.jpg', '2018-07-16 00:00:00', '2018-07-17 00:00:00', '2', '8', null);
+INSERT INTO `dich_vu_hau_mai` VALUES ('1', 'sdfsd', 'sdfsdfsd', '6281fdc32e0dcdb3ffafd5cfcfe6b645.jpg', null, null, '1', '1', '1');
+INSERT INTO `dich_vu_hau_mai` VALUES ('2', 'sdfsdfs', 'sfsdfsd', '9149a5353d9704bde70a1b98afb583d4.jpg', null, null, '1', '2', '1');
 
 -- ----------------------------
 -- Table structure for du_an_cap_1
@@ -133,7 +133,7 @@ CREATE TABLE `du_an_cap_2` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_2
