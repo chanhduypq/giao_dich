@@ -85,7 +85,7 @@ $(function(){
 	});
 
 	$('#onClickSearch').on('click', function(e){
-		var mn_search = $('.top-search');
+		var mn_search = $('.top-search-c');
 		if (!$(this).hasClass('_open')) {
 			$(this).addClass('_open');
 			mn_search.addClass('_expand');
