@@ -86,12 +86,15 @@ $(function(){
 
 	$('#onClickSearch').on('click', function(e){
 		var mn_search = $('.top-search-c');
+		var index_search = $('.index .top-search');
 		if (!$(this).hasClass('_open')) {
 			$(this).addClass('_open');
 			mn_search.addClass('_expand');
+			index_search.show();
 		}else{
 			$(this).removeClass('_open');
 			mn_search.removeClass('_expand');
+			index_search.hide();
 		}
 	});
 
