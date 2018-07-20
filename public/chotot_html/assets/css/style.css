@@ -751,7 +751,7 @@ a:hover, a:focus {
 .go-top {
     height: 30px;
     position: fixed;
-    bottom: 50px;
+    bottom: 70px;
     right: 20px;
     z-index: 98;
     width: 30px;
@@ -4176,7 +4176,30 @@ a:hover, a:focus {
     .onClickSearch {
         display: inline-block;
     }
-    
+    /*fixed bottom price and phone in detail*/
+    .fixed-detail {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99;
+        background: #fff;
+        padding: 5px 0 !important;
+        -webkit-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+        border: 0 !important;
+    }
+    .top {
+        position: fixed;
+        top: 0;
+        z-index: 99;
+        width: 100%;
+    }
+    .top-search,
+    .sub-page-content {
+        margin-top: 50px;
+    }
 }
 @media screen and (max-width: 375px) {
     .layout-3 .top .top-poc .top-oc a,

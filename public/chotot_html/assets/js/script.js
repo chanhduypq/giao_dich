@@ -501,4 +501,5 @@ $(function(){
 	    	minimumResultsForSearch: -1
 	    });
 	});
+	
 });

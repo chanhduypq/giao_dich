@@ -12,48 +12,57 @@
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper">
+        <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
             <div class="top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
+                        <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
                                 <div class="logo-link">
                                     <a href="#">DANGTINXAYDUNG</a>
                                 </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-opt">
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
+                            
                             <div class="top-poc">
-                                <div class="top-oc top-login">
-                                    <a href="#" data-bg="" id="login_click">Đăng nhập</a>
-                                </div>
-                                <div class="top-oc top-project">
-                                    <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
+                                <!-- menu show cpc -->
+                                <div class="show-pc">
+                                    <div class="top-oc top-login">
+                                        <a href="#" data-bg="" id="login_click">Đăng nhập</a>
+                                    </div>
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
 
-                                    <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                        <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    </div>
+                                    <div class="oc-dropdown">
+                                        <ul>
+                                            <li><a href="#">Đăng nhập</a></li>
+                                            <li><a href="#">Đăng ký tài khoản</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="oc-dropdown">
-                                    <ul>
-                                        <li><a href="#">Đăng nhập</a></li>
-                                        <li><a href="#">Đăng ký tài khoản</a></li>
-                                    </ul>
+                                <!-- menu show sp -->
+                                <div class="show-sp">
+                                    
+                                    <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
+
+                                    <div class="top-oc top-login">
+                                        <a href="#" class="ct-btn"  data-bg=""><text>Đăng nhập/Đăng ký</text></a>
+                                    </div>
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span>2</span></a>
+                                    </div>
+                                    <div class="top-oc top-post">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            <!--  -->
                         </div>
                     </div>
                 </div>
@@ -637,6 +646,16 @@
     <div class="go-top">
     </div>
     <script src="assets/js/script.js"></script>
+    <script type="text/javascript">
+        $(window).scroll(function(){
+          var sticky = $('.dt-btn'),
+              scroll = $(window).scrollTop();
+
+          if (scroll >= 100) sticky.addClass('fixed-detail');
+          else sticky.removeClass('fixed-detail');
+        });
+        
+    </script>
 </body>
 
 </html>
