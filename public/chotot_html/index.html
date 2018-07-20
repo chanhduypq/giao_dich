@@ -11,14 +11,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=786155294845570&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 
     <div id="app">
         <div id="sec1" class="main-wrapper index">
@@ -410,8 +403,10 @@
     <!-- End Mobile menu -->
     <div class="go-top">
     </div>
-   
-    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+    
+    <a class="share-f show-sp" href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')">
+        <img src="assets/images/social/facebook-share.png">
+    </a>
     <script src="assets/js/script.js"></script>
     <!-- share social -->
     <script type="text/javascript">

@@ -4200,6 +4200,16 @@ a:hover, a:focus {
     .sub-page-content {
         margin-top: 50px;
     }
+    .share-f {
+        bottom: 100px;
+        position: fixed;
+        z-index: 99;
+        right: 6px;
+       
+    }
+    .share-f img{
+         width: 100px;
+    }
 }
 @media screen and (max-width: 375px) {
     .layout-3 .top .top-poc .top-oc a,
