@@ -364,6 +364,19 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     ?>
 </div>
 <script type="text/javascript">
+    $(window).scroll(function(){
+      var sticky = $('.dt-btn'),
+          scroll = $(window).scrollTop();
+
+      if (scroll >= 100) sticky.addClass('fixed-detail');
+      else sticky.removeClass('fixed-detail');
+    });
+
+    // social share
+    function genericSocialShare(url){
+        window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+        return true;
+    }
 jQuery(function ($){
     
    if($(".dt-cast ul li").length<=3){

@@ -34,17 +34,17 @@ $list_action_thumnail=array(
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper">
+        <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
             <div class="top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
+                        <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
                                 <div class="logo-link">
                                     <a href="/">DANGTINXAYDUNG</a>
                                 </div>
-                                <div class="cv-menu">
+<!--                                <div class="cv-menu">
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -56,63 +56,126 @@ $list_action_thumnail=array(
                                             <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png"><span>2</span></a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-opt">
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
                             <div class="top-poc">
-                                <?php if (!$auth->hasIdentity()) {?>
-                                <div class="top-oc top-login">
-                                    <a href="javascript:void(0)" data-bg="" id="login_click">Đăng nhập</a>
-                                </div>
-                                <?php 
-                                }  
-                                else{
-                                ?>
-                                <div class="top-oc top-login">
-                                    <a href="javascript:void(0)" data-bg="" id="login_click">&nbsp;</a>
-                                </div>
-                                <?php 
-                                } 
-                                ?>
-                                <div class="top-oc top-project">
-                                    <?php 
-                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                        
-                                        $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
-                                        $number_du_an_da_chon=$number_du_an_da_chon[0];
-                                        ?>
-                                    <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                <div class="show-pc">
+                                    <?php if (!$auth->hasIdentity()) {?>
+                                    <div class="top-oc top-login">
+                                        <a href="javascript:void(0)" data-bg="" id="login_click">Đăng nhập</a>
+                                    </div>
                                     <?php 
                                     }  
+                                    else{
+                                    ?>
+                                    <div class="top-oc top-login">
+                                        <a href="javascript:void(0)" data-bg="" id="login_click">&nbsp;</a>
+                                    </div>
+                                    <?php 
+                                    } 
+                                    ?>
+                                    <div class="top-oc top-project">
+                                        <?php 
+                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+
+                                            $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
+                                            $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                            ?>
+                                        <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                        <?php 
+                                        }  
+                                        else{?>
+                                            <a style="visibility: hidden;" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon">0</span></a>
+                                        <?php 
+                                        }
+                                        ?>
+
+                                        <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    </div>
+                                    <?php if (!$auth->hasIdentity()) {?>
+                                    <div class="oc-dropdown">
+                                        <ul>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
+                                        </ul>
+                                    </div>
+                                    <?php }
                                     else{?>
-                                        <a style="visibility: hidden;" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon">0</span></a>
+                                    <div class="oc-dropdown">
+                                        <ul>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/logout">Đăng xuất</a></li>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/info">Thông tin cá nhân</a></li>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/newsuploaded">Các tin đã đăng</a></li>
+                                            <li><a href="<?php echo $this->baseUrl();?>/default/account/duanchon">Các dự án đã chọn</a></li>
+                                        </ul>
+                                    </div>
                                     <?php 
                                     }
                                     ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- menu show sp -->
+                        <div class="show-sp">
 
-                                    <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
-                                </div>
-                                <?php if (!$auth->hasIdentity()) {?>
-                                <div class="oc-dropdown">
-                                    <ul>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
-                                    </ul>
-                                </div>
-                                <?php }
+                            <a class="onClickSearch" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
+
+                            <?php if (!$auth->hasIdentity()) {?>
+                            <div class="top-oc top-login">
+                                <a href="javascript:void(0)" data-bg="" id="login_click">Đăng nhập</a>
+                            </div>
+                            <?php 
+                            }  
+                            else{
+                            ?>
+                            <div class="top-oc top-login">
+                                <a href="javascript:void(0)" data-bg="" id="login_click">&nbsp;</a>
+                            </div>
+                            <?php 
+                            } 
+                            ?>
+                            <div class="top-oc top-project">
+                                <?php 
+                                if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+
+                                    $number_du_an_da_chon= Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='".$identity['id']."'");
+                                    $number_du_an_da_chon=$number_du_an_da_chon[0];
+                                    ?>
+                                <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
+                                <?php 
+                                }  
                                 else{?>
-                                <div class="oc-dropdown">
-                                    <ul>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/logout">Đăng xuất</a></li>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/info">Thông tin cá nhân</a></li>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/newsuploaded">Các tin đã đăng</a></li>
-                                        <li><a href="<?php echo $this->baseUrl();?>/default/account/duanchon">Các dự án đã chọn</a></li>
-                                    </ul>
-                                </div>
+                                    <a style="visibility: hidden;" class="ct-btn" data-bg="">Dự án đã chọn<span id="number_of_du_an_da_chon">0</span></a>
                                 <?php 
                                 }
                                 ?>
+
+                                <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                            </div>
+                            <?php if (!$auth->hasIdentity()) {?>
+                            <div class="oc-dropdown">
+                                <ul>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
+                                </ul>
+                            </div>
+                            <?php }
+                            else{?>
+                            <div class="oc-dropdown">
+                                <ul>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/logout">Đăng xuất</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/info">Thông tin cá nhân</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/newsuploaded">Các tin đã đăng</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/account/duanchon">Các dự án đã chọn</a></li>
+                                </ul>
+                            </div>
+                            <?php 
+                            }
+                            ?>
+                            <div class="top-oc top-post">
+                                <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
                             </div>
                         </div>
                     </div>
@@ -343,8 +406,15 @@ $list_action_thumnail=array(
     <!-- End Mobile menu -->
     <div class="go-top">
     </div>
+    <a class="share-f show-sp" href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')">
+        <img src="<?php echo $this->baseUrl();?>/front_end/images/social/facebook-share.png">
+    </a>
     <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
     <script type="text/javascript">
+        function genericSocialShare(url){
+            window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+            return true;
+        }
     jQuery(function ($){
         <?php     
         if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>

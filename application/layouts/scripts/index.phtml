@@ -48,45 +48,18 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <div class="top">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-5 col-md-4 col-logo">
+                            <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
                                 <div class="top-logo">
                                     <div class="logo-link">
                                         <a href="/">DANGTINXAYDUNG</a>
                                     </div>
-                                    <div class="cv-menu">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                    <div class="mobile-top-icon">
-                                        <ul>
-                                            <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
-                                            <li style="margin-right: 20px;"><a href="javascript:void(0)" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a></li>
-                                            <?php } ?>
-                                            <!--tuetc dự án-->
-                                            <li>
-                                                <!--<a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span>2</span></a>-->
-                                                <?php 
-                                                if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                                    ?>
-                                                    <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span id="number_of_du_an_da_chon_mobile"><?php echo $number_du_an_da_chon;?></span></a>
-                                                <?php 
-                                                }  
-                                                else{?>
-                                                    <a style="visibility: hidden;"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-white.png" alt="#"><span id="number_of_du_an_da_chon_mobile">0</span></a>
-                                                <?php 
-                                                }
-                                                ?>
-                                            </li>
-                                            
-                                            
-                                            
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-7 col-md-8 col-opt">
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
                                 <div class="top-poc">
+                                    <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
+                                    <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
+                                    <?php } ?>
                                     <div class="top-oc top-login"<?php if ($auth->hasIdentity()&&trim($identity['full_name'])=='') {?> style="width: 60px;display: block;"<?php }?>>
                                         <a href="javascript:void(0)" id="login_click" class="ct-btn"  data-bg=""><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?>&nbsp;&nbsp;</a>
                                     </div>
@@ -139,20 +112,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <?php 
                 if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
                 <div class="top-search">
-                    <div class="slider-block layout_3--slider-block">
-                        <?php 
-                        $now=date('Y-m-d');
-                        $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
-                        if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
-                            foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){?>
-                                <div class="home-item">
-                                    <img src="<?php echo $this->baseUrl('/uploads/'.$dich_vu_hau_mai['photo']);?>" alt="">
-                                </div>
-                        <?php 
-                            }
-                        }
-                        ?>
-                    </div>
+                    
                     <div class="top-search-c">
                         <div class="container">
                             <div class="row">
@@ -243,6 +203,20 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             </div>
                         </div>
                     </div>
+                    <div class="slider-block layout_3--slider-block">
+                        <?php 
+                        $now=date('Y-m-d');
+                        $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
+                        if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
+                            foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){?>
+                                <div class="home-item">
+                                    <img src="<?php echo $this->baseUrl('/uploads/'.$dich_vu_hau_mai['photo']);?>" alt="">
+                                </div>
+                        <?php 
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
                 <?php } ?>
                 <!-- End Search -->
@@ -323,18 +297,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         </div>
         <!-- Mobile menu -->
         <div class="mobile-menu">
-            <!--tuetc-->
-<!--            <div class="mb-top">
-                <div class="mb-menu-wr">
-                    <div class="mb-menu-l">
-                        <span class="mb-u"></span>
-                    </div>
-                    <div class="mb-menu-r">
-                        <p>ĐĂNG NHẬP</p>
-                        <p>Đăng nhập để bắt đầu đăng tin</p>
-                    </div>
-                </div>
-            </div>-->
             <!-- End top mobile menu -->
             <div class="mb-over">
                 <!-- Link menu mobile -->
