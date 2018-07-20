@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=786155294845570&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <div id="app">
         <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
@@ -22,19 +31,7 @@
                                 <div class="logo-link">
                                     <a href="#">DANGTINXAYDUNG</a>
                                 </div>
-                                <!-- <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
-                                </div> -->
+                                
                             </div>
                         </div>
                         <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
@@ -280,10 +277,20 @@
                                <div class="ft-block company-social">
                                     <div class="ft-tit">LIÊN KẾT</div>
                                     <ul>
-                                       <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
-                                       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
-                                       <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
-                                       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                                       <li>
+                                            <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')">
+                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook
+                                            </a>
+                                        </li>
+                                       <li>
+                                            <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.codexworld.com')"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+
+                                            </a>
+                                        </li>
+                                       <li><a href="/"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
+                                       <li>
+                                            <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><i     class="fa fa-twitter" aria-hidden="true"></i>Twitter
+                                            </a>
+                                        </li> 
                                     </ul>
                                </div>
                             </div>
@@ -403,7 +410,16 @@
     <!-- End Mobile menu -->
     <div class="go-top">
     </div>
+   
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
     <script src="assets/js/script.js"></script>
+    <!-- share social -->
+    <script type="text/javascript">
+        function genericSocialShare(url){
+            window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+            return true;
+        }
+    </script>
 </body>
 
 </html>

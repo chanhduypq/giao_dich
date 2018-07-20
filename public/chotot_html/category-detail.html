@@ -222,7 +222,7 @@
                                         <div class="dt-t">Chia sẻ dự án tới:</div>
                                         <ul class="dt-li-share">
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-fb.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="assets/images/social/icon-fb.png" alt=""></a>
                                                 <span>Facebook</span>
                                             </li>
                                             <li>
@@ -230,11 +230,11 @@
                                                 <span>Messenger</span>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-twitter.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="assets/images/social/icon-twitter.png" alt=""></a>
                                                 <span>Twitter</span>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-google.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="assets/images/social/icon-google.png" alt=""></a>
                                                 <span>Google+</span>
                                             </li>
                                             <li>
@@ -294,16 +294,16 @@
                                         <div class="dt-t">Chia sẻ dự án tới:</div>
                                         <ul class="dt-li-share">
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-fb.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="assets/images/social/icon-fb.png" alt=""></a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="assets/images/social/icon-messenger.png" alt=""></a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-twitter.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="assets/images/social/icon-twitter.png" alt=""></a>
                                             </li>
                                             <li>
-                                                <a href="#"><img src="assets/images/social/icon-google.png" alt=""></a>
+                                                <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="assets/images/social/icon-google.png" alt=""></a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="assets/images/social/icon-link.png" alt=""></a>
@@ -654,7 +654,13 @@
           if (scroll >= 100) sticky.addClass('fixed-detail');
           else sticky.removeClass('fixed-detail');
         });
-        
+
+        // social share
+        function genericSocialShare(url){
+            window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+            return true;
+        }
+    
     </script>
 </body>
 
