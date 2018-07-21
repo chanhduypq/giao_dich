@@ -21,7 +21,7 @@ $list_action_thumnail=array(
     <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
     <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
     <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    
     
     <?php     
     if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
@@ -34,6 +34,7 @@ $list_action_thumnail=array(
     
 </head>
 <body>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
     <div id="app">
         <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
