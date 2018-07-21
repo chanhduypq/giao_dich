@@ -70,32 +70,36 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         </div>
                         <?php 
                         } ?>
-                        <!--tuetc-->
-<!--                        <div class="dt-share">
+                        <div class="dt-share">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
-                                    <span>Facebook</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
-                                    <span>Messenger</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
-                                    <span>Twitter</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                    <span>Google+</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
-                                    <span>Link</span>
-                                </li>
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
+                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/zalo.svg" height="40" width="40" alt="share button">
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
+                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/messenger.svg" height="40" width="40" alt="share button">
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
+                                        <span>Twitter</span>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
+                                        <span>Google+</span>
+                                    </li>
+
                             </ul>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';?>">
                         <div class="dt-title">
@@ -242,27 +246,26 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             }
                             ?>
                         </div>
-                        <!--tuetc-->
-<!--                        <div class="dt-share dt-share-mobile">
+                        <div class="dt-share dt-share-mobile">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
                                 <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
                             </ul>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 <!-- End detail Infor -->
