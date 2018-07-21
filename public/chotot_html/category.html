@@ -11,48 +11,68 @@
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper">
+        <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
             <div class="top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
+                        <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
                                 <div class="logo-link">
                                     <a href="#">DANGTINXAYDUNG</a>
                                 </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-opt">
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
+                            
                             <div class="top-poc">
-                                <div class="top-oc top-login">
-                                    <a href="#" data-bg="" id="login_click">Đăng nhập</a>
-                                </div>
-                                <div class="top-oc top-project">
-                                    <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
+                                <!-- menu show cpc -->
+                                <div class="show-pc">
+                                    <div class="top-oc top-login">
+                                        <a href="#" data-bg="" id="login_click">Đăng nhập</a>
+                                    </div>
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
 
-                                    <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                        <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    </div>
+                                    <div class="oc-dropdown">
+                                        <ul>
+                                            <li><a href="#">Đăng nhập</a></li>
+                                            <li><a href="#">Đăng ký tài khoản</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="oc-dropdown">
-                                    <ul>
-                                        <li><a href="#">Đăng nhập</a></li>
-                                        <li><a href="#">Đăng ký tài khoản</a></li>
+                                <!-- menu show sp -->
+                                <div class="show-sp">
+                                    
+                                    <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
+
+                                    <div class="top-oc top-login">
+                                        <!-- chua dang nhap -->
+                                        <!-- <a href="#" class="ct-btn"  data-bg=""><text>Đăng nhập/Đăng ký</text></a> -->
+                                        
+                                        <!-- sau khi da dang nhap -->
+                                        <a class="ct-btn onClickInformation"  data-bg=""><text>Đăng nhập/Đăng ký</text></a>
+                                    </div>
+                                    <!-- show thong tin da dang nhap -->
+                                    <ul class="show-information">
+                                        <li><a href="#">Trang ca nhan</a></li>
+                                        <li><a href="#">Dự án đã chọn</a></li>
+                                        <li><a href="#">Thoat</a></li>
                                     </ul>
+                                    <!-- end -->
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span>2</span></a>
+                                    </div>
+                                    <div class="top-oc top-post">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            <!--  -->
                         </div>
                     </div>
                 </div>
@@ -168,8 +188,7 @@
                                                     <li><a href="#">Hệ thống MI</a></li>
                                                     <li><a href="#">Thiế gkasgfkh gahsgfahsgfh asfajsghfjahgsfhgt bị vệ sinh</a></li>
                                                     <li><a href="#">Nhà bếp</a></li>
-                                                </ul>
-                                                <ul>
+                                                
                                                     <li><a href="#">Thạch cao</a></li>
                                                     <li><a href="#">Chống thấm</a></li>
                                                     <li><a href="#">Sơn</a></li>
@@ -182,6 +201,52 @@
                                         </li>
                                         <li class="_current">
                                             <a  href="#"><span>Phần thô</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Phần hoàn thiện</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Sân vườn</span></a>
                                             <div class="mn-dropdown-side">
                                                 <div class="btn-back-parent"></div>
                                                 <ul>
@@ -205,7 +270,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <a href="#"><span>Phần hoàn thiện</span></a>
+                                            <a href="#"><span>Thiết bị gia dụng</span></a>
                                             <div class="mn-dropdown-side">
                                                 <div class="btn-back-parent"></div>
                                                 <ul>
@@ -218,6 +283,198 @@
                                                     <li><a href="#">Nhà bếp</a></li>
                                                 </ul>
                                                 <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Nhà bếp</span></a>
+                                           <div class="mn-dropdown-side">
+                                            <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Nhà vệ sinh</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Phần hoàn thiện</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Sân vườn</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Thiết bị gia dụng</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Nhà bếp</span></a>
+                                           <div class="mn-dropdown-side">
+                                            <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Nhà vệ sinh</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        </li>
+                                        <li>
+                                            <a href="#"><span>Phần hoàn thiện</span></a>
+                                            <div class="mn-dropdown-side">
+                                                <div class="btn-back-parent"></div>
+                                                <ul>
+                                                    <li><a href="#">Thạch cao</a></li>
+                                                    <li><a href="#">Chống thấm</a></li>
+                                                    <li><a href="#">Sơn</a></li>
+                                                    <li><a href="#">Điện nước</a></li>
+                                                    <li><a href="#">Hệ thống MI</a></li>
+                                                    <li><a href="#">Thiết bị vệ sinh</a></li>
+                                                    <li><a href="#">Nhà bếp</a></li>
+                                                
                                                     <li><a href="#">Thạch cao</a></li>
                                                     <li><a href="#">Chống thấm</a></li>
                                                     <li><a href="#">Sơn</a></li>
