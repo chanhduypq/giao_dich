@@ -894,7 +894,7 @@ a:hover, a:focus {
     padding-left: 15px;
 }
 .ct-sidebar .menu-side .mn-dropdown-side ul li a {
-    background: url("../images/social/icon-chitay.png") no-repeat left 4px;
+    background: url("../images/social/icon-chitay.png") no-repeat left 1px;
     padding-left: 40px;
     background-size: 41px;
 }
