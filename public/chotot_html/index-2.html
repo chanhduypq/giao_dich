@@ -12,48 +12,72 @@
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper">
+        <div id="sec1" class="main-wrapper index">
             <!-- Start Top  -->
             <div class="top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
+                        <div class="col-xs-3 col-sm-5 col-md-4 col-logo">
                             <div class="top-logo">
                                 <div class="logo-link">
-                                    <a href="#">DANGTINXAYDUNG</a>
+                                    <a href="#"><img class="logo" src="assets/images/social/logo.jpg""></a>
                                 </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-opt">
+                        <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
+                            
                             <div class="top-poc">
-                                <div class="top-oc top-login">
-                                    <a href="#" data-bg="" id="login_click">Đăng nhập</a>
-                                </div>
-                                <div class="top-oc top-project">
-                                    <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
+                                <!-- menu show cpc -->
+                                <div class="show-pc">
+                                    <div class="top-oc top-login">
+                                        <a href="#" data-bg="" id="login_click">Đăng nhập</a>
+                                    </div>
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg="">Dự án đã chọn<span>2</span></a>
 
-                                    <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                        <a href="#" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                    </div>
+                                    <div class="oc-dropdown">
+                                        <ul>
+                                            <li><a href="#">Đăng nhập</a></li>
+                                            <li><a href="#">Đăng ký tài khoản</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="oc-dropdown">
-                                    <ul>
-                                        <li><a href="#">Đăng nhập</a></li>
-                                        <li><a href="#">Đăng ký tài khoản</a></li>
+                                <!-- menu show sp -->
+                                <div class="show-sp">
+                                    
+                                    <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
+
+                                    <div class="top-oc top-login">
+                                        <!-- chua dang nhap -->
+                                        <!-- <a href="#" class="ct-btn"  data-bg=""><text>Đăng nhập/Đăng ký</text></a> -->
+                                        
+                                        <!-- sau khi da dang nhap -->
+                                        <a class="ct-btn onClickInformation"  data-bg=""><text>Đăng nhập/Đăng ký</text></a>
+                                    </div>
+                                    <!-- show thong tin da dang nhap -->
+                                    <ul class="show-information">
+                                        <li><a href="#">Trang ca nhan</a></li>
+                                        <li><a href="#">Dự án đã chọn</a></li>
+                                        <li><a href="#">Thoat</a></li>
                                     </ul>
+                                    <!-- end -->
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span>2</span></a>
+                                    </div>
+                                    <!-- dang tin for pc -->
+                                    <div class="top-oc top-post">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
+                                    <!-- dang tin for sp -->
+                                    <a  href="#" class="dang-tin show-sp">Đăng tin</a>
+
                                 </div>
                             </div>
+                            
+                            <!--  -->
                         </div>
                     </div>
                 </div>
@@ -61,87 +85,98 @@
             <!-- End Top -->
             <!-- Start Search -->
             <div class="top-search">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-md-12">
-                            <div class="search-block">
-                                <form action="#">
-                                    <div class="form-list">
-                                        <div class="form-item">
-                                            <div class="form-input form-text">
-                                                <input type="text" value="Nhập tìm kiếm..." class="focus-text">
+                <div class="top-search-c">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <div class="search-block">
+                                    <form action="#">
+                                        <div class="form-list">
+                                            <div class="form-item">
+                                                <div class="form-input form-text">
+                                                    <input type="text" value="Nhập tìm kiếm..." class="focus-text">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-item">
-                                            <ul class="form-right">
-                                                <li>
-                                                    <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt">Tất cả danh mục</div>
-                                                        <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category">
-                                                        <div class="search-dropdown four-col">
-                                                            <div class="wrap-select">
-                                                                <ul class="nav-dropdown parent-dropdown">
-                                                                    <li data-id="#">Dân dụng</li>
-                                                                    <li data-id="#">Hoàn thiện nội thất</li>
-                                                                    <li data-id="#">Hoàn thiện nội thất</li>
-                                                                    <li data-id="#">Nhà thầu phụ</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Điện nước</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Hạ tầng</li>
-                                                                    <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                    <li data-id="#">Điện nước</li>
-                                                                    <li data-id="#">Cầu đường</li>
-                                                                </ul>
-                                                                <div class="nav-dropdown sub-dropdown">
-                                                                    <span class="btn-back-parent"></span>
-                                                                    <ul>
-                                                                        <li class="item-select" data-id="#">Điện dân dụng 1</li>
-                                                                        <li class="item-select" data-id="#">Cầu đường 2</li>
-                                                                        <li class="item-select" data-id="#">Hạ tầng 3</li>
-                                                                        <li class="item-select" data-id="#">Cầu đường</li>
+                                            <div class="form-item">
+                                                <ul class="form-right">
+                                                    <li>
+                                                        <div class="form-input form-select form-select-city">
+                                                            <div class="input-nt">Tất cả danh mục</div>
+                                                            <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category">
+                                                            <div class="search-dropdown four-col">
+                                                                <div class="wrap-select">
+                                                                    <ul class="nav-dropdown parent-dropdown">
+                                                                        <li data-id="#">Dân dụng</li>
+                                                                        <li data-id="#">Hoàn thiện nội thất</li>
+                                                                        <li data-id="#">Hoàn thiện nội thất</li>
+                                                                        <li data-id="#">Nhà thầu phụ</li>
+                                                                        <li data-id="#">Hạ tầng</li>
+                                                                        <li data-id="#">Hạ tầng</li>
+                                                                        <li data-id="#">Dịch vụ hậu mãi</li>
+                                                                        <li data-id="#">Cầu đường</li>
+                                                                        <li data-id="#">Điện nước</li>
+                                                                        <li data-id="#">Cầu đường</li>
+                                                                        <li data-id="#">Hạ tầng</li>
+                                                                        <li data-id="#">Hạ tầng</li>
+                                                                        <li data-id="#">Dịch vụ hậu mãi</li>
+                                                                        <li data-id="#">Cầu đường</li>
+                                                                        <li data-id="#">Điện nước</li>
+                                                                        <li data-id="#">Cầu đường</li>
                                                                     </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-input form-select form-select-city">
-                                                        <div class="input-nt">Khu vực</div>
-                                                        <input type="hidden" value="Khu vực" class="input-dropdown value-category">
-                                                        <div class="search-dropdown two-col">
-                                                            <div class="wrap-select">
-                                                                <ul class="nav-dropdown parent-dropdown">
-                                                                    <li data-id="#">Đà Nẵng</li>
-                                                                    <li data-id="#">Quảng Nam</li>
-                                                                </ul>
-                                                                <div class="nav-dropdown sub-dropdown">
-                                                                    <span class="btn-back-parent"></span>
-                                                                    <ul>
-                                                                        <li class="item-select" data-id="#">Quận Hải Châu</li>
-                                                                        <li class="item-select" data-id="#">Quận Thanh Khê</li>
-                                                                        <li class="item-select" data-id="#">Quận Cẩm Lệ</li>
-                                                                        <li class="item-select" data-id="#">Quận Liên CHiểu</li>
-                                                                        <li class="item-select" data-id="#">Quận Sơn Trà</li>
-                                                                        <li class="item-select" data-id="#">Quận Ngũ Hành Sơn</li>
-                                                                    </ul>
+                                                                    <div class="nav-dropdown sub-dropdown">
+                                                                        <span class="btn-back-parent" id="btn-back-parent"></span>
+                                                                        <ul class="sub-parent-dropdown">
+                                                                            <li data-id="#">Điện dân dụng 1</li>
+                                                                            <li class="item-select" data-id="#">Cầu đường 2</li>
+                                                                            <li class="item-select" data-id="#">Hạ tầng 3</li>
+                                                                            <li class="item-select" data-id="#">Cầu đường</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="nav-dropdown sub-dropdown">
+                                                                        <span class="btn-back-parent" id="sub-btn-back-parent"></span>
+                                                                        <ul>
+                                                                            <li class="item-select" data-id="#">Điện dân dụng 12</li>
+                                                                            <li class="item-select" data-id="#">Cầu đường 2</li>
+                                                                            <li class="item-select" data-id="#">Hạ tầng 3</li>
+                                                                            <li class="item-select" data-id="#">Cầu đường</li>
+                                                                        </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                                <li class="btn-link">
-                                                    <a href="#" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-input form-select form-select-city">
+                                                            <div class="input-nt">Khu vực</div>
+                                                            <input type="hidden" value="Khu vực" class="input-dropdown value-category">
+                                                            <div class="search-dropdown two-col">
+                                                                <div class="wrap-select">
+                                                                    <ul class="nav-dropdown parent-dropdown">
+                                                                        <li data-id="#">Đà Nẵng</li>
+                                                                        <li data-id="#">Quảng Nam</li>
+                                                                    </ul>
+                                                                    <div class="nav-dropdown sub-dropdown">
+                                                                        <span class="btn-back-parent"></span>
+                                                                        <ul>
+                                                                            <li class="item-select" data-id="#">Quận Hải Châu</li>
+                                                                            <li class="item-select" data-id="#">Quận Thanh Khê</li>
+                                                                            <li class="item-select" data-id="#">Quận Cẩm Lệ</li>
+                                                                            <li class="item-select" data-id="#">Quận Liên CHiểu</li>
+                                                                            <li class="item-select" data-id="#">Quận Sơn Trà</li>
+                                                                            <li class="item-select" data-id="#">Quận Ngũ Hành Sơn</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="btn-link">
+                                                        <a href="#" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row row-custom">
                         <div class="col-xs-f col-xs-6 col-sm-6 col-md-4">
                             <div class="home-item item-medium">
                                 <a href="#">
