@@ -362,11 +362,11 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
   }
   ?>
 </div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
 <script type="text/javascript">
     function showPhoneList(){
-//        $( "#dialog" ).dialog( "open" );
+        $( "#phone_list" ).dialog( "open" );
     }
     $(window).scroll(function(){
       var sticky = $('.dt-btn'),
@@ -382,17 +382,17 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         return true;
     }
 jQuery(function ($){
-//    $( "#phone_list" ).dialog({
-//      autoOpen: false,
-//      show: {
-//        effect: "blind",
-//        duration: 1000
-//      },
-//      hide: {
-//        effect: "explode",
-//        duration: 1000
-//      }
-//    });
+    $( "#phone_list" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
     
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
