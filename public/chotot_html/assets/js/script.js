@@ -97,15 +97,15 @@ $(function(){
 
 	$('#onClickSearch').on('click', function(e){
 		var mn_search = $('.top-search-c');
-		var index_search = $('.index .top-search');
+		//var index_search = $('.index .top-search');
 		if (!$(this).hasClass('_open')) {
 			$(this).addClass('_open');
 			mn_search.addClass('_expand');
-			index_search.addClass('_expand');
+			//index_search.addClass('_expand');
 		}else{
 			$(this).removeClass('_open');
 			mn_search.removeClass('_expand');
-			index_search.removeClass('_expand');
+			//index_search.removeClass('_expand');
 		}
 	});
 
@@ -229,10 +229,10 @@ $(function(){
 			$('body').removeClass('_open');
 		}
 
-		if ( !$( e.target ).is($('#onClickSearch')) && !$( e.target ).is($('#onClickSearch *')) && !$( e.target ).is($('.top-search *'))) {
+		if ( !$( e.target ).is($('#onClickSearch')) && !$( e.target ).is($('#onClickSearch *')) && !$( e.target ).is($('.top-search-c *'))) {
 	       	$('#onClickSearch').removeClass('_open');
 			$('.top-search-c').removeClass('_expand');
-			$('.index .top-search').removeClass('_expand');
+			//$('.index .top-search').removeClass('_expand');
 		}
 
 		if ( !$( e.target ).is($('.tab-drop .text-drop')) && !$( e.target ).is($('.tab-drop .text-drop *'))) {
@@ -264,7 +264,7 @@ $(function(){
 			$('.cv-menu').removeClass('_open');
 			$('.mobile-menu').removeClass('_expand');
 			$('#onClickSearch').removeClass('_open');
-			$('.index .top-search').removeClass('_expand');
+			//$('.index .top-search').removeClass('_expand');
 			$('.top-search-c').removeClass('_expand');
 			$('body').removeClass('_open');
 			$('.tab-drop .text-drop').removeClass('_open');

@@ -21,9 +21,11 @@
 .fix-share li a{
     color: #777;
 }
-.layout-3 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li {
+.layout-3 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li,
+.top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li {
         margin-left: -3px;
     }  
+
 @media screen and (max-width: 402px) {
     .fix-share {
         margin-bottom: 8px;
@@ -4113,7 +4115,7 @@ a:hover, a:focus {
         font-size: 10px;
         font-weight: 300; }
     .index .top-search {
-        display: none;
+        /*display: none;*/
         margin-top: 50px;
     }    
     .index .top-search._expand {
