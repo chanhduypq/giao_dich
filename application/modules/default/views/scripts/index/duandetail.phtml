@@ -45,8 +45,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 }
                                 ?>
                             </div>
-<!--                            tuetc
-                            <span>03</span>-->
                         </div>
                         <?php if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){?>
                         <div class="dt-chip-thumb">
@@ -89,14 +87,14 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         </a>
                                     </li>
 
-                                    <li>
+<!--                                    <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                         <span>Twitter</span>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
                                         <span>Google+</span>
-                                    </li>
+                                    </li>-->
 
                             </ul>
                         </div>
@@ -185,24 +183,22 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 <div class="dt-btn-cl">
                                     <div class="dt-phone">
                                           <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
-                                          <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
-                                          <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
-                                          <?php 
-                                          $user_duan=$this->user_duan;
-                                          if(is_array($user_duan)&&count($user_duan)>0){
-                                              foreach ($user_duan as $temp){
-                                                  echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
-                                              }
-                                          }
-                                          ?>
-                                          </div>
+                                          <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>                                          
                                     </div>
                                 </div>
                             <?php 
                             }
                             else{
-                                if($identity['id']==$items[0]['user_id']){
-                                    //k hiển thị
+                                if($identity['id']==$items[0]['user_id']){?>
+                                    <div class="dt-btn-cl">
+                                        <div class="dt-phone">
+                                              <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
+                                              <div style="opacity: 0.3;cursor: not-allowed;" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                        </div>
+                                    </div>
+
+                            <?php 
+                            
                                 }
                                 else{
                                     if($identity['type']== Default_Model_User::ADMIN){?>
@@ -227,17 +223,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
                                                   <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
-                                                  <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
-                                                  <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
-                                                  <?php 
-                                                  $user_duan=$this->user_duan;
-                                                  if(is_array($user_duan)&&count($user_duan)>0){
-                                                      foreach ($user_duan as $temp){
-                                                          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
-                                                      }
-                                                  }
-                                                  ?>
-                                                  </div>
+                                                  <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
                                             </div>
                                         </div>
                             <?php 
@@ -255,12 +241,12 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
                                 </li>
-                                <li>
+<!--                                <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                </li>
+                                </li>-->
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
@@ -366,7 +352,22 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     }
     ?>
 </div>
+<div id="phone_list" title="Basic dialog">
+  <?php 
+  $user_duan=$this->user_duan;
+  if(is_array($user_duan)&&count($user_duan)>0){
+      foreach ($user_duan as $temp){
+          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
+      }
+  }
+  ?>
+</div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+    function showPhoneList(){
+//        $( "#dialog" ).dialog( "open" );
+    }
     $(window).scroll(function(){
       var sticky = $('.dt-btn'),
           scroll = $(window).scrollTop();
@@ -381,6 +382,17 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         return true;
     }
 jQuery(function ($){
+//    $( "#phone_list" ).dialog({
+//      autoOpen: false,
+//      show: {
+//        effect: "blind",
+//        duration: 1000
+//      },
+//      hide: {
+//        effect: "explode",
+//        duration: 1000
+//      }
+//    });
     
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
