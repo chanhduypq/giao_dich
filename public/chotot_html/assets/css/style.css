@@ -19,6 +19,10 @@
     width: 40px !important;
     height: 40px !important;
 }
+.fix-share-d img {
+    width: 30px !important;
+    height: 30px !important;
+}
 .fix-share li {
     display: inline-block;
     margin: 5px;
@@ -4114,6 +4118,9 @@ a:hover, a:focus {
     .page-content.account-page.category-page .pc-info .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc-l p:nth-child(2) {
         display: none; } }
 /*fix slider sp*/
+.login-p {
+    display: none;
+}
 @media screen and (max-width: 767px) {
     
     .index .top .top-poc .top-oc a {
@@ -4206,6 +4213,9 @@ a:hover, a:focus {
         color: #38699f;
         font-size: 12px;
         text-align: center;
+    }
+    .login a:last-child:hover {
+        color: #FF772F;
     }
     .login .a-login {
         display: block;
@@ -4351,6 +4361,10 @@ a:hover, a:focus {
         clear: both;
         display: block;
     }
+    .login-c {
+        margin-top: 5px;
+    }
+    
 }
 @media screen and (min-width: 641px) and (max-width: 768px){
     .layout-3 .top-search, .page-content {
@@ -4361,10 +4375,18 @@ a:hover, a:focus {
         overflow: hidden;
     }
 }
-
+@media screen and (max-width: 640px){
+    .login-p {
+        margin: 10px -10px;
+        display: block;
+    }
+}    
 @media screen and (max-width: 480px) {
     .page-content.home-page .container .row .col-xs-f {
         margin-bottom: 5px;
+    }
+    .login-p {
+        margin: 10px -10px 5px -10px;
     }
 }
 @media screen and (max-width: 414px) {
@@ -4379,6 +4401,9 @@ a:hover, a:focus {
     }
     .page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-r p:last-child {
         margin-left: 5px;
+    }
+    .login-c {
+        margin-top: 0;
     }
 }
 @media screen and (max-width: 375px) {
@@ -4481,7 +4506,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     text-align: left;
 }
 .row-custom {
-    width: 80%;
+    width: 92.5%;
     margin: 0 auto;
 }
 .onClickSearch img {
