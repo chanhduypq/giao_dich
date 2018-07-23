@@ -29,7 +29,7 @@ $identity = $auth->getIdentity();
                 <div class="dt-info">
                     <div class="dt-thumb">
                         <div class="dt-main-thumb">
-                            <div class="ct-replace-img thumbnail">
+                            <div class="ct-replace-img">
                                 <?php 
                                 if($items[0]['photo']!=''){?>
                                     <a href="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']); ?>" rel="prettyPhoto">
@@ -57,7 +57,7 @@ $identity = $auth->getIdentity();
                                     foreach ($items as $item){
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
-                                                <div class="chip-thumb-i thumbnail" data-image="<?php echo $this->baseUrl();?>/front_end/images/home/active-adults-bars-583392 2.png">
+                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>">
                                                     <a href="<?php echo $this->baseUrl('/uploads/'.$item['photo']); ?>" rel="prettyPhoto">
                                                         <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
                                                     </a>
@@ -74,31 +74,37 @@ $identity = $auth->getIdentity();
                         }
                         ?>
                         <!--tuetc-->
-<!--                        <div class="dt-share">
+                        <div class="dt-share">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
-                                    <span>Facebook</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
-                                    <span>Messenger</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
-                                    <span>Twitter</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                    <span>Google+</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
-                                    <span>Link</span>
-                                </li>
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
+                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/zalo.svg" height="40" width="40" alt="share button">
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
+                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/messenger.svg" height="40" width="40" alt="share button">
+                                        </a>
+                                    </li>
+
+<!--                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
+                                        <span>Twitter</span>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
+                                        <span>Google+</span>
+                                    </li>-->
+
                             </ul>
-                        </div>-->
+                        </div>
+
                     </div>
                     <div class="dt-content">
                         <div class="dt-title">
@@ -234,26 +240,26 @@ $identity = $auth->getIdentity();
                             ?>
                         </div>
                         <!--tuetc-->
-<!--                        <div class="dt-share dt-share-mobile">
+                        <div class="dt-share dt-share-mobile">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
                                 <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
                                 </li>
-                                <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
+<!--                                <li>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                </li>
+                                    <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
+                                </li>-->
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
                             </ul>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 <!-- End detail Infor -->
@@ -288,7 +294,7 @@ $identity = $auth->getIdentity();
                                         ?>
                                         <div class="cate-item">
                                             <div class="cate-item-i">
-                                                <div class="cit-part cit-left thumbnail">
+                                                <div class="cit-part cit-left">
                                                     <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
                                                         <img src="<?php echo $item['photo']; ?>">
                                                     </a>
