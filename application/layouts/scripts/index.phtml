@@ -1,15 +1,6 @@
 <?php 
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
-$list_action_thumnail=array(
-        'duan',
-        'nhathauthicong',
-        'duandetail',
-        'nhathauthicongdetail',
-        'search',
-        'duanchon',
-        'newsuploaded',
-    );
 
 if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) {
     $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='" . $identity['id'] . "'");
@@ -32,14 +23,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
         <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
     
-        <?php     
-        if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery.nailthumb.1.1.js"></script>    
-        <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-        <script src="<?php echo $this->baseUrl(); ?>/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-        <?php 
-        }
-        ?>
+        
     </head>
     <body>
         <script src="https://sp.zalo.me/plugins/sdk.js"></script>
@@ -385,26 +369,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 return true;
             }
             jQuery(function ($){
-                <?php 
-        if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-//                   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
-//                    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
-//                                    image.show(1000,after)
-//                                }});
-//----------------------
-//                       $('.thumnail').nailthumb({replaceAnimation:'animate'});
-//
-//                       $("a[rel^='prettyPhoto']").prettyPhoto(
-//                                                               {
-//                                                                    social_tools:false,
-//                                                                    deeplinking:false
-//                                                                }
-//                        );
-//-----------------------------
-                    //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-                    <?php 
-                    }
-                    ?>
+                
             });
         </script>
         <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>

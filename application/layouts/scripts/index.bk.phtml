@@ -1,13 +1,7 @@
 <?php 
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
-$list_action_thumnail=array(
-        'duan',
-        'nhathauthicong',
-        'duandetail',
-        'nhathauthicongdetail',
-        'search',
-    );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,14 +17,6 @@ $list_action_thumnail=array(
     <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
     
     
-    <?php     
-    if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery.nailthumb.1.1.js"></script>    
-    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-    <script src="<?php echo $this->baseUrl(); ?>/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-    <?php 
-    }
-    ?>
     
 </head>
 <body>
@@ -418,19 +404,7 @@ $list_action_thumnail=array(
             return true;
         }
     jQuery(function ($){
-        <?php     
-        if(in_array(Zend_Controller_Front::getInstance()->getRequest()->getActionName(), $list_action_thumnail)){?>
-        //   $('.thumnail').nailthumb({width:200,height:100,fitDirection:'center center'});
-        //    $('.thumnail').nailthumb({replaceAnimation: function(image,after) {
-        //                            image.show(1000,after)
-        //                        }});
-//           $('.thumnail').nailthumb({replaceAnimation:'animate'});
-
-//           $("a[rel^='prettyPhoto']").prettyPhoto();
-        //   $("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-        <?php 
-        }
-        ?>
+        
     });
     </script>
 </body>
