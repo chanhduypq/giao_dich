@@ -18,4 +18,3 @@ define('BLOCK_PATH',APPLICATION_PATH . '/blocks');
 define('APPLICATION_URL', '');
 
 define('PHOTO_DEFAULT', '/front_end/images/category-detail/cate-detail-main.png');
-define('PHOTO_HOT', '/images/409-hot.png');

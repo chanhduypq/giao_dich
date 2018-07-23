@@ -99,13 +99,15 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             </ul>
                         </div>
                     </div>
-                    <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';?>">
+                    <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';else if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1') echo ' hot';?>">
                         <div class="dt-title">
-                            <?php 
-                            if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1'){?>
-                            <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
-                            <?php } ?>
-                            <a><?php echo $items[0]['title'];?></a>
+                            <a>
+                                <?php 
+                                if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1'){?>
+                                <span class="tap-hot">Hot</span>
+                                <?php } ?>
+                                <?php echo $items[0]['title'];?>
+                            </a>
                             <?php 
                             if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
                                 if(isset($number_du_an_da_chon)&&$number_du_an_da_chon=='0'){
@@ -286,7 +288,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     
                                 
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
@@ -296,7 +298,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                     <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
                                                         <?php 
                                                         if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                             <?php echo $item['title'];?>
                                                     </a>
@@ -426,6 +428,12 @@ jQuery(function ($){
                 $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);
                 $(node).parents('.dt-content').toggleClass('selected');
                 $(node).parents('.cate-item-i').toggleClass('selected');
+                $(node).parents('.dt-content').removeClass('hot');
+                $(node).parents('.cate-item-i').removeClass('hot');
+//                if($(node).parents('.dt-content').hasClass('hot')){
+//                    $(node).parents('.dt-content').toggleClass('hot');
+//                }
+                
             }
         });
    });

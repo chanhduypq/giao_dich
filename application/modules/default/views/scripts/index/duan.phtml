@@ -172,21 +172,17 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
-                                                <!--<span class="vertical-align-helper"></span>-->
-                                                <!--<a target="_blank" href="<?php echo $item['photo']; ?>" rel="prettyPhoto">-->
                                                     <img src="<?php echo $item['photo']; ?>">
-                                                <!--</a>-->
                                                 <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
-                                            <div class="cit-part cit-right" style="background: none;">
+                                            <div class="cit-part cit-right">
                                                 <div class="cit-title">
                                                     <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
-                                                        <!--<span class="tap-hot">Hot</span> tuetc-->
-                                                        <?php 
-                                                        if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        
+                                                        <?php if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                             <?php echo $item['title'];?>
                                                     </a>
@@ -283,6 +279,8 @@ jQuery(function ($){
                 }
                 $(node).parents('.dt-content').toggleClass('selected');
                 $(node).parents('.cate-item-i').toggleClass('selected');
+                $(node).parents('.cate-item-i').removeClass('hot');
+//                $(node).parents('.cate-item-i').toggleClass('hot');
 
             }
         });
