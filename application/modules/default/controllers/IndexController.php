@@ -14,11 +14,21 @@ class IndexController extends Core_Controller_Action {
         $muc = $this->_getParam('muc','0');
         $city=$this->_getParam('city','0');
         if(strpos($muc, '_')!==FALSE){
-            list($muc,$muccap2)= explode('_', $muc);
+            $temp=explode('_', $muc);
+            if(count($temp)==2){
+                list($muc,$muccap2)= explode('_', $muc);
+                $muccap3=$this->_getParam('muccap3','0');
+            }
+            else if(count($temp)==3){
+                list($muc,$muccap2,$muccap3)= explode('_', $muc);
+            }
+            
         }
         else{
             $muccap2=$this->_getParam('muccap2','0');
+            $muccap3=$this->_getParam('muccap3','0');
         }
+        
         if(strpos($city, '_')!==FALSE){
             list($city,$citycap2)= explode('_', $city);
         }
@@ -41,6 +51,9 @@ class IndexController extends Core_Controller_Action {
         }
         if (ctype_digit($muccap2) && $muccap2 != '0') {
             $where .= " and du_an_cap_2='$muccap2'";
+        }
+        if (ctype_digit($muccap3) && $muccap3 != '0') {
+            $where .= " and id IN (select tin_du_an_id from tinduan_duancap3 where du_an_cap_3='$muccap3')";
         }
         
         if ($city!='0'&&ctype_digit($city)){
@@ -78,24 +91,37 @@ class IndexController extends Core_Controller_Action {
         $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->mucCap2Get= (ctype_digit($muccap2)&&$muccap2!='0')?"muccap2/$muccap2":"";
+        $this->view->mucCap3Get= (ctype_digit($muccap3)&&$muccap3!='0')?"muccap3/$muccap3":"";
         $this->view->mucGet= "muc/$muc";
         $this->view->cityGet= "city/$city";
         $this->view->cityCap2Get= (ctype_digit($citycap2) && $citycap2 != '0')?"citycap2/$citycap2":"";
         $this->view->q=trim($this->_getParam('q'),'');
         $this->view->muc=$muc;
         $this->view->mucCap2=$muccap2;
+        $this->view->mucCap3=$muccap3;
         $this->view->city=$city;
         $this->view->cityCap2=$citycap2;
         $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($muc), true);
         
         $tenMuc = 'Tất cả danh mục';
-        if(ctype_digit($muccap2)&&$muccap2!='0'){
-            $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
-            foreach ($du_an_cap_2s as $du_an_cap_2){
-                if($du_an_cap_2['id']==$muccap2){
-                    $tenMuc=$du_an_cap_2['name'];
+        if(ctype_digit($muccap3)&&$muccap3!='0'){
+            $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3");
+            foreach ($du_an_cap_3s as $du_an_cap_3){
+                if($du_an_cap_3['id']==$muccap3){
+                    $tenMuc=$du_an_cap_3['name'];
                 }
             }
+        }
+        else if(ctype_digit($muccap2)&&$muccap2!='0'){
+            if($tenMuc=='Tất cả danh mục'){
+                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
+                foreach ($du_an_cap_2s as $du_an_cap_2){
+                    if($du_an_cap_2['id']==$muccap2){
+                        $tenMuc=$du_an_cap_2['name'];
+                    }
+                }
+            }
+            
         }
         else{
             if(ctype_digit($muc)&&$muc!='0'){

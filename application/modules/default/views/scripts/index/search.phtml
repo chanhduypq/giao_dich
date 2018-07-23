@@ -105,10 +105,10 @@ $quangcao_items = $this->quangcao_items;
                         <!-- Tab link -->
                         <?php 
                         echo $this->tab($this->tab,array(
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
                                                     ),
                                 $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
                         ?>

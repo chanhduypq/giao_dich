@@ -182,7 +182,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 ?>                            
                                 <div class="dt-btn-cl">
                                     <div class="dt-phone">
-                                          <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
                                           <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>                                          
                                     </div>
                                 </div>
@@ -192,7 +191,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 if($identity['id']==$items[0]['user_id']){?>
                                     <div class="dt-btn-cl">
                                         <div class="dt-phone">
-                                              <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
                                               <div style="opacity: 0.3;cursor: not-allowed;" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
                                         </div>
                                     </div>
@@ -352,7 +350,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     }
     ?>
 </div>
-<div id="phone_list" title="Basic dialog">
+<div id="phone_list" title="">
   <?php 
   $user_duan=$this->user_duan;
   if(is_array($user_duan)&&count($user_duan)>0){
@@ -366,7 +364,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
 <script type="text/javascript">
     function showPhoneList(){
-        $( "#phone_list" ).dialog( "open" );
+        dialog.dialog( "open" );
     }
     $(window).scroll(function(){
       var sticky = $('.dt-btn'),
@@ -382,7 +380,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         return true;
     }
 jQuery(function ($){
-    $( "#phone_list" ).dialog({
+    dialog=$( "#phone_list" ).dialog({
       autoOpen: false,
       show: {
         effect: "blind",
