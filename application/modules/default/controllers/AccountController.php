@@ -161,7 +161,7 @@ class AccountController extends Core_Controller_Action {
         $this->view->headTitle('Xây dựng - các dự án đã chọn', true);
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
-            $this->_helper->redirector('index', 'index', 'default');
+            $this->_helper->redirector('login', 'account', 'default');
             exit;
         }
         

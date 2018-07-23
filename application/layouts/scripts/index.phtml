@@ -15,8 +15,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     <head>
         <meta charset="UTF-8">
         <?php echo $this->headTitle(); ?>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
@@ -36,57 +35,48 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
                                 <div class="top-logo">
                                     <div class="logo-link">
-                                        <a href="/">DANGTINXAYDUNG</a>
+                                        <a href="/"><img class="logo" src="<?php echo $this->baseUrl();?>/front_end/images/social/logo.jpg"></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
                                 <div class="top-poc">
+                                    
                                     <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
                                     <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                                     <?php } ?>
-                                    <div class="top-oc top-login"<?php if ($auth->hasIdentity()&&trim($identity['full_name'])=='') {?> style="width: 60px;display: block;"<?php }?>>
-                                        <a href="javascript:void(0)" id="login_click" class="ct-btn"  data-bg=""><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?>&nbsp;&nbsp;</a>
+                                    <div class="top-oc top-login">
+                                        <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?></text>&nbsp;</a>
                                     </div>
                                     
-                                    <div class="top-oc top-project"<?php if (!$auth->hasIdentity()||($identity['type']== Default_Model_User::NHAN_VIEN||$identity['type']== Default_Model_User::ADMIN)) echo ' style="display:none;';?>>
-                                        <?php 
-                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                            ?>
-                                            <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span></a>
-                                        <?php 
-                                        }  
-                                        else{?>
-                                            <a style="visibility: hidden;" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span id="number_of_du_an_da_chon">0</span></a>
-                                        <?php 
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="top-oc top-post">
-                                        <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
-                                    </div>
-                                
-                                
-                                <?php if (!$auth->hasIdentity()) {?>
-                                <div class="oc-dropdown">
-                                    <ul>
+                                    <?php if (!$auth->hasIdentity()) {?>
+                                    <ul class="show-information">
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
                                     </ul>
-                                </div>
-                                <?php }
-                                else{?>
-                                <div class="oc-dropdown">
-                                    <ul>
+                                    <?php }
+                                    else{ ?>
+                                    <ul class="show-information">
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/logout">Đăng xuất</a></li>
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/info">Thông tin cá nhân</a></li>
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/newsuploaded">Các tin đã đăng</a></li>
                                         <li><a href="<?php echo $this->baseUrl();?>/default/account/duanchon">Các dự án đã chọn</a></li>
                                     </ul>
-                                </div>
-                                <?php 
-                                }
-                                ?>
+                                    <?php 
+                                    }
+                                    ?>
+                                    
+                                    <div class="top-oc top-project">
+                                        <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text>
+                                            <?php if ($auth->hasIdentity()) {?>
+                                            <span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span>
+                                            <?php } ?>
+                                        </a>
+                                    </div>
+                                    <div class="top-oc top-post">
+                                        <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
+                                    <a  href="<?php echo $this->baseUrl();?>/default/news/step1" class="dang-tin show-sp">Đăng tin</a>
                                 </div>
                             </div>
                         </div>
@@ -115,26 +105,37 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                         <li>
                                                             <div class="form-input form-select form-select-city">
                                                                 <div class="input-nt<?php if(isset($this->muc)&&$this->muc!='0') echo ' _open';?>"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
-                                                                <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); ?>" class="input-dropdown value-category">
+                                                                <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); if(isset($this->mucCap3)&& ctype_digit($this->mucCap3)&&$this->mucCap3!='0') echo '_'.trim($this->mucCap3); ?>" class="input-dropdown value-category">
                                                                 <div class="search-dropdown four-col">
                                                                     <div class="wrap-select">
                                                                         <ul class="nav-dropdown parent-dropdown">
                                                                             <?php 
-                                                                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
+                                                                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
                                                                             foreach ($du_an_cap_1s as $dac1){?>
-                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
+                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"<?php if($dac1['id1']=='') echo ' class="item-select"';?>><?php echo $dac1['name'];?></li>
                                                                             <?php                                                                         
                                                                             }
                                                                             ?>
                                                                         </ul>
                                                                         <div class="nav-dropdown sub-dropdown">
-                                                                            <span class="btn-back-parent"></span>
-                                                                            <span class="btn-close"></span>
+                                                                            <span class="btn-back-parent" id="btn-back-parent"></span>
+                                                                            <ul class="sub-parent-dropdown">
+                                                                                <?php 
+                                                                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
+                                                                                foreach ($du_an_cap_2s as $dac2){?>
+                                                                                    <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="<?php if($dac2['id1']=='') echo ' item-select '; echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                                <?php                                                                         
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="nav-dropdown sub-dropdown">
+                                                                            <span class="btn-back-parent" id="sub-btn-back-parent"></span>
                                                                             <ul>
                                                                                 <?php 
-                                                                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
-                                                                                foreach ($du_an_cap_2s as $dac2){?>
-                                                                                    <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
+                                                                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
+                                                                                foreach ($du_an_cap_3s as $dac3){?>
+                                                                                    <li data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>" class="item-select <?php echo $dac3['du_an_cap_2_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
                                                                                 <?php                                                                         
                                                                                 }
                                                                                 ?>
@@ -160,7 +161,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                                         </ul>
                                                                         <div class="nav-dropdown sub-dropdown">
                                                                             <span class="btn-back-parent"></span>
-                                                                            <span class="btn-close"></span>
                                                                             <ul>
                                                                                 <?php 
                                                                                 $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
@@ -176,8 +176,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                             </div>
                                                         </li>
                                                         <li class="btn-link">
-                                                            <!--tuetc-->
-                                                            <!--<button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>-->
+                                                            <button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -345,19 +344,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                     </div>
                 </div>
                 <!-- End moblie menu link -->
-                <!-- Social menu -->
-                <!--tuetc-->
-<!--                <div class="mb-menu-social">
-                    <div class="mb-menu-wr">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                </div>-->
-                <!-- Social menu -->
+                
             </div>
         </div>
         <!-- End Mobile menu -->
@@ -373,10 +360,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
             });
         </script>
         <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
-        
-<!--        <a href="https://www.facebook.com/sharer/sharer.php?u=canlam.vn" target="_blank">
-          Share on Facebook
-        </a>-->
+
   
     </body>
 
