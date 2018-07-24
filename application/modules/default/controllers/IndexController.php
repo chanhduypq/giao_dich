@@ -160,6 +160,19 @@ class IndexController extends Core_Controller_Action {
         
         
     }
+    public function gettoroiAction() {
+        if(!ctype_digit($this->_getParam('id'))){
+            $this->isAjax();
+            echo '';
+            exit;
+        }
+        $this->disableLayout();
+        $this->view->item= Core_Db_Table::getDefaultAdapter()->fetchRow("select title,content,photo,city_cap_1.name as city_cap_1_name,city_cap_2.name as city_cap_2_name from dich_vu_hau_mai join city_cap_1 on city_cap_1.id=dich_vu_hau_mai.city_cap_1 join city_cap_2 on city_cap_2.id=dich_vu_hau_mai.city_cap_2 where dich_vu_hau_mai.id='".$this->_getParam('id')."'");
+    }
+    public function dichvuhaumaiAction() {
+        $this->view->id= $this->_getParam('id');
+        $this->render('dichvuhaumai1');
+    }
 
     public function duanAction() {
         $muc = $this->_getParam('muc');

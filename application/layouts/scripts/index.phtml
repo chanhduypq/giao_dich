@@ -192,8 +192,15 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         $now=date('Y-m-d');
                         $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
                         if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
-                            foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){?>
-                                <div class="home-item">
+                            foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){
+                                if($dich_vu_hau_mai['is_to_roi']=='1'){
+                                    $is_to_roi=' is_to_roi';
+                                }
+                                else{
+                                    $is_to_roi='';
+                                }
+                                ?>
+                                <div class="home-item dich_vu_hau_mai<?php echo $is_to_roi;?>" id="<?php echo $dich_vu_hau_mai['id'];?>">
                                     <img src="<?php echo $this->baseUrl('/uploads/'.$dich_vu_hau_mai['photo']);?>" alt="">
                                 </div>
                         <?php 
@@ -347,16 +354,50 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 
             </div>
         </div>
+        <div id="dichvuhaumai_dialog" title="">
+          
+        </div>
         <!-- End Mobile menu -->
         <div class="go-top">
         </div>
+        <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
         <script type="text/javascript">
             function genericSocialShare(url){
                 window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             jQuery(function ($){
+                $(".dich_vu_hau_mai").css('cursor','pointer');
+                dialog=$( "#dichvuhaumai_dialog" ).dialog({
+                  autoOpen: false,
+                  show: {
+                    effect: "blind",
+                    duration: 1000
+                  },
+                  hide: {
+                    effect: "explode",
+                    duration: 1000
+                  },
+                  width: 500,
+                  height: 400
+                });
                 
+                $(".dich_vu_hau_mai").click(function (){
+                   if($(this).hasClass('is_to_roi')){
+                       var id=$(this).attr('id');
+                       $.ajax({
+                            url:'<?php echo $this->baseUrl();?>/default/index/gettoroi/id/'+id,
+                            success: function(data){
+                                dialog.dialog( "open" );
+                                $("#dichvuhaumai_dialog").html(data);
+                            }
+                        });
+                   }
+                   else{
+                       window.location='<?php echo $this->baseUrl('index/dichvuhaumai/id/');?>'+$(this).attr('id');
+                   }
+                });
             });
         </script>
         <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
