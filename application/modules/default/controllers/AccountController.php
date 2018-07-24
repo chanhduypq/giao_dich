@@ -171,10 +171,6 @@ class AccountController extends Core_Controller_Action {
     public function logoutAction() {
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
-        unset($_COOKIE['phone']);
-        unset($_COOKIE['password']);
-        setcookie('phone', null, -1, '/');
-        setcookie('password', null, -1, '/');
         $this->_helper->redirector('index', 'index', 'default');
     }
 

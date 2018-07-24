@@ -160,6 +160,62 @@ class IndexController extends Core_Controller_Action {
         
         
     }
+    public function gettoroiAction() {
+        if(!ctype_digit($this->_getParam('id'))){
+            $this->isAjax();
+            echo '';
+            exit;
+        }
+        $this->disableLayout();
+        $this->view->item= Core_Db_Table::getDefaultAdapter()->fetchRow("select title,content,photo,city_cap_1.name as city_cap_1_name,city_cap_2.name as city_cap_2_name from dich_vu_hau_mai join city_cap_1 on city_cap_1.id=dich_vu_hau_mai.city_cap_1 join city_cap_2 on city_cap_2.id=dich_vu_hau_mai.city_cap_2 where dich_vu_hau_mai.id='".$this->_getParam('id')."'");
+    }
+    public function dichvuhaumaiAction() {
+        
+        if(!ctype_digit($this->_getParam('id'))){
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        $dvhm= Core_Db_Table::getDefaultAdapter()->fetchRow("select * from dich_vu_hau_mai where id='".$this->_getParam('id')."'");
+        $where = "(status<>3 OR status is null) and is_active=1 and is_dich_vu_hau_mai=1";
+        if(ctype_digit($dvhm['city_cap_1'])){
+            $where.=' and city_cap_1='.$dvhm['city_cap_1'];
+        }
+        if(ctype_digit($dvhm['city_cap_2'])){
+            $where.=' and city_cap_2='.$dvhm['city_cap_2'];
+        }
+
+        $where_target_type='';
+        if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
+            $tab=$this->_getParam('tab','tatCa');
+            if($tab=='doiTac'){
+                $where_target_type .= " target_type=4";
+            }
+            else if($tab=='nhanVien'){
+                $where_target_type .= " target_type=2";
+            }
+            else if($tab=='khachHang'){
+                $where_target_type .= " target_type=3";
+            }
+        }
+
+        
+        $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        
+        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
+
+        $this->view->items = $items;
+        $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
+        $this->view->allCount = count($allItems);
+        $this->view->nhanVienCount = $nhanVienCount;
+        $this->view->doiTacCount = $doiTacCount;
+        $this->view->khachHangCount = $khachHangCount;
+
+        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
+        $this->view->tab= $this->_getParam('tab','tatCa');
+        $this->view->id= $this->_getParam('id','0');
+        $this->view->headTitle("Xây dựng - Dịch vụ hậu mãi", true);
+        $this->render('dichvuhaumai1');
+    }
 
     public function duanAction() {
         $muc = $this->_getParam('muc');
@@ -211,7 +267,6 @@ class IndexController extends Core_Controller_Action {
         $this->view->mucCap2Get= (ctype_digit($muccap2) && $muccap2 != '0')?"muccap2/$muccap2":"";
         $this->view->mucGet= "muc/$muc";
         $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($du_an_cap_1), true);
-        $this->view->background= $this->getBackgroundByDuAnCap1Id($du_an_cap_1);
     }
     
     

@@ -69,7 +69,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <?php 
                         } ?>
                         <div class="dt-share">
-                            <div class="dt-t">Chia sẻ dự án tới:</div>
+                            <div class="dt-t show-pc">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
@@ -87,16 +87,22 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         </a>
                                     </li>
 
-<!--                                    <li>
+                                    <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                         <span>Twitter</span>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
                                         <span>Google+</span>
-                                    </li>-->
+                                    </li>
 
                             </ul>
+                            <p class="note-detail show-pc"><?php echo nl2br($items[0]['content']);?></p>
+                            <!-- login sp -->
+                            <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
+                                <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
+                                <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
+                            </p>
                         </div>
                     </div>
                     <div class="dt-content<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&isset($number_du_an_da_chon)&&$number_du_an_da_chon!='0') echo ' selected';else if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1') echo ' hot';?>">
@@ -242,12 +248,12 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
                                 </li>
-<!--                                <li>
+                                <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                </li>-->
+                                </li>
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
@@ -365,7 +371,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
   ?>
 </div>
 <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
-        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
 <script type="text/javascript">
     function showPhoneList(){
         dialog.dialog( "open" );

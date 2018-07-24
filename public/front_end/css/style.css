@@ -2257,7 +2257,9 @@ a:hover, a:focus {
     display: inline-block;
     line-height: 40px;
     padding: 0 15px 0 40px;
-    border: 1px solid;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
+    box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
     color: #707070;
     font-size: 14px;
     background: #ffffff url("../images/layout/bookmark-light.png") 15px center no-repeat;
@@ -4217,7 +4219,7 @@ a:hover, a:focus {
     .slick-list .home-item { display: block; }
     .slick-slide img {
         display: block;
-        height: 200px;
+        height: 207px;
         object-fit: cover;
         width: 100%;
     }   
@@ -4418,6 +4420,23 @@ a:hover, a:focus {
     .cate-wr._ct_grid .fix-share-d {
         margin-top: 0;
     }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-desc .cit-desc-r {
+        float: right;
+    }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-btn {
+        border: 0;
+        background-size: 25px;
+        height: 40px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
+        box-shadow: 0px 0px 5px 0px rgba(171,173,170,1);
+    }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-btn:hover {
+        background-size: 25px;
+    }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-btn span {
+        display: none;
+    }
 }    
 @media screen and (max-width: 480px) {
     .page-content.home-page .container .row .col-xs-f {
@@ -4444,12 +4463,12 @@ a:hover, a:focus {
         margin-top: 0;
     }
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-desc-r {
-        text-align: center;
+        text-align: right;
         float: none;
     }
-    .cate-wr._ct_grid .fix-share-d {
+    /*.cate-wr._ct_grid .fix-share-d {
         text-align: center;
-    }
+    }*/
 }
 @media screen and (max-width: 375px) {
     .layout-3 .top .top-poc .top-oc a,
@@ -4598,7 +4617,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     }
     .page-content.detail-page .dt-info .dt-share .dt-li-share {
         padding-top: 20px;
-        padding-bottom: 0;
+        padding-bottom: 20px;
     }
 }
 @media screen and (max-width: 360px){

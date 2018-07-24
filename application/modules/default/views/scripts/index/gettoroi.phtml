@@ -1,0 +1,72 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/vendor.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl();?>/front_end/css/style.css?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>">
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery-2.0.3.js"></script>
+<?php 
+$item = $this->item;
+?>
+<div class="page-content detail-page category-page">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <!-- Detail Infor -->
+                <div class="dt-info">
+                    <div class="dt-thumb" style="width: 100px;">
+                        <div class="dt-main-thumb" style="width: 100px;">
+                            <div class="ct-replace-img" style="width: 100px;height: 200px;">
+                                <?php 
+                                if($item['photo']!=''){?>
+                                    <img style="object-fit: contain;height: 200px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                <?php 
+                                }
+                                else{?>
+                                    <img style="object-fit: contain;height: 200px;" src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
+                                <?php 
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dt-content">
+                        <div class="dt-title">
+                            <a>                                
+                                <?php echo $item['title'];?>
+                            </a>
+                            
+                        </div>
+                        <div class="dt-desc">
+                            <?php echo nl2br($item['content']);?>
+                        </div>
+                        <div class="dt-pos">
+                            
+                            <div class="dt-pos-l">
+                                <p>Khu vực</p>
+                                <p>
+                                    <?php 
+                                    echo $item['city_cap_1_name'];
+                                    if($item['city_cap_2_name']!=''){
+                                        echo ' - '.$item['city_cap_2_name'];
+                                    }
+                                    
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                <!-- End detail Infor -->
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+

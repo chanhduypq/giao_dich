@@ -3,8 +3,6 @@ $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
 $items = $this->items;
 $quangcao_items = $this->quangcao_items;
-$du_an_cap_2s = $this->du_an_cap_2s;
-$du_an_cap_2_selected = $this->du_an_cap_2_selected;
 ?>
 <div class="page-content category-page">
     <div class="container">
@@ -12,51 +10,9 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="ct-sidebar">
                     <!-- Menu side -->
-                    <div class="menu-side">
-                        <ul class="mn-parent-side1">
-                            <?php 
-                            foreach ($du_an_cap_2s as $du_an_cap_2){
-                                if($du_an_cap_2['id']==$du_an_cap_2_selected){
-                                    $class=' class="_current"';
-                                }
-                                else{
-                                    $class='';
-                                }?>
-                                <li<?php echo $class;?>>
-                                    <a href="<?php echo $this->baseUrl('/index/duan/muc/'.$this->muc.'/muccap2/'.$du_an_cap_2['id']);?>"><span><?php echo $du_an_cap_2['name'];?></span></a>
-                                </li>
-                            <?php 
-                            } 
-                            ?>
-                            
-                            
-<!--                            <li>
-                                <a href="#"><span>Thiết bị gia dụng</span></a>
-                                <div class="mn-dropdown-side">
-                                    <div class="btn-back-parent"></div>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Thạch cao</a></li>
-                                        <li><a href="#">Chống thấm</a></li>
-                                        <li><a href="#">Sơn</a></li>
-                                        <li><a href="#">Điện nước</a></li>
-                                        <li><a href="#">Hệ thống MI</a></li>
-                                        <li><a href="#">Thiết bị vệ sinh</a></li>
-                                        <li><a href="#">Nhà bếp</a></li>
-                                    </ul>
-                                </div>
-                            </li>-->
-                            
-                        </ul>
-                    </div>
+<!--                    <div class="menu-side">
+                        &nbsp;
+                    </div>-->
                     <!-- End Menu side -->
                     <!-- Banner 1 side -->
                     <?php // echo $this->render('index/dichvuhaumai.phtml'); ?>
@@ -95,31 +51,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                     <p>Đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
                                                     <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
                                                 </div>
-                                                <!--tuetc-->
-<!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
-<!--                                                <div class="cai-col cai-cr">
-                                                    <?php 
-                                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
-                                                        if(!in_array($item['id'], $this->du_an_da_chon_ids)){
-                                                        ?>
-                                                        <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an">Chọn dự án</a>
-                                                    <?php 
-                                                        }
-                                                        else{?>
-                                                         <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an huy">Hủy chọn</a>   
-                                                        <?php 
-                                                        }
-                                                    }
-                                                    else{
-                                                        if(!$auth->hasIdentity()){
-                                                        ?>
-                                                        <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cai-btn-project"></a>
-                                                    <?php    
-                                                        }
 
-                                                    }
-                                                    ?>
-                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -139,10 +71,10 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                         <!-- Tab link -->
                         <?php 
                         echo $this->tab($this->tab,array(
-                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/tatCa/'.$this->mucCap2Get),
-                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get),
-                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get),
-                                                        $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get),
+                                                        $this->baseUrl('/index/dichvuhaumai/id/'.$this->id.'/tab/tatCa/'),
+                                                        $this->baseUrl('/index/dichvuhaumai/id/'.$this->id.'/tab/nhanVien/'),
+                                                        $this->baseUrl('/index/dichvuhaumai/id/'.$this->id.'/tab/doiTac/'),
+                                                        $this->baseUrl('/index/dichvuhaumai/id/'.$this->id.'/tab/khachHang/'),
                                                     ),
                                 $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
                         ?>
