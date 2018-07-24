@@ -135,6 +135,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
+                                <p>Ngày đăng tin: <?php echo $items[0]['created_at'];?></p>
                                 <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
                                 <!--tuetc-->
                                 <!--<p>Cộng tác viên</p>-->
@@ -305,6 +306,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                 </div>
                                                 <div class="cit-desc">
                                                     <div class="cit-desc-l">
+                                                        <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                     </div>
                                                     <div class="cit-desc-r">
@@ -428,11 +430,22 @@ jQuery(function ($){
                 $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);
                 $(node).parents('.dt-content').toggleClass('selected');
                 $(node).parents('.cate-item-i').toggleClass('selected');
-                $(node).parents('.dt-content').removeClass('hot');
-                $(node).parents('.cate-item-i').removeClass('hot');
-//                if($(node).parents('.dt-content').hasClass('hot')){
-//                    $(node).parents('.dt-content').toggleClass('hot');
-//                }
+                if($(node).parents('.dt-content').find('.tap-hot').length>0){
+                    if($(node).parents('.dt-content').hasClass('selected')){
+                        $(node).parents('.dt-content').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.dt-content').addClass('hot');
+                    }
+                }
+                if($(node).parents('.cate-item-i').find('.tap-hot').length>0){
+                    if($(node).parents('.cate-item-i').hasClass('selected')){
+                        $(node).parents('.cate-item-i').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.cate-item-i').addClass('hot');
+                    }
+                }
                 
             }
         });

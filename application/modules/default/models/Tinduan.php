@@ -33,7 +33,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         
         $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                 . "tong_dau_tu,"
                 . "photo,"
                 . "is_quang_cao,"
@@ -57,7 +57,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         return Core_Db_Table::getDefaultAdapter()
                 ->fetchAll("select content,"
                         . "title,"
-                        . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                        . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                         . "tong_dau_tu,"
                         . "tinduan_photo.photo,"
                         . "tin_du_an.id,"
