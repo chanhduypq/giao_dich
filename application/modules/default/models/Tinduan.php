@@ -17,6 +17,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         else{
             $limit="";
         }
+        
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where order by is_hot desc,id desc");
                 
         $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc");
