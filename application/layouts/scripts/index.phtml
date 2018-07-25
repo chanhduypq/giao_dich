@@ -87,9 +87,8 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <?php 
                 if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
                 <div class="top-search">
-                    
-                    <div class="top-search-c">
-                        <div class="container">
+                    <div class="container" style="position: relative;">
+                        <div class="top-search-c">   
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">

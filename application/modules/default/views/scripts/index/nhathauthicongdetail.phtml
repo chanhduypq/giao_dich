@@ -32,21 +32,15 @@ $identity = $auth->getIdentity();
                             <div class="ct-replace-img">
                                 <?php 
                                 if($items[0]['photo']!=''){?>
-                                    <a href="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']); ?>" rel="prettyPhoto">
-                                        <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
-                                    </a>
+                                    <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
                                 <?php 
                                 }
                                 else{?>
-                                    <a href="<?php echo $this->baseUrl(PHOTO_DEFAULT); ?>" rel="prettyPhoto">
-                                        <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
-                                    </a>
+                                    <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
                                 <?php 
                                 }
                                 ?>
                             </div>
-<!--                            tuetc
-                            <span>03</span>-->
                         </div>
                         <?php if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){?>
                         <div class="dt-chip-thumb">
@@ -58,9 +52,7 @@ $identity = $auth->getIdentity();
                                         if($item['photo']!=''){?>
                                             <div class="chip-thumb-pi">
                                                 <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>">
-                                                    <a href="<?php echo $this->baseUrl('/uploads/'.$item['photo']); ?>" rel="prettyPhoto">
-                                                        <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
-                                                    </a>
+                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
                                                 </div>
                                             </div>
                                 <?php 
@@ -73,9 +65,8 @@ $identity = $auth->getIdentity();
                         <?php 
                         }
                         ?>
-                        <!--tuetc-->
                         <div class="dt-share">
-                            <div class="dt-t">Chia sẻ dự án tới:</div>
+                            <div class="dt-t show-pc">Chia sẻ tới:</div>
                             <ul class="dt-li-share">
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
@@ -93,33 +84,42 @@ $identity = $auth->getIdentity();
                                         </a>
                                     </li>
 
-<!--                                    <li>
+                                    <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                         <span>Twitter</span>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
                                         <span>Google+</span>
-                                    </li>-->
+                                    </li>
 
                             </ul>
+                            <p class="note-detail show-pc"><?php echo nl2br($items[0]['content']);?></p>
+                            <!-- login sp -->
+                            <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
+                                <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
+                                <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
+                            </p>
                         </div>
 
                     </div>
                     <div class="dt-content">
                         <div class="dt-title">
-                            <a><?php echo $items[0]['title'];?></a>
-                            <!--tuetc-->
-                            <!--<a href="#" class="cit-btn">Chọn dự án</a>-->
+                            <a>
+                                <?php 
+                                if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1'){?>
+                                <span class="tap-hot">Hot</span>
+                                <?php } ?>
+                                <?php echo $items[0]['title'];?>
+                            </a>
                         </div>
                         <div class="dt-desc">
                             <?php echo nl2br($items[0]['content']);?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
+                                <p>Ngày đăng tin: <?php echo $items[0]['created_at'];?></p>
                                 <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
-<!--                                tuetc
-                                <p>Cộng tác viên</p>-->
                                 <p>
                                     <?php 
                                     if($items[0]['phan_loai']=='1'){
@@ -166,42 +166,30 @@ $identity = $auth->getIdentity();
                             </ul>
                         </div>
                         <div class="dt-btn">
-                            <!--tuetc-->
-<!--                            <div class="dt-btn-cl">
-                                <div class="dt-mark">
-                                    Đầu tư: <?php // echo $items[0]['tong_dau_tu'];?>
-                                </div>
-                            </div>-->
                             <?php 
                             if(!$auth->hasIdentity()){
                                 ?>                            
                                 <div class="dt-btn-cl">
                                     <div class="dt-phone">
-                                          <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
-                                          <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
-                                          <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
-                                          <?php 
-                                          $user_nhathauthicong=$this->user_nhathauthicong;
-                                          if(is_array($user_nhathauthicong)&&count($user_nhathauthicong)>0){
-                                              foreach ($user_nhathauthicong as $temp){
-                                                  echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
-                                              }
-                                          }
-                                          ?>
-                                          </div>
+                                          <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>                                          
                                     </div>
                                 </div>
                             <?php 
                             }
                             else{
-                                if($identity['id']==$items[0]['user_id']){
-                                    //k hiển thị
+                                if($identity['id']==$items[0]['user_id']){?>
+                                    <div class="dt-btn-cl">
+                                        <div class="dt-phone">
+                                              <div style="opacity: 0.3;cursor: not-allowed;" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                        </div>
+                                    </div>
+                                <?php 
                                 }
                                 else{
                                     if($identity['type']== Default_Model_User::ADMIN){?>
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
-                                                <div class="ct-btn-phone ct-btn-mobile"><?php echo $items[0]['phone'];?></div>
+                                                <div class="ct-btn-phone ct-btn-mobile"><?php echo $items[0]['phone'];?></div>                                                    
                                             </div>
                                         </div>
                                     <?php                                     
@@ -219,18 +207,7 @@ $identity = $auth->getIdentity();
                                     else{?>
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
-                                                  <!--<div id="click_show_phone" class="ct-btn-phone" data-number="01228559193">Nhấn để hiện số hoặc để lại tin nhắn</div>--> 
-                                                  <div onclick="jQuery('#phone_list').fadeIn();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
-                                                  <div id="phone_list" style="display: none;max-height: 200px;overflow-y: auto;margin-top: 20px;background-color: #a9a9a9;padding: 10px;">
-                                                  <?php 
-                                                  $user_nhathauthicong=$this->user_nhathauthicong;
-                                                  if(is_array($user_nhathauthicong)&&count($user_nhathauthicong)>0){
-                                                      foreach ($user_nhathauthicong as $temp){
-                                                          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
-                                                      }
-                                                  }
-                                                  ?>
-                                                  </div>
+                                                  <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
                                             </div>
                                         </div>
                             <?php 
@@ -239,7 +216,6 @@ $identity = $auth->getIdentity();
                             }
                             ?>
                         </div>
-                        <!--tuetc-->
                         <div class="dt-share dt-share-mobile">
                             <div class="dt-t">Chia sẻ dự án tới:</div>
                             <ul class="dt-li-share">
@@ -249,12 +225,12 @@ $identity = $auth->getIdentity();
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-messenger.png" alt=""></a>
                                 </li>
-<!--                                <li>
+                                <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=testcanlam&url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-twitter.png" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-google.png" alt=""></a>
-                                </li>-->
+                                </li>
                                 <li>
                                     <a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-link.png" alt=""></a>
                                 </li>
@@ -293,24 +269,23 @@ $identity = $auth->getIdentity();
                                         }
                                         ?>
                                         <div class="cate-item">
-                                            <div class="cate-item-i">
+                                            <div class="cate-item-i<?php if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                                 <div class="cit-part cit-left">
-                                                    <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                        <img src="<?php echo $item['photo']; ?>">
-                                                    </a>
+                                                    <img src="<?php echo $item['photo']; ?>">
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">
                                                         <a href="<?php echo $this->baseUrl("/index/nhathauthicongdetail/id/".$item['id']);?>">
                                                             <?php 
                                                         if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                                 <?php echo $item['title'];?>
                                                         </a>
                                                     </div>
                                                     <div class="cit-desc">
                                                         <div class="cit-desc-l">
+                                                            <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                             <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                             <p>
                                                                 <?php 
@@ -324,8 +299,7 @@ $identity = $auth->getIdentity();
                                                             </p>
                                                         </div>
                                                         <div class="cit-desc-r">
-                                                            <!--tuetc-->
-                                                            <!--<a href="#" class="cit-btn"><span>Chọn dự án</span></a>-->
+                                                            &nbsp;
                                                         </div>
                                                     </div>
                                                 </div>
@@ -348,8 +322,46 @@ $identity = $auth->getIdentity();
     }
     ?>
 </div>
+<div id="phone_list" title="">
+  <?php 
+  $user_nhathauthicong=$this->user_nhathauthicong;
+  if(is_array($user_nhathauthicong)&&count($user_nhathauthicong)>0){
+      foreach ($user_nhathauthicong as $temp){
+          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
+      }
+  }
+  ?>
+</div>
+<link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script> 
 <script type="text/javascript">
+    function showPhoneList(){
+        dialog_phone_list.dialog( "open" );
+    }
+    $(window).scroll(function(){
+      var sticky = $('.dt-btn'),
+          scroll = $(window).scrollTop();
+
+      if (scroll >= 100) sticky.addClass('fixed-detail');
+      else sticky.removeClass('fixed-detail');
+    });
+    // social share
+    function genericSocialShare(url){
+        window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+        return true;
+    }
 jQuery(function ($){
+    dialog_phone_list=$( "#phone_list" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
     
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');

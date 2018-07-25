@@ -33,7 +33,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
         
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,"
-                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_nha_thau_thi_cong.created_at,'%d/%m/%Y') AS created_at,"
                 . "photo,"
                 . "is_quang_cao,"
                 . "allow_show_quang_cao,"
@@ -55,7 +55,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                 ->fetchAll("select content,"
                         . "title,tin_nha_thau_thi_cong.dich_vu_thi_cong,"
                         . "phan_loai,"
-                        . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,"
+                        . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_nha_thau_thi_cong.created_at,'%d/%m/%Y') AS created_at,"
                         . "tinnhathauthicong_photo.photo,"
                         . "tin_nha_thau_thi_cong.id,"
                         . "tin_nha_thau_thi_cong.user_id,tin_nha_thau_thi_cong.is_hot,"
