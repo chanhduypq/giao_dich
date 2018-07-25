@@ -1770,9 +1770,9 @@ a:hover, a:focus {
         display: inline-block; }
     .layout-3 .top-search .top-search-c {
         position: absolute;
-        top: 20%;
+        top: 90px;
         left: 0;
-        width: 100%;
+        width: auto;
         height: 100%;
         display: table; 
         z-index: 99;
