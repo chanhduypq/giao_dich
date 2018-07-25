@@ -58,42 +58,42 @@ $(function(){
 	});
 
 
-	$('.input-nt').on('click', function(e){
-		var mn_drop = $('.search-dropdown');
-		var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
+	// $('.input-nt').on('click', function(e){
+	// 	var mn_drop = $('.search-dropdown');
+	// 	var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
 
-		if (!$(this).hasClass('_open')) {
-			$('.input-nt').removeClass('_open');
-			mn_drop.removeClass('_expand');
+	// 	if (!$(this).hasClass('_open')) {
+	// 		$('.input-nt').removeClass('_open');
+	// 		mn_drop.removeClass('_expand');
 			
-			$(this).addClass('_open');
-			tmn_drop.addClass('_expand');
-		}else{
-			$('.input-nt').removeClass('_open');
-			mn_drop.removeClass('_expand');
+	// 		$(this).addClass('_open');
+	// 		tmn_drop.addClass('_expand');
+	// 	}else{
+	// 		$('.input-nt').removeClass('_open');
+	// 		mn_drop.removeClass('_expand');
 
-			$(this).removeClass('_open');
-			tmn_drop.removeClass('_expand');
-		}
-	});
+	// 		$(this).removeClass('_open');
+	// 		tmn_drop.removeClass('_expand');
+	// 	}
+	// });
 
-	$('.search-dropdown li.item-select').on('click', function(e){
-		var mn_drop = $('.search-dropdown');
-		var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
+	// $('.search-dropdown li.item-select').on('click', function(e){
+	// 	var mn_drop = $('.search-dropdown');
+	// 	var tmn_drop = $(this).parents('.form-select').children('.search-dropdown');
 
-		var show_value = $(this).parents('.form-select').children('.input-nt');
-		var input_value = $(this).parents('.form-select').children('input[type="hidden"]');
+	// 	var show_value = $(this).parents('.form-select').children('.input-nt');
+	// 	var input_value = $(this).parents('.form-select').children('input[type="hidden"]');
 
-		if (show_value.hasClass('_open')) {
-			$('.input-nt').removeClass('_open');
-			mn_drop.removeClass('_expand');
+	// 	if (show_value.hasClass('_open')) {
+	// 		$('.input-nt').removeClass('_open');
+	// 		mn_drop.removeClass('_expand');
 
-			show_value.html($(this).text());
-			input_value.val($(this).attr('data-value'));//.text());
-			$(this).removeClass('_open');
-			tmn_drop.removeClass('_expand');
-		}
-	});
+	// 		show_value.html($(this).text());
+	// 		input_value.val($(this).text());
+	// 		$(this).removeClass('_open');
+	// 		tmn_drop.removeClass('_expand');
+	// 	}
+	// });
 
 	$('#onClickSearch').on('click', function(e){
 		var mn_search = $('.top-search-c');
@@ -177,31 +177,53 @@ $(function(){
 			$('.banner-side.banner-1').attr('style', "");
 		}
 	});
+        
+        $('ul.parent-menu li').on('click', function(e){
+		$(this).parents('.wrap-select').animate({'left': "-"+w_wrapper}, 700);
+                $(".sub-menu ul li").hide();
+                $(".sub-menu ul li."+$(this).attr('data-value')).show();
+                
+                if($(this).parents('#searchItem').length==1){
+                    $("#selectItem").html($(this).text());
+                    $("#khu_vuc").val($(this).attr('data-value'));
+                }
+                else{
+                    $("#selectCity").html($(this).text());
+                    $("#city").val($(this).attr('data-value'));
+                }
+
+//                $(this).parent().parent().parent().parent().children('input[type="hidden"]').val($(this).attr('data-value'));
+//                $(this).parent().parent().parent().parent().children(".input-nt").html($(this).text());
+	});
+        
+        $('.sub-menu ul li').on('click', function(e){
+		$(this).parents('.wrap-select').animate({'left': "-"+w_wrapper}, 700);
+                var data_value=$(this).attr('data-value').split('_');
+                data_value=data_value[1];
+                $(".sub-menu-s ul li").hide();
+                $(".sub-menu-s ul li."+data_value).show();
+                
+                if($(this).parents('#searchItem').length==1){
+                    $("#selectItem").html($(this).text());
+                    $("#khu_vuc").val($(this).attr('data-value'));
+                }
+                else{
+                    $("#selectCity").html($(this).text());
+                    $("#city").val($(this).attr('data-value'));
+                }
+
+//                $(this).parent().parent().parent().parent().children('input[type="hidden"]').val($(this).attr('data-value'));
+//                $(this).parent().parent().parent().parent().children(".input-nt").html($(this).text());
+	});
 
 	//  Set click menu
 	$('.search-dropdown ul.parent-dropdown li').on('click', function(e){
 		//var wr = $(this).parents('ul');
 		$(this).parents('.wrap-select').animate({'left': "-"+w_wrapper}, 700);
-                $("ul.sub-parent-dropdown li").hide();
-                $("ul.sub-parent-dropdown li."+$(this).attr('data-value')).show();
-
-                $(this).parent().parent().parent().parent().children('input[type="hidden"]').val($(this).attr('data-value'));
-                $(this).parent().parent().parent().parent().children(".input-nt").html($(this).text());
 	});
 	$('.search-dropdown ul.sub-parent-dropdown li').on('click', function(e){
 		//var wr = $(this).parents('ul');
 		$(this).parents('.wrap-select').animate({'left': "-"+w_wrapper*2}, 700);
-                $(this).parent().parent().next().find("li").hide();
-                var temp=$(this).attr('data-value');
-                if(temp.indexOf('_')!=-1){
-                    temp=temp.split('_');
-                    temp=temp[1];
-                }
-                
-                $(this).parent().parent().next().find('li.'+temp).show();
-                
-                $(this).parent().parent().parent().parent().parent().children('input[type="hidden"]').val($(this).attr('data-value'));
-                $(this).parent().parent().parent().parent().parent().children(".input-nt").html($(this).text());
 	});
 	$('.search-dropdown #btn-back-parent').on('click', function(e){
 		//var wr = $(this).parents('.sub-dropdown').find('ul');
@@ -233,10 +255,10 @@ $(function(){
 
 	// Reset dropdown
 	$( document ).on( 'click', function ( e ) {
-	    if ( !$( e.target ).is($('.input-nt')) && !$( e.target ).is($('.search-dropdown *'))) {
-	        $('.input-nt').removeClass('_open');
-			$('.search-dropdown').removeClass('_expand');
-		}
+	 //    if ( !$( e.target ).is($('.input-nt')) && !$( e.target ).is($('.search-dropdown *'))) {
+	 //        $('.input-nt').removeClass('_open');
+		// 	$('.search-dropdown').removeClass('_expand');
+		// }
 
 		if ( !$( e.target ).is($('#login_click')) && !$( e.target ).is($('.oc-dropdown *'))) {
 	        $('#login_click').removeClass('_open');
@@ -254,11 +276,11 @@ $(function(){
 			$('body').removeClass('_open');
 		}
 
-		if ( !$( e.target ).is($('#onClickSearch')) && !$( e.target ).is($('#onClickSearch *')) && !$( e.target ).is($('.top-search-c *'))) {
-	       	$('#onClickSearch').removeClass('_open');
-			$('.top-search-c').removeClass('_expand');
-			//$('.index .top-search').removeClass('_expand');
-		}
+		// if ( !$( e.target ).is($('#onClickSearch')) && !$( e.target ).is($('#onClickSearch *')) && !$( e.target ).is($('.top-search-c *'))) {
+	 //       	$('#onClickSearch').removeClass('_open');
+		// 	$('.top-search-c').removeClass('_expand');
+		// 	//$('.index .top-search').removeClass('_expand');
+		// }
 
 		if ( !$( e.target ).is($('.tab-drop .text-drop')) && !$( e.target ).is($('.tab-drop .text-drop *'))) {
 	       	$('.tab-drop .text-drop').removeClass('_open');
@@ -284,13 +306,13 @@ $(function(){
 	    	$('.onClickInformation').removeClass('_open');
 			$('.oc-dropdown').removeClass('_expand');
 			$('.show-information').removeClass('_expand');
-	        $('.input-nt').removeClass('_open');
-			$('.search-dropdown').removeClass('_expand');
+	       // $('.input-nt').removeClass('_open');
+			//$('.search-dropdown').removeClass('_expand');
 			$('.cv-menu').removeClass('_open');
 			$('.mobile-menu').removeClass('_expand');
 			$('#onClickSearch').removeClass('_open');
 			//$('.index .top-search').removeClass('_expand');
-			$('.top-search-c').removeClass('_expand');
+			//$('.top-search-c').removeClass('_expand');
 			$('body').removeClass('_open');
 			$('.tab-drop .text-drop').removeClass('_open');
 			$('.tab-drop .drop-drop').removeClass('_expand');

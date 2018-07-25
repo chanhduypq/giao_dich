@@ -103,75 +103,14 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                     <ul class="form-right">
                                                         <li>
                                                             <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt<?php if(isset($this->muc)&&$this->muc!='0') echo ' _open';?>"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
-                                                                <input type="hidden" id="muc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); if(isset($this->mucCap3)&& ctype_digit($this->mucCap3)&&$this->mucCap3!='0') echo '_'.trim($this->mucCap3); ?>" class="input-dropdown value-category">
-                                                                <div class="search-dropdown four-col">
-                                                                    <div class="wrap-select">
-                                                                        <ul class="nav-dropdown parent-dropdown">
-                                                                            <?php 
-                                                                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
-                                                                            foreach ($du_an_cap_1s as $dac1){?>
-                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"<?php if($dac1['id1']=='') echo ' class="item-select"';?>><?php echo $dac1['name'];?></li>
-                                                                            <?php                                                                         
-                                                                            }
-                                                                            ?>
-                                                                        </ul>
-                                                                        <div class="nav-dropdown sub-dropdown">
-                                                                            <span class="btn-back-parent" id="btn-back-parent"></span>
-                                                                            <ul class="sub-parent-dropdown">
-                                                                                <?php 
-                                                                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
-                                                                                foreach ($du_an_cap_2s as $dac2){?>
-                                                                                    <li data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>" class="<?php if($dac2['id1']=='') echo ' item-select '; echo $dac2['du_an_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
-                                                                                <?php                                                                         
-                                                                                }
-                                                                                ?>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="nav-dropdown sub-dropdown">
-                                                                            <span class="btn-back-parent" id="sub-btn-back-parent"></span>
-                                                                            <ul>
-                                                                                <?php 
-                                                                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
-                                                                                foreach ($du_an_cap_3s as $dac3){?>
-                                                                                    <li data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>" class="item-select <?php echo $dac3['du_an_cap_2_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
-                                                                                <?php                                                                         
-                                                                                }
-                                                                                ?>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="input-nt" data-toggle="modal" data-target="#searchItem" id="selectItem">Tất cả danh mục</div>
+                                                                <input type="hidden" id="khu_vuc" name="muc" value="0" class="input-dropdown value-category"> 
+                                                            </div>
                                                         </li>
                                                         <li>
                                                             <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt<?php if(isset($this->city)&&$this->city!='0') echo ' _open';?>"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
-                                                                <input type="hidden" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
-                                                                <div class="search-dropdown two-col">
-                                                                    <div class="wrap-select">
-                                                                        <ul class="nav-dropdown parent-dropdown">
-                                                                            <?php 
-                                                                            $city_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
-                                                                            foreach ($city_cap_1s as $dac1){?>
-                                                                                <li data-value="<?php echo $dac1['id'];?>" title="<?php echo $dac1['name'];?>" data-id="#"><?php echo $dac1['name'];?></li>
-                                                                            <?php                                                                         
-                                                                            }
-                                                                            ?>
-                                                                        </ul>
-                                                                        <div class="nav-dropdown sub-dropdown">
-                                                                            <span class="btn-back-parent"></span>
-                                                                            <ul>
-                                                                                <?php 
-                                                                                $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
-                                                                                foreach ($city_cap_2s as $dac2){?>
-                                                                                    <li data-value="<?php echo $dac2['city_cap_1_id'].'_'.$dac2['id'];?>" class="item-select <?php echo $dac2['city_cap_1_id'];?>" title="<?php echo $dac2['name'];?>" data-id=""><?php echo $dac2['name'];?></li>
-                                                                                <?php                                                                         
-                                                                                }
-                                                                                ?>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="input-nt" data-toggle="modal" data-target="#searchCity" id="selectCity">Khu vực</div>
+                                                                <input type="hidden" id="city" name="city" value="0" class="input-dropdown value-category">
                                                             </div>
                                                         </li>
                                                         <li class="btn-link">
@@ -359,14 +298,152 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
         <!-- End Mobile menu -->
         <div class="go-top">
         </div>
+        
+        <div class="modal fade searchModal" id="searchItem" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Chọn khu vực</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="parent-menu">
+                            <li><a class="next"><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                            <?php 
+                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
+                            foreach ($du_an_cap_1s as $dac1){?>
+                                <li data-value="<?php echo $dac1['id'];?>"><a class="next"><span><?php echo $dac1['name'];?></span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                            <?php                                                                         
+                            }
+                            ?>
+                        </ul>
+                        <!-- sub menu -->
+                        <div class="sub-menu" style="display: none;">
+                            <ul>
+                                <li><a><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                <?php 
+                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
+                                foreach ($du_an_cap_2s as $dac2){?>
+                                    <li class="<?php echo $dac2['du_an_cap_1_id'];?>" data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>"><a class="next sub-next"><span><?php echo $dac2['name'];?></span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                <?php                                                                         
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <!-- sub sub menu -->
+                        <div class="sub-menu-s" style="display: none;">
+                            <ul>
+                                <li><a><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                <?php 
+                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
+                                foreach ($du_an_cap_3s as $dac3){?>
+                                    <li class="<?php echo $dac3['du_an_cap_2_id'];?>" data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                <?php                                                                         
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="modal fade searchModal" id="searchCity" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Chọn khu vực</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="parent-menu">
+                            <li><a class="next"><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                            <?php 
+                            $city_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
+                            foreach ($city_cap_1s as $dac1){?>
+                                <li data-value="<?php echo $dac1['id'];?>"><a class="next"><span><?php echo $dac1['name'];?></span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                            <?php                                                                         
+                            }
+                            ?>
+                        </ul>
+                        <!-- sub menu -->
+                        <div class="sub-menu" style="display: none;">
+                            <ul>
+                                <li><a><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                
+                                <?php 
+                                $city_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
+                                foreach ($city_cap_2s as $dac2){?>
+                                    <li class="<?php echo $dac2['city_cap_1_id'];?>" data-value="<?php echo $dac2['city_cap_1_id'].'_'.$dac2['id'];?>"><a class="item-select"><span><?php echo $dac2['name'];?></span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                                <?php                                                                         
+                                }
+                                ?>
+                                
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
         <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
-        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>          
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
         <script type="text/javascript">
             function genericSocialShare(url){
                 window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
                 return true;
             }
             jQuery(function ($){
+                // show submenu next
+                $(".modal-body ul li a.next").click(function () {
+                    if ($(this).hasClass("sub-next")) {
+                        $(".pull-left").addClass('back-parent');
+                        $(".sub-menu-s").show();
+                        $(".sub-menu").hide();
+                    } else {
+                        $("<div class='pull-left'><i class='fa fa-arrow-left'></i></div>").insertBefore("h4");
+                        $(".parent-menu").hide();
+                        $(".sub-menu").show();
+                    }
+                });
+                // show parentmenu
+                $(document).on('click', '.pull-left', function () {
+                    if ($(this).hasClass("back-parent")) {
+                        $(".pull-left").removeClass('back-parent');
+                        $(".sub-menu-s").hide();
+                        $(".sub-menu").show();
+                    } else {
+                        $(".parent-menu").show();
+                        $(".sub-menu").hide();
+                    }
+                });
+                // select item search
+                $(document).on('click', '.item-select', function () {
+                    var data = $(this).find("span").text();
+
+                    if ($('#searchItem').hasClass('in')) {
+                        $('#selectItem').text(data);
+                    } else
+                    if ($('#searchCity').hasClass('in')) {
+                        $('#selectCity').text(data);
+                    }
+                    $('.searchModal').modal('hide');
+                });
+                $('.searchModal').on('hidden.bs.modal', function (e) {
+                    $(".modal-body ul").show();
+                    $(".modal-body div").hide();
+                    $(".pull-left").remove();
+                });
+                
                 $(".dich_vu_hau_mai").css('cursor','pointer');
                 dialog=$( "#dichvuhaumai_dialog" ).dialog({
                   autoOpen: false,
