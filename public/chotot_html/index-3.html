@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body>
     <div id="app">
@@ -62,8 +63,8 @@
             <!-- Start Search -->
             <div class="top-search">
                 <!-- top search -->
-                <div class="top-search-c">
-                    <div class="container">
+                <div class="container"  style="position: relative;">
+                    <div class="top-search-c top-search-la3">
                         <div class="row">
                             <div class="col col-md-12">
                                 <div class="search-block">
@@ -78,63 +79,14 @@
                                                 <ul class="form-right">
                                                     <li>
                                                         <div class="form-input form-select form-select-city">
-                                                            <div class="input-nt">Tất cả danh mục</div>
-                                                            <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category">
-                                                            <div class="search-dropdown four-col">
-                                                                <div class="wrap-select">
-                                                                    <ul class="nav-dropdown parent-dropdown">
-                                                                        <li data-id="#">Dân dụng</li>
-                                                                        <li data-id="#">Hoàn thiện nội thất</li>
-                                                                        <li data-id="#">Hoàn thiện nội thất</li>
-                                                                        <li data-id="#">Nhà thầu phụ</li>
-                                                                        <li data-id="#">Hạ tầng</li>
-                                                                        <li data-id="#">Hạ tầng</li>
-                                                                        <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                        <li data-id="#">Cầu đường</li>
-                                                                        <li data-id="#">Điện nước</li>
-                                                                        <li data-id="#">Cầu đường</li>
-                                                                        <li data-id="#">Hạ tầng</li>
-                                                                        <li data-id="#">Hạ tầng</li>
-                                                                        <li data-id="#">Dịch vụ hậu mãi</li>
-                                                                        <li data-id="#">Cầu đường</li>
-                                                                        <li data-id="#">Điện nước</li>
-                                                                        <li data-id="#">Cầu đường</li>
-                                                                    </ul>
-                                                                    <div class="nav-dropdown sub-dropdown">
-                                                                        <span class="btn-back-parent"></span>
-                                                                        <ul>
-                                                                            <li class="item-select" data-id="#">Điện dân dụng 1</li>
-                                                                            <li class="item-select" data-id="#">Cầu đường 2</li>
-                                                                            <li class="item-select" data-id="#">Hạ tầng 3</li>
-                                                                            <li class="item-select" data-id="#">Cầu đường</li>
-                                                                        </ul>
-                                                                </div>
-                                                            </div>
+                                                            <div class="input-nt" data-toggle="modal" data-target="#searchItem" id="selectItem">Tất cả danh mục</div>
+                                                            <input type="hidden" value="Tất cả danh mục" class="input-dropdown value-category"> 
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="form-input form-select form-select-city">
-                                                            <div class="input-nt">Khu vực</div>
+                                                            <div class="input-nt" data-toggle="modal" data-target="#searchCity" id="selectCity">Khu vực</div>
                                                             <input type="hidden" value="Khu vực" class="input-dropdown value-category">
-                                                            <div class="search-dropdown two-col">
-                                                                <div class="wrap-select">
-                                                                    <ul class="nav-dropdown parent-dropdown">
-                                                                        <li data-id="#">Đà Nẵng</li>
-                                                                        <li data-id="#">Quảng Nam</li>
-                                                                    </ul>
-                                                                    <div class="nav-dropdown sub-dropdown">
-                                                                        <span class="btn-back-parent"></span>
-                                                                        <ul>
-                                                                            <li class="item-select" data-id="#">Quận Hải Châu</li>
-                                                                            <li class="item-select" data-id="#">Quận Thanh Khê</li>
-                                                                            <li class="item-select" data-id="#">Quận Cẩm Lệ</li>
-                                                                            <li class="item-select" data-id="#">Quận Liên CHiểu</li>
-                                                                            <li class="item-select" data-id="#">Quận Sơn Trà</li>
-                                                                            <li class="item-select" data-id="#">Quận Ngũ Hành Sơn</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </li>
                                                     <li class="btn-link">
@@ -437,13 +389,151 @@
     <!-- End Mobile menu -->
     <div class="go-top">
     </div>
+    <!-- modal search -->
+    <!-- modal search -->
+      <div class="modal fade searchModal" id="searchItem" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Chọn khu vực</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="parent-menu">
+                    <li><a class="next"><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 1</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 2</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 3</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 4</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 5</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 6</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 7</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 8</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 9</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>tim kiem 10</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                </ul>
+                <!-- sub menu -->
+                <div class="sub-menu" style="display: none;">
+                    <ul>
+                        <li><a><span>Tất cả 1</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="next sub-next"><span>tim kiem 1</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 2</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 3</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 4</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 5</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 6</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 7</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 8</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        
+                    </ul>
+                </div>
+                <!-- sub sub menu -->
+                <div class="sub-menu-s" style="display: none;">
+                    <ul>
+                        <li><a><span>Tất cả 2</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 1</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 2</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 3</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 4</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 5</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 6</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 7</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>tim kiem 8</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!-- modal search city -->
+      <div class="modal fade searchModal" id="searchCity" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Chọn khu vực</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="parent-menu">
+                    <li><a class="next"><span>Tất cả</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>Da nang</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    <li><a class="next"><span>Quang nam</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                </ul>
+                <!-- sub menu -->
+                <div class="sub-menu" style="display: none;">
+                    <ul>
+                        <li><a><span>Tất cả 1</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>Hai chau</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>Thanh khe</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>Lien Chieu</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                        <li><a class="item-select"><span>Ngu Hanh son</span><i class="fa fa-angle-right fa-5 pull-right"></i></a></li>
+                    </ul>
+                </div>
+                
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <!--  -->
     <script src="assets/js/script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- share social -->
     <script type="text/javascript">
         function genericSocialShare(url){
             window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
             return true;
         }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // show submenu next
+            $(".modal-body ul li a.next").click(function(){
+                if($(this).hasClass("sub-next")) {
+                    $(".pull-left").addClass('back-parent');
+                    $(".sub-menu-s").show();
+                    $(".sub-menu").hide();
+                }else {
+                    $( "<div class='pull-left'><i class='fa fa-arrow-left'></i></div>" ).insertBefore( "h4" );
+                    $(".parent-menu").hide();
+                    $(".sub-menu").show();
+                }   
+            });
+            // show parentmenu
+            $(document).on('click', '.pull-left', function(){
+                if($(this).hasClass("back-parent")) {
+                    $(".pull-left").removeClass('back-parent');
+                    $(".sub-menu-s").hide();
+                    $(".sub-menu").show();
+                }else {
+                    $(".parent-menu").show();
+                    $(".sub-menu").hide();
+                }
+            });
+            // select item search
+            $(document).on('click', '.item-select', function(){
+                var data = $(this).find("span").text();
+                
+                if($('#searchItem').hasClass('in')) {
+                    $('#selectItem').text(data);
+                }else 
+                if($('#searchCity').hasClass('in')) {
+                    $('#selectCity').text(data);
+                }
+                $('.searchModal').modal('hide');
+            });
+            $('.searchModal').on('hidden.bs.modal', function (e) {
+                $(".modal-body ul").show();
+                $(".modal-body div").hide();
+                $(".pull-left").remove();
+            });
+        });
     </script>
 </body>
 

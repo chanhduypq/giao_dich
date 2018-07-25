@@ -9,27 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<style type="text/css">
 		
-		.modal-header {
+		#searchModal .modal-header {
 			background: #f4f4f4;
 			border-radius: 6px;
 			text-align: center;
 			padding: 10px 15px;
 		}
-		.modal-body {
+		#searchModal .modal-body {
 			padding: 0;
 		}
-		.modal-body ul {
+		#searchModal .modal-body ul {
 			list-style-type: none;
 		    padding: 0;
 		    margin: 0;
 		}
-		.modal-body ul li {
+		#searchModal .modal-body ul li {
 			 -webkit-transition: opacity .5s ease-in;
 		    transition: opacity .5s ease-in;
 		    border-bottom: 1px solid #E5E5E5;
@@ -37,13 +35,13 @@
 		    height: 45px;
 		    cursor: pointer;
 		}
-		.modal-body ul li:hover {
+		#searchModal .modal-body ul li:hover {
 			background: #f4f4f4;
 		}
-		.modal-body ul li:last-child {
+		#searchModal .modal-body ul li:last-child {
 			border:none;
 		}
-		.modal-body ul li a {
+		#searchModal .modal-body ul li a {
 			color: inherit;
 		    text-decoration: inherit;
 		    width: 100%;
@@ -51,11 +49,11 @@
 		    line-height: 45px;
 		    padding: 0 15px 0px 15px;
 		}
-		.fa.pull-right {
+		#searchModal .fa.pull-right {
 			line-height: 45px;
 			margin-left: .3em;
 		}
-		.fa-arrow-left {
+		#searchModal .fa-arrow-left {
 		   
 			padding-left: 8px;
 		}
@@ -68,7 +66,7 @@
                     
                     <!--  -->
                     <button type="button" class="btn btn-info btn-lg select" data-toggle="modal" data-target="#searchModal">Open Modal</button>
-
+                   <!--  <button type="button" class="btn btn-info btn-lg select2" data-toggle="modal" data-target="#searchModal">Open Modal city</button> -->
 					  <!-- Modal -->
 					  <div class="modal fade" id="searchModal" role="dialog">
 					    <div class="modal-dialog">
@@ -133,7 +131,8 @@
            	
         </div>
     </div>
-
+     <script src="assets/js/script.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script type="text/javascript">
   		$(document).ready(function(){
  			// show submenu next
