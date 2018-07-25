@@ -181,6 +181,7 @@ $(function(){
         $('ul.parent-menu li').on('click', function(e){
 		$(this).parents('.wrap-select').animate({'left': "-"+w_wrapper}, 700);
                 $(".sub-menu ul li").hide();
+                $(".sub-menu ul li.all").show();
                 $(".sub-menu ul li."+$(this).attr('data-value')).show();
                 
                 if($(this).parents('#searchItem').length==1){
@@ -201,6 +202,7 @@ $(function(){
                 var data_value=$(this).attr('data-value').split('_');
                 data_value=data_value[1];
                 $(".sub-menu-s ul li").hide();
+                $(".sub-menu-s ul li.all").show();
                 $(".sub-menu-s ul li."+data_value).show();
                 
                 if($(this).parents('#searchItem').length==1){
