@@ -284,7 +284,13 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
             if ($this->_request->getControllerName() == 'news') {
                 $option = array('layout' => 'news');
             } else {
-                $option = array('layout' => 'index');
+                if(LAYOUT=='1'){
+                    $option = array('layout' => 'index');
+                }
+                else{
+                    $option = array('layout' => 'index1');
+                }
+                
             }
         }
 

@@ -8,6 +8,9 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function indexAction() {
+        if(LAYOUT!='1'){
+            $this->render('index1');
+        }
     }
 
     public function searchAction() {
