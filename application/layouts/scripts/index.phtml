@@ -32,14 +32,14 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <div class="top">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xs-5 col-sm-5 col-md-4 col-logo">
+                            <div class="col-xs-3 col-sm-5 col-md-4 col-logo">
                                 <div class="top-logo">
                                     <div class="logo-link">
                                         <a href="/"><img class="logo" src="<?php echo $this->baseUrl();?>/front_end/images/social/logo.jpg"></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-7 col-sm-7 col-md-8 col-opt">
+                            <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
                                 <div class="top-poc">
                                     
                                     <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
@@ -147,7 +147,24 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         ?>
                     </div>
                 </div>
-                <?php } ?>
+                <?php } 
+                else{ ?>
+                <div class="top-search">
+                    <div class="container" style="position: relative;">
+                        <div class="top-search-c">   
+                            <div class="row">
+                                <div class="col col-md-12">
+                                    <div class="search-block">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                }
+                ?>
                 <!-- End Search -->
                 <!-- home page -->
                 <?php echo $this->layout()->content; ?>
@@ -156,7 +173,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                     <ul class="fix-share">
                         <li><a>Chia sẻ cho bạn bè:</a>
                         <li>
-                            <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
+                            <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
                         </li>
                         <li>
 
