@@ -178,11 +178,18 @@ class NewsController extends Core_Controller_Action {
                     }
                 }
             }
+            $list_of_photo = explode(",", $this->_getParam('list_of_photo'));            
             if(isset($session_tin_nha_thau_thi_cong->photos)&&is_array($session_tin_nha_thau_thi_cong->photos)&&count($session_tin_nha_thau_thi_cong->photos)>0){
                 $photos=$session_tin_nha_thau_thi_cong->photos;
                 foreach ($photos as $temp) {
                     if(file_exists(UPLOAD . "/public/uploads/".$temp)){
-                        Core_Db_Table::getDefaultAdapter()->insert('tinnhathauthicong_photo', array('tin_nha_thau_thi_cong_id' => $id, 'photo' => $temp));
+                        if(in_array($temp, $list_of_photo)){
+                            Core_Db_Table::getDefaultAdapter()->insert('tinnhathauthicong_photo', array('tin_nha_thau_thi_cong_id' => $id, 'photo' => $temp));
+                        }
+                        else{
+                            @unlink(UPLOAD . "/public/uploads/".$temp);
+                        }
+                        
                     }
                 }
             }
@@ -251,11 +258,18 @@ class NewsController extends Core_Controller_Action {
                     }
                 }
             }
+            $list_of_photo = explode(",", $this->_getParam('list_of_photo'));            
             if(isset($session_tin_du_an->photos)&&is_array($session_tin_du_an->photos)&&count($session_tin_du_an->photos)>0){
                 $photos=$session_tin_du_an->photos;
                 foreach ($photos as $temp) {
-                    if(file_exists(UPLOAD . "/public/uploads/".$temp)){
-                        Core_Db_Table::getDefaultAdapter()->insert('tinduan_photo', array('tin_du_an_id' => $id, 'photo' => $temp));
+                    if(file_exists(UPLOAD . "/public/uploads/".$temp) ){
+                        if(in_array($temp, $list_of_photo)){
+                            Core_Db_Table::getDefaultAdapter()->insert('tinduan_photo', array('tin_du_an_id' => $id, 'photo' => $temp));
+                        }
+                        else{
+                            @unlink(UPLOAD . "/public/uploads/".$temp);
+                        }
+                        
                     }
                 }
             }

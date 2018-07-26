@@ -175,6 +175,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="list_of_photo" name="list_of_photo" value="1"/>
 </form>
 <script>
     function readURL(input) {
@@ -214,6 +215,7 @@
                     if($(imgs[i]).attr('src')==undefined||$(imgs[i]).attr('src')=='undefined'||$(imgs[i]).attr('src')==''){
                         $(imgs[i]).attr('src', '<?php echo $this->baseUrl();?>/uploads/'+$.trim(php_script_response));//.css('width','100%').css('height','auto');
                         $(imgs[i]).next().show();
+                        $("#list_of_photo").val($("#list_of_photo").val()+","+php_script_response);
                         break;
                     }
                 }
@@ -247,6 +249,9 @@
             photo=$(this).parent().prev().attr('src');
             $(this).parent().prev().removeAttr('src');
             $(this).parent().hide();
+            var temp=$("#list_of_photo").val();
+            temp=temp.replace(","+photo.replace("/uploads/",""),"");
+            $("#list_of_photo").val(temp);
             $.ajax({
                 url:'<?php echo $this->baseUrl();?>/default/news/deletephoto',
                 data: {'photo':photo},                         
