@@ -1368,7 +1368,11 @@ a:hover, a:focus {
     .top-search .search-block .form-list .form-item .form-right > li:nth-child(2) {
         padding-right: 0; }
     .top-search .search-block .form-list .form-item .btn-link {
-        display: none; }
+        display: none; 
+    }
+    .top-search .search-block .form-list .form-item .btn-link.search-button {
+        display: block; 
+    }
     .ct-sidebar .menu-side {
         width: 40%;
         float: left; }

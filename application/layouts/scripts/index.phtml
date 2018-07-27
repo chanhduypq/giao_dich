@@ -27,7 +27,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     <body>
         <script src="https://sp.zalo.me/plugins/sdk.js"></script>
         <div id="app">
-            <div id="sec1" class="main-wrapper <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'&&Zend_Controller_Front::getInstance()->getRequest()->getControllerName()=='index') echo 'layout-3'; else echo 'index';?>">
+            <div id="sec1" class="main-wrapper <?php if((Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search')&&Zend_Controller_Front::getInstance()->getRequest()->getControllerName()=='index') echo 'layout-3'; else echo 'index';?>">
                 <!-- Start Top  -->
                 <div class="top">
                     <div class="container">
@@ -194,7 +194,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                                 <input type="hidden" id="city" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
                                                             </div>
                                                         </li>
-                                                        <li class="btn-link">
+                                                        <li class="btn-link search-button">
                                                             <button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>
                                                         </li>
                                                     </ul>
@@ -256,6 +256,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                                 <div class="input-nt" data-toggle="modal" data-target="#searchCity" id="selectCity"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
                                                                 <input type="hidden" id="city" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
                                                             </div>
+                                                        </li>
+                                                        <li class="btn-link search-button">
+                                                            <button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>
                                                         </li>
                                                         <li class="btn-link">
                                                             <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
