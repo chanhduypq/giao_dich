@@ -171,7 +171,9 @@ $identity = $auth->getIdentity();
                                 ?>                            
                                 <div class="dt-btn-cl">
                                     <div class="dt-phone">
-                                          <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>                                          
+                                          <div class="ct-btn-phone ct-btn-mobile"  data-toggle="modal" data-target="#phoneModal">
+                                              <a style="cursor: pointer;">Gọi điện</a>
+                                          </div>                                          
                                     </div>
                                 </div>
                             <?php 
@@ -207,7 +209,9 @@ $identity = $auth->getIdentity();
                                     else{?>
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
-                                                  <div onclick="showPhoneList();" class="ct-btn-phone ct-btn-mobile"><a style="cursor: pointer;">Gọi điện</a></div>
+                                                  <div class="ct-btn-phone ct-btn-mobile"  data-toggle="modal" data-target="#phoneModal">
+                                                      <a style="cursor: pointer;">Gọi điện</a>
+                                                  </div>
                                             </div>
                                         </div>
                             <?php 
@@ -322,22 +326,40 @@ $identity = $auth->getIdentity();
     }
     ?>
 </div>
-<div id="phone_list" title="">
-  <?php 
-  $user_nhathauthicong=$this->user_nhathauthicong;
-  if(is_array($user_nhathauthicong)&&count($user_nhathauthicong)>0){
-      foreach ($user_nhathauthicong as $temp){
-          echo '<div style="padding: 10px;">'.$temp['full_name'].": ".$temp['phone'].'</div>';
-      }
-  }
-  ?>
+
+<div class="modal fade" id="phoneModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="text-align: center;">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                      <?php 
+                      $user_duan=$this->user_duan;
+                      if(is_array($user_duan)&&count($user_duan)>0){
+                          foreach ($user_duan as $temp){?>
+                              <li><a href="tel:+<?php echo $temp['phone'];?>"><?php echo $temp['phone'].' ('.$temp['full_name'].')';?></a></li>
+                      <?php 
+                          }
+                      }
+                      ?>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
 <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script> 
 <script type="text/javascript">
-    function showPhoneList(){
-        dialog_phone_list.dialog( "open" );
-    }
+    
     $(window).scroll(function(){
       var sticky = $('.dt-btn'),
           scroll = $(window).scrollTop();
@@ -351,17 +373,7 @@ $identity = $auth->getIdentity();
         return true;
     }
 jQuery(function ($){
-    dialog_phone_list=$( "#phone_list" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
+    
     
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
