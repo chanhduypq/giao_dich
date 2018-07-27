@@ -4709,6 +4709,9 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     max-width: 500px;
     width: 100%;
 }
+#phoneModal .modal-dialog {
+    width: 100% !important;
+}
 #phoneModal ul {
     margin: 0;
     padding: 0;
