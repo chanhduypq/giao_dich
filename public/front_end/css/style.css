@@ -1328,9 +1328,9 @@ a:hover, a:focus {
     .top-search-c {
         background: #ffffff;
         color: #707070;
-        position: absolute;
+        /*position: absolute;
         top: 50px;
-        left: 0;
+        left: 0;*/
         z-index: 10;
         width: 100%;
         max-height: 0;
@@ -1342,6 +1342,13 @@ a:hover, a:focus {
         -webkit-box-shadow: 0px 4px 5px 0px rgba(158,152,158,1);
         -moz-box-shadow: 0px 4px 5px 0px rgba(158,152,158,1);
         box-shadow: 0px 4px 5px 0px rgba(158,152,158,1);
+        margin-bottom: 10px;
+    }
+    .top-search-c.top-search-la3._expand {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        padding: 0 15px;
+        margin-bottom: 10px;
     }
     .top-search .search-block .form-list .form-item:nth-child(2) {
         padding-right: 15px;
@@ -4201,13 +4208,15 @@ a:hover, a:focus {
         display: inline-block;
         font-size: 10px;
         font-weight: 300; }
-    .index .top-search {
-        /*display: none;*/
+    .top-search {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        background: #fff;
         margin-top: 50px;
     }    
     .index .top-search._expand {
         display: block;
-        margin-bottom: -50px;
     } 
     /**/
     /*.slick-slider {
@@ -4360,13 +4369,13 @@ a:hover, a:focus {
         z-index: 99;
         width: 100%;
     }
-    .layout-3 .top-search,
+    /*.layout-3 .top-search,
     .page-content {
         margin-top: 50px;
-    }
-    .layout-3 .page-content {
+    }*/
+    /*.layout-3 .page-content {
         margin-top: 0;
-    } 
+    } */
     .share-f {
         bottom: 100px;
         position: fixed;
@@ -4393,9 +4402,9 @@ a:hover, a:focus {
     
 }
 @media screen and (min-width: 641px) and (max-width: 768px){
-    .layout-3 .top-search, .page-content {
+    /*.layout-3 .top-search, .page-content {
         margin-top: 29px;
-    }
+    }*/
     .col-xs-f.col-xs-4.col-sm-5.col-md-4.col-md-opt {
         height: 215px;
         overflow: hidden;
@@ -4444,6 +4453,11 @@ a:hover, a:focus {
     }
     .login-p {
         margin: 10px -10px 5px -10px;
+    }
+    .top-search-c.top-search-la3._expand {
+        width: 100%;
+        margin-left: auto;
+        padding: 0;
     }
 }
 @media screen and (max-width: 414px) {
@@ -4586,6 +4600,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
         width: 100%;
         left: 0;
     }
+
     .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown ul > li {
         background: url(../images/social/icon-chitay.png) no-repeat left 4px;
         padding-left: 35px;
@@ -4619,6 +4634,12 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    .page-content {
+        padding-top: 0;
+    }
+    .page-content.home-page-2 .top-slider {
+        margin-top: 0;
+    }
 }
 @media screen and (max-width: 360px){
     .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown ul li {
@@ -4637,4 +4658,48 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     .fix-share-d {
         margin: -50px 4px 0 0;
     }
+}
+.searchModal .modal-header {
+    background: #f4f4f4;
+    border-radius: 6px;
+    text-align: center;
+    padding: 10px 15px;
+}
+.searchModal .modal-body {
+    padding: 0;
+}
+.searchModal .modal-body ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.searchModal .modal-body ul li {
+     -webkit-transition: opacity .5s ease-in;
+    transition: opacity .5s ease-in;
+    border-bottom: 1px solid #E5E5E5;
+    position: relative;
+    height: 45px;
+    cursor: pointer;
+}
+.searchModal .modal-body ul li:hover {
+    background: #f4f4f4;
+}
+.searchModal .modal-body ul li:last-child {
+    border:none;
+}
+.searchModal .modal-body ul li a {
+    color: inherit;
+    text-decoration: inherit;
+    width: 100%;
+    position: absolute;
+    line-height: 45px;
+    padding: 0 15px 0px 15px;
+}
+.searchModal .fa.pull-right {
+    line-height: 45px;
+    margin-left: .3em;
+}
+.searchModal .fa-arrow-left {
+   
+    padding-left: 8px;
 }

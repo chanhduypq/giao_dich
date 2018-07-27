@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-07-24 17:04:55
+Date: 2018-07-26 17:23:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -358,6 +358,10 @@ INSERT INTO `tinduan_duancap3` VALUES ('4', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('4', '2');
 INSERT INTO `tinduan_duancap3` VALUES ('5', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('5', '2');
+INSERT INTO `tinduan_duancap3` VALUES ('6', '1');
+INSERT INTO `tinduan_duancap3` VALUES ('6', '2');
+INSERT INTO `tinduan_duancap3` VALUES ('7', '1');
+INSERT INTO `tinduan_duancap3` VALUES ('7', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_duancap4
@@ -382,12 +386,11 @@ CREATE TABLE `tinduan_photo` (
   `tin_du_an_id` int(11) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tinduan_photo
 -- ----------------------------
-INSERT INTO `tinduan_photo` VALUES ('2', '1', '99f9917cc7b5c267cafd577e268c17ec.jpg');
 INSERT INTO `tinduan_photo` VALUES ('7', '2', 'c863ac071046d21769d9fd9b98b578e0.jpg');
 INSERT INTO `tinduan_photo` VALUES ('8', '2', '0234960cee5d0366b014640994b75a39.jpg');
 INSERT INTO `tinduan_photo` VALUES ('9', '2', '324bc1d5899ebb5a5bbe1015bd850583.jpg');
@@ -416,6 +419,10 @@ INSERT INTO `tinduan_photo` VALUES ('31', '5', 'cfa746ce7295a2a3bbe40054432a0010
 INSERT INTO `tinduan_photo` VALUES ('32', '5', 'a458061f94f6efbc54089374c0dec3fd.jpg');
 INSERT INTO `tinduan_photo` VALUES ('33', '5', '2176c8a4e5ccedfad8fc2fe27629d57b.jpg');
 INSERT INTO `tinduan_photo` VALUES ('34', '5', 'e57d843fa73161e065f5ccdb389f02e0.jpg');
+INSERT INTO `tinduan_photo` VALUES ('35', '6', '58190ef78c371c1b7ff6aa3a8015f4d7.jpg');
+INSERT INTO `tinduan_photo` VALUES ('36', '6', 'bd5ef03b90654f10a5863d9ada7bec36.jpg');
+INSERT INTO `tinduan_photo` VALUES ('37', '7', '84fadd5376377213b52bb4d58aa2bd0f.jpg');
+INSERT INTO `tinduan_photo` VALUES ('38', '7', 'c19ef752df9d8679f0a7f5e307908fd3.jpg');
 
 -- ----------------------------
 -- Table structure for tinnhathauthicong_nhathauthicongcap3
@@ -488,7 +495,7 @@ CREATE TABLE `tin_du_an` (
   `is_hot` tinyint(1) DEFAULT NULL,
   `is_dich_vu_hau_mai` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
@@ -498,6 +505,8 @@ INSERT INTO `tin_du_an` VALUES ('2', 'xvxcvxcvx', 'cbcbvbc', null, '2018-07-14 1
 INSERT INTO `tin_du_an` VALUES ('3', 'nhiều ảnh', 'sdfsdfsd', null, '2018-07-23 14:32:08', '2018-07-23 14:32:08', '3', '2', '2018-07-23 00:00:00', '1', null, null, '2', '10', '4353', null, null, null, null, '1', null, null);
 INSERT INTO `tin_du_an` VALUES ('4', 'fsdfdsfsdfsdfsdfs', 'sdfsdfsd', null, '2018-07-24 12:29:53', '2018-07-24 12:29:53', '4', '4', '0000-00-00 00:00:00', '1', null, null, '1', '1', '4353', null, null, null, null, null, null, null);
 INSERT INTO `tin_du_an` VALUES ('5', 'ddddddddddđ', 'dfsdsdf', null, '2018-07-24 12:31:40', '2018-07-24 12:31:40', '3', '2', '0000-00-00 00:00:00', '1', '2', null, '1', '1', 'sdfsdfsd', null, null, null, null, '1', null, null);
+INSERT INTO `tin_du_an` VALUES ('6', 'còn lỗi', 'sdfdsfsdf', null, '2018-07-26 09:43:35', '2018-07-26 09:43:58', '4', '4', '2018-07-26 00:00:00', '1', null, null, '1', '1', '4353', null, null, null, null, '1', null, null);
+INSERT INTO `tin_du_an` VALUES ('7', 'hết lỗi nhiều ảnh', 'sdfsdfs', null, '2018-07-26 10:02:59', '2018-07-26 10:03:20', '4', '4', '2018-07-26 00:00:00', '1', '1', null, '1', '1', '4353', null, null, null, null, '1', null, null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -589,6 +598,8 @@ CREATE TABLE `user_nhathauthicong` (
 -- Records of user_nhathauthicong
 -- ----------------------------
 INSERT INTO `user_nhathauthicong` VALUES ('1', '3');
+INSERT INTO `user_nhathauthicong` VALUES ('2', '3');
+INSERT INTO `user_nhathauthicong` VALUES ('3', '3');
 
 -- ----------------------------
 -- View structure for view_tin
