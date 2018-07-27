@@ -4640,6 +4640,9 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     .page-content.home-page-2 .top-slider {
         margin-top: 0;
     }
+    .step-wrapper .top {
+        position: relative;
+    }
 }
 @media screen and (max-width: 360px){
     .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown ul li {
