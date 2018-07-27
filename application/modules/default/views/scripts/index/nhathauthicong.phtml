@@ -56,7 +56,13 @@ $muc_selected = $this->muc_selected;
                         </ul>
                     </div>
                     <!-- End Menu side -->
-                    <?php echo $this->render('index/dichvuhaumai.phtml'); ?>
+                    <?php if (!$auth->hasIdentity()) {?>
+                    <p class="login login-p">
+                        <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
+                        <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
+                    </p>
+                    <?php } ?>
+                    <?php // echo $this->render('index/dichvuhaumai.phtml'); ?>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-8">
