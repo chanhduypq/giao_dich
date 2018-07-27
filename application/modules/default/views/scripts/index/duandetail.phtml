@@ -32,20 +32,44 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 <!-- Detail Infor -->
                 <div class="dt-info">
                     <div class="dt-thumb">
-                        <div class="dt-main-thumb">
-                            <div class="ct-replace-img">
+                        <div class="show-pc">
+                            <div class="dt-main-thumb">
+                                    <?php 
+                                    if($items[0]['photo']!=''){?>
+                                        <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
+                                    <?php 
+                                    }
+                                    else{?>
+                                        <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
+                                    <?php 
+                                    }
+                                    ?>
+                            </div>
+                        </div>
+                        <div class="show-sp">
+                            <div class="top-slider" style="margin-top: 6px;">                                
                                 <?php 
-                                if($items[0]['photo']!=''){?>
-                                    <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
-                                <?php 
-                                }
-                                else{?>
-                                    <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
-                                <?php 
+                                if(count($items)>0){
+                                    foreach ($items as $item){
+                                        if($item['photo']==''){
+                                            $item['photo']=PHOTO_DEFAULT;
+                                        }
+                                        else{
+                                            $item['photo']='/uploads/'.$item['photo'];
+                                        }
+                                        ?>
+                                        <div class="home-item item-large item-slider">
+                                             <a href="#">
+                                                <img src="<?php echo $this->baseUrl($item['photo']);?>" alt="">
+                                            </a>
+                                        </div>                                        
+                                <?php                                         
+                                    }
                                 }
                                 ?>
                             </div>
                         </div>
+                        
                         <?php if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){?>
                         <div class="dt-chip-thumb">
                             <div class="chip-thumb chip-thumb-slider">
@@ -97,7 +121,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     </li>
 
                             </ul>
-                            <p class="note-detail show-pc"><?php echo nl2br($items[0]['content']);?></p>
+                            <p class="note-detail show-pc"><?php echo NOI_DUNG_HUONG_DAN;?></p>
                             <!-- login sp -->
                             <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
                                 <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>

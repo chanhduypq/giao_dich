@@ -27,7 +27,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
     <body>
         <script src="https://sp.zalo.me/plugins/sdk.js"></script>
         <div id="app">
-            <div id="sec1" class="main-wrapper layout-3">
+            <div id="sec1" class="main-wrapper <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'&&Zend_Controller_Front::getInstance()->getRequest()->getControllerName()=='index') echo 'layout-3'; else echo 'index';?>">
                 <!-- Start Top  -->
                 <div class="top">
                     <div class="container">
@@ -46,7 +46,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                                     <?php } ?>
                                     <div class="top-oc top-login">
-                                        <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?></text>&nbsp;</a>
+                                        <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name']!=''?$identity['full_name']:'Guest';?></text>&nbsp;</a>
                                     </div>
                                     
                                     <?php if (!$auth->hasIdentity()) {?>
@@ -88,7 +88,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                 if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
                 <div class="top-search">
                     <div class="container" style="position: relative;">
-                        <div class="top-search-c">   
+                        <div class="top-search-c top-search-la3">   
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">

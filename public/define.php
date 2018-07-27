@@ -20,3 +20,5 @@ define('APPLICATION_URL', '');
 define('PHOTO_DEFAULT', '/front_end/images/category-detail/cate-detail-main.png');
 
 define('LAYOUT', '1');
+
+define('NOI_DUNG_HUONG_DAN','nội dung hướng dẫn');
