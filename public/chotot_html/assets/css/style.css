@@ -4703,3 +4703,45 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
    
     padding-left: 8px;
 }
+/*style modal call*/
+#phoneModal {
+    margin:  0 auto;
+    max-width: 500px;
+    width: 100%;
+}
+#phoneModal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#phoneModal ul li {
+    display: block;
+    text-align: left;
+    margin: 10px 0;
+    border-bottom: 1px dotted #e5e5e5;
+    padding: 10px;
+    -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+}
+#phoneModal ul li:last-child {
+    border: none !important;
+}
+#phoneModal ul li a {
+    color: #111111;
+    background: url(../images/icon/call.png) no-repeat left center;
+    padding-left: 26px;
+    background-size: 20px;
+    display: block;
+}
+#phoneModal ul li:hover {
+    background: #e5e5e5;
+    border-bottom: 1px dotted #e5e5e5;
+    -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+}
+
+#phoneModal ul li:hover a{
+    color: #FF772F
+}
