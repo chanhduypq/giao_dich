@@ -21,7 +21,7 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
     public function addAction() {
         $error = "";
         if ($this->_request->isPost()) {
-            if (trim($this->_getParam('title')) != '') {
+            if (true){//trim($this->_getParam('title')) != '') {
                 $data['title'] = $this->_getParam('title');
                 $data['content'] = trim($this->_getParam('content'));
                 $data['city_cap_1'] = trim($this->_getParam('city_cap_1'));
@@ -67,7 +67,7 @@ class Admin_DichvuhaumaiController extends Core_Controller_Action {
     public function editAction() {
         $error = "";
         if ($this->_request->isPost()) {
-            if (trim($this->_getParam('title')) != '') {
+            if (true){//trim($this->_getParam('title')) != '') {
                 $data['title'] = $this->_getParam('title');
                 $data['content'] = trim($this->_getParam('content'));
                 $data['city_cap_1'] = trim($this->_getParam('city_cap_1'));

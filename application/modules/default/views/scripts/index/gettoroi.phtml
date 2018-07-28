@@ -15,7 +15,7 @@ $item = $this->item;
             <div class="col-md-12">
                 <!-- Detail Infor -->
                 <div class="dt-info">
-                    <div class="dt-thumb" style="width: 100px;">
+                    <div class="dt-thumb" style="width: 100px;margin-right: 20px;padding-right: 20px;">
                         <div class="dt-main-thumb" style="width: 100px;">
                             <div class="ct-replace-img" style="width: 100px;height: 200px;">
                                 <?php 
@@ -32,15 +32,20 @@ $item = $this->item;
                         </div>
                     </div>
                     <div class="dt-content">
+                        <?php if(trim($item['title'])!=""){?>
                         <div class="dt-title">
                             <a>                                
                                 <?php echo $item['title'];?>
                             </a>
                             
                         </div>
+                        <?php } ?>
+                        <?php if(trim($item['content'])!=""){?>
                         <div class="dt-desc">
                             <?php echo nl2br($item['content']);?>
                         </div>
+                        <?php } ?>
+                        <?php if(trim($item['city_cap_1_name'])!=""){?>
                         <div class="dt-pos">
                             
                             <div class="dt-pos-l">
@@ -56,6 +61,7 @@ $item = $this->item;
                                 </p>
                             </div>
                         </div>
+                        <?php } ?>
                         
                         
                         
