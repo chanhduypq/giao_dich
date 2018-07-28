@@ -13,6 +13,7 @@ if($auth->hasIdentity()){
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'dichvuhaumai') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/dichvuhaumai">Dịch vụ hậu mãi</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
         
         <?php 
         }
