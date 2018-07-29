@@ -95,6 +95,7 @@ else{
 <div class="row-fluid">
     <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
             <thead>
+                <th>Mã tin</th>
                 <th>Hình ảnh</th>
                 <th>Tựa đề</th>
                 <th>Nội dung</th>
@@ -104,6 +105,7 @@ else{
                 <?php 
                     foreach ($items as $id=>$item){?>
                     <tr id="tin_<?php echo $id;?>"<?php if($item['status']=='2') echo ' style="background: #c8cedd;"'; else if($item['status']=='3') echo ' style="background: #9dfbd3;"';?>>
+                        <td><?php echo 'NT'.$id;?></td>
                         <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>
                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>

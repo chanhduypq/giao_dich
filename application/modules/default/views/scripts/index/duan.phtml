@@ -196,8 +196,20 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                     <div class="cit-desc-l">
                                                         <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
-                                                        <p>&nbsp;</p>
-                                                        <p>&nbsp;</p>
+                                                        <p>
+                                                            <?php 
+                                                            if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                echo 'Nhân viên';
+                                                            }
+                                                            else if($item['type']== Default_Model_User::KHACH_HANG){
+                                                                echo 'Cá nhân';
+                                                            }
+                                                            else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                echo 'Đối tác';
+                                                            }
+                                                            ?>
+                                                        </p>
+                                                        <p>Mã tin: <?php echo 'DA'.$item['id'];?></p>
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
