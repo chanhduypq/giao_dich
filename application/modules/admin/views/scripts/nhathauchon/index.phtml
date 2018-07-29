@@ -1,0 +1,163 @@
+<?php 
+$items = $this->items;
+$auth = Zend_Auth::getInstance();
+if ($auth->hasIdentity()) {
+    $identity = $auth->getIdentity();
+}
+else{
+    $identity=NULL;
+}
+
+?>
+
+<style>
+    .center{
+        text-align:left;
+    }
+
+    table{
+        width:100%;
+        max-width:1600px;
+        border-right:1px solid #999;
+    }
+    tr.show{
+        background: #c8cedd;
+    }
+
+    td{
+        text-indent:5px;
+        color:#444;
+        border-bottom:1px solid #bbb;
+        border-left:1px solid #bbb;
+    }
+
+    td.left{
+        border-left:1px solid #2e638e;
+    }
+
+    td.right{
+        border-right:1px solid #2e638e;
+    }
+
+    td.bottom{
+        border-bottom:1px solid #2e638e;
+    }
+    
+    .quangcao td,th{
+        text-align: center;
+    }
+
+    .grip{
+        width:20px;
+        height:15px;
+        margin-top:-3px;
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/grip.png');
+        margin-left:-5px;
+        position:relative;
+        z-index:88;
+        cursor:e-resize;
+    }
+
+    .grip:hover{
+        background-position-x:-20px;
+    }
+
+    .JCLRLastGrip .grip{
+        background-position-y:-18px;
+        left:-2px;
+    }
+
+    .dragging .grip{
+        background-position-x:-40px;
+    }
+
+    .sampleText{
+        position:relative;
+        width:100%;
+    }
+
+    .dotted{
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/dotted.png');
+        background-repeat:repeat-y;
+    }
+</style>
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="<?php echo $this->baseUrl(); ?>/js/jquery.dataTables.min.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <link href="<?php echo $this->baseUrl('/css/form_search.css'); ?>?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>" media="screen" rel="stylesheet" type="text/css" />				 
+    <script src="<?php echo $this->baseUrl(); ?>/js/colResizable-1.6.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+
+<div class="row-fluid">
+    <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
+            <thead>
+                <th>Hình ảnh</th>
+                <th>Tựa đề</th>
+                <th>Nội dung</th>
+                <th>Người đã chọn nhà thầu</th>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($items as $id=>$item){?>
+                    <tr id="tin_<?php echo $id;?>"<?php if($item['status']=='2') echo ' style="background: #c8cedd;"'; else if($item['status']=='3') echo ' style="background: #9dfbd3;"';?>>
+                        <td style="width: 10%;">
+                            <?php if(trim($item['photo'])!=""){?>
+                                <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
+                             <?php }
+                             else{?>
+                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>"/>
+                             <?php 
+                             }
+                             ?>
+                        </td>
+                        <td>
+                            <?php echo $item['title'];?>
+                        </td>
+                        <td>
+                            <?php echo $item['content'];?>
+                        </td>
+                        <td>
+                            <?php 
+                            echo implode("<br>", $item['users_da_chon']);
+                            ?>
+                        </td>
+                        
+                    </tr>
+                    <?php 
+                    }
+                ?>
+            </tbody>
+        </table>
+
+</div>
+<script>
+        
+    $(window).load(function() {
+          $('#nanopool-table').show();
+          $('#nanopool-table').DataTable();
+          $('#nanopool-table_filter').find('input').eq(0).css('width','270px');
+          $('#nanopool-table td').css('text-align','center');
+          <?php 
+          if(is_array($items)&&count($items)>0){?>
+          $("table").colResizable({
+                liveDrag:true, 
+                gripInnerHtml:"<div class='grip'></div>", 
+                draggingClass:"dragging", 
+                resizeMode:'overflow',//'fit'
+                postbackSafe:true,
+                partialRefresh:true
+          });
+          <?php 
+          }
+          ?>
+    });
+    
+    
+    jQuery(function ($){
+        
+    });
+</script>

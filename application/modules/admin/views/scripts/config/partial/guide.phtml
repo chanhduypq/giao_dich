@@ -1,21 +1,10 @@
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
-    jQuery(function ($) {
-        CKEDITOR.replace('editor1', {
-            language: 'en',
-            filebrowserUploadUrl: '/upload.php'
-        });
-    });
-
-</script>
-
 <div class="row-fluid">
     <div class="span12">
 
         <div class="row-fluid" style="margin-top: 10px;">
 
             <div class="span12">
-                <textarea rows="" cols="" name="guide" id="editor1"><?php echo $this->guide; ?></textarea>
+                <textarea rows="10" cols="100" name="guide"><?php echo $this->guide; ?></textarea>
             </div>
 
         </div>

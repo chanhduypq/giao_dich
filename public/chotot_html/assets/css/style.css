@@ -2845,6 +2845,7 @@ a:hover, a:focus {
 .page-content.detail-page .dt-info .dt-content .dt-btn .dt-phone .ct-btn-phone.ct-btn-mobile {
     background: #47D600 url("../images/layout/call.png") no-repeat calc(50% - 45px) center;
     background-size: 27px;
+    background-position-x:10%;
     color: #ffffff; }
 .page-content.detail-page .dt-info .dt-content .dt-btn .dt-phone .ct-btn-phone.ct-btn-mobile a {
     color: #ffffff;

@@ -121,9 +121,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     </li>
 
                             </ul>
-                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo $config['guide'];?></p>
+                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo nl2br($config['guide']);?></p>
                             <!-- login sp -->
-                            <?php if (true){//!$auth->hasIdentity()) { tuetc?>
+                            <?php if (!$auth->hasIdentity()) { ?>
                             <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
                                 <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
                                 <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
@@ -167,6 +167,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
+                                <p style="margin-top: 4px; font-weight: normal;">Mã tin: <span style="font-weight: bold;"><?php echo 'DA'.$items[0]['id'];?></span></p>
                                 <p>Ngày đăng tin: <?php echo $items[0]['created_at'];?></p>
                                 <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
                                 <p>&nbsp;</p>
@@ -339,7 +340,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                                 </div>
                                                 <div class="cit-desc">
                                                     <div class="cit-desc-l">
-                                                        <p style="margin-top: 4px; font-weight: normal;">Mã tin: <span style="font-weight: bold;"><?php echo 'DA'.$item['id'];?></span></p>
                                                         <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                     </div>

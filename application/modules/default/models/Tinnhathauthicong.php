@@ -29,6 +29,25 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
         
     }
     
+    /**
+     * lấy danh sách id của các tin đã được chọn bởi một user nào đó
+     * @param string|int $userId
+     * @return array
+     */
+    public static function getTinNhaThauThiCongIdDuocChons($userId){
+        $du_an_da_chon_ids = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+                . "tin_nha_thau_thi_cong_id "
+                . "from nha_thau_da_chon "
+                . "where user_id='$userId'");
+        $temp = array();
+        if (is_array($du_an_da_chon_ids) && count($du_an_da_chon_ids) > 0) {
+            foreach ($du_an_da_chon_ids as $du_an_da_chon_id) {
+                $temp[] = $du_an_da_chon_id['tin_nha_thau_thi_cong_id'];
+            }
+        }
+        return $temp;
+    }
+    
     public static function getTinNhaThauThiCongLienQuans($id,$nha_thau_thi_cong_cap_1_id){
         
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select "

@@ -320,6 +320,7 @@ class IndexController extends Core_Controller_Action {
         $this->view->khachHangCount = $khachHangCount;
         $this->view->mucGet= (ctype_digit($muc) && $muc != '0')?"muc/$muc":"";
         $this->view->tab= $this->_getParam('tab','tatCa');
+        $this->view->du_an_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
     }
 
     public function duandetailAction() {

@@ -4,12 +4,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
 
     public function init() {
         parent::init();
-        $auth = Zend_Auth::getInstance();
-        $identity = $auth->getIdentity();
-//        if($identity['type']!= Default_Model_User::NHAN_VIEN){
-//            $this->_helper->redirector('index', 'nhanvien', 'admin');
-//            exit;
-//        }
+        
     }
 
     public function indexAction() {

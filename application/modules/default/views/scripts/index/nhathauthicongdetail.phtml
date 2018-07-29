@@ -2,6 +2,10 @@
 $items = $this->items;
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
+if ($auth->hasIdentity()){// && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) { tuetc
+    $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from nha_thau_da_chon where user_id='" . $identity['id'] . "' and tin_nha_thau_thi_cong_id='" . $items[0]['id'] . "'");
+    $number_du_an_da_chon = $number_du_an_da_chon[0];
+}
 ?>
 <div class="page-content detail-page category-page">
     <div class="container">
@@ -135,12 +139,34 @@ $identity = $auth->getIdentity();
                                 <?php } ?>
                                 <?php echo $items[0]['title'];?>
                             </a>
+                            <?php 
+                            if ($auth->hasIdentity()){//&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) { tuetc
+                                if(isset($number_du_an_da_chon)&&$number_du_an_da_chon=='0'){
+                                ?>
+                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an" style="width: 100%;">Chọn nhà thầu</a>
+                            <?php 
+                                }
+                                else{?>
+                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                <?php 
+                                }
+                            }
+                            else{
+                                if(!$auth->hasIdentity()){
+                                ?>
+                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn">Chọn nhà thầu</a>
+                            <?php    
+                                }
+                                
+                            }
+                            ?>
                         </div>
                         <div class="dt-desc">
                             <?php echo nl2br($items[0]['content']);?>
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
+                                <p style="margin-top: 4px; font-weight: normal;">Mã tin: <span style="font-weight: bold;"><?php echo 'NT'.$items[0]['id'];?></span></p>
                                 <p>Ngày đăng tin: <?php echo $items[0]['created_at'];?></p>
                                 <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
                                 <p>
@@ -407,6 +433,53 @@ jQuery(function ($){
    if($(".dt-cast ul li").length<=3){
        $(".dt-cast ul li").css('width','auto');
    } 
+   
+   $(".chon_du_an").click(function (){
+       node=$(this);
+        if(!$(this).hasClass('huy')){
+            action='chonnhathau';
+        }
+        else{
+            action='huychonnhathau';
+        }
+        id=$(this).attr('id').replace("chon_du_an_","");
+        
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/default/news/'+action,
+            data: {'tin_nha_thau_thi_cong_id':id},                         
+            type: 'post',
+            async: true,
+            success: function(php_script_response){
+                $(node).toggleClass('huy');
+                if(action=='chonnhathau'){
+                    $(node).html('Hủy chọn');
+                }
+                else{
+                    $(node).html('Chọn nhà thầu');
+                }
+                
+                $(node).parents('.dt-content').toggleClass('selected');
+                $(node).parents('.cate-item-i').toggleClass('selected');
+                if($(node).parents('.dt-content').find('.tap-hot').length>0){
+                    if($(node).parents('.dt-content').hasClass('selected')){
+                        $(node).parents('.dt-content').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.dt-content').addClass('hot');
+                    }
+                }
+                if($(node).parents('.cate-item-i').find('.tap-hot').length>0){
+                    if($(node).parents('.cate-item-i').hasClass('selected')){
+                        $(node).parents('.cate-item-i').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.cate-item-i').addClass('hot');
+                    }
+                }
+                
+            }
+        });
+   });
 });
 </script>
 

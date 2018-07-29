@@ -166,7 +166,7 @@ $muc_selected = $this->muc_selected;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>
@@ -197,7 +197,27 @@ $muc_selected = $this->muc_selected;
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <!--tuetc-->
-                                                        <!--<a href="#" class="cit-btn"><span>Chọn dự án</span></a>-->
+                                                        <?php 
+                                                        if ($auth->hasIdentity()){//&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                            if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                            ?>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn nhà thầu</span></a>
+                                                        <?php 
+                                                            }
+                                                            else{?>
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                            <?php 
+                                                            }
+                                                        }
+                                                        else{
+                                                            if(!$auth->hasIdentity()){
+                                                            ?>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn nhà thầu</span></a>
+                                                        <?php    
+                                                            }
+                                                            
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,3 +248,56 @@ $muc_selected = $this->muc_selected;
         </div>
     </div>
 </div>
+<script type="text/javascript">
+jQuery(function ($){
+    
+   $(".chon_du_an").click(function (){
+       node=$(this);
+        if(!$(this).hasClass('huy')){
+            action='chonnhathau';
+        }
+        else{
+            action='huychonnhathau';
+        }
+        id=$(this).attr('id').replace("chon_du_an_","");
+        
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/default/news/'+action,
+            data: {'tin_nha_thau_thi_cong_id':id},                         
+            type: 'post',
+            async: false,
+            success: function(php_script_response){
+                $(node).toggleClass('huy');
+                if($.trim(php_script_response)=='ok'){
+                    if(action=='chonnhathau'){
+                        $(node).html('Hủy chọn');
+                    }
+                    else{
+                        $(node).html('Chọn nhà thầu');
+                    }
+                    
+                }
+                $(node).parents('.dt-content').toggleClass('selected');
+                $(node).parents('.cate-item-i').toggleClass('selected');
+                if($(node).parents('.dt-content').find('.tap-hot').length>0){
+                    if($(node).parents('.dt-content').hasClass('selected')){
+                        $(node).parents('.dt-content').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.dt-content').addClass('hot');
+                    }
+                }
+                if($(node).parents('.cate-item-i').find('.tap-hot').length>0){
+                    if($(node).parents('.cate-item-i').hasClass('selected')){
+                        $(node).parents('.cate-item-i').removeClass('hot');
+                    }
+                    else{
+                        $(node).parents('.cate-item-i').addClass('hot');
+                    }
+                }
+
+            }
+        });
+   });
+});
+</script>

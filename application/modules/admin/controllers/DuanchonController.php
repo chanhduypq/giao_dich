@@ -8,6 +8,8 @@ class Admin_DuanchonController extends Core_Controller_Action {
     }
 
     public function indexAction() {
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,content,"
                 . "photo,"
@@ -18,8 +20,7 @@ class Admin_DuanchonController extends Core_Controller_Action {
                 . "join du_an_da_chon on tin_du_an.id=du_an_da_chon.tin_du_an_id "
                 . "join user on user.id=du_an_da_chon.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . "where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."')"
-//                . "where is_quang_cao=1 and (tin_du_an.target_type=3 or tin_du_an.target_type=4) " nếu tin này là khách hàng hoặc đối tác đăng
+                .($identity['type']== Default_Model_User::ADMIN?" ": ("where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "))
                 . "group by tin_du_an.id,user.phone "
                 . "order by du_an_da_chon.created_at ASC");
         
