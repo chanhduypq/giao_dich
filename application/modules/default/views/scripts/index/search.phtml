@@ -64,7 +64,7 @@ $quangcao_items = $this->quangcao_items;
                                             </div>
                                             <div class="cai-desc">
                                                 <div class="cai-col cai-cl">
-                                                    <p>Đầu tư: <span><?php echo $item['tong_dau_tu'];?></span></p>
+                                                    <p> <span><?php echo $item['tong_dau_tu'];?></span></p>
                                                     <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
                                                 </div>
                                                 <div class="cai-col cai-cr">
@@ -140,7 +140,7 @@ $quangcao_items = $this->quangcao_items;
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
-                                                <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                                <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">

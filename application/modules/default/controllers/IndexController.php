@@ -381,6 +381,8 @@ class IndexController extends Core_Controller_Action {
         
         $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
+        
+        $this->view->du_an_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
     }
     
     public function editduanAction() {

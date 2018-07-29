@@ -13,16 +13,46 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
             <div class="col-md-12">
                 <div class="ct-breadcrumb">
                     <ul>
-                        <li><a>DANGTINXAYDUNG</a></li>
+                        <li><a style="color: blue;" href="/">DANGTINXAYDUNG</a></li>
                         <li><a>Dự án</a></li>
                         <?php 
                         if(trim($items[0]['du_an_cap_1'])!=''){
-                            echo '<li><a>'.$items[0]['du_an_cap_1'].'</a></li>';
+                            if($items[0]['du_an_cap_1_id']=='1'){
+                                $slug='dan-dung';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='2'){
+                                $slug='ha-tang';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='3'){
+                                $slug='cau-duong';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='4'){
+                                $slug='hoan-thien-noi-ngoai-that';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='5'){
+                                $slug='kien-truc';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='6'){
+                                $slug='dien-nuoc';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='7'){
+                                $slug='sua-chua';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='8'){
+                                $slug='cay-xanh';
+                            }
+                            else if($items[0]['du_an_cap_1_id']=='9'){
+                                $slug='dich-vu-ve-sinh';
+                            }
+                            else{
+                                $slug='';
+                            }
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$slug).'">'.$items[0]['du_an_cap_1'].'</a></li>';
                         }
                         
-                        if(trim($items[0]['du_an_cap_2'])!=''){
-                            echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
-                        }
+//                        if(trim($items[0]['du_an_cap_2'])!=''){ tuetc
+//                            echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
+//                        }
                         
                         ?>
                     </ul>
@@ -167,7 +197,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         </div>
                         <div class="dt-pos">
                             <div class="dt-pos-l">
-                                <p style="margin-top: 4px; font-weight: normal;">Mã tin: <span style="font-weight: bold;"><?php echo 'DA'.$items[0]['id'];?></span></p>
+                                <p>Mã tin: <span style="font-weight: bold;"><?php echo 'DA'.$items[0]['id'];?></span></p>
                                 <p>Ngày đăng tin: <?php echo $items[0]['created_at'];?></p>
                                 <p>Thời gian thi công: <?php echo $items[0]['ngay'];?></p>
                                 <p>&nbsp;</p>
@@ -190,6 +220,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <div class="dt-cast">
                             <ul>
                                 <?php 
+                                if(trim($items[0]['du_an_cap_2'])!=''){
+                                    echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
+                                }
                                 $du_an_cap_3s=$this->du_an_cap_3s;
                                 if(is_array($du_an_cap_3s)&&count($du_an_cap_3s)>0){
                                     foreach ($du_an_cap_3s as $du_an_cap_3){
@@ -208,7 +241,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <div class="dt-btn">
                             <div class="dt-btn-cl">
                                 <div class="dt-mark">
-                                    Đầu tư: <?php echo $items[0]['tong_dau_tu'];?>
+                                     <?php echo $items[0]['tong_dau_tu'];?>
                                 </div>
                             </div>
                             <?php 
@@ -326,7 +359,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
-                                                <span class="cit-mark">Đầu tư: <?php echo $item['tong_dau_tu'];?></span>
+                                                <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
