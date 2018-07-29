@@ -2717,7 +2717,7 @@ a:hover, a:focus {
     color: #111111;
     font-weight: 700;
     font-size: 24px;
-    max-width: calc(100% - 130px);
+    max-width: calc(100% - 150px);
     display: block;
     line-height: 1.3;
     overflow: hidden;
@@ -2732,7 +2732,7 @@ a:hover, a:focus {
     font-size: 14px;
     background: #ffffff url("../images/layout/bookmark-light.png") 15px center no-repeat;
     background-size: 17px;
-    width: 130px;
+    width: 150px;
     position: absolute;
     right: 0;
     top: 0;
@@ -4755,4 +4755,11 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
 
 #phoneModal ul li:hover a{
     color: #FF772F
+}
+
+.dt-title a:first-child{
+    word-wrap: break-word;
+}
+.cit-title a:first-child{
+    word-wrap: break-word;
 }
