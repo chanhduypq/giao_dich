@@ -50,9 +50,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$slug).'">'.$items[0]['du_an_cap_1'].'</a></li>';
                         }
                         
-//                        if(trim($items[0]['du_an_cap_2'])!=''){ tuetc
-//                            echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
-//                        }
+                        if(trim($items[0]['du_an_cap_2'])!=''){
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$slug.'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
+                        }
                         
                         ?>
                     </ul>
@@ -220,9 +220,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <div class="dt-cast">
                             <ul>
                                 <?php 
-                                if(trim($items[0]['du_an_cap_2'])!=''){
-                                    echo '<li><a>'.$items[0]['du_an_cap_2'].'</a></li>';
-                                }
                                 $du_an_cap_3s=$this->du_an_cap_3s;
                                 if(is_array($du_an_cap_3s)&&count($du_an_cap_3s)>0){
                                     foreach ($du_an_cap_3s as $du_an_cap_3){

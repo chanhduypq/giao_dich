@@ -69,6 +69,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                         . "city_cap_2.name as city_cap_2,"
                         . "city_cap_3.name as city_cap_3, "
                         . "tin_du_an.du_an_cap_1 as du_an_cap_1_id,"
+                        . "tin_du_an.du_an_cap_2 as du_an_cap_2_id,"
                         . "du_an_cap_1.name as du_an_cap_1,"
                         . "du_an_cap_2.name as du_an_cap_2 "
                         . "from tin_du_an "
