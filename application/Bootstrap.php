@@ -9,16 +9,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         return Core::config();
     }
     
-    public function run() {
-
-        try {
-            $frontController = $this->getResource('frontController');
-            $frontController->dispatch();
-        } catch (Exception $e) {
-            header('Location: /');
-            exit;
-        }
-    }
+//    public function run() {
+//
+//        try {
+//            $frontController = $this->getResource('frontController');
+//            $frontController->dispatch();
+//        } catch (Exception $e) {
+//            header('Location: /');
+//            exit;
+//        }
+//    }
 
     protected function _initDbAdapter() {
         $dbOption = $this->getOption('resources');

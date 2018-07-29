@@ -6,13 +6,15 @@ class Admin_QuangcaoController extends Core_Controller_Action {
         parent::init();
         $auth = Zend_Auth::getInstance();
         $identity = $auth->getIdentity();
-        if($identity['type']!= Default_Model_User::NHAN_VIEN){
-            $this->_helper->redirector('index', 'nhanvien', 'admin');
-            exit;
-        }
+//        if($identity['type']!= Default_Model_User::NHAN_VIEN){
+//            $this->_helper->redirector('index', 'nhanvien', 'admin');
+//            exit;
+//        }
     }
 
     public function indexAction() {
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,content,'Dự án' as type_tin_text,'du_an' as type_tin,"
                 . "photo,"
@@ -23,8 +25,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
                 . "from tin_du_an "
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . "where is_quang_cao=1 and tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."')"
-//                . "where is_quang_cao=1 and (tin_du_an.target_type=3 or tin_du_an.target_type=4) "  nếu tin này là khách hàng hoặc đối tác đăng
+                .($identity['type']== Default_Model_User::ADMIN?"where is_quang_cao=1 ": ("where is_quang_cao=1 and tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "))
                 . "group by tin_du_an.id");
         
         $allItems1 = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
@@ -37,8 +38,7 @@ class Admin_QuangcaoController extends Core_Controller_Action {
                 . "from tin_nha_thau_thi_cong "
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                . "where is_quang_cao=1 and tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."')"
-//                . "where is_quang_cao=1 and (tin_nha_thau_thi_cong.target_type=3 or tin_nha_thau_thi_cong.target_type=4) "  nếu tin này là khách hàng hoặc đối tác đăng
+                .($identity['type']== Default_Model_User::ADMIN?"where is_quang_cao=1 ":  ("where is_quang_cao=1 and tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."') "))
                 . "group by tin_nha_thau_thi_cong.id");
         
         $allItems= array_merge($allItems,$allItems1);

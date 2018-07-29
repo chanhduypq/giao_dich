@@ -166,16 +166,17 @@ $muc_selected = $this->muc_selected;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i">
+                                        <div class="cate-item-i<?php if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
+                                                <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
                                                     <a href="<?php echo $this->baseUrl("/index/nhathauthicongdetail/id/".$item['id']);?>">
                                                         <?php 
                                                         if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                             <?php echo $item['title'];?>
                                                     </a>

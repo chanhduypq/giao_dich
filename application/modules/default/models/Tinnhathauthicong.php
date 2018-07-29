@@ -40,7 +40,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
                 . "phone,is_hot,"
                 . "user.type,"
                 . "phan_loai,tin_nha_thau_thi_cong.is_hot,"
-                . "tin_nha_thau_thi_cong.id "
+                . "tin_nha_thau_thi_cong.id,dich_vu_thi_cong "
                 . "from tin_nha_thau_thi_cong "
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "

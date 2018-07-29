@@ -93,7 +93,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <?php 
                         } ?>
                         <div class="dt-share">
-                            <div class="dt-t show-pc">Chia sẻ dự án tới:</div>
+                            <!--<div class="dt-t show-pc">Chia sẻ dự án tới:</div>-->
                             <ul class="dt-li-share">
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
@@ -121,9 +121,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                     </li>
 
                             </ul>
-                            <p class="note-detail show-pc"><?php echo NOI_DUNG_HUONG_DAN;?></p>
+                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo $config['guide'];?></p>
                             <!-- login sp -->
-                            <?php if (!$auth->hasIdentity()) {?>
+                            <?php if (true){//!$auth->hasIdentity()) { tuetc?>
                             <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
                                 <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
                                 <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
@@ -267,7 +267,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             ?>
                         </div>
                         <div class="dt-share dt-share-mobile">
-                            <div class="dt-t">Chia sẻ dự án tới:</div>
+                            <!--<div class="dt-t">Chia sẻ dự án tới:</div>-->
                             <ul class="dt-li-share">
                                 <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>

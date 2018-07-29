@@ -89,7 +89,7 @@ $identity = $auth->getIdentity();
                         }
                         ?>
                         <div class="dt-share">
-                            <div class="dt-t show-pc">Chia sẻ tới:</div>
+                            <!--<div class="dt-t show-pc">Chia sẻ tới:</div>-->
                             <ul class="dt-li-share">
                                     <li>
                                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
@@ -117,7 +117,7 @@ $identity = $auth->getIdentity();
                                     </li>
 
                             </ul>
-                            <p class="note-detail show-pc"><?php echo NOI_DUNG_HUONG_DAN;?></p>
+                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo $config['guide'];?></p>
                             <!-- login sp -->
                             <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">
                                 <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
@@ -126,7 +126,7 @@ $identity = $auth->getIdentity();
                         </div>
 
                     </div>
-                    <div class="dt-content">
+                    <div class="dt-content<?php if(isset($items[0]['is_hot'])&&$items[0]['is_hot']=='1') echo ' hot';?>">
                         <div class="dt-title">
                             <a>
                                 <?php 
@@ -189,6 +189,11 @@ $identity = $auth->getIdentity();
                             </ul>
                         </div>
                         <div class="dt-btn">
+                            <div class="dt-btn-cl">
+                                <div class="dt-mark">
+                                    <?php echo $items[0]['dich_vu_thi_cong'];?>
+                                </div>
+                            </div>
                             <?php 
                             if(!$auth->hasIdentity()){
                                 ?>                            
@@ -244,7 +249,7 @@ $identity = $auth->getIdentity();
                             ?>
                         </div>
                         <div class="dt-share dt-share-mobile">
-                            <div class="dt-t">Chia sẻ dự án tới:</div>
+                            <!--<div class="dt-t">Chia sẻ tới:</div>-->
                             <ul class="dt-li-share">
                                 <li>
                                     <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
@@ -299,6 +304,7 @@ $identity = $auth->getIdentity();
                                             <div class="cate-item-i<?php if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                                 <div class="cit-part cit-left">
                                                     <img src="<?php echo $item['photo']; ?>">
+                                                    <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">
