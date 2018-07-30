@@ -249,7 +249,15 @@
                                     <div class="dt-title">
                                         <a href="#">Cần nghệ nhân làm tiểu cảnh hiện đại trong sân nhà tại Đà Nẵng</a>
                                         <a href="#" class="cit-btn">Chọn dự án</a>
-
+                                         <!-- vote -->
+                                        <div class="vote">
+                                            <div class="star_1 ratings_stars"><input value="1" type="hidden"></div>
+                                            <div class="star_2 ratings_stars"><input value="2" type="hidden"></div>
+                                            <div class="star_3 ratings_stars"><input value="3" type="hidden"></div>
+                                            <div class="star_4 ratings_stars"><input value="4" type="hidden"></div>
+                                            <div class="star_5 ratings_stars"><input value="5" type="hidden"></div>
+                                        </div>
+                                        <!-- vote -->
                                     </div>
                                     <div class="dt-desc">
                                         Yêu cầu đội thi công đáp ứng công việc 2 ca trong một ngày: Số lượng 30 người Máy thi công đáp ứng đúng yêu cầu công việc Thời gian dự kiến thi công 30 ngày kể từ ngày bàn giao mặt bằng Được tạm ứng 30% khi ký hợp đồng và vận chuyển dụng cụ máy móc thiết bị đến công trình Thanh toán 90 % mỗi tầng hoàn thành khi đã nghiệm thu bàn giao, 10% cong lại khi đã hoàn thành sau thời gian nghiệm thu 1 tháng.
@@ -796,6 +804,7 @@
       </div>
     </div>
     <!--  -->
+
     <script src="assets/js/script.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -856,6 +865,28 @@
                 $(".modal-body div").hide();
                 $(".pull-left").remove();
             });
+
+            // 
+            //vote
+            $('.ratings_stars').hover(
+                function() {
+                    $(this).prevAll().andSelf().addClass('ratings_hover');
+                },
+                function() {
+                    $(this).prevAll().andSelf().removeClass('ratings_hover');
+                }
+            );
+            $('.ratings_stars').click(function(){
+                var Values =  $(this).find("input").val();
+                alert(Values);
+                if ($(this).hasClass('ratings_over')) {
+                    $('.ratings_stars').removeClass('ratings_over');
+                    $(this).prevAll().andSelf().addClass('ratings_over');
+                } else {
+                    $(this).prevAll().andSelf().addClass('ratings_over');
+                }
+            });
+            // 
         });
     </script>
 </body>
