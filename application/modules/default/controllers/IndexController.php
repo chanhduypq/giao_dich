@@ -329,6 +329,16 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
         $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+        for($i=0;$i<count($items);$i++){
+            if($items[$i]['photo']==''){
+                $items[$i]['photo']=PHOTO_DEFAULT;
+            }
+            else{
+                $items[$i]['photo']='/uploads/'.$items[$i]['photo'];
+            }
+        }
+        
+        
 
         $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
         $this->view->du_an_cap_3s = Core_Db_Table::getDefaultAdapter()
@@ -351,6 +361,7 @@ class IndexController extends Core_Controller_Action {
         $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
         $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
+        $this->view->slug= $this->getDuAnCap1SlugById($items[0]['du_an_cap_1_id']);
     }
 
     public function nhathauthicongdetailAction() {
@@ -359,6 +370,14 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
         $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongDetail($this->_getParam('id', 0));
+        for($i=0;$i<count($items);$i++){
+            if($items[$i]['photo']==''){
+                $items[$i]['photo']=PHOTO_DEFAULT;
+            }
+            else{
+                $items[$i]['photo']='/uploads/'.$items[$i]['photo'];
+            }
+        }
 
         $this->view->items = $items;
         $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
@@ -555,6 +574,40 @@ class IndexController extends Core_Controller_Action {
         } else {
             return '0';
         }
+    }
+    
+    private function getDuAnCap1SlugById($du_an_cap_1_id){
+        if($du_an_cap_1_id=='1'){
+            $slug='dan-dung';
+        }
+        else if($du_an_cap_1_id=='2'){
+            $slug='ha-tang';
+        }
+        else if($du_an_cap_1_id=='3'){
+            $slug='cau-duong';
+        }
+        else if($du_an_cap_1_id=='4'){
+            $slug='hoan-thien-noi-ngoai-that';
+        }
+        else if($du_an_cap_1_id=='5'){
+            $slug='kien-truc';
+        }
+        else if($du_an_cap_1_id=='6'){
+            $slug='dien-nuoc';
+        }
+        else if($du_an_cap_1_id=='7'){
+            $slug='sua-chua';
+        }
+        else if($du_an_cap_1_id=='8'){
+            $slug='cay-xanh';
+        }
+        else if($du_an_cap_1_id=='9'){
+            $slug='dich-vu-ve-sinh';
+        }
+        else{
+            $slug='';
+        }
+        return $slug;
     }
 
 }

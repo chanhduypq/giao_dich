@@ -16,42 +16,12 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                         <li><a style="color: blue;" href="/">DANGTINXAYDUNG</a></li>
                         <li><a>Dự án</a></li>
                         <?php 
-                        if(trim($items[0]['du_an_cap_1'])!=''){
-                            if($items[0]['du_an_cap_1_id']=='1'){
-                                $slug='dan-dung';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='2'){
-                                $slug='ha-tang';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='3'){
-                                $slug='cau-duong';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='4'){
-                                $slug='hoan-thien-noi-ngoai-that';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='5'){
-                                $slug='kien-truc';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='6'){
-                                $slug='dien-nuoc';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='7'){
-                                $slug='sua-chua';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='8'){
-                                $slug='cay-xanh';
-                            }
-                            else if($items[0]['du_an_cap_1_id']=='9'){
-                                $slug='dich-vu-ve-sinh';
-                            }
-                            else{
-                                $slug='';
-                            }
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$slug).'">'.$items[0]['du_an_cap_1'].'</a></li>';
+                        if(trim($items[0]['du_an_cap_1'])!=''){                            
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$this->slug).'">'.$items[0]['du_an_cap_1'].'</a></li>';
                         }
                         
                         if(trim($items[0]['du_an_cap_2'])!=''){
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$slug.'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$this->slug.'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
                         }
                         
                         ?>
@@ -64,16 +34,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                     <div class="dt-thumb">
                         <div class="show-pc">
                             <div class="dt-main-thumb">
-                                    <?php 
-                                    if($items[0]['photo']!=''){?>
-                                        <img src="<?php echo $this->baseUrl('/uploads/'.$items[0]['photo']);?>" alt="">
-                                    <?php 
-                                    }
-                                    else{?>
-                                        <img src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>" alt="">
-                                    <?php 
-                                    }
-                                    ?>
+                                <img src="<?php echo $this->baseUrl($items[0]['photo']);?>" alt="">
                             </div>
                         </div>
                         <div class="show-sp">
@@ -81,12 +42,6 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                 <?php 
                                 if(count($items)>0){
                                     foreach ($items as $item){
-                                        if($item['photo']==''){
-                                            $item['photo']=PHOTO_DEFAULT;
-                                        }
-                                        else{
-                                            $item['photo']='/uploads/'.$item['photo'];
-                                        }
                                         ?>
                                         <div class="home-item item-large item-slider">
                                              <a href="#">
@@ -100,21 +55,19 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             </div>
                         </div>
                         
-                        <?php if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){?>
+                        <?php if(count($items)>1){?>
                         <div class="dt-chip-thumb">
                             <div class="chip-thumb chip-thumb-slider">
                                 <?php 
                                 //ít nhất user phải upload 2 ảnh, thi mới cho hiển thị vùng này
-                                if(count($items)>1&&$items[0]['photo']!=''&&$items[1]['photo']!=''){
-                                    foreach ($items as $item){
-                                        if($item['photo']!=''){?>
+                                if(count($items)>1){
+                                    foreach ($items as $item){ ?>
                                             <div class="chip-thumb-pi">
-                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>">
-                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl('/uploads/'.$item['photo']);?>" alt="">
+                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl($item['photo']);?>">
+                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl($item['photo']);?>" alt="">
                                                 </div>
                                             </div>
                                 <?php 
-                                        }
                                     }
                                 }
                                 ?>
