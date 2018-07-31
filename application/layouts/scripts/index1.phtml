@@ -2,12 +2,6 @@
 $auth = Zend_Auth::getInstance();
 $identity = $auth->getIdentity();
 
-if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) {
-    $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='" . $identity['id'] . "'");
-    $number_du_an_da_chon = $number_du_an_da_chon[0];
-} else {
-    $number_du_an_da_chon = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +44,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         <div class="top-oc top-project">
                                             <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn
                                                 <?php if ($auth->hasIdentity()) {?>
-                                                <span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span>
+                                                <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
                                                 <?php } ?>
                                             </a>
                                             <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
@@ -105,7 +99,7 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                                         <div class="top-oc top-project">
                                             <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text>
                                                 <?php if ($auth->hasIdentity()) {?>
-                                                <span id="number_of_du_an_da_chon"><?php echo $number_du_an_da_chon;?></span>
+                                                <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -275,9 +269,9 @@ if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG
                             </li>
                             <li>
                                 <?php 
-                                if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                if ($auth->hasIdentity()) {
                                     ?>
-                                    <a href="<?php echo $this->baseUrl();?>/default/account/duanchon"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong><?php echo $number_du_an_da_chon;?></strong></a>
+                                    <a href="<?php echo $this->baseUrl();?>/default/account/duanchon"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong><?php echo $this->number_du_an_da_chon;?></strong></a>
                                 <?php 
                                 }  
                                 else{?>

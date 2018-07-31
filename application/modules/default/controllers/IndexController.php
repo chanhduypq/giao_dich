@@ -82,16 +82,9 @@ class IndexController extends Core_Controller_Action {
 
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
         
-        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
-
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
-        $this->view->allCount = count($allItems);
-        $this->view->nhanVienCount = $nhanVienCount;
-        $this->view->doiTacCount = $doiTacCount;
-        $this->view->khachHangCount = $khachHangCount;
 
-        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->mucCap2Get= (ctype_digit($muccap2)&&$muccap2!='0')?"muccap2/$muccap2":"";
         $this->view->mucCap3Get= (ctype_digit($muccap3)&&$muccap3!='0')?"muccap3/$muccap3":"";
@@ -204,16 +197,9 @@ class IndexController extends Core_Controller_Action {
         
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
         
-        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
-
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
-        $this->view->allCount = count($allItems);
-        $this->view->nhanVienCount = $nhanVienCount;
-        $this->view->doiTacCount = $doiTacCount;
-        $this->view->khachHangCount = $khachHangCount;
 
-        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->id= $this->_getParam('id','0');
         $this->view->headTitle("Xây dựng - Dịch vụ hậu mãi", true);
@@ -253,19 +239,12 @@ class IndexController extends Core_Controller_Action {
 
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
         
-        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
-
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
         $this->view->muc = $muc;
         $this->view->du_an_cap_2s = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='$du_an_cap_1'");
         $this->view->du_an_cap_2_selected = $muccap2;
-        $this->view->allCount = count($allItems);
-        $this->view->nhanVienCount = $nhanVienCount;
-        $this->view->doiTacCount = $doiTacCount;
-        $this->view->khachHangCount = $khachHangCount;
 
-        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->mucCap2Get= (ctype_digit($muccap2) && $muccap2 != '0')?"muccap2/$muccap2":"";
         $this->view->mucGet= "muc/$muc";
@@ -299,8 +278,6 @@ class IndexController extends Core_Controller_Action {
         
         $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
 
-        $this->setCountType($allItems, $nhanVienCount, $doiTacCount, $khachHangCount);
-        
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
         $this->view->muc_selected = $muc;
@@ -314,21 +291,11 @@ class IndexController extends Core_Controller_Action {
             }
         }
         $this->view->mucs = $mucs;
-        $this->view->allCount = count($allItems);
-        $this->view->nhanVienCount = $nhanVienCount;
-        $this->view->doiTacCount = $doiTacCount;
-        $this->view->khachHangCount = $khachHangCount;
         $this->view->mucGet= (ctype_digit($muc) && $muc != '0')?"muc/$muc":"";
         $this->view->tab= $this->_getParam('tab','tatCa');
-        $this->view->du_an_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
     }
-
-    public function duandetailAction() {
-        if (!ctype_digit($this->_getParam('id'))) {
-            $this->_helper->redirector('index', 'index', 'default');
-            exit;
-        }
-        $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+    
+    private function setupPhoto(&$items){
         for($i=0;$i<count($items);$i++){
             if($items[$i]['photo']==''){
                 $items[$i]['photo']=PHOTO_DEFAULT;
@@ -337,8 +304,15 @@ class IndexController extends Core_Controller_Action {
                 $items[$i]['photo']='/uploads/'.$items[$i]['photo'];
             }
         }
-        
-        
+    }
+
+    public function duandetailAction() {
+        if (!ctype_digit($this->_getParam('id'))) {
+            $this->_helper->redirector('index', 'index', 'default');
+            exit;
+        }
+        $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+        $this->setupPhoto($items);
 
         $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
         $this->view->du_an_cap_3s = Core_Db_Table::getDefaultAdapter()
@@ -360,7 +334,6 @@ class IndexController extends Core_Controller_Action {
         
         $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
-        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
         $this->view->slug= $this->getDuAnCap1SlugById($items[0]['du_an_cap_1_id']);
     }
 
@@ -370,14 +343,7 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
         $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongDetail($this->_getParam('id', 0));
-        for($i=0;$i<count($items);$i++){
-            if($items[$i]['photo']==''){
-                $items[$i]['photo']=PHOTO_DEFAULT;
-            }
-            else{
-                $items[$i]['photo']='/uploads/'.$items[$i]['photo'];
-            }
-        }
+        $this->setupPhoto($items);
 
         $this->view->items = $items;
         $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
@@ -401,7 +367,6 @@ class IndexController extends Core_Controller_Action {
         $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
         
-        $this->view->du_an_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
     }
     
     public function editduanAction() {
@@ -485,23 +450,6 @@ class IndexController extends Core_Controller_Action {
         }
 
         return $quangcao_items;
-    }
-    
-    protected function setCountType($items,&$nhanVienCount,&$doiTacCount,&$khachHangCount){
-        $nhanVienCount=$doiTacCount=$khachHangCount=0;
-        if(is_array($items)&&count($items)>0){
-            foreach ($items as $item){
-                if($item['type']== Default_Model_User::NHAN_VIEN){
-                    $nhanVienCount++;
-                }
-                else if($item['type']== Default_Model_User::DOI_TAC){
-                    $doiTacCount++;
-                }
-                else if($item['type']== Default_Model_User::KHACH_HANG){
-                    $khachHangCount++;
-                }
-            }
-        }
     }
     
     private function getHeadTitleByDuAnCap1Id($duAnCap1Id){

@@ -105,7 +105,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
 <!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
 <!--                                                <div class="cai-col cai-cr">
                                                     <?php 
-                                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                    if ($auth->hasIdentity()) {
                                                         if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                         ?>
                                                         <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an">Chọn dự án</a>
@@ -149,8 +149,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                         $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/nhanVien/'.$this->mucCap2Get),
                                                         $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/doiTac/'.$this->mucCap2Get),
                                                         $this->baseUrl('/index/duan/'.$this->mucGet.'/tab/khachHang/'.$this->mucCap2Get),
-                                                    ),
-                                $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
+                                                    ));
                         ?>
                         <!-- End Tab link -->
                         <!-- Tab show -->
@@ -177,7 +176,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                     <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
@@ -213,7 +212,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
-                                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                        if ($auth->hasIdentity()) {
                                                             if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                             ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
@@ -237,21 +236,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                 </div>
 <!--                                                <ul class="fix-share fix-share-d">
                                                        
-                                                    <li>
-                                                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://canlam.vn<?php echo $this->url();?>')"><img src="<?php echo $this->baseUrl();?>/front_end/images/social/icon-fb.png" alt=""></a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
-                                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/zalo.svg" height="40" width="40" alt="share button">
-                                                        </a>
-                                                    </li>
-                                                    <li>
-
-                                                        <a class="zalo-share-button sc-RefOD bjSTUc" data-href="https://demo.com#xtatc=INT-5-[share_ad_via_zalo]" data-oaid="570044068386186227" data-layout="2" data-color="blue" data-customize="true">
-                                                            <img src="<?php echo $this->baseUrl();?>/front_end/images/social/messenger.svg" height="40" width="40" alt="share button">
-                                                        </a>
-                                                    </li> 
+                                                    <?php echo $this->render('index/share.phtml'); ?>
                                                 </ul>-->
                                             </div>
                                         </div>

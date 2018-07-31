@@ -149,6 +149,22 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         else if ($this->_request->getActionName() == 'delete') {
             $this->processForDeleteAction();
         }
+        
+        $this->view->number_du_an_da_chon= $this->getNumberOfDuAnDaChon();
+        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
+        $this->view->nha_thau_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
+    }
+    
+    private function getNumberOfDuAnDaChon(){
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+        if ($auth->hasIdentity()) {
+            $number_du_an_da_chon = Core_Db_Table::getDefaultAdapter()->fetchCol("select count(*) from du_an_da_chon where user_id='" . $identity['id'] . "'");
+            $number_du_an_da_chon = $number_du_an_da_chon[0];
+        } else {
+            $number_du_an_da_chon = 0;
+        }
+        return $number_du_an_da_chon;
     }
 
     public function getUserId() {

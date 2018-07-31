@@ -69,7 +69,7 @@ $quangcao_items = $this->quangcao_items;
                                                 </div>
                                                 <div class="cai-col cai-cr">
                                                     <?php 
-                                                    if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                    if ($auth->hasIdentity()) {
                                                         if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                         ?>
                                                         <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>
@@ -109,8 +109,7 @@ $quangcao_items = $this->quangcao_items;
                                                         $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
                                                         $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
                                                         $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                    ),
-                                $this->allCount,$this->nhanVienCount,$this->doiTacCount,$this->khachHangCount);
+                                                    ));
                         ?>
                         <!-- End Tab link -->
                         <!-- Tab show -->
@@ -137,7 +136,7 @@ $quangcao_items = $this->quangcao_items;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
+                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
@@ -158,7 +157,7 @@ $quangcao_items = $this->quangcao_items;
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
-                                                        if ($auth->hasIdentity()&&($identity['type']== Default_Model_User::KHACH_HANG||$identity['type']== Default_Model_User::DOI_TAC)) {
+                                                        if ($auth->hasIdentity()) {
                                                             if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                            ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
