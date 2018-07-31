@@ -32,7 +32,7 @@ if (is_array($quangcao_items) && count($quangcao_items) > 0) { ?>
                                 <!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
                                 <!--                                                <div class="cai-col cai-cr">
         <?php
-        if ($auth->hasIdentity() && ($identity['type'] == Default_Model_User::KHACH_HANG || $identity['type'] == Default_Model_User::DOI_TAC)) {
+        if ($auth->hasIdentity()) {
             if (!in_array($item['id'], $this->du_an_da_chon_ids)) {
                 ?>
                                                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an">Chọn dự án</a>

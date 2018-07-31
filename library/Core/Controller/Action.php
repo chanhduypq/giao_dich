@@ -248,6 +248,42 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         $this->_helper->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
     }
+    
+    public function isAdmin(){
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+        if ($auth->hasIdentity()&& $identity['type'] == Default_Model_User::ADMIN) {
+            return true;
+        }
+        return FALSE;
+    }
+    
+    public function isNhanVien(){
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+        if ($auth->hasIdentity()&& $identity['type'] == Default_Model_User::NHAN_VIEN) {
+            return true;
+        }
+        return FALSE;
+    }
+    
+    public function isDoiTac(){
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+        if ($auth->hasIdentity()&& $identity['type'] == Default_Model_User::DOI_TAC) {
+            return true;
+        }
+        return FALSE;
+    }
+    
+    public function isCaNhan(){
+        $auth = Zend_Auth::getInstance();
+        $identity = $auth->getIdentity();
+        if ($auth->hasIdentity()&& $identity['type'] == Default_Model_User::CA_NHAN) {
+            return true;
+        }
+        return FALSE;
+    }
 
     /**
      * HTTP_REFERER is not always present in _SERVER[]

@@ -1,6 +1,4 @@
 <?php 
-$auth = Zend_Auth::getInstance();
-$identity = $auth->getIdentity();
 $items = $this->items;
 $quangcao_items = $this->quangcao_items;
 $du_an_cap_2s = $this->du_an_cap_2s;
@@ -200,7 +198,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                             if($item['type']== Default_Model_User::NHAN_VIEN){
                                                                 echo 'Nhân viên';
                                                             }
-                                                            else if($item['type']== Default_Model_User::KHACH_HANG){
+                                                            else if($item['type']== Default_Model_User::CA_NHAN){
                                                                 echo 'Cá nhân';
                                                             }
                                                             else if($item['type']== Default_Model_User::DOI_TAC){

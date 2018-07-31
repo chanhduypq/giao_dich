@@ -5,6 +5,10 @@ class Admin_NewsController extends Core_Controller_Action {
     public function init() {
         parent::init();
        
+        if (!$this->isAdmin()&&!$this->isNhanVien()) {
+            $this->_helper->redirector('index', 'index', 'admin');
+            exit;
+        }
         $this->view->headTitle('Duyệt tin', true);
     }
 

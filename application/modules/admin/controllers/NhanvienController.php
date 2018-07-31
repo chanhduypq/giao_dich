@@ -4,9 +4,7 @@ class Admin_NhanvienController extends Core_Controller_Action {
 
     public function init() {
         parent::init();
-        $auth = Zend_Auth::getInstance();
-        $identity = $auth->getIdentity();
-        if($identity['type']!= Default_Model_User::ADMIN){
+        if (!$this->isAdmin()) {
             $this->_helper->redirector('index', 'index', 'admin');
             exit;
         }

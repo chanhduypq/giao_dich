@@ -4,6 +4,10 @@ class Admin_NhathauchonController extends Core_Controller_Action {
 
     public function init() {
         parent::init();
+        if (!$this->isAdmin()&&!$this->isNhanVien()) {
+            $this->_helper->redirector('index', 'index', 'admin');
+            exit;
+        }
         $this->view->headTitle('Các dự án đã chọn', true);
     }
 
