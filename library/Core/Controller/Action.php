@@ -442,6 +442,20 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         $auth->getStorage()->write($identity);
     }
     
+    public function getTinQuangCaos($items) {
+        $quangcao_items = array();
+
+        if (is_array($items) && count($items) > 0) {
+            foreach ($items as $item) {
+                if ($item['is_quang_cao'] == '1' && $item['allow_show_quang_cao'] == '1') {
+                    $quangcao_items[] = $item;
+                }
+            }
+        }
+
+        return $quangcao_items;
+    }
+    
     private function processForIndexAction() {
         
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($this->total));

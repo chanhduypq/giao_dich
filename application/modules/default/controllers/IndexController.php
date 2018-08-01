@@ -203,7 +203,6 @@ class IndexController extends Core_Controller_Action {
         $this->view->tab= $this->_getParam('tab','tatCa');
         $this->view->id= $this->_getParam('id','0');
         $this->view->headTitle("Xây dựng - Dịch vụ hậu mãi", true);
-        $this->render('dichvuhaumai1');
     }
 
     public function duanAction() {
@@ -438,19 +437,7 @@ class IndexController extends Core_Controller_Action {
 
     }
 
-    protected function getTinQuangCaos($items) {
-        $quangcao_items = array();
-
-        if (is_array($items) && count($items) > 0) {
-            foreach ($items as $item) {
-                if ($item['is_quang_cao'] == '1' && $item['allow_show_quang_cao'] == '1') {
-                    $quangcao_items[] = $item;
-                }
-            }
-        }
-
-        return $quangcao_items;
-    }
+    
     
     private function getHeadTitleByDuAnCap1Id($duAnCap1Id){
         if ($duAnCap1Id == '1') {
