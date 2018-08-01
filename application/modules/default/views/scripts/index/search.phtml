@@ -191,20 +191,7 @@ $quangcao_items = $this->quangcao_items;
                             
                         </div>
                         <!-- End wrap cate -->
-                        <!-- Cate paginate -->
-                        <!--tuetc-->
-<!--                        <div class="ct-paginate cate-paginate">
-                            <ul>
-                                <li class="pg-prev"><a href="#" title="Trước đó"></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><span>2</span></li>
-                                <li><span class="unlink">...</span></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li class="pg-next"><a href="#" title="Tiếp theo"></a></li>
-                            </ul>
-                        </div>-->
-                        <!-- End Cate paginate -->
+                        
                         <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').'/'.$this->cityGet.'/'.$this->cityCap2Get); ?>">
                             <div class="ct-paginate cate-paginate">
                                     <?php if ($this->total > $this->limit) { ?>

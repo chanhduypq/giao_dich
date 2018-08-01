@@ -70,7 +70,19 @@
                                                                         echo '<p>'.($item['phan_loai']=='1'?'Nhân viên':'Đối tác').'</p>';
                                                                     }
                                                                     ?>
-                                                                <!--<p>Đối tác</p>-->
+                                                                <p>
+                                                                    <?php 
+                                                                    if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                        echo 'Nhân viên';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                        echo 'Cá nhân';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                        echo 'Đối tác';
+                                                                    }
+                                                                    ?>
+                                                                </p>
                                                             </div>
                                                             <!--tuetc-->
                                                             <div class="cit-desc-r">

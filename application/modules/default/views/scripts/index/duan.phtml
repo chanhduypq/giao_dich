@@ -80,17 +80,11 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                             <div id="cate-ad-slider" class="cate-ad-list">
                                 <?php 
                                 foreach ($quangcao_items as $item){
-                                    if($item['photo']==''){
-                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
-                                    }
-                                    else{
-                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
-                                    }
                                     ?>
                                     <div class="cate-ad-i">
                                         <div class="cate-ad-ii">
                                             <div class="cai-thumb">
-                                                <img src="<?php echo $item['photo']; ?>" alt="">
+                                                <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
                                             </div>
                                             <div class="cai-tit">
                                                 <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
@@ -167,17 +161,11 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                             <?php 
                             if(is_array($items)&& count($items)>0){
                                 foreach ($items as $item){
-                                    if($item['photo']==''){
-                                        $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
-                                    }
-                                    else{
-                                        $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
-                                    }
                                     ?>
                                     <div class="cate-item">
                                         <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
-                                                    <img src="<?php echo $item['photo']; ?>">
+                                                    <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
