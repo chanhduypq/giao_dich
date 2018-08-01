@@ -13,8 +13,7 @@ class Admin_IndexController extends Core_Controller_Action
         $phone = $password = '';
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
-            $identity = $auth->getIdentity();
-            if ($identity['type'] == '1') {
+            if ($this->isAdmin()) {
                 $this->_helper->redirector('index', 'nhanvien', 'admin');
             }
             else{
@@ -34,8 +33,7 @@ class Admin_IndexController extends Core_Controller_Action
         $this->view->password = $password;
         
         if ($auth->hasIdentity()) {
-            $identity = $auth->getIdentity();
-            if ($identity['type'] != '1') {
+            if (!$this->isAdmin()&&!$this->isNhanVien()) {
                 $this->disableRender();
             }
             

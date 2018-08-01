@@ -190,7 +190,7 @@ $identity = $auth->getIdentity();
                             
                                 }
                                 else{
-                                    if($identity['type']== Default_Model_User::ADMIN){?>
+                                    if($this->isAdmin){?>
                                         <div class="dt-btn-cl">
                                             <div class="dt-phone">
                                                 <div class="ct-btn-phone ct-btn-mobile"><?php echo $items[0]['phone'];?></div>                                                    
@@ -198,7 +198,7 @@ $identity = $auth->getIdentity();
                                         </div>
                                     <?php                                     
                                     }
-                                    else if($identity['type']== Default_Model_User::NHAN_VIEN){
+                                    else if($this->isNhanVien){
                                         if(in_array($items[0]['du_an_cap_1_id'], $identity['du_an_cap_1_ids'])){?>
                                             <div class="dt-btn-cl">
                                                 <div class="dt-phone">

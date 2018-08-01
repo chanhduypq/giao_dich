@@ -149,12 +149,34 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         else if ($this->_request->getActionName() == 'delete') {
             $this->processForDeleteAction();
         }
+        if($this->isLogin()){
+            $auth = Zend_Auth::getInstance();
+            $identity = $auth->getIdentity();
+            $du_an_da_chon_ids = $identity['du_an_da_chon_ids'];
+            $nha_thau_da_chon_ids = $identity['nha_thau_da_chon_ids'];
+        }
+        else{
+            $du_an_da_chon_ids = array();
+            $nha_thau_da_chon_ids=array();
+        }
+        $this->view->number_du_an_da_chon= count($du_an_da_chon_ids);
+        $this->view->du_an_da_chon_ids = $du_an_da_chon_ids;
         
-        $this->view->number_du_an_da_chon= $this->getNumberOfDuAnDaChon();
-        $this->view->du_an_da_chon_ids = Default_Model_Tinduan::getTinDuAnIdDuocChons($this->getUserId());
-        $this->view->nha_thau_da_chon_ids = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($this->getUserId());
+        $this->view->nha_thau_da_chon_ids = $nha_thau_da_chon_ids;
+        $this->view->isAdmin= $this->isAdmin();
+        $this->view->isCaNhan= $this->isCaNhan();
+        $this->view->isDoiTac= $this->isDoiTac();
+        $this->view->isNhanVien= $this->isNhanVien();
     }
     
+    private function isLogin(){
+        $auth = Zend_Auth::getInstance();
+        if ($auth->hasIdentity()) {
+            return true;
+        }
+        return FALSE;
+    }
+
     private function getNumberOfDuAnDaChon(){
         $auth = Zend_Auth::getInstance();
         $identity = $auth->getIdentity();

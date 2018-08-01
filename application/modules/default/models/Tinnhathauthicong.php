@@ -35,6 +35,9 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
      * @return array
      */
     public static function getTinNhaThauThiCongIdDuocChons($userId){
+        if ($userId == -1) {
+            return array();
+        }
         $du_an_da_chon_ids = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "tin_nha_thau_thi_cong_id "
                 . "from nha_thau_da_chon "

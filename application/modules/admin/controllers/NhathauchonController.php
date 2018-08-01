@@ -12,8 +12,6 @@ class Admin_NhathauchonController extends Core_Controller_Action {
     }
 
     public function indexAction() {
-        $auth = Zend_Auth::getInstance();
-        $identity = $auth->getIdentity();
         $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "title,content,"
                 . "photo,"
@@ -24,7 +22,7 @@ class Admin_NhathauchonController extends Core_Controller_Action {
                 . "join nha_thau_da_chon on tin_nha_thau_thi_cong.id=nha_thau_da_chon.tin_nha_thau_thi_cong_id "
                 . "join user on user.id=nha_thau_da_chon.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                .($identity['type']== Default_Model_User::ADMIN?" ": ("where tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."') "))
+                .($this->isAdmin()?" ": ("where tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."') "))
                 . "group by tin_nha_thau_thi_cong.id,user.phone "
                 . "order by nha_thau_da_chon.created_at ASC");
         

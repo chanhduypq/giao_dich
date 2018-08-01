@@ -145,7 +145,7 @@ class NewsController extends Core_Controller_Action {
 
             $auth = Zend_Auth::getInstance();
             $identity = $auth->getIdentity();
-            $data['target_type'] = ($identity['type'] == '1' ? '2' : $identity['type']);
+            $data['target_type'] = ($identity['type'] == Default_Model_User::ADMIN ? Default_Model_User::NHAN_VIEN : $identity['type']);
             
             /**
              * nếu user vừa đăng là nhân viên và tin vừa đăng thuộc quyền quản lý của nhân viên này thi cho is_active=1 
@@ -225,7 +225,7 @@ class NewsController extends Core_Controller_Action {
 
             $auth = Zend_Auth::getInstance();
             $identity = $auth->getIdentity();
-            $data['target_type'] = ($identity['type'] == '1' ? '2' : $identity['type']);
+            $data['target_type'] = ($identity['type'] == Default_Model_User::ADMIN ? Default_Model_User::NHAN_VIEN : $identity['type']);
             
             /**
              * nếu user vừa đăng là nhân viên và dự án vừa đăng thuộc quyền quản lý của nhân viên này thi cho is_active=1 
@@ -338,6 +338,13 @@ class NewsController extends Core_Controller_Action {
             if(ctype_digit($this->_getParam('tin_du_an_id'))){
                 $affect=Core_Db_Table::getDefaultAdapter()->insert('du_an_da_chon', array('tin_du_an_id'=> $this->_getParam('tin_du_an_id'),'user_id'=> $this->getUserId()));
                 if($affect==1){
+                    $auth = Zend_Auth::getInstance();
+                    $identity = $auth->getIdentity();
+                    $du_an_da_chon_ids = $identity['du_an_da_chon_ids'];
+                    $du_an_da_chon_ids[]=$this->_getParam('tin_du_an_id');
+                    $identity['du_an_da_chon_ids']=$du_an_da_chon_ids;
+                    $auth->clearIdentity();
+                    $auth->getStorage()->write($identity);
                     echo 'ok';
                     exit;
                 }
@@ -354,6 +361,18 @@ class NewsController extends Core_Controller_Action {
             if(ctype_digit($this->_getParam('tin_du_an_id'))){
                 $affect=Core_Db_Table::getDefaultAdapter()->delete('du_an_da_chon','user_id='.$this->getUserId().' and tin_du_an_id='.$this->_getParam('tin_du_an_id'));
                 if($affect==1){
+                    $auth = Zend_Auth::getInstance();
+                    $identity = $auth->getIdentity();
+                    $du_an_da_chon_ids = $identity['du_an_da_chon_ids'];
+                    foreach ($du_an_da_chon_ids as $key=>$value){
+                        if($value==$this->_getParam('tin_du_an_id')){
+                            unset($du_an_da_chon_ids[$key]);
+                            break;
+                        }
+                    }
+                    $identity['du_an_da_chon_ids']=$du_an_da_chon_ids;
+                    $auth->clearIdentity();
+                    $auth->getStorage()->write($identity);
                     echo 'ok';
                     exit;
                 }
@@ -370,6 +389,13 @@ class NewsController extends Core_Controller_Action {
             if(ctype_digit($this->_getParam('tin_nha_thau_thi_cong_id'))){
                 $affect=Core_Db_Table::getDefaultAdapter()->insert('nha_thau_da_chon', array('tin_nha_thau_thi_cong_id'=> $this->_getParam('tin_nha_thau_thi_cong_id'),'user_id'=> $this->getUserId()));
                 if($affect==1){
+                    $auth = Zend_Auth::getInstance();
+                    $identity = $auth->getIdentity();
+                    $nha_thau_da_chon_ids = $identity['nha_thau_da_chon_ids'];
+                    $nha_thau_da_chon_ids[]=$this->_getParam('tin_nha_thau_thi_cong_id');
+                    $identity['nha_thau_da_chon_ids']=$nha_thau_da_chon_ids;
+                    $auth->clearIdentity();
+                    $auth->getStorage()->write($identity);
                     echo 'ok';
                     exit;
                 }
@@ -386,6 +412,18 @@ class NewsController extends Core_Controller_Action {
             if(ctype_digit($this->_getParam('tin_nha_thau_thi_cong_id'))){
                 $affect=Core_Db_Table::getDefaultAdapter()->delete('nha_thau_da_chon','user_id='.$this->getUserId().' and tin_nha_thau_thi_cong_id='.$this->_getParam('tin_nha_thau_thi_cong_id'));
                 if($affect==1){
+                    $auth = Zend_Auth::getInstance();
+                    $identity = $auth->getIdentity();
+                    $nha_thau_da_chon_ids = $identity['nha_thau_da_chon_ids'];
+                    foreach ($nha_thau_da_chon_ids as $key=>$value){
+                        if($value==$this->_getParam('tin_nha_thau_thi_cong_id')){
+                            unset($nha_thau_da_chon_ids[$key]);
+                            break;
+                        }
+                    }
+                    $identity['nha_thau_da_chon_ids']=$nha_thau_da_chon_ids;
+                    $auth->clearIdentity();
+                    $auth->getStorage()->write($identity);
                     echo 'ok';
                     exit;
                 }

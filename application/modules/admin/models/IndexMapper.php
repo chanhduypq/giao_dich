@@ -43,10 +43,11 @@ class Admin_Model_IndexMapper
         
         $result['du_an_cap_1_ids']=$user_duans;
         $result['nha_thau_thi_cong_cap_1_ids']=$user_nhathauthicongs;
+        
+        $result['du_an_da_chon_ids'] = Default_Model_Tinduan::getTinDuAnIdDuocChons($result['id']);
+        $result['nha_thau_da_chon_ids'] = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongIdDuocChons($result['id']);
 
         $auth->getStorage()->write($result);
-        setcookie('phone',$phone, time() + (86400 * 30), "/");
-        setcookie('password',$password, time() + (86400 * 30), "/");
         return true;
     }
 

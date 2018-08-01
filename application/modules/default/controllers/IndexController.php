@@ -98,7 +98,11 @@ class IndexController extends Core_Controller_Action {
         $this->view->city=$city;
         $this->view->cityCap2=$citycap2;
         $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($muc), true);
-        
+        $this->view->tenMuc= $this->getTenMuc($muc, $muccap2, $muccap3);
+        $this->view->tenKhuVuc= $this->getTenKhuVuc($city, $citycap2);
+    }
+    
+    private function getTenMuc($muccap1,$muccap2,$muccap3){
         $tenMuc = 'Tất cả danh mục';
         if(ctype_digit($muccap3)&&$muccap3!='0'){
             $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3");
@@ -120,19 +124,21 @@ class IndexController extends Core_Controller_Action {
             
         }
         else{
-            if(ctype_digit($muc)&&$muc!='0'){
+            if(ctype_digit($muccap1)&&$muccap1!='0'){
                 if($tenMuc=='Tất cả danh mục'){
                     $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
                     foreach ($du_an_cap_1s as $du_an_cap_1){
-                        if($du_an_cap_1['id']==$muc){
+                        if($du_an_cap_1['id']==$muccap1){
                             $tenMuc=$du_an_cap_1['name'];
                         }
                     }
                 }
             }
         }
-        $this->view->tenMuc=$tenMuc;
-        
+        return $tenMuc;
+    }
+    
+    private function getTenKhuVuc($citycap1,$citycap2){
         $tenKhuVuc = 'Khu vực';
         if(ctype_digit($citycap2)&&$citycap2!='0'){
             $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
@@ -143,19 +149,18 @@ class IndexController extends Core_Controller_Action {
             }
         }
         else{
-            if(ctype_digit($city)&&$city!='0'){
+            if(ctype_digit($citycap1)&&$citycap1!='0'){
                     $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
                     foreach ($du_an_cap_1s as $du_an_cap_1){
-                        if($du_an_cap_1['id']==$city){
+                        if($du_an_cap_1['id']==$citycap1){
                             $tenKhuVuc=$du_an_cap_1['name'];
                         }
                     }
             }
         }
-        $this->view->tenKhuVuc=$tenKhuVuc;
-        
-        
+        return $tenKhuVuc;
     }
+
     public function gettoroiAction() {
         if(!ctype_digit($this->_getParam('id'))){
             $this->isAjax();

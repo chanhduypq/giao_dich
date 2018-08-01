@@ -24,7 +24,7 @@ class Admin_DuanchonController extends Core_Controller_Action {
                 . "join du_an_da_chon on tin_du_an.id=du_an_da_chon.tin_du_an_id "
                 . "join user on user.id=du_an_da_chon.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                .($identity['type']== Default_Model_User::ADMIN?" ": ("where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "))
+                .($this->isAdmin()?" ": ("where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "))
                 . "group by tin_du_an.id,user.phone "
                 . "order by du_an_da_chon.created_at ASC");
         

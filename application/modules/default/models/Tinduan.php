@@ -90,6 +90,9 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
      * @return array
      */
     public static function getTinDuAnIdDuocChons($userId){
+        if ($userId == -1) {
+            return array();
+        }
         $du_an_da_chon_ids = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
                 . "tin_du_an_id "
                 . "from du_an_da_chon "

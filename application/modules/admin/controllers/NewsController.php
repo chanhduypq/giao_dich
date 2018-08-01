@@ -27,7 +27,7 @@ class Admin_NewsController extends Core_Controller_Action {
                 . "from tin_du_an "
                 . "join user on user.id=tin_du_an.user_id "
                 . "left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id "
-                . ($identity['type']== Default_Model_User::NHAN_VIEN?("where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "):"")
+                . ($this->isNhanVien()?("where tin_du_an.du_an_cap_1 IN (select du_an_cap_1_id from user_duan where user_id='".$this->getUserId()."') "):"")
                 . "group by tin_du_an.id");
         
         
@@ -42,7 +42,7 @@ class Admin_NewsController extends Core_Controller_Action {
                 . "from tin_nha_thau_thi_cong "
                 . "join user on user.id=tin_nha_thau_thi_cong.user_id "
                 . "left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id "
-                . ($identity['type']== Default_Model_User::NHAN_VIEN?("where tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."') "):"")
+                . ($this->isNhanVien()?("where tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 IN (select nha_thau_thi_cong_cap_1_id from user_nhathauthicong where user_id='".$this->getUserId()."') "):"")
                 . "group by tin_nha_thau_thi_cong.id");
         
         $allItems= array_merge($allItems,$allItems1);
