@@ -312,7 +312,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      *
      * @return string
      */
-    protected function _getBackUrl() {
+    public function _getBackUrl() {
         if (!$back = $this->getRequest()->getServer('HTTP_REFERER')) {
             $back = $this->view->href();
         }
