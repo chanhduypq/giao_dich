@@ -26,49 +26,61 @@ class NewsController extends Core_Controller_Action {
     public function duan2Action() {
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
         $this->view->items = $items;
+        $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
+        $this->view->du_an_cap_1 = $session_tin_du_an->du_an_cap_1;
     }
 
     public function duan3Action() {
+        $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
         if ($this->_request->isPost()) {
-            $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $session_tin_du_an->du_an_cap_1 = $this->_getParam('muc', '0');
-            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='" . $this->_getParam('muc', '0') . "'");
-            $this->view->items = $items;
+            
         } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2 where du_an_cap_1_id='" . $session_tin_du_an->du_an_cap_1 . "'");
+            $this->view->items = $items;
+            $this->view->du_an_cap_2 = $session_tin_du_an->du_an_cap_2;
         }
+        
     }
 
     public function duan4Action() {
+        $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
         if ($this->_request->isPost()) {
-            $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $session_tin_du_an->du_an_cap_2 = $this->_getParam('muc', '0');
-            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3 where du_an_cap_2_id='" . $this->_getParam('muc', '0') . "'");
-            $this->view->items = $items;
+            
         } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3 where du_an_cap_2_id='" . $session_tin_du_an->du_an_cap_2 . "'");
+            $this->view->items = $items;
+            $this->view->du_an_cap_3 = is_array($session_tin_du_an->du_an_cap_3)?$session_tin_du_an->du_an_cap_3:array();
         }
+       
     }
 
     public function duan5Action() {
+        $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
         if ($this->_request->isPost()) {
-            $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $session_tin_du_an->du_an_cap_3 = $this->_getParam('muc');
-            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_4 where du_an_cap_3_id IN(" .implode(",",$this->_getParam('muc',array('-1'))) . ")");
-            $this->view->items = $items;
+            
         } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $temp=$session_tin_du_an->du_an_cap_3;
+            if(!is_array($temp)||count($temp)==0){
+                $temp=array('-1');
+            }
+            $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_4 where du_an_cap_3_id IN(" .implode(",",$temp) . ")");
+            $this->view->items = $items;
+            $this->view->du_an_cap_4 = is_array($session_tin_du_an->du_an_cap_4)?$session_tin_du_an->du_an_cap_4:array();
         }
+        
     }
 
     public function duan6Action() {
         if ($this->_request->isPost()) {
             $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
             $session_tin_du_an->du_an_cap_4 = $this->_getParam('muc');
+            
+        } else {
             $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
             $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
-        } else {
-            $this->_helper->redirector('index', 'index', 'default');
         }
     }
     
@@ -328,6 +340,7 @@ class NewsController extends Core_Controller_Action {
     public function completeAction() {
         
     }
+    
     
     /**
      * chọn dự án
