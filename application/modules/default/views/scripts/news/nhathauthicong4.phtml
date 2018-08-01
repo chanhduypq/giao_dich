@@ -1,4 +1,4 @@
-<form action="<?php echo $this->baseUrl();?>/default/news/nhathauthicong5" id="frm" method="POST">
+<form action="<?php echo $this->baseUrl();?>/default/news/nhathauthicong5" id="frm" method="POST" onsubmit="return false;">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
@@ -15,12 +15,16 @@
                                     <?php 
                                     $items=$this->items;
                                     for($i=0,$n=count($items);$i<$n;$i++){
-//                                        if($i==0){
-                                        if($i==0||$i==1){
+                                        if(($i==0||$i==1)&&count($this->nha_thau_thi_cong_cap_3)==0){
                                             $checked=' checked="checked"';
                                         }
                                         else{
-                                            $checked='';
+                                            if(in_array($items[$i]['id'], $this->nha_thau_thi_cong_cap_3)){
+                                                $checked=' checked="checked"';
+                                            }
+                                            else{
+                                                $checked='';
+                                            }
                                         }
                                         ?>
                                         <div class="fp-list-i">
@@ -33,7 +37,7 @@
                                 </div>
                             </div>
                             <!-- End Fp Group -->
-                            <div class="fp-submit">
+                            <div class="fp-submit" id="next">
                                 <button class="fp-btn fp-btn-register">Tiếp</button>
                             </div>
                         </div>
@@ -43,3 +47,19 @@
         </div>
     </div>
 </form>
+<script type="text/javascript">
+jQuery(function ($){
+    
+   $("#next").click(function (){
+        $.ajax({
+            url:$("#frm").attr('action'),
+            data: $("#frm").serialize(),                         
+            type: 'post',
+            async: false,
+            success: function(php_script_response){
+                window.location=$("#frm").attr('action');
+            }
+        });
+   });
+});
+</script>
