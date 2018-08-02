@@ -615,6 +615,38 @@
                        window.location='<?php echo $this->baseUrl('index/dichvuhaumai/id/');?>'+$(this).attr('id');
                    }
                 });
+                
+                $('.ratings_stars').hover(
+                    function() {
+                        $(this).prevAll().andSelf().addClass('ratings_hover');
+                    },
+                    function() {
+                        $(this).prevAll().andSelf().removeClass('ratings_hover');
+                    }
+                );
+                $('.ratings_stars').click(function(){
+                    <?php 
+                    if(!$this->isLogin){?> 
+                        alert("Vui lòng đăng nhập trước!");
+                        return;
+                    <?php 
+                    }
+                    ?>
+                    var values =  $(this).find("input").val();
+                    var tinID=$(this).parent().attr('class').replace("vote id_","");
+                    var type=$(this).parent().attr('data-type');
+                    $.ajax({
+                        url:'<?php echo $this->baseUrl();?>/default/index/vote/tin_id/'+tinID+'/value/'+values+'/type/'+type,
+                        success: function(data){
+                        }
+                    });
+                    if ($(this).hasClass('ratings_over')) {
+                        $('.ratings_stars').removeClass('ratings_over');
+                        $(this).prevAll().andSelf().addClass('ratings_over');
+                    } else {
+                        $(this).prevAll().andSelf().addClass('ratings_over');
+                    }
+                });
             });
         </script>
         <script src="<?php echo $this->baseUrl();?>/front_end/js/script.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>

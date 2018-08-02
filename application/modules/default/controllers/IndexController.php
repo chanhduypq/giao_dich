@@ -319,7 +319,9 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
+        
         $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+        
         $this->setupPhoto($items);
 
         $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
@@ -452,6 +454,20 @@ class IndexController extends Core_Controller_Action {
         $this->view->items = $items;
         $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
 
+    }
+    
+    public function voteAction() {
+        if($this->getUserId()!=-1&&ctype_digit($this->_getParam('tin_id'))&&ctype_digit($this->_getParam('value'))){
+            if($this->_getParam('type')=='du_an'){
+                Core_Db_Table::getDefaultAdapter()->delete('vote_duan',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
+                Core_Db_Table::getDefaultAdapter()->insert('vote_duan', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+            }
+            else{
+                Core_Db_Table::getDefaultAdapter()->delete('vote_nhathauthicong',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
+                Core_Db_Table::getDefaultAdapter()->insert('vote_nhathauthicong', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+            }
+            
+        }
     }
 
     

@@ -1,5 +1,4 @@
 <?php 
-$auth = Zend_Auth::getInstance();
 $quangcao_items = $this->quangcao_items;
 foreach ($quangcao_items as $item) {
     ?>
@@ -18,16 +17,16 @@ foreach ($quangcao_items as $item) {
                 </div>
                 <!--tuetc-->
                 <!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
-                <!--                                                <div class="cai-col cai-cr">
+<!--                                                                <div class="cai-col cai-cr">
                 <?php 
                 if ($this->isLogin) {
                     if (!in_array($item['id'], $this->du_an_da_chon_ids)) {
                         ?>
-                                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an">Chọn dự án</a>
+                                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an"></a>
                         <?php 
                     } else {
                         ?>
-                                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an huy">Hủy chọn</a>   
+                                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an huy"></a>   
                         <?php 
                     }
                 } else {

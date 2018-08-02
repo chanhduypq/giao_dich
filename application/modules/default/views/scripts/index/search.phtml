@@ -111,49 +111,85 @@ $quangcao_items = $this->quangcao_items;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
-                                                <img src="<?php echo $item['photo']; ?>">
+                                                    <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
                                             </div>
                                             <div class="cit-part cit-right">
                                                 <div class="cit-title">
                                                     <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
-                                                        <?php 
-                                                        if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        
+                                                        <?php if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                             <?php echo $item['title'];?>
                                                     </a>
                                                 </div>
                                                 <div class="cit-desc">
                                                     <div class="cit-desc-l">
+                                                        <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                        <p>
+                                                            <?php 
+                                                            if($item['allow_hoptac']!='1'){
+                                                                if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                    echo 'Nhân viên';
+                                                                }
+                                                                else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                    echo 'Cá nhân';
+                                                                }
+                                                                else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                    echo 'Đối tác';
+                                                                }
+                                                            }
+                                                            else{
+                                                                if($item['type_active']== Default_Model_User::NHAN_VIEN){
+                                                                    echo 'Nhân viên';
+                                                                }
+                                                                else if($item['type_active']== Default_Model_User::CA_NHAN){
+                                                                    echo 'Cá nhân';
+                                                                }
+                                                                else if($item['type_active']== Default_Model_User::DOI_TAC){
+                                                                    echo 'Đối tác';
+                                                                }
+                                                            }
+                                                            
+                                                            ?>
+                                                        </p>
+                                                        <p>Mã tin: <?php echo 'DA'.$item['id'];?></p>
+                                                        <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
                                                         if ($this->isLogin) {
                                                             if(!in_array($item['id'], $this->du_an_da_chon_ids)){
-                                                           ?>
-                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
+                                                            ?>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
                                                         <?php 
                                                             }
                                                             else{?>
-                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy"><span>Hủy chọn</span></a>   
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
                                                             <?php 
                                                             }
                                                         }
                                                         else{
                                                             if(!$this->isLogin){
                                                             ?>
-                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
                                                         <?php    
                                                             }
                                                             
                                                         }
                                                         ?>
+                                                        
                                                     </div>
+                                                    <?php echo $this->vote($item['id'],'du_an');?>
                                                 </div>
+<!--                                                <ul class="fix-share fix-share-d">
+                                                       
+                                                    <?php echo $this->render('index/share.phtml'); ?>
+                                                </ul>-->
                                             </div>
                                         </div>
                                     </div>
@@ -211,7 +247,7 @@ jQuery(function ($){
                     }
                     else{
                         number_of_du_an_da_chon--;
-                        $(node).html('Chọn dự án');
+                        $(node).html('Chọn');
                     }
                     $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
                     $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);

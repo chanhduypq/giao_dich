@@ -33,7 +33,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
     public static function getTinDuAnLienQuans($id,$du_an_cap_1_id){
         
         $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,so_luot_xem"
+                . "title,so_luot_xem,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                 . "tong_dau_tu,"
                 . "photo,"
@@ -56,7 +56,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
     
     public static function getTinDuAnDetail($id){
         return Core_Db_Table::getDefaultAdapter()
-                ->fetchAll("select so_luot_xem,content,"
+                ->fetchAll("select so_luot_xem,content,allow_hoptac,"
                         . "title,"
                         . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                         . "tong_dau_tu,"

@@ -131,7 +131,7 @@ $quangcao_items = $this->quangcao_items;
                                                         if ($this->isLogin) {
                                                             if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                             ?>
-                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
                                                         <?php 
                                                             }
                                                             else{?>
@@ -142,7 +142,7 @@ $quangcao_items = $this->quangcao_items;
                                                         else{
                                                             if(!$this->isLogin){
                                                             ?>
-                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
                                                         <?php    
                                                             }
                                                             
@@ -210,7 +210,7 @@ jQuery(function ($){
                     }
                     else{
                         number_of_du_an_da_chon--;
-                        $(node).html('Chọn dự án');
+                        $(node).html('Chọn');
                     }
                     $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
                     $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);
