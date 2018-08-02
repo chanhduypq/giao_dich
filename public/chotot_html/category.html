@@ -46,7 +46,7 @@
                                 </div>
                                 <!-- menu show sp -->
                                 <div class="show-sp">
-                                    
+                                    <!-- vao trang category thi ân the a.onClickSearch sau -->
                                     <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
 
                                     <div class="top-oc top-login">
@@ -84,7 +84,7 @@
             <!-- End Top -->
             <!-- Start Search -->
             <div class="top-search">
-                <div class="top-search-c">
+                <div class="top-search-c" style="max-height: 1000px">
                     <div class="container">
                         <div class="row">
                             <div class="col col-md-12">
@@ -124,8 +124,14 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- End Search -->
+            <ul class="breadcrumb show-sp">
+                <li><a href="category.html">Tìm kiếm</a></li>
+                <li><a href="#">Tên danh mục</a></li>
+                <li><span>Tên Khu vực</span></li>
+            </ul>
             <!-- Category page -->
             <div class="page-content category-page">
                 <div class="container">
@@ -700,11 +706,22 @@
                                                             <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
                                                             <p >Đối tác</p>
                                                             <p>Mã tin: A099554</p>
+                                                            <p>Số người xem: 200</p>
                                                         </div>
                                                         <div class="cit-desc-r">
                                                             <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
                                                             
                                                         </div>
+                                                        <!-- vote -->
+                                                        
+                                                        <div class="vote">
+                                                            <div class="star_1 ratings_stars"><input value="1" type="hidden"></div>
+                                                            <div class="star_2 ratings_stars"><input value="2" type="hidden"></div>
+                                                            <div class="star_3 ratings_stars"><input value="3" type="hidden"></div>
+                                                            <div class="star_4 ratings_stars"><input value="4" type="hidden"></div>
+                                                            <div class="star_5 ratings_stars"><input value="5" type="hidden"></div>
+                                                        </div>
+                                                        <!-- vote -->
                                                     </div>
                                                     <!--  -->
                                                     
@@ -728,11 +745,22 @@
                                                             <p class="cdes-main">Thời gian thi công: 04/06/2018</p>
                                                             <p>Đối tác</p>
                                                             <p>Ma tin: A099554</p>
+                                                            <p>Số người xem: 200</p>
                                                         </div>
                                                         <div class="cit-desc-r">
                                                             <a href="#" class="cit-btn"><span>Chọn dự án</span></a>
                                                             
                                                         </div>
+                                                        <!-- vote -->
+
+                                                        <div class="vote">
+                                                            <div class="star_1 ratings_stars"><input value="1" type="hidden"></div>
+                                                            <div class="star_2 ratings_stars"><input value="2" type="hidden"></div>
+                                                            <div class="star_3 ratings_stars"><input value="3" type="hidden"></div>
+                                                            <div class="star_4 ratings_stars"><input value="4" type="hidden"></div>
+                                                            <div class="star_5 ratings_stars"><input value="5" type="hidden"></div>
+                                                        </div>
+                                                        <!-- vote -->
                                                     </div>
                                                     <!--  -->
                                                       
@@ -886,7 +914,7 @@
             <!-- fb share -->
             <div class="container">
                 <ul class="fix-share">
-                    <li><a>Chia sẻ bài viết này cho bạn bè:</a>
+                    
                     <li>
                         <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://www.facebook.com/sharer.php?u=https://www.google.com/maps')"><img src="assets/images/social/icon-fb.png" alt=""></a>
                     </li>
@@ -1174,6 +1202,25 @@
                 $(".modal-body ul").show();
                 $(".modal-body div").hide();
                 $(".pull-left").remove();
+            });
+            //vote
+            $('.ratings_stars').hover(
+                function() {
+                    $(this).prevAll().andSelf().addClass('ratings_hover');
+                },
+                function() {
+                    $(this).prevAll().andSelf().removeClass('ratings_hover');
+                }
+            );
+            $('.ratings_stars').click(function(){
+                var Values =  $(this).find("input").val();
+                alert(Values);
+                if ($(this).hasClass('ratings_over')) {
+                    $('.ratings_stars').removeClass('ratings_over');
+                    $(this).prevAll().andSelf().addClass('ratings_over');
+                } else {
+                    $(this).prevAll().andSelf().addClass('ratings_over');
+                }
             });
         });
     </script>
