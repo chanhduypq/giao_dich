@@ -289,7 +289,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
     public function isNhanVien(){
         $auth = Zend_Auth::getInstance();
         $identity = $auth->getIdentity();
-        if ($auth->hasIdentity()&& $identity['type'] == Default_Model_User::NHAN_VIEN) {
+        if ($auth->hasIdentity()&& ($identity['type'] == Default_Model_User::NHAN_VIEN || ($identity['type_active'] == Default_Model_User::NHAN_VIEN&&$identity['allow_hoptac']=='1'))) {
             return true;
         }
         return FALSE;

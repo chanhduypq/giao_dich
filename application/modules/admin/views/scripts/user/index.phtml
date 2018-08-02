@@ -91,6 +91,7 @@ $items = $this->items;
                 <?php 
                 if($this->isAdmin){?>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
                 <?php 
                 }
                 ?>
@@ -127,6 +128,16 @@ $items = $this->items;
                             }
                             else {?> 
                             <button class="allow_show">Hợp tác</button>
+                            <?php 
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                            if($item['type_active']== Default_Model_User::NHAN_VIEN){?>
+                            <a href="<?php echo $this->baseUrl('/admin/user/edit/id/') . $item['id'] . '/page/' . $this->page; ?>">
+                                <img class="edit question" title="Click vào đây để phân quyền" style="cursor: pointer;" src="<?php echo $this->baseUrl("/images/icon/ico_edit.png"); ?>" onclick="editItem(this);"/>                                                   
+                            </a>
                             <?php 
                             }
                             ?>
