@@ -1,0 +1,96 @@
+<style>
+    table.history{
+        width: 100%;
+    }
+    table.history th,table.history td{
+        border: 1px solid black;
+    }
+</style>
+
+<div class="row-fluid" style="margin-top: 10px;">
+    <?php
+    $buttons[] = array('onclick' => "window.location = '" . $this->baseUrl('/admin/user/index') . "'", 'label' => 'Quay lại');
+    $buttons[] = array('onclick' => 'document.form.submit();', 'label' => 'Lưu');
+    echo $this->toolbar($buttons);
+    ?>
+</div>
+<form name="form" enctype="multipart/form-data" id="form" action="<?php echo $this->url(); ?>" method="post">
+    <div class="row-fluid" style="margin-top: 10px;">
+        <div class="col-lg-4 col-md-4"></div>
+
+        <div class="col-lg-12 col-md-12">
+            <table width="100%"> 
+                <tbody>     
+                    <tr></tr><tr>                 
+                        <td align="right" nowrap="nowrap"><label for="full_name" class="optional">Họ và tên:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <?php echo $this->full_name;?></td>
+
+                    </tr><tr>                 
+                        <td align="right" nowrap="nowrap"><label for="phone" class="required">Phone:</label>
+                        </td>
+                        <td nowrap="nowrap">
+
+                            <?php echo $this->phone;?></td>
+
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            <fieldset style="border: 1px solid black;padding: 20px;">
+                <legend style="width: auto;border-bottom: none;">Dự án</legend>
+                <ul style="list-style: none;">
+                    <?php 
+                        foreach ($this->du_an_cap_1s as $du_an_cap_1){
+                            if(in_array($du_an_cap_1['id'], $this->user_duans)){
+                                $checked=' checked="checked"';
+                            }
+                            else{
+                                $checked='';
+                            }
+                            
+                    ?>
+                    <li><label><input<?php echo $checked;?> type="checkbox" name="du_an_cap_1s[]" value="<?php echo $du_an_cap_1['id'];?>"/>&nbsp;&nbsp;&nbsp;<?php echo $du_an_cap_1['name'];?></label></li>
+                    <?php 
+                        }
+                    ?>
+                </ul>
+            </fieldset>
+            <br>
+            <fieldset style="border: 1px solid black;padding: 20px;">
+                <legend style="width: auto;border-bottom: none;">Nhà thầu thi công</legend>
+                <ul style="list-style: none;">
+                    <?php 
+                        foreach ($this->nha_thau_thi_cong_cap_1s as $nha_thau_thi_cong_cap_1){
+                            if(in_array($nha_thau_thi_cong_cap_1['id'], $this->user_nhathauthicongs)){
+                                $checked=' checked="checked"';
+                            }
+                            else{
+                                $checked='';
+                            }
+                    ?>
+                    <li><label><input<?php echo $checked;?> type="checkbox" name="nha_thau_thi_cong_cap_1s[]" value="<?php echo $nha_thau_thi_cong_cap_1['id'];?>"/>&nbsp;&nbsp;&nbsp;<?php echo $nha_thau_thi_cong_cap_1['name'];?></label></li>
+                    <?php 
+                        }
+                    ?>
+                </ul>
+            </fieldset>
+        </div>
+
+    </div>
+
+</form>   
+
+<script type="text/javascript">
+
+    jQuery(function ($) {
+        $("form").find("input").eq(0).focus();
+    });
+
+</script>
+
+
+
