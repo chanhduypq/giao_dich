@@ -1,6 +1,4 @@
 <?php 
-$auth = Zend_Auth::getInstance();
-$identity = $auth->getIdentity();
 $items = $this->items;
 $quangcao_items = $this->quangcao_items;
 $mucs = $this->mucs;
@@ -56,7 +54,7 @@ $muc_selected = $this->muc_selected;
                         </ul>
                     </div>
                     <!-- End Menu side -->
-                    <?php if (!$auth->hasIdentity()) {?>
+                    <?php if (!$this->isLogin) {?>
                     <p class="login login-p">
                         <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
                         <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
@@ -75,47 +73,7 @@ $muc_selected = $this->muc_selected;
                                 TIN QUẢNG CÁO
                             </div>
                             <div id="cate-ad-slider" class="cate-ad-list">
-                                <?php 
-                                foreach ($quangcao_items as $item){
-                                    ?>
-                                    <div class="cate-ad-i">
-                                        <div class="cate-ad-ii">
-                                            <div class="cai-thumb">
-                                                <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
-                                            </div>
-                                            <div class="cai-tit">
-                                                <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>"><?php echo $item['title']; ?></a>
-                                            </div>
-                                            <div class="cai-desc">
-                                                <div class="cai-col cai-cl">
-                                                    <!--<p>Đầu tư: <span></span></p>-->
-                                                    <p class="cai-phone"><a><?php echo $item['phone'];?></a></p>
-                                                </div>
-                                                <div class="cai-col cai-cr">
-                                                    <?php 
-//                                                            if ($auth->hasIdentity()) {
-//                                                                if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
-                                                        ?>
-                                                        <!--<a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>-->
-                                                    <?php 
-//                                                                }
-//                                                            }
-//                                                            else{
-//                                                                if(!$auth->hasIdentity()){
-                                                        ?>
-                                                        <!--<a href="<?php echo $this->baseUrl();?>/default/account/login" class="cai-btn-project"></a>-->
-                                                    <?php    
-//                                                                }
-//
-//                                                            }
-                                                    ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php 
-                                }
-                                ?>
+                                <?php echo $this->render('index/nhathauquangcao.phtml'); ?>
                                 
                             </div>
                         </div>
@@ -153,7 +111,7 @@ $muc_selected = $this->muc_selected;
                                 foreach ($items as $item){
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                 <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>
@@ -186,7 +144,7 @@ $muc_selected = $this->muc_selected;
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
-                                                        if ($auth->hasIdentity()){
+                                                        if ($this->isLogin){
                                                             if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
                                                             ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn nhà thầu</span></a>
@@ -198,7 +156,7 @@ $muc_selected = $this->muc_selected;
                                                             }
                                                         }
                                                         else{
-                                                            if(!$auth->hasIdentity()){
+                                                            if(!$this->isLogin){
                                                             ?>
                                                             <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn nhà thầu</span></a>
                                                         <?php    

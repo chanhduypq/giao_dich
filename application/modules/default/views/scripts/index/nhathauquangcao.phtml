@@ -1,0 +1,42 @@
+<?php 
+$quangcao_items = $this->quangcao_items;
+foreach ($quangcao_items as $item) {
+    ?>
+    <div class="cate-ad-i">
+        <div class="cate-ad-ii">
+            <div class="cai-thumb">
+                <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
+            </div>
+            <div class="cai-tit">
+                <a href="<?php echo $this->baseUrl("/index/duandetail/id/" . $item['id']); ?>"><?php echo $item['title']; ?></a>
+            </div>
+            <div class="cai-desc">
+                <div class="cai-col cai-cl">
+                    <p><span><?php echo $item['dich_vu_thi_cong'];?></span></p>
+                    <p class="cai-phone"><a><?php echo $item['phone']; ?></a></p>
+                </div>
+                <div class="cai-col cai-cr">
+                    <?php 
+//                                                            if ($this->isLogin) {
+//                                                                if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
+                    ?>
+                        <!--<a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an"></a>-->
+                    <?php 
+//                                                                }
+//                                                            }
+//                                                            else{
+//                                                                if(!$this->isLogin){
+                    ?>
+                        <!--<a href="<?php echo $this->baseUrl(); ?>/default/account/login" class="cai-btn-project"></a>-->
+                    <?php 
+//                                                                }
+//
+//                                                            }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php 
+}
+?>

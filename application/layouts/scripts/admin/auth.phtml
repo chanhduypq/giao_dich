@@ -52,10 +52,8 @@
         cursor:pointer;
     }
 </style>
-<?php
-$auth = Zend_Auth::getInstance();
-if ($auth->hasIdentity()) {
-    $identity = $auth->getIdentity();
+<?php 
+if ($this->isLogin) {
     ?>
 
     <div id="add-new">
@@ -64,7 +62,7 @@ if ($auth->hasIdentity()) {
         </li>
     </div>
     <div id="admin-setting">
-        <li class="a_li" style="cursor: auto;text-align: center;" id="danh_xung_full_name"><b><?php echo $identity['danh_xung'] . ' ' . $identity['full_name']; ?></b></li>
+        <li class="a_li" style="cursor: auto;text-align: center;" id="danh_xung_full_name"><b><?php echo $this->danh_xung . ' ' . $this->full_name; ?></b></li>
         <li class="a_li" id="changePassword"><p class="a_text">Đổi mật khẩu</p></li>
         <li onclick="window.location = '<?php echo $this->baseUrl('/admin/index/logout'); ?>';" class="a_li"><p class="a_text">Sign out</p></li>
     </div>

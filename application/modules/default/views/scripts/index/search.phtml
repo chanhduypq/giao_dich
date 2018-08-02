@@ -1,37 +1,12 @@
 <?php 
-$auth = Zend_Auth::getInstance();
-$identity = $auth->getIdentity();
 $items = $this->items;
 $quangcao_items = $this->quangcao_items;
-//$du_an_cap_2s = $this->du_an_cap_2s;
-//$du_an_cap_2_selected = $this->du_an_cap_2_selected;
 ?>
 <div class="page-content category-page">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="ct-sidebar">
-                    <!-- Menu side -->
-<!--                    <div class="menu-side">
-                        <ul class="mn-parent-side1">
-                            <?php 
-//                            foreach ($du_an_cap_2s as $du_an_cap_2){
-//                                if($du_an_cap_2['id']==$du_an_cap_2_selected){
-//                                    $class=' class="_current"';
-//                                }
-//                                else{
-//                                    $class='';
-//                                }
-                            ?>
-                                <li<?php // echo $class;?>>
-                                    <a href="<?php // echo $this->baseUrl('/index/duan/muc/'.$this->muc.'/muccap2/'.$du_an_cap_2['id']);?>"><span><?php // echo $du_an_cap_2['name'];?></span></a>
-                                </li>
-                            <?php 
-//                            } 
-                            ?>
-                        </ul>
-                    </div>-->
-                    <!-- End Menu side -->
                     <?php // echo $this->render('index/dichvuhaumaisidebar.phtml'); ?>
                 </div>
             </div>
@@ -69,7 +44,7 @@ $quangcao_items = $this->quangcao_items;
                                                 </div>
                                                 <div class="cai-col cai-cr">
                                                     <?php 
-                                                    if ($auth->hasIdentity()) {
+                                                    if ($this->isLogin) {
                                                         if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                         ?>
                                                         <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cai-btn-project chon_du_an"></a>
@@ -77,7 +52,7 @@ $quangcao_items = $this->quangcao_items;
                                                         }
                                                     }
                                                     else{
-                                                        if(!$auth->hasIdentity()){
+                                                        if(!$this->isLogin){
                                                         ?>
                                                         <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cai-btn-project"></a>
                                                     <?php    
@@ -136,7 +111,7 @@ $quangcao_items = $this->quangcao_items;
                                     }
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($auth->hasIdentity()&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $item['photo']; ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
@@ -157,7 +132,7 @@ $quangcao_items = $this->quangcao_items;
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
-                                                        if ($auth->hasIdentity()) {
+                                                        if ($this->isLogin) {
                                                             if(!in_array($item['id'], $this->du_an_da_chon_ids)){
                                                            ?>
                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn dự án</span></a>
@@ -169,7 +144,7 @@ $quangcao_items = $this->quangcao_items;
                                                             }
                                                         }
                                                         else{
-                                                            if(!$auth->hasIdentity()){
+                                                            if(!$this->isLogin){
                                                             ?>
                                                             <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn dự án</span></a>
                                                         <?php    
