@@ -308,6 +308,33 @@ $items = $this->items;
                                                     <div class="cit-desc-l">
                                                         <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                         <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                        <p>
+                                                            <?php 
+                                                            if($item['allow_hoptac']!='1'){
+                                                                if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                    echo 'Nhân viên';
+                                                                }
+                                                                else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                    echo 'Cá nhân';
+                                                                }
+                                                                else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                    echo 'Đối tác';
+                                                                }
+                                                            }
+                                                            else{
+                                                                if($item['type_active']== Default_Model_User::NHAN_VIEN){
+                                                                    echo 'Nhân viên';
+                                                                }
+                                                                else if($item['type_active']== Default_Model_User::CA_NHAN){
+                                                                    echo 'Cá nhân';
+                                                                }
+                                                                else if($item['type_active']== Default_Model_User::DOI_TAC){
+                                                                    echo 'Đối tác';
+                                                                }
+                                                            }
+                                                            
+                                                            ?>
+                                                        </p>
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 

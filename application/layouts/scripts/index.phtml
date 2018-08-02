@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
                                 <div class="top-poc">
-                                    <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
-                                        <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
+                                    <?php if($this->action=='index'||$this->action=='search'){?>
+                                        <?php if($this->action=='index'||$this->action=='search'){?>
                                         <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                                         <?php } ?>
                                         <div class="top-oc top-login">
@@ -106,8 +106,11 @@
                                         <!-- menu show sp -->
                                         <div class="show-sp">
 
+                                            <?php if($this->action!='duan'&&$this->action!='nhathauthicong'){?>
                                             <a class="onClickSearch" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
-
+                                            <?php 
+                                            }
+                                            ?>
                                             <div class="top-oc top-login">
                                                 <a class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$this->isLogin) {?>Đăng nhập/Đăng ký<?php } else echo $this->full_name!=''?$this->full_name:'Guest';?></text></a>
                                             </div>
@@ -266,6 +269,11 @@
                 }
                 ?>
                 <!-- End Search -->
+                <ul class="breadcrumb show-sp">
+                    <li><a href="category.html">Tìm kiếm</a></li>
+                    <li><a href="#">Tên danh mục</a></li>
+                    <li><span>Tên Khu vực</span></li>
+                </ul>
                 <!-- home page -->
                 <?php echo $this->layout()->content; ?>
                 <!-- End home page -->

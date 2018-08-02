@@ -173,6 +173,8 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         $this->view->du_an_cap_1_ids = $this->isLogin() ? $identity['du_an_cap_1_ids'] : array();
         $this->view->full_name = $this->isLogin() ? $identity['full_name'] :'';
         $this->view->danh_xung = $this->isLogin() ? $identity['danh_xung'] :'';
+        $this->view->action= $this->_request->getActionName();
+        $this->view->controller= $this->_request->getControllerName();
     }
     
     private function isLogin(){

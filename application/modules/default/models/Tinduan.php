@@ -40,7 +40,7 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
                 . "is_quang_cao,"
                 . "allow_show_quang_cao,"
                 . "phone,"
-                . "user.type,tin_du_an.is_hot,"
+                . "user.type,tin_du_an.is_hot,user.allow_hoptac,user.type_active,"
                 . "tin_du_an.id "
                 . "from tin_du_an "
                 . "join user on user.id=tin_du_an.user_id "
