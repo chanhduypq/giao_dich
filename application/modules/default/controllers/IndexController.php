@@ -343,6 +343,10 @@ class IndexController extends Core_Controller_Action {
         $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
         $this->view->slug= $this->getDuAnCap1SlugById($items[0]['du_an_cap_1_id']);
+        
+        $so_luot_xem= Core_Db_Table::getDefaultAdapter()->fetchOne("select so_luot_xem from tin_du_an where id='".$this->_getParam('id')."'");
+        $so_luot_xem++;
+        Core_Db_Table::getDefaultAdapter()->query("update tin_du_an set so_luot_xem=$so_luot_xem where id='".$this->_getParam('id')."'")->execute();        
     }
 
     public function nhathauthicongdetailAction() {
@@ -374,6 +378,10 @@ class IndexController extends Core_Controller_Action {
         
         $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
+        
+        $so_luot_xem= Core_Db_Table::getDefaultAdapter()->fetchOne("select so_luot_xem from tin_nha_thau_thi_cong where id='".$this->_getParam('id')."'");
+        $so_luot_xem++;
+        Core_Db_Table::getDefaultAdapter()->query("update tin_nha_thau_thi_cong set so_luot_xem=$so_luot_xem where id='".$this->_getParam('id')."'")->execute();   
         
     }
     
