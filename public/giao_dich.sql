@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-08-02 22:21:10
+Date: 2018-08-03 06:05:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -276,7 +276,6 @@ CREATE TABLE `du_an_da_chon` (
 -- ----------------------------
 -- Records of du_an_da_chon
 -- ----------------------------
-INSERT INTO `du_an_da_chon` VALUES ('1', '4', '2018-08-02 21:04:06');
 INSERT INTO `du_an_da_chon` VALUES ('13', '4', '2018-08-01 13:22:28');
 INSERT INTO `du_an_da_chon` VALUES ('14', '4', '2018-08-01 13:28:36');
 
@@ -548,7 +547,7 @@ CREATE TABLE `tin_du_an` (
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
-INSERT INTO `tin_du_an` VALUES ('1', 'dự án', 'nội dung dự án1', null, '2018-07-14 10:47:09', '2018-08-02 22:02:41', '4', '4', '2018-07-14 00:00:00', '1', '1', null, '1', '0', '1 tỉ rưỡi1', null, null, '1', '1', '1', '1', '1', '10');
+INSERT INTO `tin_du_an` VALUES ('1', 'dự án', 'nội dung dự án1', null, '2018-07-14 10:47:09', '2018-08-03 05:50:12', '4', '4', '2018-07-14 00:00:00', '1', '1', null, '1', '0', '1 tỉ rưỡi1', null, null, '1', '1', '1', '1', '1', '13');
 INSERT INTO `tin_du_an` VALUES ('2', 'xvxcvxcvx', 'cbcbvbc', null, '2018-07-14 12:27:45', '2018-07-31 11:04:12', '3', '2', '0000-00-00 00:00:00', '1', '2', null, '1', null, '1000', null, null, '1', '1', '1', null, '1', '0');
 INSERT INTO `tin_du_an` VALUES ('3', 'nhiều ảnh', 'sdfsdfsd', null, '2018-07-23 14:32:08', '2018-07-31 11:13:45', '3', '2', '2018-07-23 00:00:00', '1', null, null, '2', '10', '4353', null, null, '1', '1', '1', null, null, '0');
 INSERT INTO `tin_du_an` VALUES ('4', 'fsdfdsfsdfsdfsdfs', 'sdfsdfsd', null, '2018-07-24 12:29:53', '2018-07-31 11:04:13', '4', '4', '0000-00-00 00:00:00', '1', null, null, '1', '1', '4353', null, null, '1', '1', null, null, null, '0');
@@ -605,7 +604,7 @@ INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'nhà thầu thi công test sdf
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('2', 'sdasdasdas', 'sfsada', null, '2018-07-29 10:36:47', '2018-08-02 08:17:40', '1', '2', '0000-00-00 00:00:00', '1', null, null, '1', '0', '2', 'xe múc', null, null, '1', '1', '1', null, null, '0');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('3', 'sdfsdfds', null, null, '2018-07-29 23:32:24', '2018-08-02 08:17:35', '1', '2', '0000-00-00 00:00:00', null, null, null, '1', '0', '1', null, null, null, '1', '1', '1', null, null, '0');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('4', 'sgfsdfsdfsd', 'sdfsdfds', null, '2018-07-31 11:36:49', '2018-08-02 08:17:42', '4', '4', '2018-07-05 00:00:00', '1', null, null, '1', '0', '1', 'sdfsdfds', null, null, '1', '1', '1', null, null, '0');
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('5', 'ltl', 'sdfdsfsd', null, '2018-08-02 15:08:49', '2018-08-02 21:18:15', '7', '3', '2018-08-02 00:00:00', '1', null, null, '1', '0', '1', 'sdfsdfsd', null, null, null, null, '1', null, null, '12');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('5', 'ltl', 'sdfdsfsd', null, '2018-08-02 15:08:49', '2018-08-03 05:50:26', '7', '3', '2018-08-02 00:00:00', '1', null, null, '1', '0', '1', 'sdfsdfsd', null, null, null, null, '1', null, null, '14');
 
 -- ----------------------------
 -- Table structure for user
