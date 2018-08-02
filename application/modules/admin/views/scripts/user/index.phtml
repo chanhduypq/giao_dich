@@ -1,0 +1,223 @@
+<?php 
+$items = $this->items;
+?>
+<style>
+    .center{
+        text-align:left;
+    }
+
+    table{
+        width:100%;
+        max-width:1600px;
+        border-right:1px solid #999;
+    }
+
+    td{
+        text-indent:5px;
+        color:#444;
+        border-bottom:1px solid #bbb;
+        border-left:1px solid #bbb;
+    }
+
+    td.left{
+        border-left:1px solid #2e638e;
+    }
+
+    td.right{
+        border-right:1px solid #2e638e;
+    }
+
+    td.bottom{
+        border-bottom:1px solid #2e638e;
+    }
+    
+    .quangcao td,th{
+        text-align: center;
+    }
+
+    .grip{
+        width:20px;
+        height:15px;
+        margin-top:-3px;
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/grip.png');
+        margin-left:-5px;
+        position:relative;
+        z-index:88;
+        cursor:e-resize;
+    }
+
+    .grip:hover{
+        background-position-x:-20px;
+    }
+
+    .JCLRLastGrip .grip{
+        background-position-y:-18px;
+        left:-2px;
+    }
+
+    .dragging .grip{
+        background-position-x:-40px;
+    }
+
+    .sampleText{
+        position:relative;
+        width:100%;
+    }
+
+    .dotted{
+        background-image:url('<?php echo $this->baseUrl(); ?>/images/dotted.png');
+        background-repeat:repeat-y;
+    }
+    
+    .is_hien_thi{
+        background: #c8cedd;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="<?php echo $this->baseUrl(); ?>/js/jquery.dataTables.min.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <link href="<?php echo $this->baseUrl('/css/form_search.css'); ?>?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>" media="screen" rel="stylesheet" type="text/css" />				 
+    <script src="<?php echo $this->baseUrl(); ?>/js/colResizable-1.6.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>
+
+<div class="row-fluid">
+    <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
+            <thead>
+                <th>Họ và tên</th>
+                <th>Phone</th>
+                <th>Mong muốn</th>
+                <?php 
+                if($this->isAdmin){?>
+                <th>&nbsp;</th>
+                <?php 
+                }
+                ?>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($items as $item){?>
+                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['allow_hoptac']== '1'){?> class="is_hien_thi"<?php }?>>
+                        <td style="width: 10%;">
+                            <?php echo $item['full_name'];?>
+                        </td>
+                        <td>
+                            <?php echo $item['phone'];?>
+                        </td>
+                        <td>
+                            <?php 
+                            if($item['type_active']== Default_Model_User::DOI_TAC){
+                                echo 'Đối tác';
+                            }
+                            else{
+                                echo 'Nhân viên';
+                            }
+                            ?>
+                        </td>
+                        
+                        <?php 
+                        if($this->isAdmin){?>
+                        <td>
+                            <?php 
+                            if($item['allow_hoptac']== '1'){
+                            ?>
+                            <button class="cancel_show">Hủy hợp tác</button>
+                            <?php 
+                            }
+                            else {?> 
+                            <button class="allow_show">Hợp tác</button>
+                            <?php 
+                            }
+                            ?>
+                        </td>
+                        <?php 
+                        }
+                        ?>
+                    </tr>
+                    <?php 
+                    }
+                ?>
+            </tbody>
+        </table>
+
+</div>
+
+
+<script>
+        
+    $(window).load(function() {
+          $('#nanopool-table').show();
+          $('#nanopool-table').DataTable();
+          $('#nanopool-table_filter').find('input').eq(0).css('width','270px');
+          $('#nanopool-table td').css('text-align','center');
+          <?php 
+          if(is_array($items)&&count($items)>0){?>
+          $("table").colResizable({
+                liveDrag:true, 
+                gripInnerHtml:"<div class='grip'></div>", 
+                draggingClass:"dragging", 
+                resizeMode:'overflow',//'fit'
+                postbackSafe:true,
+                partialRefresh:true
+          });
+          <?php 
+          }
+          ?>
+    });
+    
+    
+    jQuery(function ($){
+        $( "body" ).delegate( ".allow_show", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/user/dongy',
+                data: {'id':id},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
+                      $(node).toggleClass( "cancel_show" );
+                      $(node).html("Hủy hợp tác");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
+                    }
+                      
+                }
+            });
+        });
+        
+        $( "body" ).delegate( ".cancel_show", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/user/khongdongy',
+                data: {'id':id},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
+                      $(node).toggleClass( "cancel_show" );
+                      $(node).html("Hợp tác");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
+                    }
+                      
+                }
+            });
+        });
+        
+        
+    });
+    
+    
+    
+    
+</script>

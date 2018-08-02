@@ -18,7 +18,15 @@
                     </div>
                     <div class="pc-col pc-info">
                         <div class="page-option">
-                            <h3 style="text-align: center;width: 100%;">
+                            <?php 
+                            if(isset($this->message)&&$this->message=='Chúc mừng bạn đã thay đổi thông tin cá nhân thành công.'){
+                                $color='blue';
+                            }
+                            else{
+                                $color='red';
+                            }
+                            ?>
+                            <h3 style="text-align: center;width: 100%;color: <?php echo $color;?>">
                                 <?php if(isset($this->message)) echo $this->message;?>
                             </h3>
                             <div class="form-page">
@@ -34,6 +42,45 @@
                                         <div class="fp-input fp-textbox">
                                             <input name="phone" type="textbox" class="fp-control" placeholder="Số điện thoại" value="<?php if(isset($this->phone)) echo $this->phone;?>">
                                         </div>
+                                    </div>
+                                    <div class="fp-group">
+                                        <div class="fp-label fp-label-require">CHỌN LOẠI HÌNH</div>
+                                        <div class="fp-input fp-tab">
+                                            <div class="fp-tab-i">
+                                                <div class="fp-tab-ii">
+                                                    <input type="radio" name="type_active"<?php if($this->type_active== Default_Model_User::CA_NHAN){?> checked="checked"<?php }?> class="hd-check-tab" value="3">
+                                                    <div class="fp-tab-select">
+                                                        Cá nhân
+                                                        <span class="fp-tab-check"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="fp-tab-i">
+                                                <div class="fp-tab-ii">
+                                                    <input type="radio" name="type_active"<?php if($this->type_active=='2'){?> checked="checked"<?php }?> class="hd-check-tab" value="2">
+                                                    <div class="fp-tab-select">
+                                                        Nhân viên
+                                                        <span class="fp-tab-check"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="fp-tab-i">
+                                                <div class="fp-tab-ii">
+                                                    <input type="radio" name="type_active"<?php if($this->type_active=='4'){?> checked="checked"<?php }?> class="hd-check-tab" value="4">
+                                                    <div class="fp-tab-select">
+                                                        Đối tác
+                                                        <span class="fp-tab-check"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row" style="margin-top: 20px;display: none;">
+                                            <div id="error1" class="col-lg-12 col-md-12" style='padding-bottom:20px;color: red;margin-bottom: 20px;text-align: center;'>
+                                                Vui lòng chọn loại hình.
+                                            </div>
+                                        </div>   
                                     </div>
                                     <div class="fp-group">
                                         <div class="fp-label">

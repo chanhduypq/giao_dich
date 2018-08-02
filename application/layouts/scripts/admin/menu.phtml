@@ -6,6 +6,7 @@ if($this->isLogin){
         <?php 
         if($this->isAdmin){ ?>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
+            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'user') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/user">Hợp tác với user</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
             <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>

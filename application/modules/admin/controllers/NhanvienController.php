@@ -25,7 +25,8 @@ class Admin_NhanvienController extends Core_Controller_Action {
                         $data['full_name'] = $this->_getParam('full_name');
                         $data['phone'] = trim($this->_getParam('phone'));
                         $data['password'] = sha1(trim($this->_getParam('phone')));
-                        $data['type']='2';
+                        $data['type'] = $data['type_active'] = '2';
+                        $data['allow_hoptac'] = '1';
                         $user_id=$this->model->insert($data);
                         $du_an_cap_1s= $this->_getParam('du_an_cap_1s');
                         $nha_thau_thi_cong_cap_1s= $this->_getParam('nha_thau_thi_cong_cap_1s');
