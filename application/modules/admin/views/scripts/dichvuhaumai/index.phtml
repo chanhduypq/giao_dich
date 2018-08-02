@@ -1,12 +1,5 @@
-<?php
+<?php 
 $items = $this->items;
-
-
-
-$auth = Zend_Auth::getInstance();
-if ($auth->hasIdentity()) {
-    $identity = $auth->getIdentity();
-}
 ?>
 <script type="text/javascript">
     function editItem(img) {
@@ -157,7 +150,7 @@ if (isset($this->message)&&trim($this->message)!='') {
                         </td>
                         
                         <?php 
-                        if(is_array($identity)&&$identity['type']== Default_Model_User::ADMIN){?>
+                        if($this->isAdmin){?>
                         <td>
                             <a class="remove" title="Click vào đây để xóa" href="<?php echo $this->baseUrl('/admin/dichvuhaumai/delete/id/'.$item['id'].'/photo/'.$item['photo']) ; ?>">
                                 <img class="delete question" src="<?php echo $this->baseUrl("/images/icon/delete-icon.png"); ?>"/>                                                   

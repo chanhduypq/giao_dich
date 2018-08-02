@@ -41,20 +41,4 @@ class Admin_NhathauchonController extends Core_Controller_Action {
         $this->view->items = $temps;
     }
     
-//    tuetc
-//    public function batdaugiaodichAction() {
-//        $this->isAjax();
-//        if(ctype_digit($this->_getParam('id'))){
-//            Core_Db_Table::getDefaultAdapter()->query("update tin_du_an set status=2 where id='".$this->_getParam('id')."'")->execute();
-//        }
-//        $this->_helper->redirector('index', 'duanchon', 'admin');
-//    }
-//    
-//    public function hoanthanhgiaodichAction() {
-//        if(ctype_digit($this->_getParam('id'))){
-//            Core_Db_Table::getDefaultAdapter()->query("update tin_du_an set status=3 where id='".$this->_getParam('id')."'")->execute();
-//        }
-//        $this->_helper->redirector('index', 'duanchon', 'admin');
-//    }
-    
 }

@@ -1,8 +1,3 @@
-<?php 
-$auth = Zend_Auth::getInstance();
-$identity = $auth->getIdentity();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,14 +38,14 @@ $identity = $auth->getIdentity();
                                         </div>
                                         <div class="top-oc top-project">
                                             <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn
-                                                <?php if ($auth->hasIdentity()) {?>
+                                                <?php if ($this->isLogin) {?>
                                                 <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
                                                 <?php } ?>
                                             </a>
                                             <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                                         </div>
                                         <div class="oc-dropdown">
-                                            <?php if (!$auth->hasIdentity()) {?>
+                                            <?php if (!$this->isLogin) {?>
                                             <ul>
                                                 <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
                                                 <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
@@ -76,10 +71,10 @@ $identity = $auth->getIdentity();
                                         <?php } ?>
 
                                         <div class="top-oc top-login">
-                                            <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$auth->hasIdentity()) {?>Đăng nhập/Đăng ký<?php } else echo $identity['full_name'];?></text>&nbsp;</a>
+                                            <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$this->isLogin) {?>Đăng nhập/Đăng ký<?php } else echo $this->full_name;?></text>&nbsp;</a>
                                         </div>
 
-                                        <?php if (!$auth->hasIdentity()) {?>
+                                        <?php if (!$this->isLogin) {?>
                                         <ul class="show-information">
                                             <li><a href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a></li>
                                             <li><a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a></li>
@@ -98,7 +93,7 @@ $identity = $auth->getIdentity();
 
                                         <div class="top-oc top-project">
                                             <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text>
-                                                <?php if ($auth->hasIdentity()) {?>
+                                                <?php if ($this->isLogin) {?>
                                                 <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
                                                 <?php } ?>
                                             </a>
@@ -269,7 +264,7 @@ $identity = $auth->getIdentity();
                             </li>
                             <li>
                                 <?php 
-                                if ($auth->hasIdentity()) {
+                                if ($this->isLogin) {
                                     ?>
                                     <a href="<?php echo $this->baseUrl();?>/default/account/duanchon"><span><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/bookmark-light.png" alt=""></span>DỰ ÁN ĐÃ CHỌN  <strong><?php echo $this->number_du_an_da_chon;?></strong></a>
                                 <?php 

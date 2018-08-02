@@ -40,6 +40,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->du_an_cap_2 = $session_tin_du_an->du_an_cap_2;
         }
+        if(strpos($this->_getBackUrl(), 'duan2')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
+        }
         
     }
 
@@ -52,6 +55,9 @@ class NewsController extends Core_Controller_Action {
             $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3 where du_an_cap_2_id='" . $session_tin_du_an->du_an_cap_2 . "'");
             $this->view->items = $items;
             $this->view->du_an_cap_3 = is_array($session_tin_du_an->du_an_cap_3)?$session_tin_du_an->du_an_cap_3:array();
+        }
+        if(strpos($this->_getBackUrl(), 'duan3')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
         }
        
     }
@@ -70,6 +76,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->du_an_cap_4 = is_array($session_tin_du_an->du_an_cap_4)?$session_tin_du_an->du_an_cap_4:array();
         }
+        if(strpos($this->_getBackUrl(), 'duan4')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
+        }
         
     }
 
@@ -82,6 +91,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
             $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
         }
+        if(strpos($this->_getBackUrl(), 'duan5')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
+        }
     }
     
     
@@ -89,39 +101,53 @@ class NewsController extends Core_Controller_Action {
     public function nhathauthicong2Action() {
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
         $this->view->items = $items;
+        $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
+        $this->view->nha_thau_thi_cong_cap_1 = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_1;
     }
 
     public function nhathauthicong3Action() {
+        $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
         if ($this->_request->isPost()) {
-            $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_1 = $this->_getParam('muc', '0');
+            
+        } else {
             $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_2 where nha_thau_thi_cong_cap_1_id='" . $this->_getParam('muc', '0') . "'");
             $this->view->items = $items;
-        } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $this->view->nha_thau_thi_cong_cap_2 = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_2;
+        }
+        if(strpos($this->_getBackUrl(), 'nhathauthicong2')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
         }
     }
 
     public function nhathauthicong4Action() {
+        $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
         if ($this->_request->isPost()) {
-            $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_2 = $this->_getParam('muc', '0');
             
+            
+        } else {
             $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_3 where nha_thau_thi_cong_cap_2_id='" . $this->_getParam('muc', '0') . "'");
             $this->view->items = $items;
-        } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $this->view->nha_thau_thi_cong_cap_3 = is_array($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3)?$session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3:array();
+        }
+        if(strpos($this->_getBackUrl(), 'nhathauthicong3')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
         }
     }
 
     public function nhathauthicong5Action() {
+        $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
         if ($this->_request->isPost()) {
-            $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3 = $this->_getParam('muc');
+            
+        } else {
             $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_4 where nha_thau_thi_cong_cap_3_id IN(" .implode(",",$this->_getParam('muc',array('-1'))) . ")");
             $this->view->items = $items;
-        } else {
-            $this->_helper->redirector('index', 'index', 'default');
+            $this->view->nha_thau_thi_cong_cap_4 = is_array($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4)?$session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4:array();
+        }
+        if(strpos($this->_getBackUrl(), 'nhathauthicong4')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
         }
     }
 
@@ -129,10 +155,13 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
             $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4 = $this->_getParam('muc');
+            
+        } else {
             $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
             $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
-        } else {
-            $this->_helper->redirector('index', 'index', 'default');
+        }
+        if(strpos($this->_getBackUrl(), 'nhathauthicong5')===FALSE){
+            $this->_helper->redirector('step1', 'news', 'default');
         }
     }
 

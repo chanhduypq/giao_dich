@@ -11,12 +11,12 @@
                         </div>
                         <div class="fp-content">
                             <!-- Fp Group -->
-                            <div class="fp-group">
+                            <!--tuetc-->
+<!--                            <div class="fp-group">
                                 <div class="fp-label fp-label-require">CHỌN LOẠI HÌNH<span class="s-star">*</span></div>
                                 <div class="fp-input fp-tab">
-                                    <!-- FP tab item -->
-                                    <!--tuetc-->
-<!--                                    <div class="fp-tab-i">
+                                    
+                                    <div class="fp-tab-i">
                                         <div class="fp-tab-ii">
                                             <input type="radio" name="select_loaihinh" class="hd-check-tab" value="2">
                                             <div class="fp-tab-select">
@@ -24,9 +24,7 @@
                                                 <span class="fp-tab-check"></span>
                                             </div>
                                         </div>
-                                    </div>-->
-                                    <!-- End FP Tab Item -->
-                                    <!-- FP tab item -->
+                                    </div>
                                     <div class="fp-tab-i">
                                         <div class="fp-tab-ii">
                                             <input type="radio" name="select_loaihinh" class="hd-check-tab" value="4">
@@ -36,8 +34,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End FP Tab Item -->
-                                    <!-- FP tab item -->
                                     <div class="fp-tab-i">
                                         <div class="fp-tab-ii">
                                             <input type="radio" name="select_loaihinh" class="hd-check-tab" value="3">
@@ -47,14 +43,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End FP Tab Item -->
                                 </div>
                                 <div class="row" style="margin-top: 20px;display: none;">
                                     <div id="error1" class="col-lg-12 col-md-12" style='padding-bottom:20px;color: red;margin-bottom: 20px;text-align: center;'>
                                         Vui lòng chọn loại hình.
                                     </div>
                                 </div>   
-                            </div>
+                            </div>-->
                             <!-- End Fp Group -->
                             <!-- Fp Group -->
                             <div class="fp-group fp-error">
@@ -117,10 +112,10 @@
         $("#password").css('border-color','inherit');
         $("#confirm_password").css('border-color','inherit');
         $("#error1").parent().hide();
-        if ($("input:checked").length == 0) {
-            $("#error1").parent().show();            
-            return false;
-        }
+//        if ($("input:checked").length == 0) {
+//            $("#error1").parent().show();            
+//            return false;
+//        }
         if ($.trim($("#phone").val()) == "") {
             $("#phone").css('border-color','red');
             $("#phone").focus();

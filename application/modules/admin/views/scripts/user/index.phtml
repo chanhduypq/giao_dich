@@ -1,7 +1,6 @@
 <?php 
 $items = $this->items;
 ?>
-
 <style>
     .center{
         text-align:left;
@@ -11,9 +10,6 @@ $items = $this->items;
         width:100%;
         max-width:1600px;
         border-right:1px solid #999;
-    }
-    tr.show{
-        background: #c8cedd;
     }
 
     td{
@@ -72,10 +68,12 @@ $items = $this->items;
         background-image:url('<?php echo $this->baseUrl(); ?>/images/dotted.png');
         background-repeat:repeat-y;
     }
+    
+    .is_hien_thi{
+        background: #c8cedd;
+    }
 </style>
-
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -87,67 +85,55 @@ $items = $this->items;
 <div class="row-fluid">
     <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
             <thead>
-                <th>Mã tin</th>
-                <th>Hình ảnh</th>
-                <th>Tựa đề</th>
-                <th>Nội dung</th>
-                <th>Người đã chọn dự án</th>
-                <th>Tình trạng</th>
+                <th>Họ và tên</th>
+                <th>Phone</th>
+                <th>Mong muốn</th>
+                <?php 
+                if($this->isAdmin){?>
                 <th>&nbsp;</th>
+                <?php 
+                }
+                ?>
             </thead>
             <tbody>
                 <?php 
-                    foreach ($items as $id=>$item){?>
-                    <tr id="tin_<?php echo $id;?>"<?php if($item['status']=='2') echo ' style="background: #c8cedd;"'; else if($item['status']=='3') echo ' style="background: #9dfbd3;"';?>>
-                        <td><?php echo 'DA'.$id;?></td>
+                    foreach ($items as $item){?>
+                    <tr id="tin_<?php echo $item['id'];?>"<?php if($item['allow_hoptac']== '1'){?> class="is_hien_thi"<?php }?>>
                         <td style="width: 10%;">
-                            <?php if(trim($item['photo'])!=""){?>
-                                <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl("/uploads/".$item['photo']);?>"/>
-                             <?php }
-                             else{?>
-                                 <img style="width: 100%;height: auto;" src="<?php echo $this->baseUrl(PHOTO_DEFAULT);?>"/>
-                             <?php 
-                             }
-                             ?>
+                            <?php echo $item['full_name'];?>
                         </td>
                         <td>
-                            <?php echo $item['title'];?>
-                        </td>
-                        <td>
-                            <?php echo $item['content'];?>
+                            <?php echo $item['phone'];?>
                         </td>
                         <td>
                             <?php 
-                            echo implode("<br>", $item['users_da_chon']);
-                            ?>
-                        </td>
-                        <td>
-                            <?php 
-                            if($item['status']==''||$item['status']=='1'){
-                                echo 'Chưa giao dịch';
-                            }
-                            else if($item['status']=='2'){
-                                echo 'Đang giao dịch';
+                            if($item['type_active']== Default_Model_User::DOI_TAC){
+                                echo 'Đối tác';
                             }
                             else{
-                                echo 'Hoàn thành giao dịch';
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php 
-                            if($item['status']==''||$item['status']=='1'){
-                            ?>
-                            <button onclick="window.location='<?php echo $this->baseUrl("/admin/duanchon/batdaugiaodich/id/$id");?>';">Bắt đầu giao dịch</button>
-                            <?php 
-                            }
-                            else if($item['status']=='2'){?> 
-                            <button onclick="window.location='<?php echo $this->baseUrl("/admin/duanchon/hoanthanhgiaodich/id/$id");?>';">Hoàn thành giao dịch</button>
-                            <?php 
+                                echo 'Nhân viên';
                             }
                             ?>
                         </td>
                         
+                        <?php 
+                        if($this->isAdmin){?>
+                        <td>
+                            <?php 
+                            if($item['allow_hoptac']== '1'){
+                            ?>
+                            <button class="cancel_show">Hủy hợp tác</button>
+                            <?php 
+                            }
+                            else {?> 
+                            <button class="allow_show">Hợp tác</button>
+                            <?php 
+                            }
+                            ?>
+                        </td>
+                        <?php 
+                        }
+                        ?>
                     </tr>
                     <?php 
                     }
@@ -156,6 +142,8 @@ $items = $this->items;
         </table>
 
 </div>
+
+
 <script>
         
     $(window).load(function() {
@@ -180,6 +168,56 @@ $items = $this->items;
     
     
     jQuery(function ($){
+        $( "body" ).delegate( ".allow_show", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/user/dongy',
+                data: {'id':id},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
+                      $(node).toggleClass( "cancel_show" );
+                      $(node).html("Hủy hợp tác");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
+                    }
+                      
+                }
+            });
+        });
+        
+        $( "body" ).delegate( ".cancel_show", "click", function() {
+          
+          var id=$(this).parent().parent().attr('id');
+          id=id.replace("tin_","");
+          
+          var node=$(this);
+            $.ajax({
+                url:'<?php echo $this->baseUrl();?>/admin/user/khongdongy',
+                data: {'id':id},                         
+                type: 'post',
+                async: false,
+                success: function(php_script_response){
+                    if($.trim(php_script_response)=='ok'){
+                        $(node).toggleClass( "allow_show" );
+                      $(node).toggleClass( "cancel_show" );
+                      $(node).html("Hợp tác");
+                      $(node).parent().parent().toggleClass('is_hien_thi');
+                    }
+                      
+                }
+            });
+        });
+        
         
     });
+    
+    
+    
+    
 </script>

@@ -45,7 +45,6 @@ class AccountController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             $phone = $this->_getParam('phone');
             $password = $this->_getParam('password');
-            $type = $this->_getParam('select_loaihinh');
 
             $model = new Default_Model_User();
 
@@ -62,8 +61,8 @@ class AccountController extends Core_Controller_Action {
                 $model->insert(array(
                     'phone' => $phone,
                     'password' => sha1($password),
-                    'type' => $type,
-                    'active' => ($type == '2' ? 2 : 1)
+                    'type' => Default_Model_User::CA_NHAN,
+                    'type_active' => Default_Model_User::CA_NHAN,
                 ));
                 $index = new Admin_Model_IndexMapper();
                 $index->login($phone, $password);
@@ -100,6 +99,12 @@ class AccountController extends Core_Controller_Action {
                               'full_name'  =>$this->_getParam('full_name'),
                             'phone'  =>$this->_getParam('phone'),
                         );       
+                        if(is_numeric($this->_getParam('type_active',''))){
+                            $bind['type_active']=$this->_getParam('type_active');
+                            if($this->_getParam('type_active','')== Default_Model_User::CA_NHAN){
+                                $bind['allow_hoptac']='0';
+                            }
+                        }
                         if($this->_getParam('reset_password')=='1'){
                             $bind['password']=sha1($this->_getParam('new_password'));
                         }
@@ -107,6 +112,9 @@ class AccountController extends Core_Controller_Action {
                         $auth->clearIdentity();
                         $identity['full_name']=$this->_getParam('full_name');
                         $identity['phone']=$this->_getParam('phone');
+                        if(is_numeric($this->_getParam('type_active',''))){
+                            $identity['type_active']=$this->_getParam('type_active','');
+                        }
                         if($this->_getParam('reset_password')=='1'){
                             $identity['password']=sha1($this->_getParam('new_password'));
                         }                        
@@ -120,10 +128,12 @@ class AccountController extends Core_Controller_Action {
                     
             $this->view->full_name= $this->_getParam('full_name');
             $this->view->phone= $this->_getParam('phone');
+            $this->view->type_active= $this->_getParam('type_active','');
         }
         else{
             $this->view->full_name= $identity['full_name'];
             $this->view->phone= $identity['phone'];
+            $this->view->type_active= $identity['type_active'];
         }
         $this->view->message= $message;
         

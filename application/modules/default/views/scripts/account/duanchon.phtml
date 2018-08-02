@@ -49,7 +49,19 @@
                                                             <div class="cit-desc-l">
                                                                 <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                                 <!--tuetc-->
-                                                                <!--<p>Đối tác</p>-->
+                                                                <p>
+                                                                    <?php 
+                                                                    if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                        echo 'Nhân viên';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                        echo 'Cá nhân';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                        echo 'Đối tác';
+                                                                    }
+                                                                    ?>
+                                                                </p>
                                                             </div>
                                                             
                                                             <?php if($item['status']=='3'){?>

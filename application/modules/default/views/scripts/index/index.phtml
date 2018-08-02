@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12 home-tit">
                 <h3 class="home-tit-o show-pc">KHÁM PHÁ DANH MỤC</h3>
-                <?php $auth = Zend_Auth::getInstance(); if (!$auth->hasIdentity()) {?>
+                <?php $auth = Zend_Auth::getInstance(); if (!$this->isLogin) {?>
                 <p class="login show-sp">
                     <a class="a-login" href="<?php echo $this->baseUrl();?>/default/account/login">Đăng nhập</a>
                     <a href="<?php echo $this->baseUrl();?>/default/account/regist">Đăng ký tài khoản</a>
