@@ -141,13 +141,14 @@ $muc_selected = $this->muc_selected;
                                                             ?>
                                                         </p>
                                                         <p>Mã tin: <?php echo 'NT'.$item['id'];?></p>
+                                                        <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
                                                     </div>
                                                     <div class="cit-desc-r">
                                                         <?php 
                                                         if ($this->isLogin){
                                                             if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
                                                             ?>
-                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn nhà thầu</span></a>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
                                                         <?php 
                                                             }
                                                             else{?>
@@ -158,13 +159,14 @@ $muc_selected = $this->muc_selected;
                                                         else{
                                                             if(!$this->isLogin){
                                                             ?>
-                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn nhà thầu</span></a>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
                                                         <?php    
                                                             }
                                                             
                                                         }
                                                         ?>
                                                     </div>
+                                                    <?php echo $this->vote($item['id'],'nha_thau_thi_cong',(!in_array($item['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$item['id']]));?>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,7 +221,7 @@ jQuery(function ($){
                         $(node).html('Hủy chọn');
                     }
                     else{
-                        $(node).html('Chọn nhà thầu');
+                        $(node).html('Chọn');
                     }
                     
                 }

@@ -92,7 +92,7 @@ $items = $this->items;
                             if ($this->isLogin){
                                 if(!in_array($items[0]['id'], $this->nha_thau_da_chon_ids)){
                                 ?>
-                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an" style="width: 100%;">Chọn nhà thầu</a>
+                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $items[0]['id'];?>" class="cit-btn chon_du_an">Chọn</a>
                             <?php 
                                 }
                                 else{?>
@@ -103,12 +103,13 @@ $items = $this->items;
                             else{
                                 if(!$this->isLogin){
                                 ?>
-                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn">Chọn nhà thầu</a>
+                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn">Chọn</a>
                             <?php    
                                 }
                                 
                             }
                             ?>
+                            <?php echo $this->vote($items[0]['id'],'nha_thau_thi_cong',(!in_array($items[0]['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$items[0]['id']]));?>
                         </div>
                         <div class="dt-desc">
                             <?php echo nl2br($items[0]['content']);?>
@@ -300,7 +301,7 @@ $items = $this->items;
                                                             if ($this->isLogin){
                                                                 if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
                                                                 ?>
-                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn nhà thầu</span></a>
+                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
                                                             <?php 
                                                                 }
                                                                 else{?>
@@ -311,7 +312,7 @@ $items = $this->items;
                                                             else{
                                                                 if(!$this->isLogin){
                                                                 ?>
-                                                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn nhà thầu</span></a>
+                                                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
                                                             <?php    
                                                                 }
 
@@ -413,7 +414,7 @@ jQuery(function ($){
                     $(node).html('Hủy chọn');
                 }
                 else{
-                    $(node).html('Chọn nhà thầu');
+                    $(node).html('Chọn');
                 }
                 
                 $(node).parents('.dt-content').toggleClass('selected');

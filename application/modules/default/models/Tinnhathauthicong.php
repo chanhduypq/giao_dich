@@ -54,7 +54,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
     public static function getTinNhaThauThiCongLienQuans($id,$nha_thau_thi_cong_cap_1_id){
         
         $items = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
+                . "title,so_luot_xem,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_nha_thau_thi_cong.created_at,'%d/%m/%Y') AS created_at,"
                 . "photo,"
                 . "is_quang_cao,"
@@ -74,7 +74,7 @@ class Default_Model_Tinnhathauthicong extends Core_Db_Table_Abstract
     
     public static function getTinNhaThauThiCongDetail($id){
         return Core_Db_Table::getDefaultAdapter()
-                ->fetchAll("select content,"
+                ->fetchAll("select so_luot_xem,content,"
                         . "title,tin_nha_thau_thi_cong.dich_vu_thi_cong,"
                         . "phan_loai,"
                         . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_nha_thau_thi_cong.created_at,'%d/%m/%Y') AS created_at,"

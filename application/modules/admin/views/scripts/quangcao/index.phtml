@@ -76,6 +76,25 @@ $items = $this->items;
     .is_hien_thi{
         background: #c8cedd;
     }
+    
+    .vote {
+        display: inline-block;
+        text-align: center;
+    }
+    .ratings_stars {
+        background: url(<?php echo $this->baseUrl(); ?>/front_end/images/vote/start.png) no-repeat;
+        float:      left;
+        height:     30px;
+        padding:    0;
+        width:      32px;
+        margin-right: 4px;
+    }
+    .ratings_over {
+        background: url(<?php echo $this->baseUrl(); ?>/front_end/images/vote/start-active.png) no-repeat;
+    }
+    .ratings_hover {
+        background: url(<?php echo $this->baseUrl(); ?>/front_end/images/vote/start-hover.png) no-repeat;
+    }
 </style>
 
 
@@ -91,7 +110,7 @@ $items = $this->items;
 <div class="row-fluid">
     <table class="table table-bordered quangcao" id="nanopool-table" style="display: none;width: 100%;">
             <thead>
-                <th>Mã tin</th>
+                <th style="width: 300px !important;">Mã tin</th>
                 <th>Hình ảnh</th>
                 <th>Phone</th>
                 <th>Tựa đề</th>
@@ -103,7 +122,7 @@ $items = $this->items;
                 <?php 
                     foreach ($items as $item){?>
                     <tr id="tin_<?php echo $item['id'];?>"<?php if($item['allow_show_quang_cao']=='1') echo ' class="is_hien_thi"';?>>
-                        <td>
+                        <td style="width: 300px !important;">
                             <?php 
                             if($item['type_tin']=='du_an'){
                                 echo 'DA';
@@ -112,7 +131,32 @@ $items = $this->items;
                                 echo 'NT';
                             }
                             echo $item['id'];
+                            echo '<br>';
+                            echo 'Số người xem: '.$item['so_luot_xem'];
+                            echo '<br>';
+                            $vote=$item['vote'];
+                            $temp= explode(".", $vote);
+                            if(count($temp)==2){
+                                if("0.".$temp[1]>=0.5){
+                                    $vote=$temp[0]+1;
+                                }
+                                else{
+                                    $vote=$temp[0];
+                                }
+                            }
                             ?>
+                            <div class="vote">
+                                <?php 
+                                for($i=0;$i<5;$i++){
+                                    if($i<$vote){
+                                        echo '<div class="star_3 ratings_stars ratings_over ratings_hover"></div>';
+                                    } 
+                                    else{
+                                        echo '<div class="star_1 ratings_stars"></div>';
+                                    }
+                                }
+                                ?>
+                            </div>
                         </td>
                         <td style="width: 10%;">
                             <?php if(trim($item['photo'])!=""){?>

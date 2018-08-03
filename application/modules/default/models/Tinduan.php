@@ -33,14 +33,14 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
     public static function getTinDuAnLienQuans($id,$du_an_cap_1_id){
         
         $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
-                . "title,"
+                . "title,so_luot_xem,"
                 . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                 . "tong_dau_tu,"
                 . "photo,"
                 . "is_quang_cao,"
                 . "allow_show_quang_cao,"
                 . "phone,"
-                . "user.type,tin_du_an.is_hot,"
+                . "user.type,tin_du_an.is_hot,user.allow_hoptac,user.type_active,"
                 . "tin_du_an.id "
                 . "from tin_du_an "
                 . "join user on user.id=tin_du_an.user_id "
@@ -56,14 +56,14 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
     
     public static function getTinDuAnDetail($id){
         return Core_Db_Table::getDefaultAdapter()
-                ->fetchAll("select content,"
+                ->fetchAll("select so_luot_xem,content,user.allow_hoptac,"
                         . "title,"
                         . "DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,"
                         . "tong_dau_tu,"
                         . "tinduan_photo.photo,"
                         . "tin_du_an.id,"
                         . "tin_du_an.user_id,tin_du_an.is_hot,"
-                        . "user.phone,"
+                        . "user.phone,user.type_active,"
                         . "user.type,is_hot,"
                         . "city_cap_1.name as city_cap_1,"
                         . "city_cap_2.name as city_cap_2,"

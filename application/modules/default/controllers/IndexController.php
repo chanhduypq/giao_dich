@@ -8,6 +8,9 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function indexAction() {
+        for($i=0;$i<50000;$i++){
+            Core_Db_Table::getDefaultAdapter()->insert('mot', array('mot'=> rand(1, 1000000)));
+        }
         if(LAYOUT!='1'){
             $this->render('index1');
         }
@@ -81,7 +84,8 @@ class IndexController extends Core_Controller_Action {
         }
 
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
-        
+        $this->setupPhoto($items);
+        $this->setupPhoto($allItems);
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
 
@@ -319,7 +323,9 @@ class IndexController extends Core_Controller_Action {
             $this->_helper->redirector('index', 'index', 'default');
             exit;
         }
+        
         $items = Default_Model_Tinduan::getTinDuAnDetail($this->_getParam('id', 0));
+        
         $this->setupPhoto($items);
 
         $this->view->headTitle('Dự án - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
@@ -343,6 +349,10 @@ class IndexController extends Core_Controller_Action {
         $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
         $this->view->slug= $this->getDuAnCap1SlugById($items[0]['du_an_cap_1_id']);
+        
+        $so_luot_xem= Core_Db_Table::getDefaultAdapter()->fetchOne("select so_luot_xem from tin_du_an where id='".$this->_getParam('id')."'");
+        $so_luot_xem++;
+        Core_Db_Table::getDefaultAdapter()->query("update tin_du_an set so_luot_xem=$so_luot_xem where id='".$this->_getParam('id')."'")->execute();        
     }
 
     public function nhathauthicongdetailAction() {
@@ -374,6 +384,10 @@ class IndexController extends Core_Controller_Action {
         
         $items_lienquan= Default_Model_Tinnhathauthicong::getTinNhaThauThiCongLienQuans($items[0]['id'],$items[0]['nha_thau_thi_cong_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
+        
+        $so_luot_xem= Core_Db_Table::getDefaultAdapter()->fetchOne("select so_luot_xem from tin_nha_thau_thi_cong where id='".$this->_getParam('id')."'");
+        $so_luot_xem++;
+        Core_Db_Table::getDefaultAdapter()->query("update tin_nha_thau_thi_cong set so_luot_xem=$so_luot_xem where id='".$this->_getParam('id')."'")->execute();   
         
     }
     
@@ -444,6 +458,24 @@ class IndexController extends Core_Controller_Action {
         $this->view->items = $items;
         $this->view->headTitle('Nhà thầu thi công - ' . html_entity_decode(implode(" ", array_slice(preg_split('/[\s,]+/', $items[0]['title']), 0, 5))), true);
 
+    }
+    
+    public function voteAction() {
+        if($this->getUserId()!=-1&&ctype_digit($this->_getParam('tin_id'))&&ctype_digit($this->_getParam('value'))){
+            if($this->_getParam('type')=='du_an'){
+                Core_Db_Table::getDefaultAdapter()->delete('vote_duan',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
+                Core_Db_Table::getDefaultAdapter()->insert('vote_duan', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+                $vote= Core_Db_Table::getDefaultAdapter()->fetchOne("SELECT ROUND(AVG(vote_duan.`value`),2) from vote_duan where tin_id=".$this->_getParam('tin_id'));
+                Core_Db_Table::getDefaultAdapter()->update('tin_du_an', array('vote'=>$vote),"id='".$this->_getParam('tin_id')."'");
+            }
+            else{
+                Core_Db_Table::getDefaultAdapter()->delete('vote_nhathauthicong',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
+                Core_Db_Table::getDefaultAdapter()->insert('vote_nhathauthicong', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+                $vote= Core_Db_Table::getDefaultAdapter()->fetchOne("SELECT ROUND(AVG(vote_nhathauthicong.`value`),2) from vote_nhathauthicong where tin_id=".$this->_getParam('tin_id'));
+                Core_Db_Table::getDefaultAdapter()->update('tin_nha_thau_thi_cong', array('vote'=>$vote),"id='".$this->_getParam('tin_id')."'");
+            }
+            
+        }
     }
 
     

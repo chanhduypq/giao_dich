@@ -1,5 +1,4 @@
 <?php 
-$auth = Zend_Auth::getInstance();
 $quangcao_items = $this->quangcao_items;
 foreach ($quangcao_items as $item) {
     ?>
@@ -8,26 +7,26 @@ foreach ($quangcao_items as $item) {
             <div class="cai-thumb">
                 <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
             </div>
-            <div class="cai-tit">
-                <a href="<?php echo $this->baseUrl("/index/duandetail/id/" . $item['id']); ?>"><?php echo $item['title']; ?></a>
+            <div class="cai-tit" style="margin: 0 auto;text-align: center;">
+                <a style="word-wrap: break-word;" href="<?php echo $this->baseUrl("/index/duandetail/id/" . $item['id']); ?>"><?php echo $item['title']; ?></a>
             </div>
             <div class="cai-desc">
                 <div class="cai-col cai-cl">
-                    <p> <span><?php echo $item['tong_dau_tu']; ?></span></p>
+                    <p>&nbsp;&nbsp; <span><?php echo $item['tong_dau_tu']; ?></span></p>
                     <p class="cai-phone"><a><?php echo $item['phone']; ?></a></p>
                 </div>
                 <!--tuetc-->
                 <!--                                                tạm thời ẩn nút Chọn dự án tại các tin ở vùng quảng cáo-->
-                <!--                                                <div class="cai-col cai-cr">
+<!--                                                                <div class="cai-col cai-cr">
                 <?php 
                 if ($this->isLogin) {
                     if (!in_array($item['id'], $this->du_an_da_chon_ids)) {
                         ?>
-                                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an">Chọn dự án</a>
+                                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an"></a>
                         <?php 
                     } else {
                         ?>
-                                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an huy">Hủy chọn</a>   
+                                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id']; ?>" class="cai-btn-project chon_du_an huy"></a>   
                         <?php 
                     }
                 } else {
