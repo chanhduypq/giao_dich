@@ -13,15 +13,20 @@ class Core_View_Helper_Vote extends Zend_View_Helper_Abstract
      * @param string $type
      * @return string $html
      */
-    public function vote($tinId,$type) 
+    public function vote($tinId,$type,$vote) 
     {
         ?>
         <div data-type="<?php echo $type;?>" class="vote id_<?php echo $tinId;?>">
-            <div class="star_1 ratings_stars"><input value="1" type="hidden"></div>
-            <div class="star_2 ratings_stars"><input value="2" type="hidden"></div>
-            <div class="star_3 ratings_stars"><input value="3" type="hidden"></div>
-            <div class="star_4 ratings_stars"><input value="4" type="hidden"></div>
-            <div class="star_5 ratings_stars"><input value="5" type="hidden"></div>
+            <?php 
+            for($i=1;$i<=5;$i++){
+                if($i<=$vote){
+                    echo '<div class="star_3 ratings_stars ratings_over ratings_hover"><input value="'.$i.'" type="hidden"></div>';
+                } 
+                else{
+                    echo '<div class="star_1 ratings_stars"><input value="'.$i.'" type="hidden"></div>';
+                }
+            }
+            ?>
         </div>
         <?php
 

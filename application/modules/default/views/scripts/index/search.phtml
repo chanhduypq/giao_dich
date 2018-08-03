@@ -130,7 +130,7 @@ $quangcao_items = $this->quangcao_items;
                                                         ?>
                                                         
                                                     </div>
-                                                    <?php echo $this->vote($item['id'],'du_an');?>
+                                                    <?php echo $this->vote($item['id'],'du_an',(!in_array($item['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$item['id']]));?>
                                                 </div>
 <!--                                                <ul class="fix-share fix-share-d">
                                                        
@@ -148,8 +148,7 @@ $quangcao_items = $this->quangcao_items;
                             
                         </div>
                         <!-- End wrap cate -->
-                        
-                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').'/'.$this->cityGet.'/'.$this->cityCap2Get); ?>">
+                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get); ?>">
                             <div class="ct-paginate cate-paginate">
                                     <?php if ($this->total > $this->limit) { ?>
                                         <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>

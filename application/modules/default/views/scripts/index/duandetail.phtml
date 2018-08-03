@@ -114,7 +114,7 @@ $items = $this->items;
                                 
                             }
                             ?>
-                            <?php echo $this->vote($items[0]['id'],'du_an');?>
+                            <?php echo $this->vote($items[0]['id'],'du_an',(!in_array($items[0]['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$items[0]['id']]));?>
                         </div>
                         <div class="dt-desc">
                             <?php echo nl2br($items[0]['content']);?>

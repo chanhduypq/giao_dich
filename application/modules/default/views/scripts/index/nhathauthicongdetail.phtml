@@ -109,7 +109,7 @@ $items = $this->items;
                                 
                             }
                             ?>
-                            <?php echo $this->vote($items[0]['id'],'nha_thau_thi_cong');?>
+                            <?php echo $this->vote($items[0]['id'],'nha_thau_thi_cong',(!in_array($items[0]['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$items[0]['id']]));?>
                         </div>
                         <div class="dt-desc">
                             <?php echo nl2br($items[0]['content']);?>

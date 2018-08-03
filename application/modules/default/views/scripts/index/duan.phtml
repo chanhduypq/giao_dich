@@ -187,7 +187,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                         ?>
                                                         
                                                     </div>
-                                                    <?php echo $this->vote($item['id'],'du_an');?>
+                                                    <?php echo $this->vote($item['id'],'du_an',(!in_array($item['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$item['id']]));?>
                                                 </div>
 <!--                                                <ul class="fix-share fix-share-d">
                                                        

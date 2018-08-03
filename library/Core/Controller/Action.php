@@ -175,6 +175,21 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         $this->view->danh_xung = $this->isLogin() ? $identity['danh_xung'] :'';
         $this->view->action= $this->_request->getActionName();
         $this->view->controller= $this->_request->getControllerName();
+        
+        $voteDuans= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from vote_duan where user_id='".$this->getUserId()."'");
+        $voteNhathaus= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from vote_nhathauthicong where user_id='".$this->getUserId()."'");
+
+        $temp=array();
+        foreach ($voteDuans as $voteDuan){
+            $temp[$voteDuan['tin_id']]=$voteDuan['value'];
+        }
+        $this->view->voteDuans=$temp;
+        
+        $temp=array();
+        foreach ($voteNhathaus as $voteNhathau){
+            $temp[$voteNhathau['tin_id']]=$voteNhathau['value'];
+        }
+        $this->view->voteNhathaus=$temp;
     }
     
     private function isLogin(){
