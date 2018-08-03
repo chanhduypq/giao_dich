@@ -157,8 +157,8 @@
                 </div>
                 <!-- End Top -->
                 <!-- Start Search -->
-                <?php 
-                if($this->action=='index'||$this->action=='search'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){?>
+            <?php 
+            if($this->action=='index'||$this->action=='search'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){?>
                 <div class="top-search">
                     <div class="container" style="position: relative;">
                         <div class="top-search-c top-search-la3">   
@@ -166,32 +166,7 @@
                                 <div class="col col-md-12">
                                     <div class="search-block">
                                         <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
-                                            <div class="form-list">
-                                                <div class="form-item">
-                                                    <div class="form-input form-text">
-                                                        <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text" value="<?php if(isset($this->q)) echo trim($this->q); ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-item">
-                                                    <ul class="form-right">
-                                                        <li>
-                                                            <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt" data-toggle="modal" data-target="#searchItem" id="selectItem"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
-                                                                <input type="hidden" id="khu_vuc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); if(isset($this->mucCap3)&& ctype_digit($this->mucCap3)&&$this->mucCap3!='0') echo '_'.trim($this->mucCap3); ?>" class="input-dropdown value-category"> 
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt" data-toggle="modal" data-target="#searchCity" id="selectCity"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
-                                                                <input type="hidden" id="city" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
-                                                            </div>
-                                                        </li>
-                                                        <li class="btn-link search-button">
-                                                            <button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            <?php echo $this->render('index/formsearch.phtml'); ?>
                                         </form>
                                     </div>
                                 </div>
@@ -199,35 +174,13 @@
                         </div>
                     </div>
                     <?php 
-                    if($this->action=='index'||$this->action=='search'){?>
-                    <div class="slider-block layout_3--slider-block">
-                        <?php 
-                        $now=date('Y-m-d');
-                        $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
-                        if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
-                            foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){
-                                if($dich_vu_hau_mai['is_to_roi']=='1'){
-                                    $is_to_roi=' is_to_roi';
-                                }
-                                else{
-                                    $is_to_roi='';
-                                }
-                                ?>
-                                <div class="home-item dich_vu_hau_mai<?php echo $is_to_roi;?>" id="<?php echo $dich_vu_hau_mai['id'];?>">
-                                    <img src="<?php echo $this->baseUrl('/uploads/'.$dich_vu_hau_mai['photo']);?>" alt="">
-                                </div>
-                        <?php 
-                            }
-                        }
-                        ?>
-                    </div>
-                    <?php 
-                        
+                    if($this->action=='index'||$this->action=='search'){
+                        echo $this->render('index/dichvuhaumai.phtml');
                     }
                     ?>
                 </div>
-                <?php } 
-                else if($this->action=='duan'||$this->action=='nhathauthicong'||$this->action=='dichvuhaumai'){?>
+            <?php } 
+            else if($this->action=='duan'||$this->action=='nhathauthicong'||$this->action=='dichvuhaumai'){?>
                 <div class="top-search">
                     <div class="top-search-c" style="max-height: 1000px;">
                         <div class="container">
@@ -235,35 +188,7 @@
                                 <div class="col col-md-12">
                                     <div class="search-block">
                                         <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
-                                            <div class="form-list">
-                                                <div class="form-item">
-                                                    <div class="form-input form-text">
-                                                        <input name="q" type="text" placeholder="Nhập tìm kiếm..." class="focus-text" value="<?php if(isset($this->q)) echo trim($this->q); ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-item">
-                                                    <ul class="form-right">
-                                                        <li>
-                                                            <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt" data-toggle="modal" data-target="#searchItem" id="selectItem"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></div>
-                                                                <input type="hidden" id="khu_vuc" name="muc" value="<?php if(isset($this->muc)&&$this->muc!='0') echo trim($this->muc); if(isset($this->mucCap2)&& ctype_digit($this->mucCap2)&&$this->mucCap2!='0') echo '_'.trim($this->mucCap2); if(isset($this->mucCap3)&& ctype_digit($this->mucCap3)&&$this->mucCap3!='0') echo '_'.trim($this->mucCap3); ?>" class="input-dropdown value-category"> 
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="form-input form-select form-select-city">
-                                                                <div class="input-nt" data-toggle="modal" data-target="#searchCity" id="selectCity"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></div>
-                                                                <input type="hidden" id="city" name="city" value="<?php if(isset($this->city)&&$this->city!='0') echo trim($this->city); if(isset($this->cityCap2)&& ctype_digit($this->cityCap2)&&$this->cityCap2!='0') echo '_'.trim($this->cityCap2); ?>" class="input-dropdown value-category">
-                                                            </div>
-                                                        </li>
-                                                        <li class="btn-link search-button">
-                                                            <button class="ct-btn  btn-post">TÌM KIẾM <span></span></button>
-                                                        </li>
-                                                        <li class="btn-link">
-                                                            <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn  btn-post">ĐĂNG TIN CỦA BẠN</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            <?php echo $this->render('index/formsearch1.phtml'); ?>
                                         </form>
                                     </div>
                                 </div>
@@ -271,12 +196,12 @@
                         </div>
                     </div>
                 </div>
-                <?php 
-                }
-                ?>
+            <?php 
+            }
+            ?>
                 <!-- End Search -->
                 <ul class="breadcrumb show-sp">
-                    <li><a href="#">Tìm kiếm</a></li>
+                    <li><span>Tìm kiếm</span></li>
                     <li><span id="ten_danh_muc"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></span></li>
                     <li><span id="ten_khu_vuc"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></span></li>
                 </ul>
@@ -286,78 +211,11 @@
                 <div class="container">
                     <ul class="fix-share">
                         <?php echo $this->render('index/share.phtml'); ?>
-
-
                     </ul>  
                 </div>     
                 <!-- footer -->
                 <footer class="footer">
-                    <div class="footer-top">
-                        <div class="container">
-                            <div class="row row-eq-height">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
-                                    <div class="ft-block company-social">
-                                        <div class="ft-tit"><b>LIÊN KẾT</b></div>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
-                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>Youtube</a></li>
-                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="ft-block">
-                                        <div class="ft-tit"><b>VỀ CÔNG TY</b></div>
-                                        <ul>
-                                            <li><a href="#">Giới thiệu</a></li>
-                                            <li><a href="#">Tuyển dụng</a></li>
-                                            <li><a href="#">Blog</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
-                                    <div class="ft-block">
-                                        <div class="ft-tit"><b>VỀ KHÁCH HÀNG</b></div>
-                                        <ul>
-                                            <li><a href="#">Chính sách quảng cáo</a></li>
-                                            <li><a href="#">Dịch vụ hậu mãi</a></li>
-                                            <li><a href="#">Bảo mật thông tin</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="ft-block">
-                                        <div class="ft-img"><a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/dadangky.png" alt=""></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End footer top -->
-                    <!-- Footer bottom -->
-                    <div class="footer-bottom">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="ftbt-i">
-                                        <div class="ftbt-col ftbt-left">
-                                            © 2018 Copyright by DungLV
-                                        </div>
-                                        <div class="ftbt-col ftbt-right">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Footer bottom -->
+                    <?php echo $this->render('index/footer.phtml'); ?>
                 </footer>
                 <!-- End footer -->
             </div>

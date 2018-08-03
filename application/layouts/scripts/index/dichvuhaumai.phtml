@@ -1,0 +1,21 @@
+<div class="slider-block layout_3--slider-block">
+    <?php 
+    $now=date('Y-m-d');
+    $dich_vu_hau_mais= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from dich_vu_hau_mai where is_to_roi=1 or ('$now' between tu_ngay and den_ngay)");
+    if(is_array($dich_vu_hau_mais)&&count($dich_vu_hau_mais)>0){
+        foreach ($dich_vu_hau_mais as $dich_vu_hau_mai){
+            if($dich_vu_hau_mai['is_to_roi']=='1'){
+                $is_to_roi=' is_to_roi';
+            }
+            else{
+                $is_to_roi='';
+            }
+            ?>
+            <div class="home-item dich_vu_hau_mai<?php echo $is_to_roi;?>" id="<?php echo $dich_vu_hau_mai['id'];?>">
+                <img src="<?php echo $this->baseUrl('/uploads/'.$dich_vu_hau_mai['photo']);?>" alt="">
+            </div>
+    <?php 
+        }
+    }
+    ?>
+</div>
