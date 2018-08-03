@@ -277,8 +277,8 @@
                 <!-- End Search -->
                 <ul class="breadcrumb show-sp">
                     <li><a href="#">Tìm kiếm</a></li>
-                    <li><span id="ten_danh_muc">Tất cả danh mục</span></li>
-                    <li><span id="ten_khu_vuc">Khu vực</span></li>
+                    <li><span id="ten_danh_muc"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></span></li>
+                    <li><span id="ten_khu_vuc"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></span></li>
                 </ul>
                 <!-- home page -->
                 <?php echo $this->layout()->content; ?>
