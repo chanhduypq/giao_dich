@@ -26,6 +26,27 @@ $items = $this->items;
                             <div class="dt-main-thumb">
                                 <img src="<?php echo $this->baseUrl($items[0]['photo']);?>" alt="">
                             </div>
+                            <?php if(count($items)>1){?>
+                            <div class="dt-chip-thumb">
+                                <div class="chip-thumb chip-thumb-slider">
+                                    <?php 
+                                    //ít nhất user phải upload 2 ảnh, thi mới cho hiển thị vùng này
+                                    if(count($items)>1){
+                                        foreach ($items as $item){ ?>
+                                                <div class="chip-thumb-pi">
+                                                    <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl($item['photo']);?>">
+                                                        <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl($item['photo']);?>" alt="">
+                                                    </div>
+                                                </div>
+                                    <?php 
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <?php 
+                            }
+                            ?>
                         </div>
                         <div class="show-sp">
                             <div class="top-slider" style="margin-top: 6px;">                                
@@ -44,27 +65,7 @@ $items = $this->items;
                                 ?>
                             </div>
                         </div>
-                        <?php if(count($items)>1){?>
-                        <div class="dt-chip-thumb">
-                            <div class="chip-thumb chip-thumb-slider">
-                                <?php 
-                                //ít nhất user phải upload 2 ảnh, thi mới cho hiển thị vùng này
-                                if(count($items)>1){
-                                    foreach ($items as $item){ ?>
-                                            <div class="chip-thumb-pi">
-                                                <div class="chip-thumb-i" data-image="<?php echo $this->baseUrl($item['photo']);?>">
-                                                    <img style="width: 100%;height: auto;position: absolute;top: 50%;margin-top: -20px;left: 50%;margin-left: -20px;" src="<?php echo $this->baseUrl($item['photo']);?>" alt="">
-                                                </div>
-                                            </div>
-                                <?php 
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <?php 
-                        }
-                        ?>
+                        
                         <div class="dt-share">
                             <!--<div class="dt-t show-pc">Chia sẻ tới:</div>-->
                             <ul class="dt-li-share">

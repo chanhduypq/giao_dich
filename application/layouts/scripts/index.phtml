@@ -16,7 +16,7 @@
     <body>
         <script src="https://sp.zalo.me/plugins/sdk.js"></script>
         <div id="app">
-            <div id="sec1" class="main-wrapper <?php if(($this->action=='index'||$this->action=='search')&&Zend_Controller_Front::getInstance()->getRequest()->getControllerName()=='index') echo 'layout-3'; else echo 'index';?>">
+            <div id="sec1" class="main-wrapper <?php if(($this->action=='index'||$this->action=='search')&&$this->controller=='index') echo 'layout-3'; else echo 'index';?>">
                 <!-- Start Top  -->
                 <div class="top">
                     <div class="container">
@@ -158,7 +158,7 @@
                 <!-- End Top -->
                 <!-- Start Search -->
                 <?php 
-                if($this->action=='index'||$this->action=='search'){?>
+                if($this->action=='index'||$this->action=='search'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){?>
                 <div class="top-search">
                     <div class="container" style="position: relative;">
                         <div class="top-search-c top-search-la3">   
@@ -198,6 +198,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php 
+                    if($this->action=='index'||$this->action=='search'){?>
                     <div class="slider-block layout_3--slider-block">
                         <?php 
                         $now=date('Y-m-d');
@@ -219,9 +221,13 @@
                         }
                         ?>
                     </div>
+                    <?php 
+                        
+                    }
+                    ?>
                 </div>
                 <?php } 
-                else{ ?>
+                else if($this->action=='duan'||$this->action=='nhathauthicong'||$this->action=='dichvuhaumai'){?>
                 <div class="top-search">
                     <div class="top-search-c" style="max-height: 1000px;">
                         <div class="container">
@@ -269,13 +275,11 @@
                 }
                 ?>
                 <!-- End Search -->
-                <?php if($this->action=='duan'||$this->action='nhathauthicong'){?>
                 <ul class="breadcrumb show-sp">
-                    <li><a href="category.html">Tìm kiếm</a></li>
-                    <li><a href="#">Tên danh mục</a></li>
-                    <li><span>Tên Khu vực</span></li>
+                    <li><a href="#">Tìm kiếm</a></li>
+                    <li><span id="ten_danh_muc">Tất cả danh mục</span></li>
+                    <li><span id="ten_khu_vuc">Khu vực</span></li>
                 </ul>
-                <?php } ?>
                 <!-- home page -->
                 <?php echo $this->layout()->content; ?>
                 <!-- End home page -->

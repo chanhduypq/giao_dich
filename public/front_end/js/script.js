@@ -185,11 +185,11 @@ $(function(){
                 $(".sub-menu ul li."+$(this).attr('data-value')).show();
                 
                 if($(this).parents('#searchItem').length==1){
-                    $("#selectItem").html($(this).text());
+                    $("#selectItem,#ten_danh_muc").html($(this).text());
                     $("#khu_vuc").val($(this).attr('data-value'));
                 }
                 else{
-                    $("#selectCity").html($(this).text());
+                    $("#selectCity,#ten_khu_vuc").html($(this).text());
                     $("#city").val($(this).attr('data-value'));
                 }
 
@@ -206,11 +206,11 @@ $(function(){
                 $(".sub-menu-s ul li."+data_value).show();
                 
                 if($(this).parents('#searchItem').length==1){
-                    $("#selectItem").html($(this).text());
+                    $("#selectItem,#ten_danh_muc").html($(this).text());
                     $("#khu_vuc").val($(this).attr('data-value'));
                 }
                 else{
-                    $("#selectCity").html($(this).text());
+                    $("#selectCity,#ten_khu_vuc").html($(this).text());
                     $("#city").val($(this).attr('data-value'));
                 }
 
