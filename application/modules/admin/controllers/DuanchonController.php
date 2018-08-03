@@ -19,7 +19,7 @@ class Admin_DuanchonController extends Core_Controller_Action {
                 . "photo,"
                 . "phone,"
                 . "DATE_FORMAT(du_an_da_chon.created_at,'%d/%m/%Y') AS created_at,"
-                . "tin_du_an.id,tin_du_an.status "
+                . "tin_du_an.id,tin_du_an.status,vote,so_luot_xem "
                 . "from tin_du_an "
                 . "join du_an_da_chon on tin_du_an.id=du_an_da_chon.tin_du_an_id "
                 . "join user on user.id=du_an_da_chon.user_id "
@@ -37,6 +37,8 @@ class Admin_DuanchonController extends Core_Controller_Action {
                 'photo'=>$allItem['photo'],
                 'status'=>$allItem['status'],
                 'users_da_chon'=>$users[$allItem['id']],
+                'so_luot_xem'=>$allItem['so_luot_xem'],
+                'vote'=>$allItem['vote'],
             );
         }
         

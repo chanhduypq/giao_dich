@@ -462,10 +462,14 @@ class IndexController extends Core_Controller_Action {
             if($this->_getParam('type')=='du_an'){
                 Core_Db_Table::getDefaultAdapter()->delete('vote_duan',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
                 Core_Db_Table::getDefaultAdapter()->insert('vote_duan', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+                $vote= Core_Db_Table::getDefaultAdapter()->fetchOne("SELECT ROUND(AVG(vote_duan.`value`),2) from vote_duan where tin_id=".$this->_getParam('tin_id'));
+                Core_Db_Table::getDefaultAdapter()->update('tin_du_an', array('vote'=>$vote),"id='".$this->_getParam('tin_id')."'");
             }
             else{
                 Core_Db_Table::getDefaultAdapter()->delete('vote_nhathauthicong',"user_id='".$this->getUserId()."' and tin_id='".$this->_getParam('tin_id')."'");
                 Core_Db_Table::getDefaultAdapter()->insert('vote_nhathauthicong', array('user_id'=> $this->getUserId(),'tin_id'=> $this->_getParam('tin_id'),'value'=> $this->_getParam('value')));
+                $vote= Core_Db_Table::getDefaultAdapter()->fetchOne("SELECT ROUND(AVG(vote_nhathauthicong.`value`),2) from vote_nhathauthicong where tin_id=".$this->_getParam('tin_id'));
+                Core_Db_Table::getDefaultAdapter()->update('tin_nha_thau_thi_cong', array('vote'=>$vote),"id='".$this->_getParam('tin_id')."'");
             }
             
         }

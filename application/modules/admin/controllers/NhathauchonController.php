@@ -17,7 +17,7 @@ class Admin_NhathauchonController extends Core_Controller_Action {
                 . "photo,"
                 . "phone,"
                 . "DATE_FORMAT(nha_thau_da_chon.created_at,'%d/%m/%Y') AS created_at,"
-                . "tin_nha_thau_thi_cong.id,tin_nha_thau_thi_cong.status "
+                . "tin_nha_thau_thi_cong.id,tin_nha_thau_thi_cong.status,vote,so_luot_xem "
                 . "from tin_nha_thau_thi_cong "
                 . "join nha_thau_da_chon on tin_nha_thau_thi_cong.id=nha_thau_da_chon.tin_nha_thau_thi_cong_id "
                 . "join user on user.id=nha_thau_da_chon.user_id "
@@ -35,6 +35,8 @@ class Admin_NhathauchonController extends Core_Controller_Action {
                 'photo'=>$allItem['photo'],
                 'status'=>$allItem['status'],
                 'users_da_chon'=>$users[$allItem['id']],
+                'so_luot_xem'=>$allItem['so_luot_xem'],
+                'vote'=>$allItem['vote'],
             );
         }
         
