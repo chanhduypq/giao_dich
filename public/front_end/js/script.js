@@ -247,7 +247,7 @@ $(function(){
 			$(this).parents('li').removeClass('_current');
 			mn_wr.removeClass('_expand');
 		}
-		e.preventDefault();
+//		e.preventDefault();
 	});
 	$('.mn-dropdown-side #btn-back-parent').on('click', function(e){
 		var wr = $(this).parents('.mn-dropdown-side');

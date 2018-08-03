@@ -8,6 +8,9 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function indexAction() {
+        for($i=0;$i<50000;$i++){
+            Core_Db_Table::getDefaultAdapter()->insert('mot', array('mot'=> rand(1, 1000000)));
+        }
         if(LAYOUT!='1'){
             $this->render('index1');
         }
