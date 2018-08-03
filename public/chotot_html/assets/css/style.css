@@ -36,6 +36,7 @@
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .hot .cit-title a{
     background: #FDED0F  !important;
     padding: 0 5px;
+    text-align: left;
 }
 .layout-3 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li,
 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li {
@@ -2246,6 +2247,7 @@ a:hover, a:focus {
     font-weight: 700;
     display: block;
     color: #111111;
+    text-align: left;
     font-weight: 700; }
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-desc {
     padding: 5px 0; }
@@ -2532,7 +2534,7 @@ a:hover, a:focus {
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-title a {
         font-size: 16px;
         
-        text-align: justify;
+        text-align: left;
          }
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right {
         padding: 7px; }
@@ -4526,7 +4528,12 @@ a:hover, a:focus {
     }
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .hot .cit-title a {
         padding: 5px;
+        line-height: 20px;
     }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-title a {
+        height: 52px;
+    }
+    
 }
 @media screen and (max-width: 414px) {
 
