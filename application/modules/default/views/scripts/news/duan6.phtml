@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                 <div class="fp-input fp-textbox">
-                                    <input name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                    <input id="title1" name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
                                 </div>
                             </div>
                             <!-- End Fp Group -->
@@ -74,13 +74,13 @@
                                     <div class="fp-sub-group">
                                         <div class="fp-label">TỔNG ĐẦU TƯ</div>
                                         <div class="fp-input fp-textbox">
-                                            <input name="tong_dau_tu" type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
+                                            <input id="tong_dau_tu" name="tong_dau_tu" type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
                                         </div>
                                     </div>
                                     <div class="fp-sub-group">
                                         <div class="fp-label">THÔNG TIN YÊU CẦU</div>
                                         <div class="fp-input fp-textarea">
-                                            <textarea name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
+                                            <textarea id="thong_tin_yeu_cau" name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -213,6 +213,29 @@
     }
 
     jQuery(function ($){
+        $("#frm").submit(function (){
+            if($.trim($("#title1").val())==''){
+                alert("Vui lòng nhập tiêu đề.");
+                $("#title1").focus();
+                return false;
+            }
+            if($.trim($("#ngay").val())==''){
+                alert("Vui lòng chọn thời gian thi công.");
+                $("#ngay").focus();
+                return false;
+            }
+            if($.trim($("#tong_dau_tu").val())==''){
+                alert("Vui lòng nhập tổng đầu tư.");
+                $("#tong_dau_tu").focus();
+                return false;
+            }
+            if($.trim($("#thong_tin_yeu_cau").val())==''){
+                alert("Vui lòng nhập thông tin yêu cầu.");
+                $("#thong_tin_yeu_cau").focus();
+                return false;
+            }
+            return true;
+        });
         $("#city_cap_2 option").hide();
         
         $( "#ngay" ).datepicker({
@@ -220,10 +243,10 @@
           changeYear: true,
           dateFormat: "dd/mm/yy",
           showWeek: true,
-            showOn: "button",
-            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
-            buttonImageOnly: true,
-            buttonText: 'Click để chọn ngày',
+//            showOn: "button",
+//            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
+//            buttonImageOnly: true,
+//            buttonText: 'Click để chọn ngày',
             option:$.datepicker.regional['vi']
         });
         

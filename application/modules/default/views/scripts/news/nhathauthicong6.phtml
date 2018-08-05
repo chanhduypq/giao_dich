@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                 <div class="fp-input fp-textbox">
-                                    <input name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                    <input id="title1" name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
                                 </div>
                             </div>
                             <!-- End Fp Group -->
@@ -84,14 +84,14 @@
                                         <div class="col-sm-6 col-md-6 col-addr">
                                             <div class="fp-label">Dụng cụ thi công</div>
                                             <div class="fp-input fp-textbox">
-                                                <input name="dich_vu_thi_cong" type="text" class="fp-control" placeholder="VD: 20 xe múc,...">
+                                                <input id="dich_vu_thi_cong" name="dich_vu_thi_cong" type="text" class="fp-control" placeholder="VD: 20 xe múc,...">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="fp-sub-group">
                                         <div class="fp-label fp-label-require">THÔNG TIN YÊU CẦU</div>
                                         <div class="fp-input fp-textarea">
-                                            <textarea name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
+                                            <textarea id="thong_tin_yeu_cau" name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -225,6 +225,30 @@
     }
     
     jQuery(function ($){
+        $("#frm").submit(function (){
+            if($.trim($("#title1").val())==''){
+                alert("Vui lòng nhập tiêu đề.");
+                $("#title1").focus();
+                return false;
+            }
+            if($.trim($("#ngay").val())==''){
+                alert("Vui lòng chọn thời gian đáp ứng dự án.");
+                $("#ngay").focus();
+                return false;
+            }
+            if($.trim($("#dich_vu_thi_cong").val())==''){
+                alert("Vui lòng nhập dịch vụ thi công.");
+                $("#dich_vu_thi_cong").focus();
+                return false;
+            }
+            if($.trim($("#thong_tin_yeu_cau").val())==''){
+                alert("Vui lòng nhập thông tin yêu cầu.");
+                $("#thong_tin_yeu_cau").focus();
+                return false;
+            }
+            return true;
+        });
+        
         $("#city_cap_2 option").hide();
     
         $( "#ngay" ).datepicker({
@@ -232,10 +256,10 @@
           changeYear: true,
           dateFormat: "dd/mm/yy",
           showWeek: true,
-            showOn: "button",
-            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
-            buttonImageOnly: true,
-            buttonText: 'Click để chọn ngày',
+//            showOn: "button",
+//            buttonImage: "<?php echo $this->baseUrl('/images/calendar/calendar.gif');?>",
+//            buttonImageOnly: true,
+//            buttonText: 'Click để chọn ngày',
             option:$.datepicker.regional['vi']
         });
         

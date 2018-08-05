@@ -34,9 +34,10 @@
 }
 /*.page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cate-item-i.hot {*/
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .hot .cit-title a{
-    background: #FDED0F  !important;
+    /*background: #FDED0F  !important;*/
     padding: 0 5px;
     text-align: left;
+    color: #FF772F;
 }
 .layout-3 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li,
 .top-search .search-block .form-list .form-item .form-input.form-select .search-dropdown.four-col .sub-dropdown ul li {
