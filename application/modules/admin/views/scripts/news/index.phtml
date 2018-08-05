@@ -185,11 +185,11 @@ $items = $this->items;
                             <?php 
                             if($item['is_active']=='1'){
                             ?>
-                            <button class="cancel_show">Hủy hiển thị</button>
+                            <button class="cancel_show<?php echo ' '.$item['type_tin'];?>">Hủy hiển thị</button>
                             <?php 
                             }
                             else {?> 
-                            <button class="allow_show">Cho hiển thị</button>
+                            <button class="allow_show<?php echo ' '.$item['type_tin'];?>">Cho hiển thị</button>
                             <?php 
                             }
                             ?>
@@ -201,11 +201,11 @@ $items = $this->items;
                             <?php 
                             if($item['is_hot']=='1'){
                             ?>
-                            <button class="cancel_hot">Không hot</button>
+                            <button class="cancel_hot<?php echo ' '.$item['type_tin'];?>">Không hot</button>
                             <?php 
                             }
                             else {?> 
-                            <button class="allow_hot">Hot</button>
+                            <button class="allow_hot<?php echo ' '.$item['type_tin'];?>">Hot</button>
                             <?php 
                             }
                             ?>
@@ -214,11 +214,11 @@ $items = $this->items;
                             <?php 
                             if($item['is_dich_vu_hau_mai']=='1'){
                             ?>
-                            <button class="cancel_dichvuhaumai">Không thuộc dịch vụ hậu mãi</button>
+                            <button class="cancel_dichvuhaumai<?php echo ' '.$item['type_tin'];?>">Không thuộc dịch vụ hậu mãi</button>
                             <?php 
                             }
                             else {?> 
-                            <button class="allow_dichvuhaumai">Thuộc dịch vụ hậu mãi</button>
+                            <button class="allow_dichvuhaumai<?php echo ' '.$item['type_tin'];?>">Thuộc dịch vụ hậu mãi</button>
                             <?php 
                             }
                             ?>
@@ -259,7 +259,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
@@ -287,7 +287,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
@@ -315,7 +315,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
@@ -342,7 +342,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
@@ -369,7 +369,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
@@ -396,7 +396,7 @@ $items = $this->items;
           
           var id=$(this).parent().parent().attr('id');
           id=id.replace("tin_","");
-          if($.trim($(this).parent().parent().find('td').eq(4).html())=='Dự án'){
+          if($(this).hasClass('du_an')){
               table_name='tin_du_an';
           }
           else{
