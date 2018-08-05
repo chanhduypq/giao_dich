@@ -231,6 +231,11 @@
                 $("#title1").focus();
                 return false;
             }
+            if($.trim($("#title1").val()).split(/\s+/).length>15){
+                alert("Vui lòng nhập tiêu đề tối đa 15 chữ.");
+                $("#title1").focus();
+                return false;
+            }
             if($.trim($("#ngay").val())==''){
                 alert("Vui lòng chọn thời gian đáp ứng dự án.");
                 $("#ngay").focus();

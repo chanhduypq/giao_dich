@@ -7,12 +7,12 @@ foreach ($quangcao_items as $item) {
             <div class="cai-thumb">
                 <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
             </div>
-            <div class="cai-tit" style="margin: 0 auto;text-align: center;">
+            <div class="cai-tit">
                 <a style="word-wrap: break-word;" href="<?php echo $this->baseUrl("/index/duandetail/id/" . $item['id']); ?>"><?php echo $item['title']; ?></a>
             </div>
             <div class="cai-desc">
                 <div class="cai-col cai-cl">
-                    <p>&nbsp;&nbsp;<span><?php echo $item['dich_vu_thi_cong'];?></span></p>
+                    <p><span><?php echo $item['dich_vu_thi_cong'];?></span></p>
                     <p class="cai-phone"><a><?php echo $item['phone']; ?></a></p>
                 </div>
                 <div class="cai-col cai-cr">

@@ -168,6 +168,7 @@ class NewsController extends Core_Controller_Action {
     public function savenhathauthicongAction() {
         if ($this->_request->isPost()) {
             $data= $this->_getAllParams();
+            $data['title']=trim($data['title']);
             
             unset($data['controller']);
             unset($data['action']);
@@ -247,7 +248,8 @@ class NewsController extends Core_Controller_Action {
         if ($this->_request->isPost()) {
             
             $data= $this->_getAllParams();
-            
+            $data['title'] = trim($data['title']);
+
             unset($data['controller']);
             unset($data['action']);
             unset($data['module']);

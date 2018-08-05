@@ -1941,7 +1941,9 @@ a:hover, a:focus {
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-thumb {
     height: 100px;
     text-align: center;
-    overflow: hidden; }
+    overflow: hidden; 
+    background: #999999;
+}
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-thumb img {
     height: 100%;
     display: inline-block; }
@@ -1959,7 +1961,7 @@ a:hover, a:focus {
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-desc {
     font-size: 14px;
     color: #707070;
-    margin-top: 15px; }
+    margin-top: 5px; }
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-desc p {
     margin: 0 0 5px 0;
     line-height: 1.15; }
@@ -1968,7 +1970,8 @@ a:hover, a:focus {
     text-transform: uppercase;
     color: #0384FF; }
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-desc p:first-child {
-    min-height: 30px; }
+    /*min-height: 30px;*/ 
+}
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-desc span {
     display: block; }
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-desc .cai-phone a {
