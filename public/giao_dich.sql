@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-08-05 23:05:54
+Date: 2018-08-06 16:37:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,7 +83,7 @@ CREATE TABLE `config` (
 -- ----------------------------
 -- Records of config
 -- ----------------------------
-INSERT INTO `config` VALUES ('Chợ Tốt chính thức gia nhập thị trường Việt Nam vào đầu năm 2012, với mục đích tạo ra cho bạn một kênh rao vặt trung gian, kết nối người mua với người bán lại với nhau bằng những giao dịch cực kỳ đơn giản, tiện lợi, nhanh chóng, an toàn, mang đến hiệu quả bất ngờ.\r\nĐến nay, Chợ Tốt tự hào là Website rao vặt được ưa chuộng hàng đầu Việt Nam. \r\nHơn hàng ngàn món hời từ Bất động sản, Nhà cửa, Xe cộ, Đồ điện tử, Thú cưng, Vật dụng cá nhân... đến tìm ');
+INSERT INTO `config` VALUES ('Chợ Tốt chính thức gia nhập thị trường Việt Nam vào đầu năm 2012,\r\n với mục đích tạo ra cho bạn một kênh rao vặt trung gian, \r\nkết nối người mua với người bán lại với nhau bằng những giao dịch cực kỳ đơn giản, tiện lợi, nhanh chóng, an toàn, mang đến hiệu quả bất ngờ.\r\nĐến nay, \r\nChợ Tốt tự hào là Website rao vặt được ưa chuộng hàng đầu Việt Nam. \r\nHơn hàng ngàn món hời từ Bất động sản, Nhà cửa, Xe cộ, Đồ điện tử, Thú cưng, Vật dụng cá nhân... đến tìm ');
 
 -- ----------------------------
 -- Table structure for dich_vu_hau_mai
@@ -148,7 +148,7 @@ CREATE TABLE `du_an_cap_2` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_2
@@ -167,6 +167,9 @@ INSERT INTO `du_an_cap_2` VALUES ('11', 'Thoát nước', '2', null, null, '0');
 INSERT INTO `du_an_cap_2` VALUES ('12', 'Hệ thống điện', '2', null, null, '0');
 INSERT INTO `du_an_cap_2` VALUES ('13', 'Cáp quang', '2', null, null, '0');
 INSERT INTO `du_an_cap_2` VALUES ('14', 'San lấp mặt bằng', '2', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('15', 'sdfsdf', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('16', 'sdfsdfsd', '1', null, null, '0');
+INSERT INTO `du_an_cap_2` VALUES ('17', 'sdfsdfsdf', '1', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_cap_3
@@ -257,16 +260,11 @@ CREATE TABLE `du_an_cap_4` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of du_an_cap_4
 -- ----------------------------
-INSERT INTO `du_an_cap_4` VALUES ('1', 'Sắt', '2', null, null, '0');
-INSERT INTO `du_an_cap_4` VALUES ('2', 'Cốp pha', '2', null, null, '0');
-INSERT INTO `du_an_cap_4` VALUES ('3', 'Bê tông', '2', null, null, '0');
-INSERT INTO `du_an_cap_4` VALUES ('4', 'Khoan cọc nhồi', '2', null, null, '0');
-INSERT INTO `du_an_cap_4` VALUES ('5', 'Đào móng', '2', null, null, '0');
 
 -- ----------------------------
 -- Table structure for du_an_da_chon
@@ -282,9 +280,9 @@ CREATE TABLE `du_an_da_chon` (
 -- ----------------------------
 -- Records of du_an_da_chon
 -- ----------------------------
-INSERT INTO `du_an_da_chon` VALUES ('1', '29', '2018-07-27 16:20:25');
-INSERT INTO `du_an_da_chon` VALUES ('4', '1', '2018-08-05 00:01:33');
-INSERT INTO `du_an_da_chon` VALUES ('20', '1', '2018-08-05 00:01:13');
+INSERT INTO `du_an_da_chon` VALUES ('13', '4', '2018-08-01 13:22:28');
+INSERT INTO `du_an_da_chon` VALUES ('14', '4', '2018-08-01 13:28:36');
+INSERT INTO `du_an_da_chon` VALUES ('18', '5', '2018-08-06 14:28:12');
 
 -- ----------------------------
 -- Table structure for nha_thau_da_chon
@@ -300,6 +298,11 @@ CREATE TABLE `nha_thau_da_chon` (
 -- ----------------------------
 -- Records of nha_thau_da_chon
 -- ----------------------------
+INSERT INTO `nha_thau_da_chon` VALUES ('2', '4', '2018-08-02 20:49:42');
+INSERT INTO `nha_thau_da_chon` VALUES ('3', '4', '2018-08-01 13:28:50');
+INSERT INTO `nha_thau_da_chon` VALUES ('4', '4', '2018-08-01 13:28:49');
+INSERT INTO `nha_thau_da_chon` VALUES ('5', '4', '2018-08-02 21:18:10');
+INSERT INTO `nha_thau_da_chon` VALUES ('5', '5', '2018-08-06 14:42:29');
 
 -- ----------------------------
 -- Table structure for nha_thau_thi_cong_cap_1
@@ -334,35 +337,11 @@ CREATE TABLE `nha_thau_thi_cong_cap_2` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nha_thau_thi_cong_cap_2
 -- ----------------------------
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('1', 'Công ty/Doanh nghiệp', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('2', 'Đội thi công', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('3', 'Thợ thi công', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('4', 'Nhân công phụ', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('5', 'khác ...', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('6', 'Mua thiết bị', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('7', 'Cho thuê', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('8', 'Nhận thi công', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('9', 'Thợ sửa chữa', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('10', 'khác ...', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('11', 'Mua bán', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('12', 'Cho thuê', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('13', 'Tài xế', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('14', 'Thợ sửa chữa', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('15', 'khác ...', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('16', 'Phần thô', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('17', 'Phần hoàn thiện', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('19', 'Bếp đẹp', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('20', 'Nội thất', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('21', 'Sân vườn', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('22', 'Điện nước MI', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('23', 'Trang trí', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('24', 'Thiết bị gia dụng', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_2` VALUES ('25', 'Bán thiết bị', '2', null, null, '0');
 
 -- ----------------------------
 -- Table structure for nha_thau_thi_cong_cap_3
@@ -376,111 +355,11 @@ CREATE TABLE `nha_thau_thi_cong_cap_3` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nha_thau_thi_cong_cap_3
 -- ----------------------------
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('1', 'Dân dụng', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('2', 'Hạ tầng', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('3', 'Cầu đường', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('4', 'Nội ngoại thất', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('5', 'Kiến trúc', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('6', 'Điện nước', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('7', 'Sửa chữa', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('8', 'Cây xanh', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('9', 'Dịch vụ vệ sinh', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('10', 'Dân dụng', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('11', 'Hạ tầng', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('12', 'Cầu đường', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('13', 'Nội ngoại thất', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('14', 'Kiến trúc', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('15', 'Điện nước', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('16', 'Cây xanh', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('17', 'Dịch vụ vệ sinh', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('18', 'khác ...', '2', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('19', 'khác ...', '1', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('20', 'Xây tô', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('21', 'Ốp lát', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('22', 'Cốp pha', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('23', 'Gia công sắt', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('24', 'Bê tông', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('25', 'Thạch cao', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('26', 'Chống thấm', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('27', 'Điện nước MI', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('28', 'Gia công bếp', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('29', 'Sơn trít', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('30', 'Giấy dán tường', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('31', 'Cửa khung bảo vệ', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('32', 'Nội thất', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('33', 'Điện lạnh', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('34', 'Non bộ', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('35', 'Trang trí vẽ', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('36', 'Cây cảnh', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('37', 'khác ...', '3', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('38', 'Phụ hồ', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('39', 'Bưng bê', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('40', 'Vệ sinh', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('41', 'khác ...', '4', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('42', 'Mới', '11', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('43', 'Đã qua sử dụng', '11', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('45', 'Xe xúc', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('46', 'Xe ủi', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('47', 'Xe lu', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('48', 'Xe san', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('49', 'Xe cẩu', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('50', 'Xe ben', '12', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('51', 'Xe xúc', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('52', 'Xe ủi', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('53', 'Xe lu', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('54', 'Xe san', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('55', 'Xe cẩu', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('56', 'Xe ben', '13', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('57', 'Xe cơ giới', '14', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('58', 'Dụng cụ thiết bị', '14', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('61', 'Cối trộn', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('62', 'Máy đầm cóc', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('63', 'Máy đầm bàn', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('64', 'Máy xoa nền', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('65', 'Máy đầm dùi', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('66', 'Máy dủi sắt', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('67', 'Máy uốn sắt', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('68', 'Máy lu nhỏ', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('69', 'Máy đục bê tông', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('70', 'Máy khoan', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('71', 'khác ...', '7', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('72', 'Máy móc thiết bị', '9', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('73', 'Cốt pha', '9', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('74', 'Thiết bị các loại', '8', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('75', 'Dụng cụ các loại', '8', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('77', 'Đất', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('78', 'Cát', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('79', 'Đá', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('80', 'Sắt thép', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('81', 'Xi măng', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('82', 'Phụ gia', '16', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('83', 'Thạch cao', '17', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('84', 'Chống thấm', '17', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('85', 'Sơn bả', '17', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('86', 'Gạch men', '17', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('87', 'Đá ốp lát', '17', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('88', 'Gỗ tự nhiên', '19', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('89', 'Ván công nghiệp', '19', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('91', 'Có sẵn', '20', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('94', 'Gia công', '20', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('95', 'Bể bơi', '21', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('96', 'Gạch', '21', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('97', 'Đá', '21', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('98', 'Điện', '22', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('99', 'Nước', '22', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('100', 'Nội thất', '23', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('101', 'Ngoại thất', '23', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('102', 'Tivi', '24', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('103', 'Tủ lạnh', '24', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('104', 'Máy lạnh', '24', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('106', 'Máy giặt', '24', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('107', 'Camera', '22', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_3` VALUES ('108', 'Thiết bị phần thô', '6', null, null, '0');
 
 -- ----------------------------
 -- Table structure for nha_thau_thi_cong_cap_4
@@ -494,18 +373,11 @@ CREATE TABLE `nha_thau_thi_cong_cap_4` (
   `name_show` varchar(255) DEFAULT NULL COMMENT 'field này dùng để hiển thị text tại front end.',
   `is_show_at_home_page` tinyint(1) DEFAULT '0' COMMENT 'field này để quyết định mục này có hiển thị tại trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nha_thau_thi_cong_cap_4
 -- ----------------------------
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('1', 'Xe xúc', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('2', 'Xe ủi', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('3', 'Xe lu', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('4', 'Xe san', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('5', 'Xe cẩu', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('6', 'Xe ben', '43', null, null, '0');
-INSERT INTO `nha_thau_thi_cong_cap_4` VALUES ('7', 'Thạch cao', '10', null, null, '0');
 
 -- ----------------------------
 -- Table structure for tinduan_duancap3
@@ -617,8 +489,6 @@ INSERT INTO `tinduan_duancap3` VALUES ('23', '4');
 INSERT INTO `tinduan_duancap3` VALUES ('23', '5');
 INSERT INTO `tinduan_duancap3` VALUES ('24', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('24', '2');
-INSERT INTO `tinduan_duancap3` VALUES ('25', '1');
-INSERT INTO `tinduan_duancap3` VALUES ('25', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_duancap4
@@ -672,10 +542,6 @@ INSERT INTO `tinduan_duancap4` VALUES ('23', '1');
 INSERT INTO `tinduan_duancap4` VALUES ('23', '2');
 INSERT INTO `tinduan_duancap4` VALUES ('23', '3');
 INSERT INTO `tinduan_duancap4` VALUES ('23', '4');
-INSERT INTO `tinduan_duancap4` VALUES ('24', '1');
-INSERT INTO `tinduan_duancap4` VALUES ('24', '2');
-INSERT INTO `tinduan_duancap4` VALUES ('25', '1');
-INSERT INTO `tinduan_duancap4` VALUES ('25', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_photo
@@ -686,7 +552,7 @@ CREATE TABLE `tinduan_photo` (
   `tin_du_an_id` int(11) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tinduan_photo
@@ -706,6 +572,9 @@ INSERT INTO `tinduan_photo` VALUES ('16', '20', '58d04e1e3fdde4c94cf5db94aa45ece
 INSERT INTO `tinduan_photo` VALUES ('17', '22', '1a309f7ec6256bd7e1a9c7973ba48ff4.png');
 INSERT INTO `tinduan_photo` VALUES ('18', '22', '5fcedb1dda16ba79924920ef1d94c021.png');
 INSERT INTO `tinduan_photo` VALUES ('19', '22', '6f4b28884d3cc617d05fa38b9152dc30.jpg');
+INSERT INTO `tinduan_photo` VALUES ('20', '24', 'd582719327b6b140a54fc871e75cddbc.png');
+INSERT INTO `tinduan_photo` VALUES ('21', '24', '86947c9ef62c460b408649405cae2649.jpg');
+INSERT INTO `tinduan_photo` VALUES ('22', '24', '1f265f80d9dddc638e9973ef1ad69bb3.jpg');
 
 -- ----------------------------
 -- Table structure for tinnhathauthicong_nhathauthicongcap3
@@ -825,14 +694,14 @@ CREATE TABLE `tin_du_an` (
   `so_luot_xem` int(11) NOT NULL DEFAULT '0',
   `vote` float(11,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
 -- ----------------------------
 INSERT INTO `tin_du_an` VALUES ('1', 'Sân vườn', 'Vật liệu gạch không nung\r\nHồ dầu\r\nVữa\r\n....', null, '2018-07-12 11:59:38', '0000-00-00 00:00:00', '1', '2', '2018-07-16 04:00:00', '1', '1', null, '2', '0', '700 triệu', '3', null, '1', '1', '1', '0', '1', '1', null);
 INSERT INTO `tin_du_an` VALUES ('2', 'Làn nhà 4 tầng ', 'Nhà 4 tầng 2 mặt tiền gồm các hạng mục:\r\n- thiết kế\r\n- Xin giấy phép thi công\r\n- thi công phần thô\r\n- Thi công nội ngoại thất\r\n- Trang trí sân vườn', null, '2018-07-12 15:33:04', '0000-00-00 00:00:00', '25', '2', '2018-07-18 04:00:00', '1', '1', null, '1', '0', '2 tỷ', null, null, '1', '1', '1', null, null, '0', null);
-INSERT INTO `tin_du_an` VALUES ('3', 'Bộ Xây dựng: Triển khai nhiều nhiệm vụ trọng tâm 6 tháng cuối năm', 'Xây dựng) - Sáng 24/7 tại Hà Nội, Bộ Xây dựng đã tổ chức Hội nghị giao ban “Tình hình thực hiện nhiệm vụ 6 tháng đầu năm và triển khai nhiệm vụ công tác 6 tháng cuối năm 2018”. Bộ trưởng Bộ X', null, '2018-07-27 00:53:23', '0000-00-00 00:00:00', '1', '2', '2018-07-28 04:00:00', '1', '6', null, '1', '2', '900 triệu', null, null, '1', '1', '1', '1', null, '10', '4.00');
+INSERT INTO `tin_du_an` VALUES ('3', 'Bộ Xây dựng: Triển khai nhiều nhiệm vụ trọng tâm 6 tháng cuối năm', 'Xây dựng) - Sáng 24/7 tại Hà Nội, Bộ Xây dựng đã tổ chức Hội nghị giao ban “Tình hình thực hiện nhiệm vụ 6 tháng đầu năm và triển khai nhiệm vụ công tác 6 tháng cuối năm 2018”. Bộ trưởng Bộ X', null, '2018-07-27 00:53:23', '2018-08-06 10:54:38', '1', '2', '2018-07-28 04:00:00', '1', '6', null, '1', '2', '900 triệu', null, null, '1', '1', '1', '1', null, '11', '4.00');
 INSERT INTO `tin_du_an` VALUES ('4', 'Cần thiết kế thi công nhà trọn gói, tiêu chuẩn quốc tế', 'Nhằm hưởng ứng Tháng hành động về An toàn, vệ sinh lao động năm 2018, với mục đích hướng dẫn, tuyên truyền nâng cao nhận thức công tác đảm bảo an toàn, vệ sinh lao động tại các công trình xây dự', null, '2018-07-27 18:06:29', '0000-00-00 00:00:00', '28', '2', '2018-07-30 04:00:00', '1', '4', null, '2', '10', '190 tỷ', null, null, '1', '1', '1', '1', '0', '4', '4.00');
 INSERT INTO `tin_du_an` VALUES ('5', 'Thi công hệ thống thoát nước khu tái định cư', 'Nâng cấp hệ thống thoát nướ:\r\n- Mương\r\n- Bó vỉa\r\n- Vỉa hè\r\n- Kè taluy\r\n...', null, '2018-07-28 11:01:41', '0000-00-00 00:00:00', '28', '2', '2018-07-30 04:00:00', '1', '2', null, '2', '11', '1,5 tỷ', null, null, '1', '1', '1', '0', null, '3', null);
 INSERT INTO `tin_du_an` VALUES ('6', 'Text 2', 'Abf ggshus đihgs hdhhe\r\nNdgisyfe\r\nJshhss đuhh ihsh dhegve \r\nHsyhsv hshh\r\n', null, '2018-07-28 11:06:20', '0000-00-00 00:00:00', '28', '2', '2018-07-31 04:00:00', '1', '2', null, '1', '3', '600 triệu', null, null, '1', '1', '1', '1', null, '7', null);
@@ -845,15 +714,14 @@ INSERT INTO `tin_du_an` VALUES ('12', 'Dũng 4', 'sdfsdfsd', null, '2018-07-29 1
 INSERT INTO `tin_du_an` VALUES ('13', 'test ảnh', 'sdfsd  sdf df s', null, '2018-07-29 12:15:38', '0000-00-00 00:00:00', '31', '3', '2018-07-29 04:00:00', '1', null, null, '1', '1', '500 triệu', null, null, null, null, '1', '1', null, '1', '5.00');
 INSERT INTO `tin_du_an` VALUES ('14', 'Thy 1', 'Có khi nào\r\nAnh ngồi\r\nĐh\r\nHfgjs hfsh jfsh\r\n', null, '2018-07-29 19:03:22', '0000-00-00 00:00:00', '28', '2', '2018-07-29 04:00:00', '1', '1', null, '1', '1', '50 tỷ', null, null, '1', '1', '1', '1', '1', '1', null);
 INSERT INTO `tin_du_an` VALUES ('16', 'Hffs hff shgs uayvs hstgs', 'Hgfs hsggs sjgs jsgys jsgsy skgsw\r\nHsfyss súgs jsyvs hsyys jggs íyvw usshs\r\nSjsgs sưud sue\r\nShggs\r\nDhggs shgsugs\r\n', null, '2018-07-29 19:50:14', '0000-00-00 00:00:00', '1', '2', '2018-07-29 04:00:00', '1', '1', null, '2', '11', '300 triệu', null, null, null, null, '1', '1', '1', '0', null);
-INSERT INTO `tin_du_an` VALUES ('17', 'Xây dựng nhà cấp 4 Xây dựng nhà cấp 4 Xây dựng nhà cấp 4g nhà cấp 4 Xây dựng nhà cấp 4', 'Nhà 2 tầng\r\nCó san thượng\r\n3 phòng ngủ\r\n1 phòng khách - bếp\r\nPhòng thờ tầng 2', null, '2018-07-29 21:30:20', '2018-08-05 21:33:43', '1', '2', '2018-07-31 04:00:00', '1', '4', null, '1', '1', '900 triệu', null, null, '1', '1', '1', '1', '1', '12', '4.00');
-INSERT INTO `tin_du_an` VALUES ('18', 'Sân vườn', 'Làm như hình trên\r\nThiết kế lại bố cục\r\nChấn liệu', null, '2018-07-29 22:14:53', '0000-00-00 00:00:00', '1', '2', '2018-07-31 04:00:00', '1', '1', null, '1', '1', '10 triệu', null, null, '1', '1', '1', '1', '1', '9', '3.00');
+INSERT INTO `tin_du_an` VALUES ('17', 'Xây dựng nhà cấp 4 Xây dựng nhà cấp 4 Xây dựng nhà cấp 4g nhà cấp 4 Xây dựng nhà cấp 4', 'Nhà 2 tầng\r\nCó san thượng\r\n3 phòng ngủ\r\n1 phòng khách - bếp\r\nPhòng thờ tầng 2', null, '2018-07-29 21:30:20', '2018-08-06 10:54:59', '1', '2', '2018-07-31 04:00:00', '1', '4', null, '1', '1', '900 triệu', null, null, '1', '1', '1', '1', '1', '15', '4.00');
+INSERT INTO `tin_du_an` VALUES ('18', 'Sân vườn', 'Làm như hình trên\r\nThiết kế lại bố cục\r\nChấn liệu', null, '2018-07-29 22:14:53', '2018-08-06 14:33:23', '1', '2', '2018-07-31 04:00:00', '1', '1', null, '1', '1', '10 triệu', null, null, '1', '1', '1', '1', '1', '14', '3.00');
 INSERT INTO `tin_du_an` VALUES ('19', 'Thi công gói hạ tầng thoát nước', 'Hệ thống giao thông thoát nước công trình tái định cư\r\nKhu dân xư mới\r\n', null, '2018-07-30 12:17:57', '0000-00-00 00:00:00', '1', '2', '2018-07-30 04:00:00', '1', null, null, '2', '10', '800 triẹu', null, null, '1', '1', '1', '1', '1', '2', '0.00');
 INSERT INTO `tin_du_an` VALUES ('20', 'Mở đấu thầu gói thầu hoàn thiện xây dựng ME', 'Dear đơn vị nhà thầu\r\nBên mình chủ đầu tư IDMC hiện tại đang chào thầu gói hoàn thiện xây dựng &ME. \r\nKhối lượng khoảng 9000 m2 mặt bằng. \r\nCác nhà thầu quan tâm có thể đến mua hồ sơ thầu ở địa', null, '2018-07-30 19:42:52', '0000-00-00 00:00:00', '28', '2', '2018-07-30 04:00:00', '1', null, null, '2', '11', 'Khối lượng khoảng 9000 m2 mặt bằng', null, null, '1', null, '1', null, null, '2', '5.00');
 INSERT INTO `tin_du_an` VALUES ('21', 'Dự án Phú Gia ngầm goá cáp quang', 'Dự án:\r\nĐào hệ thống mương : 2500 m\r\nCấp ống nhưng vàng 6m loại 1,2 ly: 5000 m\r\nThi công hố cáp : 70 hố\r\nThời gian thi công 30 ngày', null, '2018-08-05 00:25:10', '0000-00-00 00:00:00', '1', '2', '2018-08-08 04:00:00', '1', '2', null, '2', '13', '700 triệu', null, null, null, null, null, null, null, '0', null);
 INSERT INTO `tin_du_an` VALUES ('22', 'ồ Dũng Hiệp, Tổ trưởng Tổ dân phố 30B', 'Ông Hồ Dũng Hiệp, Tổ trưởng Tổ dân phố 30B, phường Thịnh Liệt, quận Hoàng Mai cho biết, do chất lượng thi công không đảm bảo, nên 7 nhà sinh hoạt cộng đồng trong tổng số 10 nhà không có khả năng s', null, '2018-08-05 08:29:29', '0000-00-00 00:00:00', '1', '2', '2018-08-28 04:00:00', '1', null, null, '1', '1', '500 triệu', null, null, null, null, null, null, null, '0', null);
 INSERT INTO `tin_du_an` VALUES ('23', 'Xuất siêu 2,34 tỷ USD sang Vương quốc Anh', 'Cập nhật hết tháng 6, tổng kim ngạch xuất nhập khẩu của Việt Nam và Vương quốc Anh đạt 3,12 tỷ USD, tăng 14,2% so với cùng kỳ năm 2017.\r\nTrong đó, trị giá xuất khẩu hàng hóa Việt Nam là 2,73 tỷ USD, t', null, '2018-08-05 08:31:30', '0000-00-00 00:00:00', '1', '2', '2018-08-13 04:00:00', '1', null, null, '1', '1', '600 triệu', null, null, null, null, null, null, null, '0', null);
-INSERT INTO `tin_du_an` VALUES ('24', '                trần công tuệ bốn năm      sáu   bảy tám  chín mười   mườimột      mườihai mườiba mườibốn mườilăm     ', 'sdffsd sdf df s df ds fs ', null, '2018-08-05 22:51:53', '2018-08-05 22:53:08', '30', '3', '2018-08-01 00:00:00', null, null, null, '1', '1', '1000', null, null, '1', '1', '1', null, null, '0', null);
-INSERT INTO `tin_du_an` VALUES ('25', 'trần công tuệ bốn năm      sáu   bảy tám  chín mười   mườimột      mườihai mườiba mườibốn mườilăm', 'sdfsdfds', null, '2018-08-05 22:57:15', '2018-08-05 22:57:15', '30', '3', '2018-08-21 00:00:00', '2', '8', null, '1', '1', '1000', null, null, null, null, null, null, null, '0', null);
+INSERT INTO `tin_du_an` VALUES ('24', '123456', 'dfgfdgfdg', null, '2018-08-06 10:58:30', '2018-08-06 11:54:40', '5', '3', '2018-08-06 00:00:00', '1', '1', null, '1', '1', '4353', null, null, '1', '1', '1', null, null, '1', null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -891,14 +759,14 @@ CREATE TABLE `tin_nha_thau_thi_cong` (
 -- ----------------------------
 -- Records of tin_nha_thau_thi_cong
 -- ----------------------------
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'Đội thi công bê tông chuyên nghiệp', 'Chuyên:\r\n- Sàn, đường, mương, bó vỉa,...\r\n- Công trình hạ tầng, cao tầng, nhà dân,...\r\nĐồ nghề dụng cụ thi công đầy đủ, chuyên nghiệp\r\n', null, '2018-07-19 01:54:40', '2018-08-05 22:35:57', '25', '2', '2018-07-20 04:00:00', '1', null, null, '1', '2', '2', '30 người', null, null, '1', '1', '1', '1', null, '0', '0.00');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('1', 'Đội thi công bê tông chuyên nghiệp', 'Chuyên:\r\n- Sàn, đường, mương, bó vỉa,...\r\n- Công trình hạ tầng, cao tầng, nhà dân,...\r\nĐồ nghề dụng cụ thi công đầy đủ, chuyên nghiệp\r\n', null, '2018-07-19 01:54:40', '0000-00-00 00:00:00', '25', '2', '2018-07-20 04:00:00', '1', null, null, '1', '2', '2', '30 người', null, null, null, '1', '1', '1', null, '0', '0.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('2', 'Text', 'Abc dđghmn', null, '2018-07-19 01:59:36', '0000-00-00 00:00:00', '25', '2', '2018-07-20 04:00:00', '1', null, null, '1', '2', '2', '20 nhân công ', null, null, '1', '1', '1', null, '1', '0', '0.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('3', 'sgsd', 'agagafaf\r\na\r\n\r\n\r\nag\r\nà\r\naefg\r\nsẻgrwe', null, '2018-07-28 16:50:53', '0000-00-00 00:00:00', '1', '2', '2018-07-29 04:00:00', '1', null, null, '1', '2', '2', 'agergesr', null, null, '1', '1', '1', '0', '0', '0', '0.00');
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('4', 'Công TNHH Xây Dựng An Thành Tín', 'Đơn vị chúng tôi là nhà thầu tư vấn - thiết kế - thi công về lĩnh vực xây dựng:\r\n- Hiện tại chung tôi đang thi công các gói thầu thuộc đầu tư cấp nhà nước, nước ngoài và nhưng dự án có mức độ', null, '2018-07-28 18:08:23', '2018-08-05 22:35:55', '1', '2', '2018-07-28 04:00:00', '1', null, null, '1', '1', '2', '500 nhân lực chuyên', null, null, '1', '1', '1', '0', '1', '2', '4.00');
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('5', 'Text hình', 'Làm rất toits\r\nGgfs\r\nHầy hgshs hahvs \r\nHsggs shsg hg \r\n', null, '2018-07-29 19:46:51', '2018-08-05 22:35:56', '1', '2', '2018-07-31 04:00:00', '1', null, null, '1', '2', '1', '50 thợ xây', null, null, '1', '1', '1', '1', '1', '1', '0.00');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('4', 'Công TNHH Xây Dựng An Thành Tín', 'Đơn vị chúng tôi là nhà thầu tư vấn - thiết kế - thi công về lĩnh vực xây dựng:\r\n- Hiện tại chung tôi đang thi công các gói thầu thuộc đầu tư cấp nhà nước, nước ngoài và nhưng dự án có mức độ', null, '2018-07-28 18:08:23', '0000-00-00 00:00:00', '1', '2', '2018-07-28 04:00:00', '1', null, null, '1', '1', '2', '500 nhân lực chuyên', null, null, null, null, '1', '0', '1', '2', '4.00');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('5', 'Text hình', 'Làm rất toits\r\nGgfs\r\nHầy hgshs hahvs \r\nHsggs shsg hg \r\n', null, '2018-07-29 19:46:51', '2018-08-06 12:32:00', '1', '2', '2018-07-31 04:00:00', '1', null, null, '1', '2', '1', '50 thợ xây', null, null, null, null, '1', '1', '1', '2', '0.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('6', 'Tìm các nhà thầu phụ thi công nhả xưởng', 'Thông tin yêu cầu\r\nChào anh em!\r\nMình đang có con nhà xưởng như hình \r\nCần tìm các thầu phụ anh em nào muốn chiến thì liên hệ nhé', null, '2018-07-30 19:24:27', '0000-00-00 00:00:00', '28', '2', '2018-07-31 04:00:00', '1', null, null, '1', '2', '2', '20 nhân lực chuyên hạ tầng', null, null, '1', '1', '1', '1', '1', '5', '4.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('7', 'Tìm nhà thầu thi công bể bơi gia đình', 'Thông tin yêu cầu\r\nChào các anh em tổ đội/ nhà thầu:\r\n\r\nTôi cần tìm nhà thầu có kinh nghiệm thi công bể bơi gia đình ngoài trời.\r\n\r\nTôi là chủ nhà, tôi ở thành phố Vũng Tàu\r\n\r\nVậy nhà thầu nào làm đư', null, '2018-07-30 19:29:26', '0000-00-00 00:00:00', '28', '2', '2018-07-30 04:00:00', '1', null, null, '1', '1', '2', 'Đội thi công chuyên bể bơi', null, null, '1', '1', '1', '1', '1', '13', '4.00');
-INSERT INTO `tin_nha_thau_thi_cong` VALUES ('8', 'Nhà chung cư tái định cư ở Hà Nội đang bị bỏ rơi?', 'Có thể nói, chung cư tái định cư là “điểm đen” của Hà Nội về chất lượng công trình xây dựng và quản lý đô thị. Bởi, không ít tòa nhà, khu chung cư tái định cư dù được đưa vào sử dụng chư', null, '2018-08-05 07:41:33', '2018-08-05 22:36:00', '1', '2', '2018-08-21 04:00:00', '1', null, null, '1', '0', '1', '30 nhân lực', null, null, '1', '1', '1', null, '1', '2', '0.00');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('8', 'Nhà chung cư tái định cư ở Hà Nội đang bị bỏ rơi?', 'Có thể nói, chung cư tái định cư là “điểm đen” của Hà Nội về chất lượng công trình xây dựng và quản lý đô thị. Bởi, không ít tòa nhà, khu chung cư tái định cư dù được đưa vào sử dụng chư', null, '2018-08-05 07:41:33', '2018-08-06 11:45:09', '1', '2', '2018-08-21 04:00:00', '1', null, null, '1', '0', '1', '30 nhân lực', null, null, null, null, '1', null, '1', '4', '2.00');
 
 -- ----------------------------
 -- Table structure for user
@@ -916,18 +784,16 @@ CREATE TABLE `user` (
   `type_active` tinyint(1) DEFAULT NULL,
   `allow_hoptac` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'anh ', 'Dũng', '', '0971553559', '7c4a8d09ca3762af61e59520943dc26494f8941b', '1', '1', null, '0');
-INSERT INTO `user` VALUES ('27', null, null, null, '0905123456', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '1', null, '0');
-INSERT INTO `user` VALUES ('28', null, 'dohuudung', null, '0913403178', '2fcaffbcb66f8eaa921e62f1623e26ee9a3912d2', '2', '1', null, '0');
-INSERT INTO `user` VALUES ('29', null, null, null, '0933313806', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '1', null, '0');
-INSERT INTO `user` VALUES ('30', null, null, null, '1', '356a192b7913b04c54574d18c28d46e6395428ab', '3', '1', null, '0');
-INSERT INTO `user` VALUES ('31', null, null, null, '0905022640', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '1', null, '0');
-INSERT INTO `user` VALUES ('32', null, null, null, '0938118709', '7e6081a3b0e59c2189f353a16716a59258e7686e', '3', '1', '3', '0');
+INSERT INTO `user` VALUES ('3', null, 'Tâm', null, '0935348952', '0d5a2ea77c655974436fbcad3f380a6ef4e59831', '2', '1', null, '0');
+INSERT INTO `user` VALUES ('4', null, null, null, '01269259744', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '1', null, '0');
+INSERT INTO `user` VALUES ('5', null, null, null, '0905022640', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '1', '2', '0');
+INSERT INTO `user` VALUES ('7', null, null, null, '01286435303', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '1', '4', '1');
 
 -- ----------------------------
 -- Table structure for user_duan
@@ -942,30 +808,11 @@ CREATE TABLE `user_duan` (
 -- ----------------------------
 -- Records of user_duan
 -- ----------------------------
-INSERT INTO `user_duan` VALUES ('1', '24');
-INSERT INTO `user_duan` VALUES ('1', '25');
-INSERT INTO `user_duan` VALUES ('1', '26');
-INSERT INTO `user_duan` VALUES ('1', '28');
-INSERT INTO `user_duan` VALUES ('2', '24');
-INSERT INTO `user_duan` VALUES ('2', '25');
-INSERT INTO `user_duan` VALUES ('2', '26');
-INSERT INTO `user_duan` VALUES ('2', '28');
-INSERT INTO `user_duan` VALUES ('3', '24');
-INSERT INTO `user_duan` VALUES ('3', '25');
-INSERT INTO `user_duan` VALUES ('3', '26');
-INSERT INTO `user_duan` VALUES ('3', '28');
-INSERT INTO `user_duan` VALUES ('4', '25');
-INSERT INTO `user_duan` VALUES ('4', '28');
-INSERT INTO `user_duan` VALUES ('5', '25');
-INSERT INTO `user_duan` VALUES ('5', '28');
-INSERT INTO `user_duan` VALUES ('6', '25');
-INSERT INTO `user_duan` VALUES ('6', '28');
-INSERT INTO `user_duan` VALUES ('7', '25');
-INSERT INTO `user_duan` VALUES ('7', '28');
-INSERT INTO `user_duan` VALUES ('8', '25');
-INSERT INTO `user_duan` VALUES ('8', '28');
-INSERT INTO `user_duan` VALUES ('9', '25');
-INSERT INTO `user_duan` VALUES ('9', '28');
+INSERT INTO `user_duan` VALUES ('1', '3');
+INSERT INTO `user_duan` VALUES ('2', '3');
+INSERT INTO `user_duan` VALUES ('3', '3');
+INSERT INTO `user_duan` VALUES ('8', '5');
+INSERT INTO `user_duan` VALUES ('9', '5');
 
 -- ----------------------------
 -- Table structure for user_nhathauthicong
@@ -980,22 +827,9 @@ CREATE TABLE `user_nhathauthicong` (
 -- ----------------------------
 -- Records of user_nhathauthicong
 -- ----------------------------
-INSERT INTO `user_nhathauthicong` VALUES ('1', '24');
-INSERT INTO `user_nhathauthicong` VALUES ('1', '25');
-INSERT INTO `user_nhathauthicong` VALUES ('1', '26');
-INSERT INTO `user_nhathauthicong` VALUES ('1', '28');
-INSERT INTO `user_nhathauthicong` VALUES ('2', '24');
-INSERT INTO `user_nhathauthicong` VALUES ('2', '25');
-INSERT INTO `user_nhathauthicong` VALUES ('2', '26');
-INSERT INTO `user_nhathauthicong` VALUES ('2', '28');
-INSERT INTO `user_nhathauthicong` VALUES ('3', '24');
-INSERT INTO `user_nhathauthicong` VALUES ('3', '25');
-INSERT INTO `user_nhathauthicong` VALUES ('3', '26');
-INSERT INTO `user_nhathauthicong` VALUES ('3', '28');
-INSERT INTO `user_nhathauthicong` VALUES ('4', '24');
-INSERT INTO `user_nhathauthicong` VALUES ('4', '25');
-INSERT INTO `user_nhathauthicong` VALUES ('4', '26');
-INSERT INTO `user_nhathauthicong` VALUES ('4', '28');
+INSERT INTO `user_nhathauthicong` VALUES ('1', '3');
+INSERT INTO `user_nhathauthicong` VALUES ('1', '5');
+INSERT INTO `user_nhathauthicong` VALUES ('2', '5');
 
 -- ----------------------------
 -- Table structure for vote_duan
@@ -1010,13 +844,16 @@ CREATE TABLE `vote_duan` (
 -- ----------------------------
 -- Records of vote_duan
 -- ----------------------------
-INSERT INTO `vote_duan` VALUES ('1', '3', '4');
-INSERT INTO `vote_duan` VALUES ('1', '17', '4');
-INSERT INTO `vote_duan` VALUES ('1', '18', '3');
-INSERT INTO `vote_duan` VALUES ('1', '8', '4');
-INSERT INTO `vote_duan` VALUES ('1', '13', '5');
-INSERT INTO `vote_duan` VALUES ('1', '20', '5');
-INSERT INTO `vote_duan` VALUES ('1', '4', '4');
+INSERT INTO `vote_duan` VALUES ('4', '1', '3');
+INSERT INTO `vote_duan` VALUES ('4', '16', '3');
+INSERT INTO `vote_duan` VALUES ('4', '1', '6');
+INSERT INTO `vote_duan` VALUES ('1', '1', '3');
+INSERT INTO `vote_duan` VALUES ('5', '1', '1');
+INSERT INTO `vote_duan` VALUES ('5', '17', '2');
+INSERT INTO `vote_duan` VALUES ('5', '15', '3');
+INSERT INTO `vote_duan` VALUES ('5', '14', '4');
+INSERT INTO `vote_duan` VALUES ('5', '13', '5');
+INSERT INTO `vote_duan` VALUES ('5', '2', '5');
 
 -- ----------------------------
 -- Table structure for vote_nhathauthicong
@@ -1031,15 +868,19 @@ CREATE TABLE `vote_nhathauthicong` (
 -- ----------------------------
 -- Records of vote_nhathauthicong
 -- ----------------------------
-INSERT INTO `vote_nhathauthicong` VALUES ('1', '7', '4');
-INSERT INTO `vote_nhathauthicong` VALUES ('1', '4', '4');
-INSERT INTO `vote_nhathauthicong` VALUES ('1', '6', '4');
+INSERT INTO `vote_nhathauthicong` VALUES ('4', '5', '2');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '5', '5');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '4', '4');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '3', '3');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '2', '2');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '1', '1');
+INSERT INTO `vote_nhathauthicong` VALUES ('5', '8', '2');
 
 -- ----------------------------
 -- View structure for view_tin
 -- ----------------------------
 DROP VIEW IF EXISTS `view_tin`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin` AS select vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac,title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin` AS select DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac,title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,
 tong_dau_tu,
 photo,is_quang_cao,allow_show_quang_cao,
 phone,user.type,tin_du_an.user_id,
@@ -1049,7 +890,7 @@ tin_du_an.du_an_cap_1 as cap_1,
 tin_du_an.du_an_cap_2 as cap_2,
 target_type,city_cap_1,city_cap_2,is_active,'du_an' as type_tin,tin_du_an.status,tin_du_an.is_hot from tin_du_an join user on user.id=tin_du_an.user_id left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id group by tin_du_an.id 
 UNION 
-select vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac,title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,
+select DATE_FORMAT(tin_nha_thau_thi_cong.created_at,'%d/%m/%Y') AS created_at,vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac,title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,
 '' as tong_dau_tu,
 photo,is_quang_cao,allow_show_quang_cao,
 phone,user.type,tin_nha_thau_thi_cong.user_id,
@@ -1057,13 +898,13 @@ phan_loai,
 tin_nha_thau_thi_cong.id,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 as cap_1,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_2 as cap_2,
-target_type,'' as city_cap_1,'' as city_cap_2,is_active,'nha_thau_thi_cong' as type_tin,tin_nha_thau_thi_cong.status,tin_nha_thau_thi_cong.is_hot from tin_nha_thau_thi_cong join user on user.id=tin_nha_thau_thi_cong.user_id left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id group by tin_nha_thau_thi_cong.id ; ;
+target_type,'' as city_cap_1,'' as city_cap_2,is_active,'nha_thau_thi_cong' as type_tin,tin_nha_thau_thi_cong.status,tin_nha_thau_thi_cong.is_hot from tin_nha_thau_thi_cong join user on user.id=tin_nha_thau_thi_cong.user_id left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id group by tin_nha_thau_thi_cong.id ;
 
 -- ----------------------------
 -- View structure for view_tin_du_an
 -- ----------------------------
 DROP VIEW IF EXISTS `view_tin_du_an`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin_du_an` AS select vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac, title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,tong_dau_tu,photo,is_quang_cao,allow_show_quang_cao,phone,user.type,tin_du_an.id,tin_du_an.du_an_cap_1,tin_du_an.du_an_cap_2,target_type,city_cap_1,city_cap_2,is_active,tin_du_an.status,tin_du_an.is_hot,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,tin_du_an.is_dich_vu_hau_mai from tin_du_an join user on user.id=tin_du_an.user_id left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id group by tin_du_an.id ; ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin_du_an` AS select vote,so_luot_xem,`user`.type_active,`user`.allow_hoptac, title,DATE_FORMAT(ngay,'%d/%m/%Y') AS ngay,tong_dau_tu,photo,is_quang_cao,allow_show_quang_cao,phone,user.type,tin_du_an.id,tin_du_an.du_an_cap_1,tin_du_an.du_an_cap_2,target_type,city_cap_1,city_cap_2,is_active,tin_du_an.status,tin_du_an.is_hot,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at,DATE_FORMAT(tin_du_an.created_at,'%d/%m/%Y') AS created_at1,tin_du_an.is_dich_vu_hau_mai from tin_du_an join user on user.id=tin_du_an.user_id left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id group by tin_du_an.id ;
 
 -- ----------------------------
 -- View structure for view_tin_nha_thau_thi_cong
