@@ -2236,7 +2236,7 @@ a:hover, a:focus {
     }
 }
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left img {
-    object-fit: contain;          
+    object-fit: cover;          
 }
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-title {
     height: 52px;
@@ -4115,7 +4115,8 @@ a:hover, a:focus {
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-desc-r {
         float: right;
         margin-top: 0;
-        padding: 0; }
+        padding: 0;
+        right: 0; }
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-btn {
         height: 40px;
         width: 40px;
@@ -4128,8 +4129,11 @@ a:hover, a:focus {
         background: #47D600 url(../images/layout/bookmark-white.png) center no-repeat; }
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-btn span {
         display: none; }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left {
+        height: 230px;
+    }    
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item img {
-        height: 130px; }
+        height: 230px; }
     .page-content.account-menu-page {
         min-height: 600px; } }
 
