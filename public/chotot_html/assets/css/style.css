@@ -1943,7 +1943,7 @@ a:hover, a:focus {
     display: table;
     clear: both; }
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-thumb {
-    height: 100px;
+    height: 135px;
     text-align: center;
     overflow: hidden; 
     /*background: #999999;*/
@@ -2433,6 +2433,12 @@ a:hover, a:focus {
     }
 
 @media screen and (max-width: 480px) {
+    .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-thumb {
+        height: 100px;
+        text-align: center;
+        overflow: hidden; 
+        /*background: #999999;*/
+    }
     .page-content.category-page .content-cate .cate-ad {
         padding-left: 10px;
         padding-right: 10px;
@@ -4761,6 +4767,10 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
         position: absolute;
         bottom: 0;
         right: 0;
+    }
+    .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-desc{
+        padding-top: 0px;
+        height: 200px;
     }
 }
 @media screen and (max-width: 360px){
