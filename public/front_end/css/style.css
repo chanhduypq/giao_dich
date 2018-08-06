@@ -59,13 +59,17 @@ img.logo {
         text-align: center;
     }
     .fix-share li:first-child {
-        display: block;
+        /*display: block;*/
     }
     .fix-share-d {
         text-align: right;
     }
     .fix-share-d li:first-child {
         display: inline-block;
+    }
+    
+    .fix-share li {
+        width: 40px;
     }
 
 }    
@@ -2176,7 +2180,7 @@ a:hover, a:focus {
     text-align: center;
 }
 .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-part img {
-    object-fit: contain;
+    object-fit: cover;
 }
 .page-content.category-page .content-cate .cate-list .cate-wr._ct_grid .cate-item .cit-right {
     padding: 10px 7px 5px 7px; }
@@ -2236,7 +2240,7 @@ a:hover, a:focus {
     }
 }
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left img {
-    object-fit: contain;          
+    object-fit: cover;          
 }
 .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-title {
     height: 52px;
@@ -4115,7 +4119,8 @@ a:hover, a:focus {
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-desc-r {
         float: right;
         margin-top: 0;
-        padding: 0; }
+        padding: 0;
+        right: 0; }
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-btn {
         height: 40px;
         width: 40px;
@@ -4128,8 +4133,11 @@ a:hover, a:focus {
         background: #47D600 url(../images/layout/bookmark-white.png) center no-repeat; }
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-btn span {
         display: none; }
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-left {
+        height: 230px;
+    }    
     .page-content.account-page.category-page .content-cate .cate-list .cate-wr .cate-item img {
-        height: 130px; }
+        height: 230px; }
     .page-content.account-menu-page {
         min-height: 600px; } }
 
@@ -4501,9 +4509,9 @@ a:hover, a:focus {
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-btn span {
         display: none;
     }
-    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item img {
+    /*.page-content.category-page .content-cate .cate-list .cate-wr .cate-item img {
         height: auto;
-    }
+    }*/
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-desc {
         position: relative;
     }
