@@ -111,7 +111,7 @@ $muc_selected = $this->muc_selected;
                                 foreach ($items as $item){
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                 <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                 <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>

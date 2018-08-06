@@ -79,7 +79,7 @@ $quangcao_items = $this->quangcao_items;
                                                         <p>
                                                             <?php 
                                                             if($item['allow_hoptac']!='1'){
-                                                                if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                if($item['type']== Default_Model_User::NHAN_VIEN||$item['type']== Default_Model_User::ADMIN){
                                                                     echo 'Nhân viên';
                                                                 }
                                                                 else if($item['type']== Default_Model_User::CA_NHAN){

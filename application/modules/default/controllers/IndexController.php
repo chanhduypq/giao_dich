@@ -327,6 +327,8 @@ class IndexController extends Core_Controller_Action {
 
         
         $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        $this->setupPhoto($items);
+        $this->setupPhoto($allItems);
         
         $this->view->items = $items;
         $this->view->quangcao_items = $this->getTinQuangCaos($allItems);

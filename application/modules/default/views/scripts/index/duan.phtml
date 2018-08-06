@@ -114,7 +114,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                 foreach ($items as $item){
                                     ?>
                                     <div class="cate-item">
-                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                             <div class="cit-part cit-left">
                                                     <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                 <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
@@ -136,7 +136,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                         <p>
                                                             <?php 
                                                             if($item['allow_hoptac']!='1'){
-                                                                if($item['type']== Default_Model_User::NHAN_VIEN){
+                                                                if($item['type']== Default_Model_User::NHAN_VIEN||$item['type']== Default_Model_User::ADMIN){
                                                                     echo 'Nhân viên';
                                                                 }
                                                                 else if($item['type']== Default_Model_User::CA_NHAN){

@@ -20,19 +20,12 @@
                                     $items=$this->items;
                                     if(is_array($items)&&count($items)>0){
                                         foreach ($items as $item){
-                                            if($item['photo']==''){
-                                                $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
-                                            }
-                                            else{
-                                                $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
-                                            }
+                                            
                                             ?>
                                             <div class="cate-item">
-                                                <div class="cate-item-i"<?php if($item['status']=='3') echo ' style="background: #c8cedd;"';?>>
+                                                <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>"<?php if($item['status']=='3') echo ' style="background: #c8cedd;"';?>>
                                                     <div class="cit-part cit-left">
-                                                        <a href="<?php echo $item['photo']; ?>" rel="prettyPhoto">
-                                                            <img src="<?php echo $item['photo']; ?>">
-                                                        </a>
+                                                        <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                         <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
                                                     </div>
                                                     <div class="cit-part cit-right">
@@ -40,28 +33,45 @@
                                                             <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
                                                                 <?php 
                                                         if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <img src="<?php echo $this->baseUrl(PHOTO_HOT);?>" style="width: 50px;height: 50px;display: block;min-width: 50px;"/>
+                                                        <span class="tap-hot">Hot</span>
                                                         <?php } ?>
                                                                 <?php echo $item['title'];?>
                                                             </a>
                                                         </div>
                                                         <div class="cit-desc">
                                                             <div class="cit-desc-l">
+                                                                <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
                                                                 <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
                                                                 <!--tuetc-->
                                                                 <p>
                                                                     <?php 
-                                                                    if($item['type']== Default_Model_User::NHAN_VIEN){
-                                                                        echo 'Nhân viên';
+                                                                    if($item['allow_hoptac']!='1'){
+                                                                        if($item['type']== Default_Model_User::NHAN_VIEN||$item['type']== Default_Model_User::ADMIN){
+                                                                            echo 'Nhân viên';
+                                                                        }
+                                                                        else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                            echo 'Cá nhân';
+                                                                        }
+                                                                        else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                            echo 'Đối tác';
+                                                                        }
                                                                     }
-                                                                    else if($item['type']== Default_Model_User::CA_NHAN){
-                                                                        echo 'Cá nhân';
+                                                                    else{
+                                                                        if($item['type_active']== Default_Model_User::NHAN_VIEN){
+                                                                            echo 'Nhân viên';
+                                                                        }
+                                                                        else if($item['type_active']== Default_Model_User::CA_NHAN){
+                                                                            echo 'Cá nhân';
+                                                                        }
+                                                                        else if($item['type_active']== Default_Model_User::DOI_TAC){
+                                                                            echo 'Đối tác';
+                                                                        }
                                                                     }
-                                                                    else if($item['type']== Default_Model_User::DOI_TAC){
-                                                                        echo 'Đối tác';
-                                                                    }
+
                                                                     ?>
                                                                 </p>
+                                                                <p>Mã tin: <?php echo 'DA'.$item['id'];?></p>
+                                                                <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
                                                             </div>
                                                             
                                                             <?php if($item['status']=='3'){?>

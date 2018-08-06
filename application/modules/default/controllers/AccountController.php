@@ -175,7 +175,16 @@ class AccountController extends Core_Controller_Action {
             exit;
         }
         
-        $this->view->items = Default_Model_Tinduan::getTinDuAnDuocChons($this->getUserId());
+        $items = Default_Model_Tinduan::getTinDuAnDuocChons($this->getUserId());
+        for($i=0;$i<count($items);$i++){
+            if($items[$i]['photo']==''){
+                $items[$i]['photo']=PHOTO_DEFAULT;
+            }
+            else{
+                $items[$i]['photo']='/uploads/'.$items[$i]['photo'];
+            }
+        }
+        $this->view->items=$items;
     }
 
     public function logoutAction() {
