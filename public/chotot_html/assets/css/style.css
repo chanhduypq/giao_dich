@@ -59,13 +59,17 @@ img.logo {
         text-align: center;
     }
     .fix-share li:first-child {
-        display: block;
+        /*display: block;*/
     }
     .fix-share-d {
         text-align: right;
     }
     .fix-share-d li:first-child {
         display: inline-block;
+    }
+    
+    .fix-share li {
+        width: 40px;
     }
 
 }    
