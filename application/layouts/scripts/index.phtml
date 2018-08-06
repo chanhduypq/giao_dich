@@ -88,7 +88,16 @@
             
                 <!-- End Search -->
                 <ul class="breadcrumb show-sp">
-                    <li><span>Tìm kiếm</span></li>
+                    <li><span>
+                            <?php 
+                            if($this->action=='duan'){
+                                echo $this->muc;
+                            }
+                            else{
+                                echo 'Tìm kiếm';
+                            }
+                            ?>
+                        </span></li>
                     <li><span id="ten_danh_muc"><?php if(isset($this->tenMuc)) echo $this->tenMuc; else echo 'Tất cả danh mục';?></span></li>
                     <li><span id="ten_khu_vuc"><?php if(isset($this->tenKhuVuc)) echo $this->tenKhuVuc; else echo 'Khu vực';?></span></li>
                 </ul>
