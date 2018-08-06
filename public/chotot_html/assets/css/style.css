@@ -4505,9 +4505,9 @@ a:hover, a:focus {
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-btn span {
         display: none;
     }
-    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item img {
+    /*.page-content.category-page .content-cate .cate-list .cate-wr .cate-item img {
         height: auto;
-    }
+    }*/
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-desc {
         position: relative;
     }
