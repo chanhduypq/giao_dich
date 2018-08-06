@@ -1942,7 +1942,7 @@ a:hover, a:focus {
     height: 100px;
     text-align: center;
     overflow: hidden; 
-    background: #999999;
+    /*background: #999999;*/
 }
 .page-content.category-page .content-cate .cate-ad .cate-ad-list .cate-ad-i .cai-thumb img {
     height: 100%;
