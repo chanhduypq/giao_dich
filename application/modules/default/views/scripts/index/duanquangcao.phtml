@@ -4,8 +4,8 @@ foreach ($quangcao_items as $item) {
     ?>
     <div class="cate-ad-i">
         <div class="cate-ad-ii">
-            <div class="cai-thumb">
-                <img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">
+            <div class="cai-thumb" style="background: url(<?php echo $this->baseUrl($item['photo']); ?>);background-size: 100% 100%;">&nbsp;
+                <!--<img src="<?php echo $this->baseUrl($item['photo']); ?>" alt="">-->
             </div>
             <div class="cai-tit">
                 <a style="word-wrap: break-word;" href="<?php echo $this->baseUrl("/index/duandetail/id/" . $item['id']); ?>"><?php echo $item['title']; ?></a>

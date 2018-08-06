@@ -1,0 +1,192 @@
+<?php 
+$items = $this->items;
+$quangcao_items = $this->quangcao_items;
+?>
+<div class="page-content category-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="ct-sidebar">
+                    <?php // echo $this->render('index/dichvuhaumaisidebar.phtml'); ?>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <div class="content-cate">
+                    <?php 
+                    if(is_array($quangcao_items)&&count($quangcao_items)>0){?>
+                    <div class="cate-ad">
+                        <div class="cate-ad-wr">
+                            <div class="cate-ad-heading">
+                                TIN QUẢNG CÁO
+                            </div>
+                            <div id="cate-ad-slider" class="cate-ad-list">
+                                <?php echo $this->render('index/nhathauquangcao.phtml'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php 
+                    }
+                    ?>
+                    <ul class="cate-tabs">
+                        <!-- Tab link -->
+                        <?php 
+                        echo $this->tab($this->tab,array(
+                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                    ));
+                        ?>
+                        <!-- End Tab link -->
+                        <!-- Tab show -->
+                        <li class="tab-show">
+                            <ul class="ct-display list-show">
+                                <li><a class="i-display _current" data-display="_ct_list"  href="#cate_display"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+                                <li><a class="i-display" data-display="_ct_grid" data-container="cate_display" href="#cate_display"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </li>
+                        <!-- End Tab show -->
+                    </ul>
+                    <div class="cate-list">
+                        <!-- Wrap cate Add _ct_grid to show grid -->
+                        <div id="cate_display" class="cate-wr"> 
+                            <!-- Item cate -->
+                            <?php 
+                            if(is_array($items)&& count($items)>0){
+                                foreach ($items as $item){
+                                    
+                                    ?>
+                                    <div class="cate-item">
+                                        <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                            <div class="cit-part cit-left">
+                                                    <img src="<?php echo $this->baseUrl($item['photo']); ?>">
+                                                <span class="cit-mark"> <?php echo $item['dich_vu_thi_cong'];?></span>
+                                            </div>
+                                            <div class="cit-part cit-right">
+                                                <div class="cit-title">
+                                                    <a href="<?php echo $this->baseUrl("/index/nhathauthicongdetail/id/".$item['id']);?>">
+                                                        
+                                                        <?php if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                        <span class="tap-hot">Hot</span>
+                                                        <?php } ?>
+                                                            <?php echo $item['title'];?>
+                                                    </a>
+                                                </div>
+                                                <div class="cit-desc">
+                                                    <div class="cit-desc-l">
+                                                        <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
+                                                        <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                        <p>
+                                                            <?php 
+                                                            if($item['phan_loai']=='1'){
+                                                                echo 'Nhân viên';
+                                                            }
+                                                            else{
+                                                                echo 'Đối tác';
+                                                            }
+                                                            ?>
+                                                        </p>
+                                                        <p>Mã tin: <?php echo 'NT'.$item['id'];?></p>
+                                                        <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
+                                                    </div>
+                                                    <div class="cit-desc-r">
+                                                        <?php 
+                                                        if ($this->isLogin) {
+                                                            if(!in_array($item['id'], $this->nha_thau_da_chon_ids)){
+                                                            ?>
+                                                            <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
+                                                        <?php 
+                                                            }
+                                                            else{?>
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                            <?php 
+                                                            }
+                                                        }
+                                                        else{
+                                                            if(!$this->isLogin){
+                                                            ?>
+                                                            <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
+                                                        <?php    
+                                                            }
+                                                            
+                                                        }
+                                                        ?>
+                                                        
+                                                    </div>
+                                                    <?php echo $this->vote($item['id'],'nha_thau_thi_cong',(!in_array($item['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$item['id']]));?>
+                                                </div>
+<!--                                                <ul class="fix-share fix-share-d">
+                                                       
+                                                    <?php echo $this->render('index/share.phtml'); ?>
+                                                </ul>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php 
+                                }
+                            }
+                            ?>
+                            
+                            <!-- End cate item -->
+                            
+                        </div>
+                        <!-- End wrap cate -->
+                        <form method="post" action="<?php echo $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get); ?>">
+                            <div class="ct-paginate cate-paginate">
+                                    <?php if ($this->total > $this->limit) { ?>
+                                        <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>
+                                        <?php
+                                    }
+                                    ?>
+                            </div>
+                        </form>
+                    </div>
+                    <?php // echo $this->render('index/dichvuhaumaisidebarmobile.phtml'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+jQuery(function ($){
+            
+   $(".chon_du_an").click(function (){
+       node=$(this);
+        if(!$(this).hasClass('huy')){
+            action='chonduan';
+        }
+        else{
+            action='huychonduan';
+        }
+        id=$(this).attr('id').replace("chon_du_an_","");
+        
+        $.ajax({
+            url:'<?php echo $this->baseUrl();?>/default/news/'+action,
+            data: {'tin_du_an_id':id},                         
+            type: 'post',
+            async: false,
+            success: function(php_script_response){
+                $(node).toggleClass('huy');
+                if($.trim(php_script_response)=='ok'){
+//                    number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
+//                    if(action=='chonduan'){
+//                        number_of_du_an_da_chon++;
+//                        $(node).html('Hủy chọn');
+//                    }
+//                    else{
+//                        number_of_du_an_da_chon--;
+//                        $(node).html('Chọn');
+//                    }
+//                    $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
+//                    $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);
+                    
+                }
+                $(node).parents('.dt-content').toggleClass('selected');
+                $(node).parents('.cate-item-i').toggleClass('selected');
+
+            }
+        });
+   });
+});
+</script>
+

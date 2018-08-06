@@ -2226,7 +2226,7 @@ a:hover, a:focus {
     width: 45%;
     overflow: hidden; 
     text-align: center;
-    background: #999999;
+    /*background: #999999;*/
 }
 @media screen and (max-width: 640px) {
     .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-part,

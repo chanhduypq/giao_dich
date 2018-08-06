@@ -28,15 +28,24 @@
                 <!-- End Top -->
                 <!-- Start Search -->
             <?php 
-            if($this->action=='index'||$this->action=='search'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){?>
+            if($this->action=='index'||$this->action=='search'||$this->action=='searchnhathau'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){
+                if($this->action=='searchnhathau'||$this->action=='nhathauthicongdetail'){
+                    $action='searchnhathau';
+                }
+                else{
+                    $action='search';
+                }
+                ?>
                 <div class="top-search">
                     <div class="container" style="position: relative;">
                         <div class="top-search-c top-search-la3">   
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">
-                                        <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
-                                            <?php echo $this->render('index/formsearch.phtml'); ?>
+                                        <form id="search" action="<?php echo $this->baseUrl('/index/'.$action);?>" method="GET">
+                                            <?php 
+                                            echo $this->render('index/formsearch.phtml'); 
+                                            ?>
                                         </form>
                                     </div>
                                 </div>
@@ -50,14 +59,21 @@
                     ?>
                 </div>
             <?php } 
-            else if($this->action=='duan'||$this->action=='nhathauthicong'||$this->action=='dichvuhaumai'){?>
+            else if($this->action=='duan'||$this->action=='dichvuhaumai'||$this->action=='nhathauthicong'){
+                if($this->action=='nhathauthicong'){
+                    $action='searchnhathau';
+                }
+                else{
+                    $action='search';
+                }
+                ?>
                 <div class="top-search">
                     <div class="top-search-c" style="max-height: 1000px;">
                         <div class="container">
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">
-                                        <form id="search" action="<?php echo $this->baseUrl();?>/index/search" method="GET">
+                                        <form id="search" action="<?php echo $this->baseUrl('/index/'.$action);?>" method="GET">
                                             <?php echo $this->render('index/formsearch1.phtml'); ?>
                                         </form>
                                     </div>
@@ -69,6 +85,7 @@
             <?php 
             }
             ?>
+            
                 <!-- End Search -->
                 <ul class="breadcrumb show-sp">
                     <li><span>Tìm kiếm</span></li>
@@ -138,27 +155,47 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Chọn khu vực</h4>
+                        <h4 class="modal-title">Chọn danh mục</h4>
                     </div>
                     <div class="modal-body">
                         <ul class="parent-menu">
                             <li data-value="0"><a class="item-select"><span>Tất cả danh mục</span></a></li>
                             <?php 
-                            $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
-                            foreach ($du_an_cap_1s as $dac1){
-                                if($dac1['id1']!=''){
-                                    $class='next';
+                            if($this->action=='searchnhathau'||$this->action=='nhathauthicongdetail'||$this->action=='nhathauthicong'){
+                                $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT nha_thau_thi_cong_cap_1.id,nha_thau_thi_cong_cap_1.name,nha_thau_thi_cong_cap_2.id as id1 from nha_thau_thi_cong_cap_1 LEFT JOIN nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_1.id=nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id GROUP BY nha_thau_thi_cong_cap_1.id");
+                                foreach ($du_an_cap_1s as $dac1){
+                                    if($dac1['id1']!=''){
+                                        $class='next';
+                                    }
+                                    else{
+                                        $class='item-select';
+                                    }
+                                    ?>
+                                    <li data-value="<?php echo $dac1['id'];?>">
+                                        <a class="<?php echo $class;?>"><span><?php echo $dac1['name'];?></span>
+                                            <?php if($dac1['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
+                                        </a>
+                                    </li>
+                                <?php                                                                         
                                 }
-                                else{
-                                    $class='item-select';
+                            }
+                            else{
+                                $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
+                                foreach ($du_an_cap_1s as $dac1){
+                                    if($dac1['id1']!=''){
+                                        $class='next';
+                                    }
+                                    else{
+                                        $class='item-select';
+                                    }
+                                    ?>
+                                    <li data-value="<?php echo $dac1['id'];?>">
+                                        <a class="<?php echo $class;?>"><span><?php echo $dac1['name'];?></span>
+                                            <?php if($dac1['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
+                                        </a>
+                                    </li>
+                                <?php                                                                         
                                 }
-                                ?>
-                                <li data-value="<?php echo $dac1['id'];?>">
-                                    <a class="<?php echo $class;?>"><span><?php echo $dac1['name'];?></span>
-                                        <?php if($dac1['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
-                                    </a>
-                                </li>
-                            <?php                                                                         
                             }
                             ?>
                         </ul>
@@ -166,28 +203,55 @@
                         <div class="sub-menu" style="display: none;">
                             <ul>
                                 <?php 
-                                foreach ($du_an_cap_1s as $dac1){?>
-<!--                                    <li class="<?php echo $dac1['id'];?>" data-value="<?php echo $dac1['id'];?>"><a class="item-select"><span>Tất cả</span>
-                                        </a>
-                                    </li>-->
-                                <?php                                                                         
-                                }
-                                ?>
-                                <?php 
-                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
-                                foreach ($du_an_cap_2s as $dac2){
-                                    if($dac2['id1']!=''){
-                                        $class='next sub-next';
-                                    }
-                                    else{
-                                        $class='item-select';
+                                if($this->action=='searchnhathau'||$this->action=='nhathauthicongdetail'||$this->action=='nhathauthicong'){
+                                    foreach ($du_an_cap_1s as $dac1){?>
+    <!--                                    <li class="<?php echo $dac1['id'];?>" data-value="<?php echo $dac1['id'];?>"><a class="item-select"><span>Tất cả</span>
+                                            </a>
+                                        </li>-->
+                                    <?php                                                                         
                                     }
                                     ?>
-                                    <li class="<?php echo $dac2['du_an_cap_1_id'];?>" data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>"><a class="<?php echo $class;?>"><span><?php echo $dac2['name'];?></span>
-                                            <?php if($dac2['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
-                                        </a>
-                                    </li>
-                                <?php                                                                         
+                                    <?php 
+                                    $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id,nha_thau_thi_cong_cap_2.id,nha_thau_thi_cong_cap_2.name,nha_thau_thi_cong_cap_3.id as id1 from nha_thau_thi_cong_cap_2 LEFT JOIN nha_thau_thi_cong_cap_3 on nha_thau_thi_cong_cap_2.id=nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id GROUP BY nha_thau_thi_cong_cap_2.id");
+                                    foreach ($du_an_cap_2s as $dac2){
+                                        if($dac2['id1']!=''){
+                                            $class='next sub-next';
+                                        }
+                                        else{
+                                            $class='item-select';
+                                        }
+                                        ?>
+                                        <li class="<?php echo $dac2['nha_thau_thi_cong_cap_1_id'];?>" data-value="<?php echo $dac2['nha_thau_thi_cong_cap_1_id'].'_'.$dac2['id'];?>"><a class="<?php echo $class;?>"><span><?php echo $dac2['name'];?></span>
+                                                <?php if($dac2['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
+                                            </a>
+                                        </li>
+                                    <?php                                                                         
+                                    }
+                                }
+                                else{
+                                    foreach ($du_an_cap_1s as $dac1){?>
+    <!--                                    <li class="<?php echo $dac1['id'];?>" data-value="<?php echo $dac1['id'];?>"><a class="item-select"><span>Tất cả</span>
+                                            </a>
+                                        </li>-->
+                                    <?php                                                                         
+                                    }
+                                    ?>
+                                    <?php 
+                                    $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
+                                    foreach ($du_an_cap_2s as $dac2){
+                                        if($dac2['id1']!=''){
+                                            $class='next sub-next';
+                                        }
+                                        else{
+                                            $class='item-select';
+                                        }
+                                        ?>
+                                        <li class="<?php echo $dac2['du_an_cap_1_id'];?>" data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>"><a class="<?php echo $class;?>"><span><?php echo $dac2['name'];?></span>
+                                                <?php if($dac2['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
+                                            </a>
+                                        </li>
+                                    <?php                                                                         
+                                    }
                                 }
                                 ?>
                             </ul>
@@ -196,20 +260,39 @@
                         <div class="sub-menu-s" style="display: none;">
                             <ul>
                                 <?php 
-                                foreach ($du_an_cap_2s as $dac2){?>
-<!--                                    <li data-value="<?php echo $dac2['id'];?>" class="<?php echo $dac2['id'];?>"><a class="item-select"><span>Tất cả</span>
-                                        </a>
-                                    </li>-->
-                                <?php                                                                         
+                                if($this->action=='searchnhathau'||$this->action=='nhathauthicongdetail'||$this->action=='nhathauthicong'){
+                                    foreach ($du_an_cap_2s as $dac2){?>
+    <!--                                    <li data-value="<?php echo $dac2['id'];?>" class="<?php echo $dac2['id'];?>"><a class="item-select"><span>Tất cả</span>
+                                            </a>
+                                        </li>-->
+                                    <?php                                                                         
+                                    }
+                                    ?>
+                                    <?php 
+                                    $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id,nha_thau_thi_cong_cap_3.id,nha_thau_thi_cong_cap_3.name,nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id from nha_thau_thi_cong_cap_3 join nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_2.id=nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id");
+                                    foreach ($du_an_cap_3s as $dac3){?>
+                                        <li class="<?php echo $dac3['nha_thau_thi_cong_cap_2_id'];?>" data-value="<?php echo $dac3['nha_thau_thi_cong_cap_1_id'].'_'.$dac3['nha_thau_thi_cong_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span>
+                                            </a>
+                                        </li>
+                                    <?php                                                                         
+                                    }
                                 }
-                                ?>
-                                <?php 
-                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
-                                foreach ($du_an_cap_3s as $dac3){?>
-                                    <li class="<?php echo $dac3['du_an_cap_2_id'];?>" data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span>
-                                        </a>
-                                    </li>
-                                <?php                                                                         
+                                else{
+                                    foreach ($du_an_cap_2s as $dac2){?>
+    <!--                                    <li data-value="<?php echo $dac2['id'];?>" class="<?php echo $dac2['id'];?>"><a class="item-select"><span>Tất cả</span>
+                                            </a>
+                                        </li>-->
+                                    <?php                                                                         
+                                    }
+                                    ?>
+                                    <?php 
+                                    $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
+                                    foreach ($du_an_cap_3s as $dac3){?>
+                                        <li class="<?php echo $dac3['du_an_cap_2_id'];?>" data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span>
+                                            </a>
+                                        </li>
+                                    <?php                                                                         
+                                    }
                                 }
                                 ?>
                             </ul>
