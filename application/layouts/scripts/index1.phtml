@@ -66,7 +66,7 @@
                                     <!-- menu show sp -->
                                     <div class="show-sp">
 
-                                        <?php if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
+                                        <?php if($this->action=='index'||$this->action=='search'){?>
                                         <a class="onClickSearch" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                                         <?php } ?>
 
@@ -116,7 +116,7 @@
                 <!-- End Top -->
                 <!-- Start Search -->
                 <?php 
-                if(Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='index'||Zend_Controller_Front::getInstance()->getRequest()->getActionName()=='search'){?>
+                if($this->action=='index'||$this->action=='search'){?>
                 <div class="top-search">
                     <div class="top-search-c">
                         <div class="container">

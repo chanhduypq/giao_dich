@@ -29,7 +29,7 @@ $items = $this->items;
                                     TIÊU ĐỀ
                                 </div>
                                 <div class="fp-input fp-textbox">
-                                    <input value="<?php echo $items[0]['title'];?>" name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                    <input id="title1" value="<?php echo $items[0]['title'];?>" name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
                                 </div>
                             </div>
                             <!-- End Fp Group -->
@@ -153,6 +153,16 @@ $items = $this->items;
             window.location=$("#frm").attr('action');
         })
         $("#submit").click(function (){
+            if($.trim($("#title1").val()).split(/\s+/).length>15){
+                alert("Vui lòng nhập tiêu đề tối đa 15 chữ.");
+                $("#title1").focus();
+                return;
+            }
+            if($.trim($("#title1").val()).length>150){
+                alert("Vui lòng nhập tiêu đề tối đa 150 kí tự.");
+                $("#title1").focus();
+                return;
+            }
             $("#frm").attr('onsubmit','return true').submit();
         })
         

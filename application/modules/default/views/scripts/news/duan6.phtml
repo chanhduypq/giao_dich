@@ -224,6 +224,11 @@
                 $("#title1").focus();
                 return false;
             }
+            if($.trim($("#title1").val()).length>150){
+                alert("Vui lòng nhập tiêu đề tối đa 150 kí tự.");
+                $("#title1").focus();
+                return false;
+            }
             if($.trim($("#ngay").val())==''){
                 alert("Vui lòng chọn thời gian thi công.");
                 $("#ngay").focus();

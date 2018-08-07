@@ -37,7 +37,13 @@
                                     </div>
                                 </div>
                                 <div class="top-step-mobile">
-                                    <div class="st-btn-back"><a href="#"></a></div>
+                                    <div class="logo-link">
+                                        <a href="/"><img class="logo" src="<?php echo $this->baseUrl();?>/front_end/images/social/logo.jpg"></a>
+                                    </div>
+                                    <div class="st-btn-back">
+                                        &nbsp;
+                                        <!--<a href="#" onclick="window.history.back();"></a>-->
+                                    </div>
                                     <div class="st-info">
                                         <div class="st-t-lg st-tit">Nhu cầu <span>*</span></div>
                                         <div class="st-t-small st-extra">Phần ưu tiên bắt buộc chọn một mục</div>
@@ -47,7 +53,7 @@
                             <div class="col-sm-7 col-md-8 col-ct-step">
                                 <div class="top-step">
                                     <ul class="ct-step">
-                                        <?php echoStep(Zend_Controller_Front::getInstance()->getRequest()->getActionName());?>
+                                        <?php echoStep($this->action);?>
                                     </ul>
                                 </div>
                             </div>
