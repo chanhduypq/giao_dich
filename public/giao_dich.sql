@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2018-08-06 17:27:56
+Date: 2018-08-07 16:10:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -489,6 +489,8 @@ INSERT INTO `tinduan_duancap3` VALUES ('23', '4');
 INSERT INTO `tinduan_duancap3` VALUES ('23', '5');
 INSERT INTO `tinduan_duancap3` VALUES ('24', '1');
 INSERT INTO `tinduan_duancap3` VALUES ('24', '2');
+INSERT INTO `tinduan_duancap3` VALUES ('25', '1');
+INSERT INTO `tinduan_duancap3` VALUES ('25', '2');
 
 -- ----------------------------
 -- Table structure for tinduan_duancap4
@@ -694,7 +696,7 @@ CREATE TABLE `tin_du_an` (
   `so_luot_xem` int(11) NOT NULL DEFAULT '0',
   `vote` float(11,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_du_an
@@ -721,6 +723,8 @@ INSERT INTO `tin_du_an` VALUES ('20', 'Mở đấu thầu gói thầu hoàn thi�
 INSERT INTO `tin_du_an` VALUES ('21', 'Dự án Phú Gia ngầm goá cáp quang', 'Dự án:\r\nĐào hệ thống mương : 2500 m\r\nCấp ống nhưng vàng 6m loại 1,2 ly: 5000 m\r\nThi công hố cáp : 70 hố\r\nThời gian thi công 30 ngày', null, '2018-08-05 00:25:10', '0000-00-00 00:00:00', '1', '2', '2018-08-08 04:00:00', '1', '2', null, '2', '13', '700 triệu', null, null, null, null, null, null, null, '0', null);
 INSERT INTO `tin_du_an` VALUES ('22', 'ồ Dũng Hiệp, Tổ trưởng Tổ dân phố 30B', 'Ông Hồ Dũng Hiệp, Tổ trưởng Tổ dân phố 30B, phường Thịnh Liệt, quận Hoàng Mai cho biết, do chất lượng thi công không đảm bảo, nên 7 nhà sinh hoạt cộng đồng trong tổng số 10 nhà không có khả năng s', null, '2018-08-05 08:29:29', '0000-00-00 00:00:00', '1', '2', '2018-08-28 04:00:00', '1', null, null, '1', '1', '500 triệu', null, null, null, null, null, null, null, '0', null);
 INSERT INTO `tin_du_an` VALUES ('23', 'Xuất siêu 2,34 tỷ USD sang Vương quốc Anh', 'Cập nhật hết tháng 6, tổng kim ngạch xuất nhập khẩu của Việt Nam và Vương quốc Anh đạt 3,12 tỷ USD, tăng 14,2% so với cùng kỳ năm 2017.\r\nTrong đó, trị giá xuất khẩu hàng hóa Việt Nam là 2,73 tỷ USD, t', null, '2018-08-05 08:31:30', '0000-00-00 00:00:00', '1', '2', '2018-08-13 04:00:00', '1', null, null, '1', '1', '600 triệu', null, null, null, null, null, null, null, '0', null);
+INSERT INTO `tin_du_an` VALUES ('24', 'tuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutu', 'sdfdsfsd', null, '2018-08-07 10:37:50', '2018-08-07 15:02:47', '1', '2', '2018-08-07 00:00:00', null, null, null, '1', '1', '4353', null, null, null, null, null, null, null, '0', null);
+INSERT INTO `tin_du_an` VALUES ('25', 'tuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutuệtuệtuệtutu', 'sdfdsfsdfsdfsdsfđsf', null, '2018-08-07 15:04:49', '2018-08-07 15:04:49', '1', '2', '2018-08-07 00:00:00', null, null, null, '1', '1', '4353', null, null, null, null, null, null, null, '0', null);
 
 -- ----------------------------
 -- Table structure for tin_nha_thau_thi_cong
@@ -753,7 +757,7 @@ CREATE TABLE `tin_nha_thau_thi_cong` (
   `so_luot_xem` int(11) NOT NULL DEFAULT '0',
   `vote` float(11,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tin_nha_thau_thi_cong
@@ -766,6 +770,7 @@ INSERT INTO `tin_nha_thau_thi_cong` VALUES ('5', 'Text hình', 'Làm rất toits
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('6', 'Tìm các nhà thầu phụ thi công nhả xưởng', 'Thông tin yêu cầu\r\nChào anh em!\r\nMình đang có con nhà xưởng như hình \r\nCần tìm các thầu phụ anh em nào muốn chiến thì liên hệ nhé', null, '2018-07-30 19:24:27', '0000-00-00 00:00:00', '28', '2', '2018-07-31 04:00:00', '1', null, null, '1', '2', '2', '20 nhân lực chuyên hạ tầng', null, null, '1', '1', '1', '1', '1', '7', '4.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('7', 'Tìm nhà thầu thi công bể bơi gia đình', 'Thông tin yêu cầu\r\nChào các anh em tổ đội/ nhà thầu:\r\n\r\nTôi cần tìm nhà thầu có kinh nghiệm thi công bể bơi gia đình ngoài trời.\r\n\r\nTôi là chủ nhà, tôi ở thành phố Vũng Tàu\r\n\r\nVậy nhà thầu nào làm đư', null, '2018-07-30 19:29:26', '0000-00-00 00:00:00', '28', '2', '2018-07-30 04:00:00', '1', null, null, '1', '1', '2', 'Đội thi công chuyên bể bơi', null, null, '1', '1', '1', '1', '1', '13', '4.00');
 INSERT INTO `tin_nha_thau_thi_cong` VALUES ('8', 'Nhà chung cư tái định cư ở Hà Nội đang bị bỏ rơi?', 'Có thể nói, chung cư tái định cư là “điểm đen” của Hà Nội về chất lượng công trình xây dựng và quản lý đô thị. Bởi, không ít tòa nhà, khu chung cư tái định cư dù được đưa vào sử dụng chư', null, '2018-08-05 07:41:33', '0000-00-00 00:00:00', '1', '2', '2018-08-21 04:00:00', '1', null, null, '1', '0', '1', '30 nhân lực', null, null, null, null, '1', null, '1', '4', '0.00');
+INSERT INTO `tin_nha_thau_thi_cong` VALUES ('9', 'luân luân luân luân ', 'dfgfdgfd', null, '2018-08-07 10:48:00', '2018-08-07 14:59:17', '1', '2', '2018-08-07 00:00:00', null, null, null, '1', '0', '1', 'adasd', null, null, null, null, null, null, null, '0', null);
 
 -- ----------------------------
 -- Table structure for user
@@ -932,6 +937,38 @@ tin_nha_thau_thi_cong.id,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 as cap_1,
 tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_2 as cap_2,
 target_type,'' as city_cap_1,'' as city_cap_2,is_active,'nha_thau_thi_cong' as type_tin,tin_nha_thau_thi_cong.status,tin_nha_thau_thi_cong.is_hot from tin_nha_thau_thi_cong join user on user.id=tin_nha_thau_thi_cong.user_id left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id group by tin_nha_thau_thi_cong.id ;
+
+-- ----------------------------
+-- View structure for view_tin_1
+-- ----------------------------
+DROP VIEW IF EXISTS `view_tin_1`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_tin_1` AS select created_at,
+                title,content,'Dự án' as type_tin_text,'du_an' as type_tin,
+                photo,
+                allow_show_quang_cao,
+                phone,
+                user.type,
+                tin_du_an.id,tin_du_an.is_hot,is_dich_vu_hau_mai,
+                tin_du_an.is_active,vote,so_luot_xem,tin_du_an.du_an_cap_1,null as  nha_thau_thi_cong_cap_1 
+                from tin_du_an 
+                join user on user.id=tin_du_an.user_id 
+                left join tinduan_photo on tinduan_photo.tin_du_an_id=tin_du_an.id 
+                
+                group by tin_du_an.id 
+UNION 
+select created_at,
+                title,content,'Nhà thầu thi công' as type_tin_text,'nha_thau_thi_cong' as type_tin,
+                photo,
+                allow_show_quang_cao,
+                phone,
+                user.type,
+                tin_nha_thau_thi_cong.id,tin_nha_thau_thi_cong.is_hot,is_dich_vu_hau_mai,
+                tin_nha_thau_thi_cong.is_active,vote,so_luot_xem,NULL AS  du_an_cap_1,tin_nha_thau_thi_cong.nha_thau_thi_cong_cap_1 
+                from tin_nha_thau_thi_cong 
+                join user on user.id=tin_nha_thau_thi_cong.user_id 
+                left join tinnhathauthicong_photo on tinnhathauthicong_photo.tin_nha_thau_thi_cong_id=tin_nha_thau_thi_cong.id 
+                
+                group by tin_nha_thau_thi_cong.id ;
 
 -- ----------------------------
 -- View structure for view_tin_du_an
