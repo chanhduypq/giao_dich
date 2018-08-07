@@ -16,7 +16,7 @@ class Admin_NewsController extends Core_Controller_Action {
         $auth = Zend_Auth::getInstance();
         $identity = $auth->getIdentity();
         $this->view->headTitle('Duyêt tin', true);
-        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select UNIX_TIMESTAMP(tin_du_an.created_at) as created_at,"
                 . "title,content,'Dự án' as type_tin_text,'du_an' as type_tin,"
                 . "photo,"
                 . "allow_show_quang_cao,"
@@ -31,7 +31,7 @@ class Admin_NewsController extends Core_Controller_Action {
                 . "group by tin_du_an.id");
         
         
-        $allItems1 = Core_Db_Table::getDefaultAdapter()->fetchAll("select "
+        $allItems1 = Core_Db_Table::getDefaultAdapter()->fetchAll("select UNIX_TIMESTAMP(tin_nha_thau_thi_cong.created_at) as created_at,"
                 . "title,content,'Nhà thầu thi công' as type_tin_text,'nha_thau_thi_cong' as type_tin,"
                 . "photo,"
                 . "allow_show_quang_cao,"
@@ -46,10 +46,38 @@ class Admin_NewsController extends Core_Controller_Action {
                 . "group by tin_nha_thau_thi_cong.id");
         
         $allItems= array_merge($allItems,$allItems1);
+        $created_ats=array();
+        foreach ($allItems as $row){
+            $created_ats[]=$row['created_at'];
+        }
+        arsort($created_ats);
+        $items=array();
+        for($i=0;$i<count($created_ats);$i++){
+            foreach ($allItems as $key=>$allItem){
+                if($allItem['created_at']==$created_ats[$i]){
+                    $items[]=$allItem;
+                    unset($allItems[$key]);
+                    break;
+                }
+            }
+        }
+        
+//        $price = array();
+//        foreach ($allItems as $key => $row)
+//        {
+//            $price[$key] = $row['created_at'];
+//        }
+//        array_multisort($price, SORT_DESC, $allItems);
+        
+//        usort($allItems, function ($item1, $item2) {
+//            if ($item1['created_at'] == $item2['created_at']) return 0;
+//            return $item1['created_at'] > $item2['created_at'] ? -1 : 1;
+//        });
 
-        $this->view->items = $allItems;
+        $this->view->items =$items;// $allItems;
     }
     
+
     public function showAction() {
         $this->isAjax();
         if ($this->_request->isPost()) {
