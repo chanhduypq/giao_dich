@@ -44,8 +44,8 @@
         margin-left: -3px;
     }  
 img.logo {
-    width: 50px;
-    height: 50px;
+    width: auto;
+    max-height: 35px;
 }
 @media screen and (max-width: 768px) {
     .fix-share {
@@ -4971,4 +4971,56 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
 }
 .page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-r p:first-child:before {
     content: "\f041";
+}
+/*new*/
+.col-xs-f .item-top {
+    padding: 0;
+    height: 200px !important;
+    background: #ffcc00 url("../images/ve-sinh.png") no-repeat center 30px;
+    background-size: 50%;
+    text-align: center;
+    position: relative;
+}
+.col-xs-f .item-top a {
+    color: #fff;
+    display: block;
+    bottom: 20px;
+    text-align: center;
+    padding-top: 155px;
+}
+.col-xs-f .item-top.top1 {
+    background: #f47e54 url("../images/ha-tang.png") no-repeat center 30px;
+    background-size: 44%;
+}
+.col-xs-f .item-top.top2 {
+    background: #f8b238 url("../images/thi-cong2.png") no-repeat center 30px;
+    background-size: 40%;
+}
+.col-xs-f .item-top.top3 {
+    background: #50c0ea url("../images/giao-thong.png") no-repeat center 30px;
+    background-size: 46%;
+}
+.col-xs-f .item-top.top4 {
+    background: #c7ad8e url("../images/kien-truc.png") no-repeat center 30px;
+    background-size: 50%;
+}
+.col-xs-f .item-top.top5 {
+    background: #5ed3b6 url("../images/noi-that.png") no-repeat center 30px;
+    background-size: 48%;
+}
+.col-xs-f .item-top.top6 {
+    background: #61ccee url("../images/san-vuon.png") no-repeat center 30px;
+    background-size: 72%;
+}
+.col-xs-f .item-top.top7 {
+    background: #849d9a url("../images/sua-chua.png") no-repeat center 30px;
+    background-size: 60%;
+}
+.col-xs-f .item-top.top8 {
+    background: #ef6565 url("../images/sua-chua2.png") no-repeat center 30px;
+    background-size: 50%;
+}
+.col-xs-f .item-top.top9 {
+    background: #a3cda5 url("../images/cay-canh.png") no-repeat center 30px;
+    background-size: 50%;
 }
