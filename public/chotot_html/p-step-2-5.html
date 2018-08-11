@@ -5,53 +5,100 @@
     <title>Cho tot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=vietnamese" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper step-wrapper">
+        <div id="sec1" class="main-wrapper">
             <!-- Start Top  -->
-            <div class="top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
-                            <div class="top-logo">
-                                <div class="logo-link">
-                                    <a href="#">DANGTINXAYDUNG</a>
-                                </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
+            <div class="layout-3">
+                <div class="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-5 col-md-4 col-logo">
+                                <div class="top-logo">
+                                    <div class="logo-link">
+                                        <a href="#"><img class="logo" src="assets/images/icon/logo.png""></a>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div class="top-step-mobile">
-                                <div class="st-btn-back"><a href="#"></a></div>
-                                <div class="st-info">
-                                    <div class="st-t-lg st-tit">Chi tiết <span>*</span></div>
+                            <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
+                                <div class="top-poc">
+                                    
+                                    <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
+
+                                    <div class="top-oc top-login">
+                                        <!-- chua dang nhap -->
+                                        <!-- <a href="#" class="ct-btn"  data-bg=""><text>Đăng nhập/Đăng ký</text></a> -->
+                                        
+                                        <!-- sau khi da dang nhap -->
+                                        <a class="ct-btn onClickInformation inLogin"  data-bg=""><text>Baovic</text></a>
+                                    </div>
+                                    <!-- show thong tin da dang nhap -->
+                                    <ul class="show-information">
+                                        <li><a href="#">Trang ca nhan</a></li>
+                                        <li><a href="#">Dự án đã chọn</a></li>
+                                        <li><a href="#">Thoat</a></li>
+                                    </ul>
+                                    <!-- end -->
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span>2</span></a>
+                                    </div>
+                                    <!-- dang tin for pc -->
+                                    <div class="top-oc top-post">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
+                                    <!-- dang tin for sp -->
+                                    <a  href="#" class="dang-tin show-sp">Đăng tin</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-ct-step">
-                            <div class="top-step">
-                                <ul class="ct-step">
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _current"><span></span></li>
-                                    <li class="ct-step-i"><span></span></li>
-                                    <li class="ct-step-i"><span></span></li>
-                                </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top -->
+            <!-- Start Top  -->
+            <div class="step-wrapper">
+                <div class="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-4 col-logo">
+                                <div class="top-logo">
+                                    <div class="logo-link">
+                                        <a href="#">DANGTINXAYDUNG</a>
+                                    </div>
+                                    <div class="cv-menu">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="mobile-top-icon">
+                                        <ul>
+                                            <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
+                                            <li>
+                                                <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-sm-7 col-md-8 col-ct-step">
+                                <div class="top-step">
+                                    <ul class="ct-step">
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _current"><span></span></li>
+                                        <li class="ct-step-i"><span></span></li>
+                                        <li class="ct-step-i"><span></span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,75 +112,97 @@
                         <div class="col-md-12">
                             <div class="form-page form-step form-white">
                                 <div class="fp-heading">
-                                    <div class="fp-tit">Chi tiết <span>*</span></div>
+                                    <div class="fp-tit">Step 5: Thông tin chi tiết</div>
+                                </div>
+                                <div class="step-path">
+                                    <div class="ct-breadcrumb">
+                                        <ul>
+                                            <li><a href="#">Step 1</a></li>
+                                            <li><a href="#">Step 2</a></li>
+                                            <li><a href="#">Step 4</a></li>
+                                            <li><a href="#">Step 4</a></li>
+                                            <li><a href="#">Nha cua</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="top-step-mobile">
+                                    <div class="st-btn-back"><a href="#"></a></div>
+                                    <div class="st-info">
+                                        <div class="st-t-lg st-tit">Dự án <span>*</span></div>
+                                        <div class="st-t-small st-extra">Phần ưu tiên bắt buộc chọn một mục</div>
+                                    </div>
                                 </div>
                                 <!-- FP COntent -->
                                 <div class="fp-content">
                                     <!-- Fp Group -->
-                                    <div class="fp-group">
-                                        <div class="fp-label">
-                                            TIÊU ĐỀ
-                                            <div class="checkbox-ad">
-                                                <input type="checkbox" class="cb-in-ad">
-                                                <span>ĐỀ NGHỊ QUẢNG CÁO</span>
-                                            </div>
-                                        </div>
-                                        <div class="fp-input fp-textbox">
-                                            <input type="text" class="fp-control" placeholder="Nhập tiêu đề">
-                                        </div>
-                                    </div>
-                                    <!-- End Fp Group -->
-                                    <!-- Fp Group -->
+                                    
                                     <div class="fp-group row">
-                                        <div class="col-sm-6 col-md-3 col-area">
-                                            <div class="fp-label">KHU VỰC</div>
-                                            <div class="fp-input fp-select">
-                                                <select name="" id="" class="fp-control fp-input-select">
-                                                    <option value="">Đà Nẵng</option>
-                                                    <option value="">Quảng Nam</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-3 col-addr">
-                                            <div class="fp-label">QUẬN/HUYỆN</div>
-                                            <div class="fp-input fp-select">
-                                                <select name="" id="" class="fp-control fp-input-select">
-                                                    <option value="">Sơn Trà</option>
-                                                    <option value="">Ngũ Hành Sơn</option>
-                                                    <option value="">Hải Châu</option>
-                                                    <option value="">Liên Chiểu</option>
-                                                    <option value="">Cẩm Lệ</option>
-                                                    <option value="">Thanh Khê</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6 col-time">
-                                            <div class="fp-label">THỜI GIAN THI CÔNG</div>
-                                            <div class="fp-input fp-date">
-                                                <div class="fp-control fp-date-w">
-                                                    <input type="text" name="day" class="fp-d-d" maxlength="2" placeholder="dd">
-                                                    <span></span>
-                                                    <input type="text" name="month" class="fp-d-m" maxlength="2" placeholder="mm">
-                                                    <span></span>
-                                                    <input type="text" name="year" class="fp-d-y" maxlength="2" placeholder="yy">
+                                        
+                                        <div class="col-sm-12 col-md-6 group-d">
+                                            
+                                                <div class="fp-label">THỜI GIAN THI CÔNG</div>
+                                                <div class="fp-input fp-date">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div> 
+                                            
+                                        </div> 
+                                    
+                                        <div class="col-sm-12 col-md-6 group-t">
+                                            
+                                                <div class="fp-label">TIÊU ĐỀ</div>
+                                                <div class="fp-input fp-textbox">
+                                                    <input type="text" class="fp-control" placeholder="Nhập tiêu đề">
                                                 </div>
-                                            </div>
+                                                
                                         </div>
-                                    </div>
+                                    </div>    
                                     <!-- End Fp Group -->
                                     <!-- Fp Group -->
                                     <div class="fp-group row">
                                         <div class="col-sm-12 col-md-6">
-                                            <div class="fp-sub-group">
-                                                <div class="fp-label">TỔNG ĐẦU TƯ</div>
-                                                <div class="fp-input fp-textbox">
-                                                    <input type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
+                                            <div class="fp-sub-group row">
+                                                <div class="col-sm-6 col-md-6 col-area">
+                                                    <div class="fp-label">KHU VỰC</div>
+                                                    <div class="fp-input fp-select">
+                                                        <select name="" id="" class="fp-control fp-input-select">
+                                                            <option value="">Đà Nẵng</option>
+                                                            <option value="">Quảng Nam</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="fp-sub-group">
-                                                <div class="fp-label">THÔNG TIN YÊU CẦU</div>
-                                                <div class="fp-input fp-textarea">
-                                                    <textarea name="" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
+                                                <div class="col-sm-6 col-md-6 col-addr">
+                                                    <div class="fp-label">QUẬN/HUYỆN</div>
+                                                    <div class="fp-input fp-select">
+                                                        <select name="" id="" class="fp-control fp-input-select">
+                                                            <option value="">Sơn Trà</option>
+                                                            <option value="">Ngũ Hành Sơn</option>
+                                                            <option value="">Hải Châu</option>
+                                                            <option value="">Liên Chiểu</option>
+                                                            <option value="">Cẩm Lệ</option>
+                                                            <option value="">Thanh Khê</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                            
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="fp-sub-group" style="margin-bottom: 20px;">
+                                                        <div class="fp-label">TỔNG ĐẦU TƯ</div>
+                                                        <div class="fp-input fp-textbox">
+                                                            <input type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
+                                                        </div>
+                                                    </div>
+                                                    <div class="fp-sub-group">
+                                                        <div class="fp-label">THÔNG TIN YÊU CẦU</div>
+                                                        <div class="fp-input fp-textarea">
+                                                            <textarea name="" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,6 +260,16 @@
                                         </div>
                                     </div>
                                     <!-- End Fp Group -->
+                                    <div class="fp-group row">
+                                        <div class="fp-label">
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="checkbox-ad" style="display: block;">
+                                                    <input name="is_quang_cao" type="checkbox" class="cb-in-ad" value="1">
+                                                    <span>ĐỀ NGHỊ QUẢNG CÁO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
                                     <div class="fp-submit">
                                         <button class="fp-btn fp-btn-register">ĐĂNG TIN</button>
                                     </div>
@@ -265,6 +344,18 @@
     <div class="go-top">
     </div>
     <script src="assets/js/script.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+    </script>
+        
 </body>
 
 </html>

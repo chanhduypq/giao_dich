@@ -11,48 +11,92 @@
 </head>
 <body>
     <div id="app">
-        <div id="sec1" class="main-wrapper step-wrapper">
+        <div id="sec1" class="main-wrapper">
             <!-- Start Top  -->
-            <div class="top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-5 col-md-4 col-logo">
-                            <div class="top-logo">
-                                <div class="logo-link">
-                                    <a href="#">DANGTINXAYDUNG</a>
-                                </div>
-                                <div class="cv-menu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="mobile-top-icon">
-                                    <ul>
-                                        <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
-                                        </li>
-                                    </ul>
+            <div class="layout-3">
+                <div class="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-5 col-md-4 col-logo">
+                                <div class="top-logo">
+                                    <div class="logo-link">
+                                        <a href="#"><img class="logo" src="assets/images/icon/logo.png""></a>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div class="top-step-mobile">
-                                <div class="st-btn-back"><a href="#"></a></div>
-                                <div class="st-info">
-                                    <div class="st-t-lg st-tit">Danh mục 3</div>
-                                    <div class="st-t-small st-extra">Phần không ưu tiên có thể chọn nhiều mục</div>
+                            <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
+                                <div class="top-poc">
+                                    
+                                    <a class="onClickSearch" href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a>
+
+                                    <div class="top-oc top-login">
+                                        <!-- chua dang nhap -->
+                                        <!-- <a href="#" class="ct-btn"  data-bg=""><text>Đăng nhập/Đăng ký</text></a> -->
+                                        
+                                        <!-- sau khi da dang nhap -->
+                                        <a class="ct-btn onClickInformation inLogin"  data-bg=""><text>Baovic</text></a>
+                                    </div>
+                                    <!-- show thong tin da dang nhap -->
+                                    <ul class="show-information">
+                                        <li><a href="#">Trang ca nhan</a></li>
+                                        <li><a href="#">Dự án đã chọn</a></li>
+                                        <li><a href="#">Thoat</a></li>
+                                    </ul>
+                                    <!-- end -->
+                                    <div class="top-oc top-project">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Dự án đã chọn</text><span>2</span></a>
+                                    </div>
+                                    <!-- dang tin for pc -->
+                                    <div class="top-oc top-post">
+                                        <a href="#" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
+                                    </div>
+                                    <!-- dang tin for sp -->
+                                    <a  href="#" class="dang-tin show-sp">Đăng tin</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-7 col-md-8 col-ct-step">
-                            <div class="top-step">
-                                <ul class="ct-step">
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _done"><span></span></li>
-                                    <li class="ct-step-i _current"><span></span></li>
-                                    <li class="ct-step-i"><span></span></li>
-                                </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top -->
+            <!-- Start Top  -->
+            <div class="step-wrapper">
+                <div class="top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-4 col-logo">
+                                <div class="top-logo">
+                                    <div class="logo-link">
+                                        <a href="#">DANGTINXAYDUNG</a>
+                                    </div>
+                                    <div class="cv-menu">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="mobile-top-icon">
+                                        <ul>
+                                            <li><a href="#" id="onClickSearch"><img src="assets/images/layout/icon-search.png" alt=""></a></li>
+                                            <li>
+                                                <a href="#"><img src="assets/images/layout/bookmark-white.png" alt="#"><span>2</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-sm-7 col-md-8 col-ct-step">
+                                <div class="top-step">
+                                    <ul class="ct-step">
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _done"><span></span></li>
+                                        <li class="ct-step-i _current"><span></span></li>
+                                        <li class="ct-step-i"><span></span></li>
+                                        <li class="ct-step-i"><span></span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,8 +110,24 @@
                         <div class="col-md-12">
                             <div class="form-page form-step fp-mt0">
                                 <div class="fp-heading">
-                                    <div class="fp-tit">Danh mục 3</div>
-                                    <div class="fp-extra">Phần không ưu tiên có thể chọn nhiều mục</div>
+                                    <div class="fp-tit">Step 4: chọn danh mục</div>
+                                </div>
+                                <div class="step-path">
+                                    <div class="ct-breadcrumb">
+                                        <ul>
+                                            <li><a href="#">Step 1</a></li>
+                                            <li><a href="#">Step 2</a></li>
+                                            <li><a href="#">Step 3</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="top-step-mobile">
+                                    <div class="st-btn-back"><a href="#"></a></div>
+                                    <div class="st-info">
+                                        <div class="st-t-lg st-tit">Dụ án</div>
+                                        <div class="st-t-small st-extra">Phần không ưu tiên chỉ có thể chọn một mục</div>
+                                    </div>
                                 </div>
                                 <div class="fp-content">
                                     <!-- Fp Group -->

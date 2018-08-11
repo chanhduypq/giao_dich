@@ -124,7 +124,6 @@ $(function(){
 	$('.tab-drop .drop-drop .item-drop').on('click', function(e){
 		var tab_url = $(this).attr('href');
 		var tab_text = $(this).text();
-		console.log(tab_text, tab_url);
 		$(this).parents('.tab-drop').find('.text-drop').text(tab_text);
 		e.preventDefault();
 	});
@@ -146,7 +145,7 @@ $(function(){
 	var w_wrapper = ct_wrapper.outerWidth() - 10;
 
 	var num_item = ct_wrapper.find('.nav-dropdown').length;
-	console.log(num_item);
+	
 	ct_wrapper.find('.nav-dropdown').css("width", w_wrapper);
 	$('.form-select-city .wrap-select').css("width", (num_item * w_wrapper));
 
