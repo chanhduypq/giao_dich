@@ -339,7 +339,8 @@ img.logo {
 
 @media screen and (max-width: 480px) {
     .select2-container .select2-dropdown .select2-results .select2-results__options .select2-results__option {
-        font-size: 12px;
+        font-size: 16px;
+        font-weight: 500;
         line-height: 30px; }
     .select2-container .select2-dropdown .select2-results > .select2-results__options {
         max-height: 200px; } }
@@ -5111,7 +5112,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
         margin-bottom: 0;
     }
     img.logo {
-        max-height: 35px;
+        margin-top: -3px;
     }
     .page-option .form-page .fp-content .col-md-6.group-d {
         float: left;
