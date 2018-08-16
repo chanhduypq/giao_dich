@@ -40,9 +40,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->du_an_cap_2 = $session_tin_du_an->du_an_cap_2;
         }
-        if(strpos($this->_getBackUrl(), 'duan2')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'duan2')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
         
     }
 
@@ -56,9 +56,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->du_an_cap_3 = is_array($session_tin_du_an->du_an_cap_3)?$session_tin_du_an->du_an_cap_3:array();
         }
-        if(strpos($this->_getBackUrl(), 'duan3')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'duan3')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
        
     }
 
@@ -76,9 +76,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->du_an_cap_4 = is_array($session_tin_du_an->du_an_cap_4)?$session_tin_du_an->du_an_cap_4:array();
         }
-        if(strpos($this->_getBackUrl(), 'duan4')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'duan4')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
         
     }
 
@@ -91,9 +91,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
             $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
         }
-        if(strpos($this->_getBackUrl(), 'duan5')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'duan5')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
     }
     
     
@@ -115,9 +115,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->nha_thau_thi_cong_cap_2 = $session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_2;
         }
-        if(strpos($this->_getBackUrl(), 'nhathauthicong2')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'nhathauthicong2')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
     }
 
     public function nhathauthicong4Action() {
@@ -131,9 +131,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->nha_thau_thi_cong_cap_3 = is_array($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3)?$session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_3:array();
         }
-        if(strpos($this->_getBackUrl(), 'nhathauthicong3')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'nhathauthicong3')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
     }
 
     public function nhathauthicong5Action() {
@@ -146,9 +146,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->items = $items;
             $this->view->nha_thau_thi_cong_cap_4 = is_array($session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4)?$session_tin_nha_thau_thi_cong->nha_thau_thi_cong_cap_4:array();
         }
-        if(strpos($this->_getBackUrl(), 'nhathauthicong4')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'nhathauthicong4')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
     }
 
     public function nhathauthicong6Action() {
@@ -160,9 +160,9 @@ class NewsController extends Core_Controller_Action {
             $this->view->city_cap_1s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_1");
             $this->view->city_cap_2s= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from city_cap_2");
         }
-        if(strpos($this->_getBackUrl(), 'nhathauthicong5')===FALSE){
-            $this->_helper->redirector('step1', 'news', 'default');
-        }
+//        if(strpos($this->_getBackUrl(), 'nhathauthicong5')===FALSE){
+//            $this->_helper->redirector('step1', 'news', 'default');
+//        }
     }
 
     public function savenhathauthicongAction() {

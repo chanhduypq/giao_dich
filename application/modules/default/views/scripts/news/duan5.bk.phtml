@@ -1,11 +1,11 @@
-<form action="<?php echo $this->baseUrl();?>/default/news/nhathauthicong6" id="frm" method="POST" onsubmit="return false;">
+<form action="<?php echo $this->baseUrl();?>/default/news/duan6" id="frm" method="POST" onsubmit="return false;">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-page form-step fp-mt0">
                         <div class="fp-heading">
-                            <div class="fp-tit">Danh mục 3</div>
+                            <div class="fp-tit">Danh mục 4</div>
                             <div class="fp-extra">Phần không ưu tiên có thể chọn nhiều mục</div>
                         </div>
                         <div class="fp-content">
@@ -15,11 +15,11 @@
                                     <?php 
                                     $items=$this->items;
                                     for($i=0,$n=count($items);$i<$n;$i++){
-                                        if(($i==0||$i==1)&&count($this->nha_thau_thi_cong_cap_4)==0){
+                                        if(($i==0||$i==1)&&count($this->du_an_cap_4)==0){
                                             $checked=' checked="checked"';
                                         }
                                         else{
-                                            if(in_array($items[$i]['id'], $this->nha_thau_thi_cong_cap_4)){
+                                            if(in_array($items[$i]['id'], $this->du_an_cap_4)){
                                                 $checked=' checked="checked"';
                                             }
                                             else{

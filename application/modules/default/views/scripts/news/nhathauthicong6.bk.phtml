@@ -1,114 +1,97 @@
 <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
 <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>     
 <script src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-vi.js"></script>
-<form action="<?php echo $this->baseUrl();?>/default/news/saveduan" id="frm" method="POST" enctype="multipart/form-data">
+<form action="<?php echo $this->baseUrl();?>/default/news/savenhathauthicong" id="frm" method="POST">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-page form-step form-white">
                         <div class="fp-heading">
-                            <div class="fp-tit">Step 6: Thông tin chi tiết</div>
-                        </div>
-                        <div class="step-path">
-                            <div class="ct-breadcrumb">
-                                <ul>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/step1">Step 1</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan2">Step 2</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan3">Step 3</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan4">Step 4</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan5">Step 5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="top-step-mobile">
-                            <div class="st-btn-back"><a href="<?php echo $this->baseUrl();?>/default/news/duan5"></a></div>
-                            <div class="st-info">
-                                <div class="st-t-lg st-tit">Dự án <span>*</span></div>
-                                <div class="st-t-small st-extra">Phần ưu tiên bắt buộc chọn một mục</div>
-                            </div>
+                            <div class="fp-tit">Chi tiết <span>*</span></div>
                         </div>
                         <!-- FP COntent -->
                         <div class="fp-content">
                             <!-- Fp Group -->
-
-                            <div class="fp-group row">
-
-                                <div class="col-sm-12 col-md-6 group-d">
-
-                                        <div class="fp-label">THỜI GIAN THI CÔNG</div>
-                                        <div class="fp-input fp-date">
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                            </div>
-                                        </div> 
-
-                                </div> 
-
-                                <div class="col-sm-12 col-md-6 group-t">
-
-                                        <div class="fp-label">TIÊU ĐỀ</div>
-                                        <div class="fp-input fp-textbox">
-                                            <input type="text" class="fp-control" placeholder="Nhập tiêu đề">
-                                        </div>
-
+                            <div class="fp-group">
+                                <div class="fp-label">
+                                    TIÊU ĐỀ
+                                    <div class="checkbox-ad" style="display: block;">
+                                        <input name="is_quang_cao" type="checkbox" class="cb-in-ad" value="1">
+                                        <span>ĐỀ NGHỊ QUẢNG CÁO</span>
+                                    </div>
                                 </div>
-                            </div>    
+                                <div class="fp-input fp-textbox">
+                                    <input id="title1" name="title" type="text" class="fp-control" placeholder="Nhập tiêu đề">
+                                </div>
+                            </div>
+                            <!-- End Fp Group -->
+                            <!-- Fp Group -->
+                            <div class="fp-group row">
+                                <div class="col-sm-6 col-md-3 col-area">
+                                    <div class="fp-label">KHU VỰC</div>
+                                    <div class="fp-input fp-select">
+                                        <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select1">
+                                            <option value="">---Chọn khu vực---</option>
+                                            <?php 
+                                            $city_cap_1s=$this->city_cap_1s;
+                                            if(is_array($city_cap_1s)&&count($city_cap_1s)>0){
+                                                foreach ($city_cap_1s as $city_cap_1){
+                                                    echo '<option value="'.$city_cap_1['id'].'">'.$city_cap_1['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="visibility: hidden;" class="col-sm-6 col-md-3 col-addr">
+                                    <div class="fp-label">QUẬN/HUYỆN</div>
+                                    <div class="fp-input fp-select">
+                                        <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select1">
+                                            <option value="">---Chọn quận/huyện---</option>
+                                            <?php 
+                                            $city_cap_2s=$this->city_cap_2s;
+                                            if(is_array($city_cap_2s)&&count($city_cap_2s)>0){
+                                                foreach ($city_cap_2s as $city_cap_2){
+                                                    echo '<option class="city_cap_2_'.$city_cap_2['city_cap_1_id'].'" value="'.$city_cap_2['id'].'">'.$city_cap_2['name'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-time">
+                                    <div class="fp-label">NGÀY ĐÁP ỨNG DỰ ÁN</div>
+                                    <div class="fp-input fp-date">
+                                        <input readonly="readonly" type="text" id="ngay" name="ngay">
+                                    </div>
+                                </div>
+                            </div>
                             <!-- End Fp Group -->
                             <!-- Fp Group -->
                             <div class="fp-group row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="fp-sub-group row">
                                         <div class="col-sm-6 col-md-6 col-area">
-                                            <div class="fp-label">KHU VỰC</div>
+                                            <div class="fp-label">Phân loại</div>
                                             <div class="fp-input fp-select">
-                                                <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select1">
-                                                    <option value="">---Chọn khu vực---</option>
-                                                    <?php 
-                                                    $city_cap_1s=$this->city_cap_1s;
-                                                    if(is_array($city_cap_1s)&&count($city_cap_1s)>0){
-                                                        foreach ($city_cap_1s as $city_cap_1){
-                                                            echo '<option value="'.$city_cap_1['id'].'">'.$city_cap_1['name'].'</option>';
-                                                        }
-                                                    }
-                                                    ?>
+                                                <select name="phan_loai" id="phan_loai" class="fp-control fp-input-select">
+                                                    <option value="1">Nhân viên</option>
+                                                    <option value="2">Đối tác</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-addr">
-                                            <div class="fp-label">QUẬN/HUYỆN</div>
-                                            <div class="fp-input fp-select">
-                                                <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select1">
-                                                    <option value="">---Chọn quận/huyện---</option>
-                                                    <?php 
-                                                    $city_cap_2s=$this->city_cap_2s;
-                                                    if(is_array($city_cap_2s)&&count($city_cap_2s)>0){
-                                                        foreach ($city_cap_2s as $city_cap_2){
-                                                            echo '<option class="city_cap_2_'.$city_cap_2['city_cap_1_id'].'" value="'.$city_cap_2['id'].'">'.$city_cap_2['name'].'</option>';
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
+                                            <div class="fp-label">Dụng cụ thi công</div>
+                                            <div class="fp-input fp-textbox">
+                                                <input id="dich_vu_thi_cong" name="dich_vu_thi_cong" type="text" class="fp-control" placeholder="VD: 20 xe múc,...">
                                             </div>
                                         </div>
-
-
-                                        <div class="col-sm-12 col-md-12">
-                                            <div class="fp-sub-group" style="margin-bottom: 20px;">
-                                                <div class="fp-label">TỔNG ĐẦU TƯ</div>
-                                                <div class="fp-input fp-textbox">
-                                                    <input type="text" class="fp-control" placeholder="Nhập số tổng đầu tư">
-                                                </div>
-                                            </div>
-                                            <div class="fp-sub-group">
-                                                <div class="fp-label">THÔNG TIN YÊU CẦU</div>
-                                                <div class="fp-input fp-textarea">
-                                                    <textarea name="" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="fp-sub-group">
+                                        <div class="fp-label fp-label-require">THÔNG TIN YÊU CẦU</div>
+                                        <div class="fp-input fp-textarea">
+                                            <textarea id="thong_tin_yeu_cau" name="content" rows="5" class="fp-control" placeholder="Nhập thông tin yêu cầu"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -141,6 +124,7 @@
                                                     <li class="fp-f-chip-i _done">
                                                         <div class="fp-f-chip-ii">
                                                             <img id="img2" alt="" style="object-fit: contain;width: 100%;height: 100px;">
+                                                            <!--<span class="fp-f-loading" data-percent="30%"></span>-->
                                                             <div class="fp-f-stips" style="display: none;">
                                                                 <span class="fp-f-stip stip-ok"></span>
                                                                 <span class="fp-f-stip stip-remove"></span>
@@ -181,16 +165,6 @@
                                 </div>
                             </div>
                             <!-- End Fp Group -->
-                            <div class="fp-group row">
-                                <div class="fp-label">
-                                    <div class="col-sm-12 col-md-12">
-                                        <div class="checkbox-ad" style="display: block;">
-                                            <input name="is_quang_cao" type="checkbox" class="cb-in-ad" value="1">
-                                            <span>ĐỀ NGHỊ QUẢNG CÁO</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>    
                             <div class="fp-submit">
                                 <button class="fp-btn fp-btn-register">ĐĂNG TIN</button>
                             </div>
@@ -226,7 +200,7 @@
         var file_data = $('#fileee').prop('files')[0];   
         var form_data = new FormData();                  
         form_data.append('file', file_data);
-        form_data.append('type', 'du_an');
+        form_data.append('type', 'nha_thau_thi_cong');
         $.ajax({
             url:'<?php echo $this->baseUrl();?>/default/news/upload',
             dataType: 'text',  
@@ -249,7 +223,7 @@
         });
       }
     }
-
+    
     jQuery(function ($){
         $("#frm").submit(function (){
             if($.trim($("#title1").val())==''){
@@ -268,13 +242,13 @@
                 return false;
             }
             if($.trim($("#ngay").val())==''){
-                alert("Vui lòng chọn thời gian thi công.");
+                alert("Vui lòng chọn thời gian đáp ứng dự án.");
                 $("#ngay").focus();
                 return false;
             }
-            if($.trim($("#tong_dau_tu").val())==''){
-                alert("Vui lòng nhập tổng đầu tư.");
-                $("#tong_dau_tu").focus();
+            if($.trim($("#dich_vu_thi_cong").val())==''){
+                alert("Vui lòng nhập dịch vụ thi công.");
+                $("#dich_vu_thi_cong").focus();
                 return false;
             }
             if($.trim($("#thong_tin_yeu_cau").val())==''){
@@ -284,8 +258,9 @@
             }
             return true;
         });
-        $("#city_cap_2 option").hide();
         
+        $("#city_cap_2 option").hide();
+    
         $( "#ngay" ).datepicker({
           changeMonth: true,
           changeYear: true,

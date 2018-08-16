@@ -1,12 +1,12 @@
-<form action="<?php echo $this->baseUrl();?>/default/news/nhathauthicong6" id="frm" method="POST" onsubmit="return false;">
+<form action="<?php echo $this->baseUrl();?>/default/news/nhathauthicong3" id="frm" method="POST" onsubmit="return false;">
     <div class="page-content page-option step-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-page form-step fp-mt0">
                         <div class="fp-heading">
-                            <div class="fp-tit">Danh mục 3</div>
-                            <div class="fp-extra">Phần không ưu tiên có thể chọn nhiều mục</div>
+                            <div class="fp-tit">Phân loại <span>*</span></div>
+                            <div class="fp-extra">Phần ưu tiên bắt buộc chọn một mục</div>
                         </div>
                         <div class="fp-content">
                             <!-- Fp Group -->
@@ -15,11 +15,11 @@
                                     <?php 
                                     $items=$this->items;
                                     for($i=0,$n=count($items);$i<$n;$i++){
-                                        if(($i==0||$i==1)&&count($this->nha_thau_thi_cong_cap_4)==0){
+                                        if($i==0&&!is_numeric($this->nha_thau_thi_cong_cap_1)){
                                             $checked=' checked="checked"';
                                         }
                                         else{
-                                            if(in_array($items[$i]['id'], $this->nha_thau_thi_cong_cap_4)){
+                                            if($this->nha_thau_thi_cong_cap_1==$items[$i]['id']){
                                                 $checked=' checked="checked"';
                                             }
                                             else{
@@ -28,7 +28,7 @@
                                         }
                                         ?>
                                         <div class="fp-list-i">
-                                            <input value="<?php echo $items[$i]['id'];?>" type="checkbox" name="muc[]"<?php echo $checked;?> class="fp-list-chckbox">
+                                            <input value="<?php echo $items[$i]['id'];?>" type="radio" name="muc"<?php echo $checked;?> class="fp-list-chckbox">
                                             <span><?php echo $items[$i]['name'];?></span>
                                         </div>
                                     <?php 
