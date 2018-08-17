@@ -369,7 +369,7 @@ class NewsController extends Core_Controller_Action {
         exit;
     }
     public function completeAction() {
-        
+        $this->disableLayout();
     }
     
     
