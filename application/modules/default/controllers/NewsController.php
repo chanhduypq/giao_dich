@@ -335,34 +335,44 @@ class NewsController extends Core_Controller_Action {
         $this->disableRender();
         $path = UPLOAD . "/public/uploads/";
         @mkdir($path);
-        $temp = explode(".", $_FILES['file']['name']);
-        $file_name = md5(uniqid(rand(), true)) . '.' . $temp[count($temp) - 1];
-        if ( 0 < $_FILES['file']['error'] ) {
+        $file_names=array();
+        for($i=0;$i<count($_FILES['file']['name']);$i++){
+            $temp = explode(".", $_FILES['file']['name'][$i]);
+            $file_name = md5(uniqid(rand(), true)) . '.' . $temp[count($temp) - 1];
+            $file_names[]=$file_name;
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'uploads/' . $file_name);
+        }
+        
+        if (false){// 0 < $_FILES['file']['error'] ) {
             echo 'Error: ' . $_FILES['file']['error'] . '<br>';
         }
         else {
-            move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $file_name);
-            echo $file_name;
+//            move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $file_name);
+            echo json_encode($file_names);// $file_name;
             if($this->_getParam('type')=='du_an'){
                 $session_tin_du_an = new Zend_Session_Namespace('tin_du_an');
                 if(isset($session_tin_du_an->photos)&&is_array($session_tin_du_an->photos)&&count($session_tin_du_an->photos)>0){
                     $photos=$session_tin_du_an->photos;
-                    $photos[]=$file_name;
+//                    $photos[]=$file_name;
+                    $photos= array_merge($photos,$file_names);
                     $session_tin_du_an->photos=$photos;
                 }
                 else{
-                    $session_tin_du_an->photos = array($file_name);
+//                    $session_tin_du_an->photos = array($file_name);
+                    $session_tin_du_an->photos = $file_names;
                 }                
             }
             else{
                 $session_tin_nha_thau_thi_cong = new Zend_Session_Namespace('tin_nha_thau_thi_cong');
                 if(isset($session_tin_nha_thau_thi_cong->photos)&& is_array($session_tin_nha_thau_thi_cong->photos)&&count($session_tin_nha_thau_thi_cong->photos)>0){
                     $photos=$session_tin_nha_thau_thi_cong->photos;
-                    $photos[]=$file_name;
+//                    $photos[]=$file_name;
+                    $photos= array_merge($photos,$file_names);
                     $session_tin_nha_thau_thi_cong->photos=$photos;
                 }
                 else{
-                    $session_tin_nha_thau_thi_cong->photos = array($file_name);
+//                    $session_tin_nha_thau_thi_cong->photos = array($file_name);
+                    $session_tin_nha_thau_thi_cong->photos = $file_names;
                 }    
             }
         }

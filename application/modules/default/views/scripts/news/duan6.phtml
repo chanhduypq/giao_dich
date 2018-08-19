@@ -8,16 +8,16 @@
                 <div class="col-md-12">
                     <div class="form-page form-step form-white">
                         <div class="fp-heading">
-                            <div class="fp-tit">Step 6: Thông tin chi tiết</div>
+                            <div class="fp-tit">Bước 6: Thông tin chi tiết</div>
                         </div>
                         <div class="step-path">
                             <div class="ct-breadcrumb">
                                 <ul>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/step1">Step 1</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan2">Step 2</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan3">Step 3</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan4">Step 4</a></li>
-                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan5">Step 5</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/step1">Bước 1</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan2">Bước 2</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan3">Bước 3</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan4">Bước 4</a></li>
+                                    <li><a href="<?php echo $this->baseUrl();?>/default/news/duan5">Bước 5</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                         <div class="fp-input fp-file">
                                             <div class="fp-f-choose">
                                                 <div class="fp-f-main">
-                                                    <input type="file" name="fileee" id="fileee" class="fp-f-input">
+                                                    <input multiple="multiple" type="file" name="fileee" id="fileee" class="fp-f-input">
                                                     <div class="fp-f-m-before">
                                                         <img src="<?php echo $this->baseUrl();?>/front_end/images/layout/upload-to-cloud.png" alt="">
                                                         <span>Tải ảnh lên</span>
@@ -224,9 +224,36 @@
 //
 //        reader.readAsDataURL(input.files[0]);
         
-        var file_data = $('#fileee').prop('files')[0];   
-        var form_data = new FormData();                  
-        form_data.append('file', file_data);
+//        backup (chỉ upload từng file thôi)
+//        var file_data = $('#fileee').prop('files')[0];   
+//        var form_data = new FormData();                  
+//        form_data.append('file', file_data);
+//        form_data.append('type', 'du_an');
+//        $.ajax({
+//            url:'<?php echo $this->baseUrl();?>/default/news/upload',
+//            dataType: 'text',  
+//            cache: false,
+//            contentType: false,
+//            processData: false,
+//            data: form_data,                         
+//            type: 'post',
+//            success: function(php_script_response){
+//                imgs=$(".fp-f-chip-ii img");
+//                for(i=0;i<imgs.length;i++){
+//                    if($(imgs[i]).attr('src')==undefined||$(imgs[i]).attr('src')=='undefined'||$(imgs[i]).attr('src')==''){
+//                        $(imgs[i]).attr('src', '<?php echo $this->baseUrl();?>/uploads/'+$.trim(php_script_response));//.css('width','100%').css('height','auto');
+//                        $(imgs[i]).next().show();
+//                        $("#list_of_photo").val($("#list_of_photo").val()+","+php_script_response);
+//                        break;
+//                    }
+//                }
+//            }
+//        });
+
+        var form_data = new FormData();   
+        for(i=0;i<$('#fileee').prop('files').length;i++){
+            form_data.append('file[]', $('#fileee').prop('files')[i]);
+        }
         form_data.append('type', 'du_an');
         $.ajax({
             url:'<?php echo $this->baseUrl();?>/default/news/upload',
@@ -237,15 +264,19 @@
             data: form_data,                         
             type: 'post',
             success: function(php_script_response){
+                images=$.parseJSON(php_script_response);
                 imgs=$(".fp-f-chip-ii img");
+                k=0;
                 for(i=0;i<imgs.length;i++){
                     if($(imgs[i]).attr('src')==undefined||$(imgs[i]).attr('src')=='undefined'||$(imgs[i]).attr('src')==''){
-                        $(imgs[i]).attr('src', '<?php echo $this->baseUrl();?>/uploads/'+$.trim(php_script_response));//.css('width','100%').css('height','auto');
+                        $(imgs[i]).attr('src', '<?php echo $this->baseUrl();?>/uploads/'+$.trim(images[k++]));//.css('width','100%').css('height','auto');
                         $(imgs[i]).next().show();
-                        $("#list_of_photo").val($("#list_of_photo").val()+","+php_script_response);
+                    }
+                    if(k==images.length){
                         break;
                     }
                 }
+                $("#list_of_photo").val($("#list_of_photo").val()+","+$.parseJSON(php_script_response).join(','));
             }
         });
       }
