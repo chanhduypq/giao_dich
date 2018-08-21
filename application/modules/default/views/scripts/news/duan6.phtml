@@ -39,11 +39,11 @@
                                         <div class="fp-label">THỜI GIAN THI CÔNG</div>
                                         <div class="fp-input fp-date">
                                             <div class='input-group date' id='datetimepicker1'>
-                                                <!--<input type='text' class="form-control" />-->
-                                                <input class="form-control" readonly="readonly" type="text" id="ngay" name="ngay">
-<!--                                                <span class="input-group-addon">
+                                                <input type='text' class="form-control" id="ngay" name="ngay"/>
+                                                <!--<input class="form-control" readonly="readonly" type="text" id="ngay" name="ngay">-->
+                                                <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>-->
+                                                </span>
                                             </div>
                                         </div> 
 
@@ -318,7 +318,11 @@
         });
         $("#city_cap_2 option").hide();
         
-        $( "#ngay" ).datepicker({
+        $('#datetimepicker1').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+        
+        $( "#ngay1" ).datepicker({
           changeMonth: true,
           changeYear: true,
           dateFormat: "dd/mm/yy",

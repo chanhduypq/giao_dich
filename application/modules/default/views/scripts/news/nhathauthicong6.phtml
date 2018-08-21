@@ -37,10 +37,10 @@
                                         <div class="fp-label">NGÀY ĐÁP ỨNG DỰ ÁN</div>
                                         <div class="fp-input fp-date">
                                             <div class='input-group date' id='datetimepicker1'>
-                                                <input readonly="readonly" class="form-control" type="text" id="ngay" name="ngay">
-<!--                                                <span class="input-group-addon">
+                                                <input class="form-control" type="text" id="ngay" name="ngay">
+                                                <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>-->
+                                                </span>
                                             </div>
                                         </div> 
 
@@ -322,8 +322,12 @@
         });
         
         $("#city_cap_2 option").hide();
+        
+        $('#datetimepicker1').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
     
-        $( "#ngay" ).datepicker({
+        $( "#ngay1" ).datepicker({
           changeMonth: true,
           changeYear: true,
           dateFormat: "dd/mm/yy",
