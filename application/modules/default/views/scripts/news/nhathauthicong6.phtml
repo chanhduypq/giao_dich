@@ -63,7 +63,7 @@
                                         <div class="col-sm-6 col-md-6 col-area">
                                             <div class="fp-label">KHU VỰC</div>
                                             <div class="fp-input fp-select">
-                                                <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select1">
+                                                <select name="city_cap_1" id="city_cap_1" class="fp-control fp-input-select">
                                                     <option value="">---Chọn khu vực---</option>
                                                     <?php 
                                                     $city_cap_1s=$this->city_cap_1s;
@@ -79,7 +79,7 @@
                                         <div class="col-sm-6 col-md-6 col-addr">
                                             <div class="fp-label">QUẬN/HUYỆN</div>
                                             <div class="fp-input fp-select">
-                                                <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select1">
+                                                <select name="city_cap_2" id="city_cap_2" class="fp-control fp-input-select">
                                                     <option value="">---Chọn quận/huyện---</option>
                                                     <?php 
                                                     $city_cap_2s=$this->city_cap_2s;
@@ -321,7 +321,7 @@
             return true;
         });
         
-        $("#city_cap_2 option").hide();
+//        $("#city_cap_2 option").hide();
         
         $('#datetimepicker1').datetimepicker({
                     format: 'DD/MM/YYYY'
@@ -362,17 +362,17 @@
             });
         });
         
-        $("#city_cap_1").change(function (){
-            if($(this).val()==''||$("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').length==0){
-                $("#city_cap_2").parent().parent().css('visibility','hidden');
-                $("#city_cap_2").val('');
-            }
-            else{
-                $("#city_cap_2").parent().parent().css('visibility','visible');
-                $("#city_cap_2 option").hide();
-                $("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').show();
-            }
-            
-        });
+//        $("#city_cap_1").change(function (){
+//            if($(this).val()==''||$("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').length==0){
+//                $("#city_cap_2").parent().parent().css('visibility','hidden');
+//                $("#city_cap_2").val('');
+//            }
+//            else{
+//                $("#city_cap_2").parent().parent().css('visibility','visible');
+//                $("#city_cap_2 option").hide();
+//                $("#city_cap_2").find('option[class="city_cap_2_'+$(this).val()+'"]').show();
+//            }
+//            
+//        });
     });
 </script>
