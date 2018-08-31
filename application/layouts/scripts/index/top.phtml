@@ -13,7 +13,7 @@
                 <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                 <?php } ?>
                 <div class="top-oc top-login">
-                    <a href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$this->isLogin) {?>Đăng nhập/Đăng ký<?php } else echo $this->full_name!=''?$this->full_name:'Guest';?></text>&nbsp;</a>
+                    <a style="min-width: 100px;width: 100%;" href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><text><?php if (!$this->isLogin) {?>Đăng nhập/Đăng ký<?php } else echo $this->full_name!=''?$this->full_name:'Guest';?></text>&nbsp;</a>
                 </div>
 
                 <?php if (!$this->isLogin) {?>
