@@ -5,26 +5,43 @@ if($this->isLogin){
     <ul class="nav navbar-nav" id="topnav">
         <?php 
         if($this->isAdmin){ ?>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'user') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/user">Hợp tác với user</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'dichvuhaumai') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/dichvuhaumai">Dịch vụ hậu mãi</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'config') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/config">Cấu hình</a></li>
-            <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
+            <li<?php if ($this->controller == 'nhanvien') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhanvien">Nhân viên</a></li>
+            <li<?php if ($this->controller == 'user') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/user">Hợp tác với user</a></li>
+            <li<?php if ($this->controller == 'city') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/city">Tỉnh thành</a></li>
+            <li<?php if ($this->controller == 'duan'||$this->controller == 'nhathauthicong') echo ' class="active"'; ?>>
+                <a>Danh mục</a>
+                <ul>
+                    <li<?php if ($this->controller == 'duan') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duan">Dự án</a></li>
+                    <li<?php if ($this->controller == 'nhathauthicong') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauthicong">Nhà thầu thi công</a></li>
+                </ul>
+            </li>
+            <li<?php if ($this->controller == 'dichvuhaumai') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/dichvuhaumai">Dịch vụ hậu mãi</a></li>
+            <li<?php if ($this->controller == 'quangcao'||$this->controller == 'news') echo ' class="active"'; ?>>
+                <a>Quản lý tin</a>
+                <ul>
+                    <li<?php if ($this->controller == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+            <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+                </ul>
+            </li>
+            
+            <li<?php if ($this->controller == 'config') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/config">Cấu hình</a></li>
+            <li<?php if ($this->controller == 'duanchon'||$this->controller == 'nhathauchon') echo ' class="active"'; ?>>
+                <a>Đã chọn</a>
+                <ul>
+                    <li<?php if ($this->controller == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
+                    <li<?php if ($this->controller == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
+                </ul>
+            </li>
+            
         
         <?php 
         }
         if($this->isNhanVien){
         ?>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
-        <li<?php if (Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+        <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+        <li<?php if ($this->controller == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
+        <li<?php if ($this->controller == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
+        <li<?php if ($this->controller == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
         <?php 
         } 
         ?>
