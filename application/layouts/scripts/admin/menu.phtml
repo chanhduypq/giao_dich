@@ -20,7 +20,7 @@ if($this->isLogin){
                 <a>Quản lý tin</a>
                 <ul>
                     <li<?php if ($this->controller == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
-            <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+                    <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
                 </ul>
             </li>
             
@@ -38,10 +38,20 @@ if($this->isLogin){
         }
         if($this->isNhanVien){
         ?>
-        <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
-        <li<?php if ($this->controller == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
-        <li<?php if ($this->controller == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
-        <li<?php if ($this->controller == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+            <li<?php if ($this->controller == 'quangcao'||$this->controller == 'news') echo ' class="active"'; ?>>
+                <a>Quản lý tin</a>
+                <ul>
+                    <li<?php if ($this->controller == 'quangcao') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/quangcao">Quảng cáo</a></li>
+                    <li<?php if ($this->controller == 'news') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/news">Duyệt tin</a></li>
+                </ul>
+            </li>
+            <li<?php if ($this->controller == 'duanchon'||$this->controller == 'nhathauchon') echo ' class="active"'; ?>>
+                <a>Đã chọn</a>
+                <ul>
+                    <li<?php if ($this->controller == 'duanchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/duanchon">Dự án được chọn</a></li>
+                    <li<?php if ($this->controller == 'nhathauchon') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/nhathauchon">Nhà thầu được chọn</a></li>
+                </ul>
+            </li>
         <?php 
         } 
         ?>
