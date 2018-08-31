@@ -76,7 +76,7 @@ $items = $this->items;
                             <ul class="dt-li-share">
                                 <?php echo $this->render('index/sharefull.phtml'); ?>                                  
                             </ul>
-                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo nl2br($config['guide']);?></p>
+                            <p class="note-detail show-pc"><?php $config=$GLOBALS['config']; echo nl2br(htmlentities($config['guide']));?></p>
                             <!-- login sp -->
                             <?php if (!$this->isLogin) { ?>
                             <p class="login login-p" style="background: #E8E8E8; margin-bottom: 0;">

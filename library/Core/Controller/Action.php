@@ -129,9 +129,7 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         if ($this->_request->getActionName() == 'add' || $this->_request->getActionName() == 'edit') {
             $this->formData = $this->_request->getPost();
         }
-        $row=Core_Db_Table::getDefaultAdapter()->fetchRow("select * from config");
-        $row['guide']= html_entity_decode($row['guide']);
-        $GLOBALS['config'] =$row;// Core_Db_Table::getDefaultAdapter()->fetchRow("select * from config");
+        $GLOBALS['config'] = Core_Db_Table::getDefaultAdapter()->fetchRow("select * from config");
     }
 
     
