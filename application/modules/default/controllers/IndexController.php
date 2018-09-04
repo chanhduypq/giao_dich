@@ -13,6 +13,41 @@ class IndexController extends Core_Controller_Action {
             $this->render('index1');
         }
     }
+    public function vaytienAction(){
+        $this->isAjax();
+        echo "Tiền vay:350.000.000, vay trong 60 tháng.<br>";
+        echo "Tiền gốc hàng tháng: 350.000.000/60 = ".(number_format(350000000/60, 0, ",", "."))." làm tròn 5.834.000<br>----------------------------------------<br>";
+        $tien_vay=350000000;
+        $tien_goc_hang_thang=5834000;
+        for($i=0;$i<60;$i++){
+            echo "<br>tháng ".($i+1)."<br>&nbsp;&nbsp;&nbsp;tiền gốc còn lại: ".number_format($tien_vay, 0, ",", ".")." Số tiền phải trả trong tháng này được tính như sau:<br> ";
+            $tien_lai=$tien_vay*10.5/1200;
+            $tong_mot_thang=$tien_goc_hang_thang+$tien_lai;
+            $bom= ceil($tong_mot_thang*3/7);
+            $chi_trinh=ceil($tong_mot_thang*4/7);
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tiền lãi tháng này:".number_format($tien_vay, 0, ",", ".")." *10.5% / 12 = ".number_format($tien_lai, 0, ",", ".")." <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suy ra tổng số tiền phải trả là: ".number_format($tien_lai, 0, ",", ".")." + 5.834.000 = ".number_format($tong_mot_thang, 0, ",", ".")."<br>";
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;số tiền Bờm: ".number_format($tong_mot_thang, 0, ",", ".")." * 3 / 7 = ". number_format($bom, 0, ",", ".")."; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;số tiền chị Trinh: ".number_format($tong_mot_thang, 0, ",", ".")." * 4 / 7 = ". number_format($chi_trinh, 0, ",", ".");
+            $tien_vay-=$tien_goc_hang_thang;
+            
+        }
+    }
+    public function tuyetAction(){
+        $this->isAjax();
+        echo "Tiền vay:350.000.000, vay trong 60 tháng.<br>";
+        echo "Tiền gốc hàng tháng: 350.000.000/60 = ".(number_format(350000000/60, 0, ",", "."))." làm tròn 5.834.000<br>----------------------------------------<br>";
+        $tien_vay=350000000;
+        $tien_goc_hang_thang=5834000;
+        for($i=0;$i<60;$i++){
+            echo "<br>tháng ".($i+1)."<br>&nbsp;&nbsp;&nbsp;tiền gốc còn lại: ".number_format($tien_vay, 0, ",", ".")." Số tiền phải trả trong tháng này được tính như sau:<br> ";
+            $tien_lai=$tien_vay*10.5/1200;
+            $tong_mot_thang=$tien_goc_hang_thang+$tien_lai;
+            $bom= ceil($tong_mot_thang*3/7);
+            $chi_trinh=ceil($tong_mot_thang*4/7);
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tiền lãi tháng này:".number_format($tien_vay, 0, ",", ".")." *10.5% / 12 = ".number_format($tien_lai, 0, ",", ".")." <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suy ra tổng số tiền phải trả là: ".number_format($tien_lai, 0, ",", ".")." + 5.834.000 = ".number_format($tong_mot_thang, 0, ",", ".")."<br>";
+            $tien_vay-=$tien_goc_hang_thang;
+            
+        }
+    }
 
     public function searchAction() {
         $muc = $this->_getParam('muc','0');
