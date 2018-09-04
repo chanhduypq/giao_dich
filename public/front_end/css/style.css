@@ -511,6 +511,10 @@ a:hover, a:focus {
 .top .top-poc .oc-dropdown ul li a {
     color: #111111; }
 
+.top .top-poc .oc-dropdown ul li a:hover {
+    color: #ff772f;
+}
+
 .top-search {
     background: #FFB820;
     /* Old browsers */
