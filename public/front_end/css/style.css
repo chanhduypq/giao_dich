@@ -2800,7 +2800,7 @@ a:hover, a:focus {
 .page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-l {
     float: left;
     width: 60%; }
-.page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-l p:last-child {
+.page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-l p {
     font-weight: 400; }
 .page-content.detail-page .dt-info .dt-content .dt-pos .dt-pos-r {
     float: right;
