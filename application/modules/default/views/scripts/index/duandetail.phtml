@@ -12,11 +12,11 @@ $items = $this->items;
                         <li><a>Dự án</a></li>
                         <?php 
                         if(trim($items[0]['du_an_cap_1'])!=''){                            
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$this->slug).'">'.$items[0]['du_an_cap_1'].'</a></li>';
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id']).'">'.$items[0]['du_an_cap_1'].'</a></li>';
                         }
                         
                         if(trim($items[0]['du_an_cap_2'])!=''){
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$this->slug.'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
+                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id'].'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
                         }
                         
                         ?>

@@ -8,6 +8,7 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function indexAction() {
+        $this->view->items = Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
         
         if(LAYOUT!='1'){
             $this->render('index1');
@@ -376,7 +377,7 @@ class IndexController extends Core_Controller_Action {
     public function duanAction() {
         $muc = $this->_getParam('muc');
 
-        $du_an_cap_1= $this->getDuAnCap1IdBySlug($muc);
+        $du_an_cap_1= $muc;
         
         if ($du_an_cap_1 == '0') {
             $this->_helper->redirector('index', 'index', 'default');
@@ -507,7 +508,7 @@ class IndexController extends Core_Controller_Action {
         
         $items_lienquan= Default_Model_Tinduan::getTinDuAnLienQuans($items[0]['id'],$items[0]['du_an_cap_1_id']);
         $this->view->items_lienquan = $items_lienquan;
-        $this->view->slug= $this->getDuAnCap1SlugById($items[0]['du_an_cap_1_id']);
+        $this->view->du_an_cap_1_id= $items[0]['du_an_cap_1_id'];
         
         $so_luot_xem= Core_Db_Table::getDefaultAdapter()->fetchOne("select so_luot_xem from tin_du_an where id='".$this->_getParam('id')."'");
         $so_luot_xem++;
@@ -640,27 +641,7 @@ class IndexController extends Core_Controller_Action {
     
     
     private function getHeadTitleByDuAnCap1Id($duAnCap1Id){
-        if ($duAnCap1Id == '1') {
-            return 'Dự án - dân dụng';
-        } else if ($duAnCap1Id == '2') {
-            return 'Dự án - hạ tầng';
-        } else if ($duAnCap1Id == '3') {
-            return 'Dự án - cầu đường';
-        } else if ($duAnCap1Id == '4') {
-            return 'Dự án - hoàn thiện nội ngoại thất';
-        } else if ($duAnCap1Id == '5') {
-            return 'Dự án - kiến trúc';
-        } else if ($duAnCap1Id == '6') {
-            return 'Dự án - điện nước';
-        } else if ($duAnCap1Id == '7') {
-            return 'Dự án - sửa chữa';
-        } else if ($duAnCap1Id == '8') {
-            return 'Dự án - cây xanh';
-        } else if ($duAnCap1Id == '9') {
-            return 'Dự án - dịch vụ vệ sinh';
-        } else {
-            return '';
-        }
+        return 'Dự án - ' . Core_Db_Table::getDefaultAdapter()->fetchOne("select name from du_an_cap_1 where id='$duAnCap1Id'");
     }
     
     private function getBackgroundByDuAnCap1Id($duAnCap1Id){
@@ -686,63 +667,4 @@ class IndexController extends Core_Controller_Action {
             return '';
         }
     }
-    
-    private function getDuAnCap1IdBySlug($slug){
-        if ($slug == 'dan-dung') {
-            return '1';
-        } else if ($slug == 'ha-tang') {
-            return '2';
-        } else if ($slug == 'cau-duong') {
-            return '3';
-        } else if ($slug == 'hoan-thien-noi-ngoai-that') {
-            return '4';
-        } else if ($slug == 'kien-truc') {
-            return '5';
-        } else if ($slug == 'dien-nuoc') {
-            return '6';
-        } else if ($slug == 'sua-chua') {
-            return '7';
-        } else if ($slug == 'cay-xanh') {
-            return '8';
-        } else if ($slug == 'dich-vu-ve-sinh') {
-            return '9';
-        } else {
-            return '0';
-        }
-    }
-    
-    private function getDuAnCap1SlugById($du_an_cap_1_id){
-        if($du_an_cap_1_id=='1'){
-            $slug='dan-dung';
-        }
-        else if($du_an_cap_1_id=='2'){
-            $slug='ha-tang';
-        }
-        else if($du_an_cap_1_id=='3'){
-            $slug='cau-duong';
-        }
-        else if($du_an_cap_1_id=='4'){
-            $slug='hoan-thien-noi-ngoai-that';
-        }
-        else if($du_an_cap_1_id=='5'){
-            $slug='kien-truc';
-        }
-        else if($du_an_cap_1_id=='6'){
-            $slug='dien-nuoc';
-        }
-        else if($du_an_cap_1_id=='7'){
-            $slug='sua-chua';
-        }
-        else if($du_an_cap_1_id=='8'){
-            $slug='cay-xanh';
-        }
-        else if($du_an_cap_1_id=='9'){
-            $slug='dich-vu-ve-sinh';
-        }
-        else{
-            $slug='';
-        }
-        return $slug;
-    }
-
 }
