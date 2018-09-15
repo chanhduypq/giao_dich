@@ -4591,6 +4591,10 @@ a:hover, a:focus {
         text-align: right;
         float: none;
     }
+    
+    .page-content.category-page .content-cate .cate-list .cate-wr .cate-item .cit-right .cit-desc .cit-desc-r cit-btn span {
+        visibility: hidden;
+    }
     /*.cate-wr._ct_grid .fix-share-d {
         text-align: center;
     }*/

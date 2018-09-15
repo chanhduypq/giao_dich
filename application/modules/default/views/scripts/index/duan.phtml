@@ -147,7 +147,7 @@ $du_an_cap_2_selected = $this->du_an_cap_2_selected;
                                                         <?php 
                                                             }
                                                             else{?>
-                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy"><span>Hủy chọn</span></a>   
                                                             <?php 
                                                             }
                                                         }
@@ -220,11 +220,11 @@ jQuery(function ($){
                     number_of_du_an_da_chon=parseInt($.trim($("#number_of_du_an_da_chon").html()));
                     if(action=='chonduan'){
                         number_of_du_an_da_chon++;
-                        $(node).html('Hủy chọn');
+                        $(node).html('<span>Hủy chọn</span>');
                     }
                     else{
                         number_of_du_an_da_chon--;
-                        $(node).html('Chọn');
+                        $(node).html('<span>Chọn</span>');
                     }
                     $("#number_of_du_an_da_chon").html(number_of_du_an_da_chon);
                     $("#number_of_du_an_da_chon_mobile").html(number_of_du_an_da_chon);

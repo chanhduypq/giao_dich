@@ -128,7 +128,7 @@ $muc_selected = $this->muc_selected;
                                                         <?php 
                                                             }
                                                             else{?>
-                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                             <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy"><span>Hủy chọn</span></a>   
                                                             <?php 
                                                             }
                                                         }
@@ -194,10 +194,10 @@ jQuery(function ($){
                 $(node).toggleClass('huy');
                 if($.trim(php_script_response)=='ok'){
                     if(action=='chonnhathau'){
-                        $(node).html('Hủy chọn');
+                        $(node).html('<span>Hủy chọn</span>');
                     }
                     else{
-                        $(node).html('Chọn');
+                        $(node).html('<span>Chọn</span>');
                     }
                     
                 }
