@@ -1,22 +1,21 @@
 <?php 
 $items = $this->items;
 ?>
-
 <div class="page-content detail-page category-page">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="ct-breadcrumb">
                     <ul>
-                        <li><a style="color: blue;" href="/">DANGTINXAYDUNG</a></li>
+                        <li><a href="/">DANGTINXAYDUNG</a></li>
                         <li><a>Dự án</a></li>
                         <?php 
                         if(trim($items[0]['du_an_cap_1'])!=''){                            
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id']).'">'.$items[0]['du_an_cap_1'].'</a></li>';
+                            echo '<li><a href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id']).'">'.$items[0]['du_an_cap_1'].'</a></li>';
                         }
                         
                         if(trim($items[0]['du_an_cap_2'])!=''){
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id'].'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
+                            echo '<li><a href="'.$this->baseUrl('/index/duan/muc/'.$items[0]['du_an_cap_1_id'].'/muccap2/'.$items[0]['du_an_cap_2_id']).'">'.$items[0]['du_an_cap_2'].'</a></li>';
                         }
                         
                         ?>

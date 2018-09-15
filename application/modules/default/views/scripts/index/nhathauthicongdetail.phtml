@@ -7,11 +7,11 @@ $items = $this->items;
             <div class="col-md-12">
                 <div class="ct-breadcrumb">
                     <ul>
-                        <li><a style="color: blue;" href="/">DANGTINXAYDUNG</a></li>
-                        <li><a style="color: blue;" href="<?php echo $this->baseUrl('/index/nhathauthicong');?>">Nhà thầu thi công</a></li>
+                        <li><a href="/">DANGTINXAYDUNG</a></li>
+                        <li><a href="<?php echo $this->baseUrl('/index/nhathauthicong');?>">Nhà thầu thi công</a></li>
                         <?php 
                         if(trim($items[0]['nha_thau_thi_cong_cap_1'])!=''){
-                            echo '<li><a style="color: blue;" href="'.$this->baseUrl('/index/nhathauthicong/muc/'.$items[0]['nha_thau_thi_cong_cap_1_id']).'">'.$items[0]['nha_thau_thi_cong_cap_1'].'</a></li>';
+                            echo '<li><a href="'.$this->baseUrl('/index/nhathauthicong/muc/'.$items[0]['nha_thau_thi_cong_cap_1_id']).'">'.$items[0]['nha_thau_thi_cong_cap_1'].'</a></li>';
                         }
                         
                         ?>
