@@ -1,24 +1,18 @@
 <div class="row">
     <div class="col-xs-3 col-sm-5 col-md-4 col-logo">
         <div class="top-logo">
-            <?php 
-            if($this->action=='duan'||$this->action=='duandetail'||$this->action=='nhathauthicong'||$this->action=='nhathauthicongdetail'){?>
-            <div class="logo-link" style="background: linear-gradient(to right, #FFB820 0%, #FF772F 100%);">
-            <?php } 
-            else{?>
             <div class="logo-link">
-            <?php } ?>
                 <a href="/"><img class="logo" src="<?php echo $this->baseUrl();?>/front_end/images/icon/logo.png"></a>
             </div>
         </div>
     </div>
     <div class="col-xs-9 col-sm-7 col-md-8 col-opt">
         <div class="top-poc">
-            <?php if($this->action=='index'||$this->action=='search'||$this->controller=='news'){?>
+            <?php if(true || $this->action=='index'||$this->action=='search'||$this->controller=='news'){?>
                 <?php if($this->action=='index'||$this->action=='search'){?>
                 <a class="onClickSearch show-sp" href="#" id="onClickSearch"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/icon-search.png" alt=""></a>
                 <?php } ?>
-                <div class="top-oc top-login">
+                <div class="top-oc top-login" id="div_dangnhap_dangky1">
                     <a style="min-width: 100px;width: 100%;" href="javascript:void(0)" class="ct-btn onClickInformation"  data-bg=""><?php if (!$this->isLogin) {?>Đăng nhập/Đăng ký<?php } else echo $this->full_name!=''?$this->full_name:'Guest';?>&nbsp;</a>
                 </div>
 
@@ -48,40 +42,29 @@
                     </a>
                 </div>
                 <?php } ?>
-                <?php 
-                if($this->action!='login'&&$this->action!='regist'){
-                ?>
-                <div class="top-oc top-post">
+                
+                <div class="top-oc top-post" id="div_dang_tin1">
                     <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
                 </div>
-                <a  href="<?php echo $this->baseUrl();?>/default/news/step1" class="dang-tin show-sp">Đăng tin</a>
-                <?php } ?>
+                <a id="a_dang_tin1" href="<?php echo $this->baseUrl();?>/default/news/step1" class="dang-tin show-sp">Đăng tin</a>
             <?php 
             }
             else{
             ?>
                 <!-- menu show cpc -->
                 <div class="show-pc">
-                    <?php 
-                    if($this->action!='login'&&$this->action!='regist'){
-                    ?>
-                    <div class="top-oc top-login">
+                    
+                    <div class="top-oc top-login" id="div_dangnhap_dangky">
                         <a href="#" data-bg="" id="login_click"><?php if (!$this->isLogin) {?>Đăng nhập<?php } else echo $this->full_name!=''?$this->full_name:'Guest';?></a>
                     </div>
-                    <?php 
-                    }
-                    if($this->action!='login'&&$this->action!='regist'){
-                    ?>
-                    <div class="top-oc top-project">
+                    
+                    <div class="top-oc top-project" id="div_du_an_da_chon">
                         <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg="">Dự án đã chọn
-                            <?php if ($this->isLogin) {?>
                             <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
-                            <?php } ?>
                         </a>
 
                         <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn btn-post">ĐĂNG TIN CỦA BẠN</a>
                     </div>
-                    <?php } ?>
                     <div class="oc-dropdown">
                         <?php if (!$this->isLogin) {?>
                         <ul>
@@ -134,30 +117,21 @@
                     <?php 
                     }
                     ?>
-                    <?php 
-                    if($this->action!='login'&&$this->action!='regist'){
-                    ?>
+                    
                     <!-- end -->
-                    <div class="top-oc top-project">
+                    <div class="top-oc top-project" id="div_du_an_da_chon1">
                         <a href="<?php echo $this->baseUrl('/default/account/duanchon');?>" class="ct-btn" data-bg=""><text>Dự án đã chọn</text>
-                            <?php if ($this->isLogin) {?>
                             <span id="number_of_du_an_da_chon"><?php echo $this->number_du_an_da_chon;?></span>
-                            <?php } ?>
                         </a>
                     </div>
-                    <?php 
-                    }
-                    ?>
+                    
                     <!-- dang tin for pc -->
-                    <?php 
-                    if($this->action!='login'&&$this->action!='regist'){
-                    ?>
-                    <div class="top-oc top-post">
+                    
+                    <div class="top-oc top-post" id="div_dang_tin">
                         <a href="<?php echo $this->baseUrl();?>/default/news/step1" class="ct-btn" data-bg=""><text>Đăng tin của bạn</text></a>
                     </div>
                     <!-- dang tin for sp -->
-                    <a  href="<?php echo $this->baseUrl();?>/default/news/step1" class="dang-tin show-sp">Đăng tin</a>
-                    <?php } ?>
+                    <a id="a_dang_tin" href="<?php echo $this->baseUrl();?>/default/news/step1" class="dang-tin show-sp">Đăng tin</a>
                 </div>
             <?php 
             }

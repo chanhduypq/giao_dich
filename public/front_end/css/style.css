@@ -4626,7 +4626,7 @@ a:hover, a:focus {
         height: 81px; }
 }
 
-.layout-3 .top {
+.layout-3 .top, .index .top {
     background: #FFB820;
 
     background: -moz-linear-gradient(left, #FFB820 0%, #FF772F 100%);
@@ -4640,13 +4640,13 @@ a:hover, a:focus {
     color: #ffffff; }
 .layout-3 .top .top-logo a {
     color: #ffffff; }
-.layout-3 .top .top-poc .top-oc a {
+.layout-3 .top .top-poc .top-oc a, .index .top .top-poc .top-oc a {
     color: #ffffff;
     border: none;
     background: transparent;
     margin-left: 20px;
 }
-.layout-3 .top .top-poc .top-oc.top-login a {
+.layout-3 .top .top-poc .top-oc.top-login a,.index .top .top-poc .top-oc.top-login a {
     background: transparent url(../images/layout/personal.png) no-repeat 17px; }
 .layout-3 .top .top-poc .top-oc.top-project a {
     background: transparent url(../images/layout/bookmark-white.png) no-repeat 17px; }
@@ -5046,7 +5046,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     background: #a3cda5 url("../images/cay-canh.png") no-repeat center 30px;
     background-size: 50%;
 }
-.layout-3 .top {
+.layout-3 .top,.index .top {
     z-index: 99999;
 }
 .layout-3 .top .top-poc .top-oc.top-login a.inLogin {

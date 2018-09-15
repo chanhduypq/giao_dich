@@ -377,6 +377,25 @@
                 return true;
             }
             jQuery(function ($){
+                
+                <?php                     
+                if($this->action=='login'||$this->action=='regist'){
+                ?>
+                    $("#div_du_an_da_chon").hide();
+                    $("#div_du_an_da_chon1").hide();
+                    $("#div_dangnhap_dangky").hide();
+                    $("#div_dangnhap_dangky1").hide();
+                    
+                    $("#div_dang_tin").hide();
+                    $("#a_dang_tin").hide();
+                    
+                    $("#div_dang_tin1").hide();
+                    $("#a_dang_tin1").hide();
+                <?php } ?>
+                    <?php if (!$this->isLogin) {?>
+                        $("#number_of_du_an_da_chon").hide();
+                    <?php } ?>
+                
                 // show submenu next
                 $(".modal-body ul li a.next").click(function () {
                     if ($(this).hasClass("sub-next")) {
