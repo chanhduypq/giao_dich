@@ -3589,6 +3589,11 @@ a:hover, a:focus {
     margin-top: 7px; }
 .page-option .form-page .fp-content .fp-submit {
     margin-top: 25px; }
+#next{
+    position: absolute;
+    bottom: 20px;
+    min-width: 98%;
+}
 .page-option .form-page .fp-content .fp-desc {
     color: #707070;
     text-align: center;
