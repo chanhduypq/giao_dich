@@ -269,12 +269,129 @@ $items = $this->items;
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div style="width: 10%;float: left;">&nbsp;</div>
                     <!-- Detail Retated post -->
-                    <div class="dt-related content-cate">
+                    <div class="dt-related content-cate col-md-10" style="width: 80%;">
                         <div class="dt-rl-head">
                             <h4>Các bài viết liên quan</h4>
                         </div>
-                        <div class="dt-rl-cate cate-list">
+                        <div class="cate-list">
+                        <!-- Wrap cate Add _ct_grid to show grid -->
+                            <div id="cate_display" class="cate-wr"> 
+                                <!-- Item cate -->
+                                <?php 
+                                if(is_array($items_lienquan)&& count($items_lienquan)>0){
+                                    foreach ($items_lienquan as $item){
+                                        if($item['photo']==''){
+                                            $item['photo']=$this->baseUrl(PHOTO_DEFAULT);
+                                        }
+                                        else{
+                                            $item['photo']=$this->baseUrl("/uploads/".$item['photo']);
+                                        }
+                                        ?>
+                                        <div class="cate-item">
+                                            <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->du_an_da_chon_ids)) echo ' selected'; if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                                <div class="cit-part cit-left">
+                                                        <img src="<?php echo $this->baseUrl($item['photo']); ?>">
+                                                    <span class="cit-mark"> <?php echo $item['tong_dau_tu'];?></span>
+                                                </div>
+                                                <div class="cit-part cit-right">
+                                                    <div class="cit-title">
+                                                        <a href="<?php echo $this->baseUrl("/index/duandetail/id/".$item['id']);?>">
+
+                                                            <?php if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                            <span class="tap-hot">Hot</span>
+                                                            <?php } ?>
+                                                                <?php echo $item['title'];?>
+                                                        </a>
+                                                    </div>
+                                                    <div class="cit-desc">
+                                                        <div class="cit-desc-l">
+                                                            <p class="cdes-main">Ngày đăng tin: <?php echo $item['created_at'];?></p>
+                                                            <p class="cdes-main">Thời gian thi công: <?php echo $item['ngay'];?></p>
+                                                            <p>
+                                                                <?php 
+                                                                if($item['allow_hoptac']!='1'){
+                                                                    if($item['type']== Default_Model_User::NHAN_VIEN||$item['type']== Default_Model_User::ADMIN){
+                                                                        echo 'Nhân viên';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::CA_NHAN){
+                                                                        echo 'Cá nhân';
+                                                                    }
+                                                                    else if($item['type']== Default_Model_User::DOI_TAC){
+                                                                        echo 'Đối tác';
+                                                                    }
+                                                                }
+                                                                else{
+                                                                    if($item['type_active']== Default_Model_User::NHAN_VIEN){
+                                                                        echo 'Nhân viên';
+                                                                    }
+                                                                    else if($item['type_active']== Default_Model_User::CA_NHAN){
+                                                                        echo 'Cá nhân';
+                                                                    }
+                                                                    else if($item['type_active']== Default_Model_User::DOI_TAC){
+                                                                        echo 'Đối tác';
+                                                                    }
+                                                                }
+
+                                                                ?>
+                                                            </p>
+                                                            <p>Mã tin: <?php echo 'DA'.$item['id'];?></p>
+                                                            <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
+                                                        </div>
+                                                        <div class="cit-desc-r">
+                                                            <?php 
+                                                            if ($this->isLogin) {
+                                                                if(!in_array($item['id'], $this->du_an_da_chon_ids)){
+                                                                ?>
+                                                                <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an"><span>Chọn</span></a>
+                                                            <?php 
+                                                                }
+                                                                else{?>
+                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy"><span>Hủy chọn</span></a>   
+                                                                <?php 
+                                                                }
+                                                            }
+                                                            else{
+                                                                if(!$this->isLogin){
+                                                                ?>
+                                                                <a href="<?php echo $this->baseUrl();?>/default/account/login" class="cit-btn"><span>Chọn</span></a>
+                                                            <?php    
+                                                                }
+
+                                                            }
+                                                            ?>
+
+                                                        </div>
+                                                        <?php echo $this->vote($item['id'],'du_an',(!in_array($item['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$item['id']]));?>
+                                                    </div>
+    <!--                                                <ul class="fix-share fix-share-d">
+
+                                                        <?php echo $this->render('index/share.phtml'); ?>
+                                                    </ul>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php 
+                                    }
+                                }
+                                ?>
+
+                                <!-- End cate item -->
+
+                            </div>
+                            <!-- End wrap cate -->
+                            <form method="post" action="<?php echo $this->url(); ?>">
+                                <div class="ct-paginate cate-paginate">
+                                        <?php if ($this->total > $this->limit) { ?>
+                                            <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>
+                                            <?php
+                                        }
+                                        ?>
+                                </div>
+                            </form>
+                        </div>
+<!--                        <div class="dt-rl-cate cate-list">
                             <div class="cate-wr _ct_grid">
                                 
                                 <?php 
@@ -371,9 +488,10 @@ $items = $this->items;
                                         
                                 ?>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- End Detail Retated post -->
+                    <div style="width: 10%;float: left;">&nbsp;</div>
                 </div>
             </div>
         </div>
