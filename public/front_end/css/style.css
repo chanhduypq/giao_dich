@@ -3182,7 +3182,7 @@ a:hover, a:focus {
         padding-bottom: 15px; }
     .page-content.detail-page .dt-info .dt-content .dt-cast ul li {
         padding: 7px;
-        width: calc(100% / 3); }
+        width: calc(100% / 2); }
     .page-content.detail-page .dt-info .dt-content .dt-cast ul li a {
         line-height: 1;
         font-size: 14px;
