@@ -249,14 +249,18 @@ $items = $this->items;
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div style="width: 10%;float: left;">&nbsp;</div>
                     <!-- Detail Retated post -->
-                    <div class="dt-related content-cate">
+                    <div class="dt-related content-cate col-md-10" style="width: 80%;">
                         <div class="dt-rl-head">
                             <h4>Các bài viết liên quan</h4>
                         </div>
-                        <div class="dt-rl-cate cate-list">
-                            <div class="cate-wr _ct_grid">
+                        <div class="cate-list">
+                            <!-- Wrap cate Add _ct_grid to show grid -->
+                            <div id="cate_display" class="cate-wr"> 
+                                <!-- Item cate -->
                                 <?php 
+
                                 if(is_array($items_lienquan)&& count($items_lienquan)>0){
                                     foreach ($items_lienquan as $item){
                                         if($item['photo']==''){
@@ -267,18 +271,18 @@ $items = $this->items;
                                         }
                                         ?>
                                         <div class="cate-item">
-                                            <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected';else if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
+                                            <div class="cate-item-i<?php if($this->isLogin&&in_array($item['id'], $this->nha_thau_da_chon_ids)) echo ' selected'; if(isset($item['is_hot'])&&$item['is_hot']=='1') echo ' hot';?>">
                                                 <div class="cit-part cit-left">
-                                                    <img src="<?php echo $item['photo']; ?>">
+                                                    <img src="<?php echo $this->baseUrl($item['photo']); ?>">
                                                     <span class="cit-mark"><?php echo $item['dich_vu_thi_cong'];?></span>
                                                 </div>
                                                 <div class="cit-part cit-right">
                                                     <div class="cit-title">
                                                         <a href="<?php echo $this->baseUrl("/index/nhathauthicongdetail/id/".$item['id']);?>">
                                                             <?php 
-                                                        if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
-                                                        <span class="tap-hot">Hot</span>
-                                                        <?php } ?>
+                                                            if(isset($item['is_hot'])&&$item['is_hot']=='1'){?>
+                                                            <span class="tap-hot">Hot</span>
+                                                            <?php } ?>
                                                                 <?php echo $item['title'];?>
                                                         </a>
                                                     </div>
@@ -296,6 +300,8 @@ $items = $this->items;
                                                                 }
                                                                 ?>
                                                             </p>
+                                                            <p>Mã tin: <?php echo 'NT'.$item['id'];?></p>
+                                                            <p>Số người xem: <?php echo $item['so_luot_xem'];?></p>
                                                         </div>
                                                         <div class="cit-desc-r">
                                                             <?php 
@@ -306,7 +312,7 @@ $items = $this->items;
                                                             <?php 
                                                                 }
                                                                 else{?>
-                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy">Hủy chọn</a>   
+                                                                 <a style="cursor: pointer;" id="chon_du_an_<?php echo $item['id'];?>" class="cit-btn chon_du_an huy"><span>Hủy chọn</span></a>   
                                                                 <?php 
                                                                 }
                                                             }
@@ -320,6 +326,7 @@ $items = $this->items;
                                                             }
                                                             ?>
                                                         </div>
+                                                        <?php echo $this->vote($item['id'],'nha_thau_thi_cong',(!in_array($item['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$item['id']]));?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -328,11 +335,24 @@ $items = $this->items;
                                     }
                                 }
                                 ?>
-                                
+
+                                <!-- End cate item -->
+
                             </div>
+                            <!-- End wrap cate -->
+                            <form method="post" action="<?php echo $this->url(); ?>">
+                                <div class="ct-paginate cate-paginate">
+                                        <?php if ($this->total > $this->limit) { ?>
+                                            <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>
+                                            <?php
+                                        }
+                                        ?>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- End Detail Retated post -->
+                    <div style="width: 10%;float: left;">&nbsp;</div>
                 </div>
             </div>
         </div>
