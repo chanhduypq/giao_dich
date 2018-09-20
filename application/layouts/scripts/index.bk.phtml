@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,9 +192,9 @@
                     <div class="row">&nbsp;</div>
                     <div class="row header_form">
                         <div class="col-md-1">&nbsp;</div>
-                          <div class="col-md-4 content active du_an_search">Dự án</div>
+                          <div class="col-md-4 content active" id="du_an_search">Dự án</div>
                           <div class="col-md-2">&nbsp;</div>
-                          <div class="col-md-4 ml-auto content nhathauthicong_search">Nhà thầu thi công</div>
+                          <div class="col-md-4 ml-auto content" id="nhathauthicong_search">Nhà thầu thi công</div>
                     </div>
                     <div class="modal-body">
                         
@@ -221,78 +222,10 @@
                             ?>
                         </ul>
                         
-                        <!-- sub menu -->
-                        <div class="sub-menu" style="display: none;">
-                            <ul>
-                                <?php 
-                                
-                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_2.du_an_cap_1_id,du_an_cap_2.id,du_an_cap_2.name,du_an_cap_3.id as id1 from du_an_cap_2 LEFT JOIN du_an_cap_3 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id GROUP BY du_an_cap_2.id");
-                                foreach ($du_an_cap_2s as $dac2){
-                                    if($dac2['id1']!=''){
-                                        $class='next sub-next';
-                                    }
-                                    else{
-                                        $class='item-select';
-                                    }
-                                    ?>
-                                    <li class="<?php echo $dac2['du_an_cap_1_id'];?>" data-value="<?php echo $dac2['du_an_cap_1_id'].'_'.$dac2['id'];?>"><a class="<?php echo $class;?>"><span><?php echo $dac2['name'];?></span>
-                                            <?php if($dac2['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
-                                        </a>
-                                    </li>
-                                <?php                                                                         
-                                }
-                                
-                                ?>
-                            </ul>
-                        </div>
-                        
-                        <!-- sub sub menu -->
-                        <div class="sub-menu-s" style="display: none;">
-                            <ul>
-                                <?php 
-                                
-                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select du_an_cap_3.du_an_cap_2_id,du_an_cap_3.id,du_an_cap_3.name,du_an_cap_2.du_an_cap_1_id from du_an_cap_3 join du_an_cap_2 on du_an_cap_2.id=du_an_cap_3.du_an_cap_2_id");
-                                foreach ($du_an_cap_3s as $dac3){?>
-                                    <li class="<?php echo $dac3['du_an_cap_2_id'];?>" data-value="<?php echo $dac3['du_an_cap_1_id'].'_'.$dac3['du_an_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span>
-                                        </a>
-                                    </li>
-                                <?php                                                                         
-                                }
-                                
-                                ?>
-                            </ul>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        
-        <div class="modal fade searchModal1" id="searchItem1" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Chọn danh mục1</h4>
-                    </div>
-                    <div class="row">&nbsp;</div>
-                    <div class="row header_form">
-                        <div class="col-md-1">&nbsp;</div>
-                          <div class="col-md-4 content du_an_search">Dự án</div>
-                          <div class="col-md-2">&nbsp;</div>
-                          <div class="col-md-4 ml-auto content active nhathauthicong_search">Nhà thầu thi công</div>
-                    </div>
-                    <div class="modal-body">
-                        
-                        <ul class="parent-menu parent_du_an">
+                        <ul class="parent_nhathauthicong" style="display: none;">
                             <li data-value="0"><a class="item-select"><span>Tất cả danh mục</span></a></li>
                             <?php 
-                            
-                                $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT du_an_cap_1.id,du_an_cap_1.name,du_an_cap_2.id as id1 from du_an_cap_1 LEFT JOIN du_an_cap_2 on du_an_cap_1.id=du_an_cap_2.du_an_cap_1_id GROUP BY du_an_cap_1.id");
+                                $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT nha_thau_thi_cong_cap_1.id,nha_thau_thi_cong_cap_1.name,nha_thau_thi_cong_cap_2.id as id1 from nha_thau_thi_cong_cap_1 LEFT JOIN nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_1.id=nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id GROUP BY nha_thau_thi_cong_cap_1.id");
                                 foreach ($du_an_cap_1s as $dac1){
                                     if($dac1['id1']!=''){
                                         $class='next';
@@ -313,7 +246,7 @@
                         </ul>
                         
                         <!-- sub menu -->
-                        <div class="sub-menu" style="display: none;">
+                        <div class="sub-menu sub_du_an" style="display: none;">
                             <ul>
                                 <?php 
                                 
@@ -337,8 +270,30 @@
                             </ul>
                         </div>
                         
+                        <div class="sub_nha_thau_thi_cong" style="display: none;">
+                            <ul>
+                                <?php 
+                                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("SELECT nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id,nha_thau_thi_cong_cap_2.id,nha_thau_thi_cong_cap_2.name,nha_thau_thi_cong_cap_3.id as id1 from nha_thau_thi_cong_cap_2 LEFT JOIN nha_thau_thi_cong_cap_3 on nha_thau_thi_cong_cap_2.id=nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id GROUP BY nha_thau_thi_cong_cap_2.id");
+                                foreach ($du_an_cap_2s as $dac2){
+                                    if($dac2['id1']!=''){
+                                        $class='next sub-next';
+                                    }
+                                    else{
+                                        $class='item-select';
+                                    }
+                                    ?>
+                                    <li class="<?php echo $dac2['nha_thau_thi_cong_cap_1_id'];?>" data-value="<?php echo $dac2['nha_thau_thi_cong_cap_1_id'].'_'.$dac2['id'];?>"><a class="<?php echo $class;?>"><span><?php echo $dac2['name'];?></span>
+                                            <?php if($dac2['id1']!=''){ echo '<i class="fa fa-angle-right fa-5 pull-right"></i>';}?>
+                                        </a>
+                                    </li>
+                                <?php                                                                         
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        
                         <!-- sub sub menu -->
-                        <div class="sub-menu-s" style="display: none;">
+                        <div class="sub-menu-s sub_s_du_an" style="display: none;">
                             <ul>
                                 <?php 
                                 
@@ -354,7 +309,19 @@
                             </ul>
                         </div>
                         
-                        
+                        <div class="sub_s_nha_thau_thi_cong" style="display: none;">
+                            <ul>
+                                <?php 
+                                $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id,nha_thau_thi_cong_cap_3.id,nha_thau_thi_cong_cap_3.name,nha_thau_thi_cong_cap_2.nha_thau_thi_cong_cap_1_id from nha_thau_thi_cong_cap_3 join nha_thau_thi_cong_cap_2 on nha_thau_thi_cong_cap_2.id=nha_thau_thi_cong_cap_3.nha_thau_thi_cong_cap_2_id");
+                                foreach ($du_an_cap_3s as $dac3){?>
+                                    <li class="<?php echo $dac3['nha_thau_thi_cong_cap_2_id'];?>" data-value="<?php echo $dac3['nha_thau_thi_cong_cap_1_id'].'_'.$dac3['nha_thau_thi_cong_cap_2_id'].'_'.$dac3['id'];?>"><a class="item-select"><span><?php echo $dac3['name'];?></span>
+                                        </a>
+                                    </li>
+                                <?php                                                                         
+                                }                                
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -421,9 +388,19 @@
             }
             jQuery(function ($){
                 
-                $(".nhathauthicong_search").click(function (){
-                    $('.searchModal').modal('hide');
-                    $('.searchModal1').modal('show');
+                $("#du_an_search,#nhathauthicong_search").click(function (){
+                    if($(this).attr('id')=="du_an_search"){
+                        $(".parent_du_an").addClass('parent-menu').show();
+                        $(".parent_nhathauthicong").removeClass('parent-menu').hide();
+                    }
+                    else{
+                        $(".parent_nhathauthicong").addClass('parent-menu').show();
+                        $(".parent_du_an").removeClass('parent-menu').hide();
+                    }
+                    $(".sub_du_an").toggleClass('.sub-menu');
+                    $(".sub_nha_thau_thi_cong").toggleClass('.sub-menu');
+                    $(".sub_s_du_an").toggleClass('.sub-menu-s');
+                    $(".sub_nha_thau_thi_cong").toggleClass('.sub-menu-s');
                 });
                 
                 <?php                     
@@ -480,11 +457,6 @@
                     $('.searchModal').modal('hide');
                 });
                 $('.searchModal').on('hidden.bs.modal', function (e) {
-                    $(".modal-body ul").show();
-                    $(".modal-body div").hide();
-                    $(".pull-left").remove();
-                });
-                $('.searchModal1').on('hidden.bs.modal', function (e) {
                     $(".modal-body ul").show();
                     $(".modal-body div").hide();
                     $(".pull-left").remove();
