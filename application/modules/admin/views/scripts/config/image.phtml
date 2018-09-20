@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    function allowUpload(file) {
+        j = 0;
+        for (i = file.value.length - 1; i > - 1; i--)
+            if (file.value.charAt(i) == '.')
+            {
+                j = i;
+                break;
+            }
+        ext = "";
+        for (i = j + 1; i < file.value.length; i++)
+            ext += file.value.charAt(i);
+        ext = ext.toLowerCase();
+        a = new Array();
+        a.push("gif");
+        a.push("jpg");
+        a.push("jpeg");
+        a.push("png");
+        n = a.length;
+        for (i = 0; i < n; i++)
+            if (ext == a.pop()) {
+                return;
+            }
+        alert('Vui lòng chọn file ảnh.');
+        name = jQuery(file).attr('name');
+        jQuery(file).replaceWith("<input type='file' name='" + jQuery(file).attr('name') + "' onchange='allowUpload(this);' accept='image/*'/>");
+        jQuery('input[name="' + name + '"]').css("border-color", "red");
+        jQuery('input[name="' + name + '"]').focus();
+    }
+</script>
+<?php
+if (isset($this->message) && trim($this->message) != '') {
+    ?>
+    <div style="color: red;text-align: center;width: 100%;">
+        <h3><?php echo $this->message; ?></h3>
+    </div>
+    <?php
+}
+?>
+<div class="row-fluid" style="margin-top: 20px;margin-bottom: 20px;">
+    <?php
+    $buttons[] = array('onclick' => 'document.form.submit();', 'label' => 'Lưu');
+    echo $this->toolbar($buttons);
+    ?>
+</div>
+<?php 
+$items = $this->items;
+$row = $this->row;
+?>
+<form name="form" enctype="multipart/form-data" id="form" action="<?php echo $this->baseUrl('/admin/config/image/'); ?>" method="post">
+    <fieldset style="padding: 20px;border: 1px solid black;">
+        <legend style="border-bottom: none;width: auto;">Nhà thầu thi công</legend>
+        <div class="row-fluid">
+            <div class="span4">
+                <input onchange='allowUpload(this);' type="file" name="image_nhathauthicong_1"/>
+                <?php if($row['image_nhathauthicong_1']!=""&&file_exists("./front_end/images/database/".$row['image_nhathauthicong_1'])){?>
+                <img style="width: 100px;height: 100px;" class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$row['image_nhathauthicong_1']); ?>" alt="">
+                <?php } ?>
+                <hr>
+                <input onchange='allowUpload(this);' type="file" name="image_nhathauthicong_2"/>
+                <?php if($row['image_nhathauthicong_2']!=""&&file_exists("./front_end/images/database/".$row['image_nhathauthicong_2'])){?>
+                <img style="width: 100px;height: 100px;" class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$row['image_nhathauthicong_2']); ?>" alt="">
+                <?php } ?>
+            </div>
+        </div>
+    </fieldset>
+    <?php 
+    
+    foreach ($items as $item){
+    ?>
+    <fieldset style="padding: 20px;border: 1px solid black;">
+        <legend style="border-bottom: none;width: auto;"><?php echo $item['name'];?></legend>
+        <div class="row-fluid">
+            <div class="span4">
+                <input onchange='allowUpload(this);' type="file" name="name_<?php echo $item['id'];?>_1"/>
+                <?php if($item['image1']!=""&&file_exists("./front_end/images/database/".$item['image1'])){?>
+                <img style="width: 100px;height: 100px;" class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$item['image1']); ?>" alt="">
+                <?php } ?>
+                <hr>
+                <input onchange='allowUpload(this);' type="file" name="name_<?php echo $item['id'];?>_2"/>
+                <?php if($item['image2']!=""&&file_exists("./front_end/images/database/".$item['image2'])){?>
+                <img style="width: 100px;height: 100px;" class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$item['image2']); ?>" alt="">
+                <?php } ?>
+            </div>
+        </div>
+    </fieldset>
+    <?php 
+    }
+    ?>
+</form>
