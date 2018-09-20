@@ -5051,8 +5051,11 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     background: #a3cda5 url("../images/cay-canh.png") no-repeat center 30px;
     background-size: 50%;
 }
-.layout-3 .top,.index .top {
+.layout-3 .top {
     z-index: 99999;
+}
+.index .top{
+    /*z-index: 99999;*/
 }
 .layout-3 .top .top-poc .top-oc.top-login a.inLogin {
     margin-left: 0;
