@@ -24,7 +24,13 @@ if($this->isLogin){
                 </ul>
             </li>
             
-            <li<?php if ($this->controller == 'config') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/config">Cấu hình</a></li>
+            <li<?php if ($this->controller == 'config') echo ' class="active"'; ?>>
+                <a>Cấu hình</a>
+                <ul>
+                    <li<?php if ($this->action == 'index') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/config">Nội dung</a></li>
+                    <li<?php if ($this->action == 'image') echo ' class="active"'; ?>><a href="<?php echo $this->baseUrl(); ?>/admin/config/image">Trang chủ</a></li>
+                </ul>
+            </li>
             <li<?php if ($this->controller == 'duanchon'||$this->controller == 'nhathauchon') echo ' class="active"'; ?>>
                 <a>Đã chọn</a>
                 <ul>

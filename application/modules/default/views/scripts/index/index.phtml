@@ -13,8 +13,12 @@
             <div class="col-xs-f col-xs-4 col-sm-5 col-md-4 col-md-opt">
                 <div class="home-item item-large">
                     <a href="<?php echo $this->baseUrl();?>/index/nhathauthicong">
+                        <?php if($GLOBALS['config']['image_nhathauthicong_1']!=""&&file_exists("./front_end/images/database/".$GLOBALS['config']['image_nhathauthicong_1'])){?>
                         <img class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$GLOBALS['config']['image_nhathauthicong_1']); ?>" alt="">
+                        <?php } ?>
+                        <?php if($GLOBALS['config']['image_nhathauthicong_2']!=""&&file_exists("./front_end/images/database/".$GLOBALS['config']['image_nhathauthicong_2'])){?>
                         <img class="bg" src="<?php echo $this->baseUrl("/front_end/images/database/".$GLOBALS['config']['image_nhathauthicong_2']); ?>" alt="">
+                        <?php } ?>
                         <span>NHÀ THẦU THI CÔNG</span>
                     </a>
                 </div>
@@ -25,8 +29,12 @@
                 <div class="col-xs-f col-xs-6 col-sm-6 col-md-4">
                     <div class="home-item item-medium">
                         <a href="<?php echo $this->baseUrl("/index/duan/muc/".$item['id']);?>">
+                            <?php if($item['image1']!=""&&file_exists("./front_end/images/database/".$item['image1'])){?>
                             <img class="foreign" src="<?php echo $this->baseUrl("/front_end/images/database/".$item['image1']); ?>" alt="">
+                            <?php } ?>
+                            <?php if($item['image2']!=""&&file_exists("./front_end/images/database/".$item['image2'])){?>
                             <img class="bg" src="<?php echo $this->baseUrl("/front_end/images/database/".$item['image2']); ?>" alt="">
+                            <?php } ?>
                             <span><?php echo $item['name'];?></span>
                         </a>
                     </div>
