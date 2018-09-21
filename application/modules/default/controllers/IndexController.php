@@ -51,7 +51,6 @@ class IndexController extends Core_Controller_Action {
     }
 
     public function searchAction() {
-        $type= $this->_getParam('du_an');
         $muc = $this->_getParam('muc','0');
         $city=$this->_getParam('city','0');
         if(strpos($muc, '_')!==FALSE){
@@ -85,7 +84,7 @@ class IndexController extends Core_Controller_Action {
             exit;
         }
 
-        if($type=='du_an'){
+        if($this->_getParam('type','du_an')=='du_an'){
             $where = "(status<>3 OR status is null) and is_active=1";
         }
         else{
@@ -93,7 +92,7 @@ class IndexController extends Core_Controller_Action {
         }
         $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
         if ($muc!='0'&&ctype_digit($muc)){
-            if($type=='du_an'){
+            if($this->_getParam('type','du_an')=='du_an'){
                 $where .= " and du_an_cap_1='$muc'";
             }
             else{
@@ -102,7 +101,7 @@ class IndexController extends Core_Controller_Action {
             
         }
         if (ctype_digit($muccap2) && $muccap2 != '0') {
-            if($type=='du_an'){
+            if($this->_getParam('type','du_an')=='du_an'){
                 $where .= " and du_an_cap_2='$muccap2'";
             }
             else{
@@ -111,7 +110,7 @@ class IndexController extends Core_Controller_Action {
             
         }
         if (ctype_digit($muccap3) && $muccap3 != '0') {
-            if($type=='du_an'){
+            if($this->_getParam('type','du_an')=='du_an'){
                 $where .= " and id IN (select tin_du_an_id from tinduan_duancap3 where du_an_cap_3='$muccap3')";
             }
             else{
@@ -141,7 +140,7 @@ class IndexController extends Core_Controller_Action {
             }
         }
 
-        if($type=='du_an'){
+        if($this->_getParam('type','du_an')=='du_an'){
             $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
         }
         else{
@@ -165,7 +164,7 @@ class IndexController extends Core_Controller_Action {
         $this->view->mucCap3=$muccap3;
         $this->view->city=$city;
         $this->view->cityCap2=$citycap2;
-        if($type=='du_an'){
+        if($this->_getParam('type','du_an')=='du_an'){
             $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($muc), true);
             $this->view->tenMuc= $this->getTenMuc($muc, $muccap2, $muccap3);
         }
@@ -175,6 +174,9 @@ class IndexController extends Core_Controller_Action {
         }
         
         $this->view->tenKhuVuc= $this->getTenKhuVuc($city, $citycap2);
+        if($this->_getParam('type','du_an')!='du_an'){
+            $this->render('searchnhathau');
+        }
         
     }
 

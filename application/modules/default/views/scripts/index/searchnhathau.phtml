@@ -113,7 +113,7 @@ $quangcao_items = $this->quangcao_items;
                                                         ?>
                                                         
                                                     </div>
-                                                    <?php echo $this->vote($item['id'],'nha_thau_thi_cong',(!in_array($item['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$item['id']]));?>
+                                                    <?php echo $this->vote($item['id'],'nha_thau_thi_cong',(empty($this->voteNhathaus)|| !in_array($item['id'], array_keys($this->voteNhathaus))?0:$this->voteNhathaus[$item['id']]));?>
                                                 </div>
 <!--                                                <ul class="fix-share fix-share-d">
                                                        

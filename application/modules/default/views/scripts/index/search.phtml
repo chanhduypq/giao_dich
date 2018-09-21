@@ -130,7 +130,7 @@ $quangcao_items = $this->quangcao_items;
                                                         ?>
                                                         
                                                     </div>
-                                                    <?php echo $this->vote($item['id'],'du_an',(!in_array($item['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$item['id']]));?>
+                                                    <?php echo $this->vote($item['id'],'du_an',(empty($this->voteDuans)||!in_array($item['id'], array_keys($this->voteDuans))?0:$this->voteDuans[$item['id']]));?>
                                                 </div>
 <!--                                                <ul class="fix-share fix-share-d">
                                                        

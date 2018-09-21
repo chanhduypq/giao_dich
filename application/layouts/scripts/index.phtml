@@ -64,7 +64,7 @@
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">
-                                        <form id="search" action="<?php echo $this->baseUrl('/index/'.$action);?>" method="GET">
+                                        <form id="search" action="<?php echo $this->baseUrl('/index/search/type/'.$this->type);?>" method="GET">
                                             <?php 
                                             echo $this->render('index/formsearch.phtml'); 
                                             ?>
@@ -95,7 +95,7 @@
                             <div class="row">
                                 <div class="col col-md-12">
                                     <div class="search-block">
-                                        <form id="search" action="<?php echo $this->baseUrl('/index/'.$action);?>" method="GET">
+                                        <form id="search" action="<?php echo $this->baseUrl('/index/search/type/'.$this->type);?>" method="GET">
                                             <?php echo $this->render('index/formsearch1.phtml'); ?>
                                         </form>
                                     </div>
@@ -193,6 +193,14 @@
         $url= rtrim($url,'/');
         $url_duan=$url."/type/du_an";
         $url_nha_thau_thi_cong=$url."/type/nha_thau_thi_cong";
+        //vì xử lý code này if(!array_key_exists('q', Zend_Controller_Front::getInstance()->getRequest()->getParams())&&(strpos($this->url(), "type/nha_thau_thi_cong")!==FALSE||strpos($this->url(), "type/du_an")!==FALSE)){
+        //nên phải có các dòng code phía dưới
+        $url_duan= str_replace("q=&", "", $url_duan);
+        $url_duan= str_replace("q=", "", $url_duan);
+        $url_duan= str_replace("q/", "", $url_duan);
+        $url_nha_thau_thi_cong= str_replace("q=&", "", $url_nha_thau_thi_cong);
+        $url_nha_thau_thi_cong= str_replace("q=", "", $url_nha_thau_thi_cong);
+        $url_nha_thau_thi_cong= str_replace("q/", "", $url_nha_thau_thi_cong);
         ?>
         <div class="modal fade searchModal" id="searchItem" role="dialog">
             <div class="modal-dialog">
@@ -385,7 +393,6 @@
             </div>
         </div>
         
-        
         <link rel="stylesheet" href="<?php echo $this->baseUrl('/jquery-ui-1.10.3/themes/smoothness/jquery-ui.css'); ?>" type="text/css"/>
         <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/jquery-ui-1.10.3/ui/jquery-ui.js"></script>  
         <script src="<?php echo $this->baseUrl();?>/front_end/js/bootstrap.min.js?<?php echo substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);?>"></script>        
@@ -396,7 +403,7 @@
             }
             jQuery(function ($){
                 <?php 
-                if(strpos($this->url(), "type/nha_thau_thi_cong")!==FALSE||strpos($this->url(), "type/du_an")!==FALSE){
+                if(!array_key_exists('q', Zend_Controller_Front::getInstance()->getRequest()->getParams())&&(strpos($this->url(), "type/nha_thau_thi_cong")!==FALSE||strpos($this->url(), "type/du_an")!==FALSE)){
                 ?>
                 $('.searchModal').modal('show');
                 <?php 
