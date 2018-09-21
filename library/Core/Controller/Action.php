@@ -188,6 +188,9 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
             $temp[$voteNhathau['tin_id']]=$voteNhathau['value'];
         }
         $this->view->voteNhathaus=$temp;
+        
+        
+        $this->view->type= $this->_getParam('type','du_an');
     }
     
     private function isLogin(){
