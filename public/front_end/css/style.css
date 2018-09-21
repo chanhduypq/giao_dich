@@ -5052,7 +5052,7 @@ background: transparent url(../images/layout/pencil-white.png) no-repeat 17px; }
     background-size: 50%;
 }
 .layout-3 .top {
-    z-index: 99999;
+    /*z-index: 99999;*/
 }
 .index .top{
     /*z-index: 99999;*/
