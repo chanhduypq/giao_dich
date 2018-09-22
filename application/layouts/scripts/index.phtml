@@ -49,15 +49,7 @@
                 </div>
                 <!-- End Top -->
                 <!-- Start Search -->
-            <?php 
-            if($this->action=='index'||$this->action=='search'||$this->action=='searchnhathau'||$this->action=='duandetail'||$this->action=='nhathauthicongdetail'){
-                if($this->action=='searchnhathau'||$this->action=='nhathauthicongdetail'){
-                    $action='searchnhathau';
-                }
-                else{
-                    $action='search';
-                }
-                ?>
+           
                 <div class="top-search">
                     <div class="container" style="position: relative;">
                         <div class="top-search-c top-search-la3">   
@@ -80,33 +72,7 @@
                     }
                     ?>
                 </div>
-            <?php } 
-            else if($this->action=='duan'||$this->action=='dichvuhaumai'||$this->action=='nhathauthicong'){
-                if($this->action=='nhathauthicong'){
-                    $action='searchnhathau';
-                }
-                else{
-                    $action='search';
-                }
-                ?>
-                <div class="top-search">
-                    <div class="top-search-c" style="max-height: 1000px;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col col-md-12">
-                                    <div class="search-block">
-                                        <form id="search" action="<?php echo $this->baseUrl('/index/search/type/'.$this->type);?>" method="GET">
-                                            <?php echo $this->render('index/formsearch1.phtml'); ?>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php 
-            }
-            ?>
+            
             
                 <!-- End Search -->
                 <ul class="breadcrumb show-sp">
@@ -180,6 +146,9 @@
         </div>
         <?php 
         $url=$this->url();
+        if($url=='/'){
+            $url.='/index/search';
+        }
         if(strpos($url, "type/nha_thau_thi_cong")!==FALSE){
             $active_du_an='';
             $active_nha_thau_thi_cong=' active';

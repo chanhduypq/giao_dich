@@ -31,10 +31,10 @@ $quangcao_items = $this->quangcao_items;
                         <!-- Tab link -->
                         <?php 
                         echo $this->tab($this->tab,array(
-                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
-                                                        $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get.($this->type!='du_an'?'type/nha_thau_thi_cong':'')),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/nhanVien/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get.($this->type!='du_an'?'type/nha_thau_thi_cong':'')),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/doiTac/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get.($this->type!='du_an'?'type/nha_thau_thi_cong':'')),
+                                                        $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/khachHang/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get.($this->type!='du_an'?'type/nha_thau_thi_cong':'')),
                                                     ));
                         ?>
                         <!-- End Tab link -->
@@ -131,7 +131,7 @@ $quangcao_items = $this->quangcao_items;
                             
                         </div>
                         <!-- End wrap cate -->
-                        <form method="post" action="<?php echo $this->baseUrl('/index/searchnhathau/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get); ?>">
+                        <form method="post" action="<?php echo $this->baseUrl('/index/search/q/'.$this->q.'/'.$this->mucGet.'/tab/tatCa/'.($this->mucCap2Get!=''?($this->mucCap2Get.'/'):'').($this->mucCap3Get!=''?($this->mucCap3Get.'/'):'').$this->cityGet.'/'.$this->cityCap2Get.($this->type!='du_an'?'type/nha_thau_thi_cong':'')); ?>">
                             <div class="ct-paginate cate-paginate">
                                     <?php if ($this->total > $this->limit) { ?>
                                         <?php echo $this->paginationControl($this->paginator, 'Sliding', array('_partials/paginator.phtml', 'default')); ?>

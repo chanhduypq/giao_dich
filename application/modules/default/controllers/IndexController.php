@@ -166,11 +166,11 @@ class IndexController extends Core_Controller_Action {
         $this->view->cityCap2=$citycap2;
         if($this->_getParam('type','du_an')=='du_an'){
             $this->view->headTitle($this->getHeadTitleByDuAnCap1Id($muc), true);
-            $this->view->tenMuc= $this->getTenMuc($muc, $muccap2, $muccap3);
+            $this->view->tenMuc= $this->getTenMuc('du_an',$muc, $muccap2, $muccap3);
         }
         else{
             $this->view->headTitle('Xây dựng - Tìm kiếm nhà thầu thi công', true);
-            $this->view->tenMuc= $this->getTenMucNhaThau($muc, $muccap2, $muccap3);
+            $this->view->tenMuc= $this->getTenMuc('nha_thau_thi_cong',$muc, $muccap2, $muccap3);
         }
         
         $this->view->tenKhuVuc= $this->getTenKhuVuc($city, $citycap2);
@@ -180,99 +180,11 @@ class IndexController extends Core_Controller_Action {
         
     }
 
-    public function searchnhathauAction() {
-        $muc = $this->_getParam('muc','0');
-        $city=$this->_getParam('city','0');
-        if(strpos($muc, '_')!==FALSE){
-            $temp=explode('_', $muc);
-            if(count($temp)==2){
-                list($muc,$muccap2)= explode('_', $muc);
-                $muccap3=$this->_getParam('muccap3','0');
-            }
-            else if(count($temp)==3){
-                list($muc,$muccap2,$muccap3)= explode('_', $muc);
-            }
-            
-        }
-        else{
-            $muccap2=$this->_getParam('muccap2','0');
-            $muccap3=$this->_getParam('muccap3','0');
-        }
-        
-        if(strpos($city, '_')!==FALSE){
-            list($city,$citycap2)= explode('_', $city);
-        }
-        else{
-            $citycap2=$this->_getParam('citycap2','0');
-        }
-        if (($muc!='0'&&!ctype_digit($muc))||!ctype_digit($muccap2)) {
-            $this->_helper->redirector('index', 'index', 'default');
-            exit;
-        }
-        if (($city!='0'&&!ctype_digit($city))||!ctype_digit($citycap2)) {
-            $this->_helper->redirector('index', 'index', 'default');
-            exit;
-        }
-
-        $where = "is_active=1";
-        $where .= " and title like '%".trim($this->_getParam('q'),'')."%'";
-        if ($muc!='0'&&ctype_digit($muc)){
-            $where .= " and nha_thau_thi_cong_cap_1='$muc'";
-        }
-        if (ctype_digit($muccap2) && $muccap2 != '0') {
-            $where .= " and nha_thau_thi_cong_cap_2='$muccap2'";
-        }
-        if (ctype_digit($muccap3) && $muccap3 != '0') {
-            $where .= " and id IN (select tin_nha_thau_thi_cong_id from tinnhathauthicong_nhathauthicongcap3 where nha_thau_thi_cong_cap_3='$muccap3')";
-        }
-        
-        if ($city!='0'&&ctype_digit($city)){
-            $where .= " and city_cap_1='$city'";
-        }
-        if (ctype_digit($citycap2) && $citycap2 != '0') {
-            $where .= " and city_cap_2='$citycap2'";
-        }
-        
-        $where_target_type='';
-        if(in_array($this->_getParam('tab','tatCa'),array('doiTac','nhanVien','tatCa','khachHang'))){
-            $tab=$this->_getParam('tab','tatCa');
-            if($tab=='doiTac'){
-                $where_target_type .= " target_type=4";
-            }
-            else if($tab=='nhanVien'){
-                $where_target_type .= " target_type=2";
-            }
-            else if($tab=='khachHang'){
-                $where_target_type .= " target_type=3";
-            }
-        }
-
-        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
-        $this->setupPhoto($items);
-        $this->setupPhoto($allItems);
-        $this->view->items = $items;
-        $this->view->quangcao_items = $this->getTinQuangCaos($allItems);
-
-        $this->view->tab= $this->_getParam('tab','tatCa');
-        $this->view->mucCap2Get= (ctype_digit($muccap2)&&$muccap2!='0')?"muccap2/$muccap2":"";
-        $this->view->mucCap3Get= (ctype_digit($muccap3)&&$muccap3!='0')?"muccap3/$muccap3":"";
-        $this->view->mucGet= "muc/$muc";
-        $this->view->cityGet= "city/$city";
-        $this->view->cityCap2Get= (ctype_digit($citycap2) && $citycap2 != '0')?"citycap2/$citycap2":"";
-        $this->view->q=trim($this->_getParam('q'),'');
-        $this->view->muc=$muc;
-        $this->view->mucCap2=$muccap2;
-        $this->view->mucCap3=$muccap3;
-        $this->view->city=$city;
-        $this->view->cityCap2=$citycap2;
-        $this->view->headTitle('Xây dựng - Tìm kiếm nhà thầu thi công', true);
-        $this->view->tenMuc= $this->getTenMucNhaThau($muc, $muccap2, $muccap3);
-        $this->view->tenKhuVuc= $this->getTenKhuVuc($city, $citycap2);
-    }    
-    private function getTenMuc($muccap1,$muccap2,$muccap3){
+      
+    private function getTenMuc($type,$muccap1,$muccap2,$muccap3){
         $tenMuc = 'Tất cả danh mục';
         if(ctype_digit($muccap3)&&$muccap3!='0'){
-            $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_3");
+            $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from $type"."_cap_3");
             foreach ($du_an_cap_3s as $du_an_cap_3){
                 if($du_an_cap_3['id']==$muccap3){
                     $tenMuc=$du_an_cap_3['name'];
@@ -281,7 +193,7 @@ class IndexController extends Core_Controller_Action {
         }
         else if(ctype_digit($muccap2)&&$muccap2!='0'){
             if($tenMuc=='Tất cả danh mục'){
-                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_2");
+                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from $type"."_cap_2");
                 foreach ($du_an_cap_2s as $du_an_cap_2){
                     if($du_an_cap_2['id']==$muccap2){
                         $tenMuc=$du_an_cap_2['name'];
@@ -293,42 +205,7 @@ class IndexController extends Core_Controller_Action {
         else{
             if(ctype_digit($muccap1)&&$muccap1!='0'){
                 if($tenMuc=='Tất cả danh mục'){
-                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from du_an_cap_1");
-                    foreach ($du_an_cap_1s as $du_an_cap_1){
-                        if($du_an_cap_1['id']==$muccap1){
-                            $tenMuc=$du_an_cap_1['name'];
-                        }
-                    }
-                }
-            }
-        }
-        return $tenMuc;
-    }
-    private function getTenMucNhaThau($muccap1,$muccap2,$muccap3){
-        $tenMuc = 'Tất cả danh mục';
-        if(ctype_digit($muccap3)&&$muccap3!='0'){
-            $du_an_cap_3s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_3");
-            foreach ($du_an_cap_3s as $du_an_cap_3){
-                if($du_an_cap_3['id']==$muccap3){
-                    $tenMuc=$du_an_cap_3['name'];
-                }
-            }
-        }
-        else if(ctype_digit($muccap2)&&$muccap2!='0'){
-            if($tenMuc=='Tất cả danh mục'){
-                $du_an_cap_2s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_2");
-                foreach ($du_an_cap_2s as $du_an_cap_2){
-                    if($du_an_cap_2['id']==$muccap2){
-                        $tenMuc=$du_an_cap_2['name'];
-                    }
-                }
-            }
-            
-        }
-        else{
-            if(ctype_digit($muccap1)&&$muccap1!='0'){
-                if($tenMuc=='Tất cả danh mục'){
-                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from nha_thau_thi_cong_cap_1");
+                    $du_an_cap_1s=Core_Db_Table::getDefaultAdapter()->fetchAll("select * from $type"."_cap_1");
                     foreach ($du_an_cap_1s as $du_an_cap_1){
                         if($du_an_cap_1['id']==$muccap1){
                             $tenMuc=$du_an_cap_1['name'];
@@ -684,27 +561,5 @@ class IndexController extends Core_Controller_Action {
         return 'Dự án - ' . Core_Db_Table::getDefaultAdapter()->fetchOne("select name from du_an_cap_1 where id='$duAnCap1Id'");
     }
     
-    private function getBackgroundByDuAnCap1Id($duAnCap1Id){
-        if ($duAnCap1Id == '1') {
-            return 'cau-duong.png';
-        } else if ($duAnCap1Id == '2') {
-            return 'ha-tang.png';
-        } else if ($duAnCap1Id == '3') {
-            return 'cau-duong.png';
-        } else if ($duAnCap1Id == '4') {
-            return 'hoan-thien-noi-ngoai-that.png';
-        } else if ($duAnCap1Id == '5') {
-            return 'kien-truc.png';
-        } else if ($duAnCap1Id == '6') {
-            return 'dien-nuoc.png';
-        } else if ($duAnCap1Id == '7') {
-            return 'sua-chua.png';
-        } else if ($duAnCap1Id == '8') {
-            return 'cay-xanh.png';
-        } else if ($duAnCap1Id == '9') {
-            return 'dich-vu-ve-sinh.png';
-        } else {
-            return '';
-        }
-    }
+    
 }
