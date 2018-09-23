@@ -1,6 +1,9 @@
 <div class="footer-top">
     <div class="container">
         <div class="row row-eq-height">
+            <?php 
+            if(!$this->isMobile){
+            ?>
             <div class="col-xs-3 col-sm-3 col-md-3 col-ft-social">
                 <div class="ft-block company-social">
                     <div class="ft-tit"><b>LIÊN KẾT</b></div>
@@ -12,16 +15,28 @@
                     </ul>
                 </div>
             </div>
+            <?php 
+            }
+            ?>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="ft-block">
                     <div class="ft-tit"><b>VỀ CÔNG TY</b></div>
                     <ul>
                         <li><a href="#">Giới thiệu</a></li>
                         <li><a href="#">Tuyển dụng</a></li>
+                        <?php 
+                        if(!$this->isMobile){
+                        ?>
                         <li><a href="#">Blog</a></li>
+                        <?php 
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
+            <?php 
+            if(!$this->isMobile){
+            ?>
             <div class="col-480-full col-xs-3 col-sm-3 col-md-3">
                 <div class="ft-block">
                     <div class="ft-tit"><b>VỀ KHÁCH HÀNG</b></div>
@@ -32,6 +47,9 @@
                     </ul>
                 </div>
             </div>
+            <?php 
+            }
+            ?>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="ft-block">
                     <div class="ft-img"><a href="#"><img src="<?php echo $this->baseUrl();?>/front_end/images/layout/dadangky.png" alt=""></a></div>
