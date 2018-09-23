@@ -4362,7 +4362,7 @@ a:hover, a:focus {
         vertical-align: top;
         display: inline-block;
         padding: 0;
-        height: 25px;
+        height: 40px;
         
     }
     .layout-3 .top .top-poc .top-oc a,
@@ -4378,7 +4378,7 @@ a:hover, a:focus {
     }
     .layout-3 .top .top-poc .top-oc.top-login a,
     .index .top .top-poc .top-oc.top-login a  {
-        background: transparent url(../images/layout/personal.png) no-repeat top;
+        background: transparent url(../images/layout/personal.png) no-repeat left;
         width: 26px;
         height: 18px;
     }
@@ -4652,7 +4652,8 @@ a:hover, a:focus {
     margin-left: 20px;
 }
 .layout-3 .top .top-poc .top-oc.top-login a,.index .top .top-poc .top-oc.top-login a {
-    background: transparent url(../images/layout/personal.png) no-repeat 17px; }
+    background: transparent url(../images/layout/personal.png) no-repeat 17px; 
+}
 .layout-3 .top .top-poc .top-oc.top-project a {
     background: transparent url(../images/layout/bookmark-white.png) no-repeat 17px; }
 .layout-3 .top .top-poc .top-oc.top-post a {
