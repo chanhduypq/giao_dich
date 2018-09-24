@@ -10,21 +10,63 @@ class Default_Model_Tinduan extends Core_Db_Table_Abstract
         parent::__construct();
     }
     
-    public static function getTinDuAns($where,$where_target_type,&$allItems,&$total, $limit = null, $start = null){
+    public static function getTinDuAns($where,$where_target_type,&$allItems,&$total, $limit = null, $start = null,$limit_hot=null){
         if (Core_Common_Numeric::isInteger($limit) && Core_Common_Numeric::isInteger($start)) {
             $limit="limit $start,$limit";
+            $limit_hot="limit $start,$limit_hot";
         }
         else{
             $limit="";
         }
         
-        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where order by is_hot desc,id desc");
+        $allItems= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and (is_hot is null or is_hot = 0) order by id desc");
                 
-        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc");
+        $allItems_target_type= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and (is_hot is null or is_hot = 0) ".($where_target_type!=''?"and $where_target_type ":"")." order by id desc");
         
-        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where ".($where_target_type!=''?"and $where_target_type ":"")." order by is_hot desc,id desc $limit");
+        $items= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and (is_hot is null or is_hot = 0) ".($where_target_type!=''?"and $where_target_type ":"")." order by id desc $limit");
         
         $total = count($allItems_target_type);
+        
+        $allItemsHot= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and is_hot = 1 order by id desc");
+                
+        $allItems_target_typeHot= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and is_hot = 1 ".($where_target_type!=''?"and $where_target_type ":"")." order by id desc");
+        
+        $itemsHot= Core_Db_Table::getDefaultAdapter()->fetchAll("select * from view_tin_du_an where $where and is_hot = 1 ".($where_target_type!=''?"and $where_target_type ":"")." order by id desc $limit");
+        
+        if($total==0){
+            $total=count($allItems_target_typeHot);
+        }
+        
+        if(count($itemsHot)>0){
+            $distance= floor(count($items)/count($itemsHot));
+        }
+        else{
+            $distance= count($items);
+        }
+        
+        $index=0;
+        $itemsTemp=array();
+        for($i=0;$i<count($items);$i++){
+            if($i%$distance==0){
+                if(isset($itemsHot[$index])){
+                    $itemsTemp[]=$itemsHot[$index++];
+                }
+            }
+            $itemsTemp[]=$items[$i];
+        }
+        $items=$itemsTemp;
+        
+        $index=0;
+        $allItemsTemp=array();
+        for($i=0;$i<count($allItems);$i++){
+            if($i%$distance==0){
+                if(isset($allItemsHot[$index])){
+                    $allItemsTemp[]=$allItemsHot[$index++];
+                }
+            }
+            $allItemsTemp[]=$allItems[$i];
+        }
+        $allItems=$allItemsTemp;
         
         return $items;
         

@@ -49,6 +49,12 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
      * @var integer
      */
     public $limit=null;
+    
+    /**
+     *
+     * @var integer
+     */
+    public $limit_hot=null;
 
     /**
      *
@@ -117,7 +123,8 @@ abstract class Core_Controller_Action extends Zend_Controller_Action {
         $this->initPaginator();
 
         if (in_array($this->_request->getActionName(), $this->actionsForList)){
-            $this->limit = $this->_getParam('limit', 20);
+            $this->limit = $this->_getParam('limit', 10);
+            $this->limit_hot = $this->_getParam('limit', 2);
             $this->page = $this->_getParam('page', 1);
             if (Core_Common_Numeric::isInteger($this->page) == FALSE) {
                 $this->page = 1;

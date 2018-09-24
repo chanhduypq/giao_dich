@@ -322,7 +322,7 @@ class IndexController extends Core_Controller_Action {
             }
         }
 
-        $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        $items = Default_Model_Tinduan::getTinDuAns($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start, $this->limit_hot);
         $this->setupPhoto($items);
         $this->setupPhoto($allItems);
         
@@ -363,7 +363,7 @@ class IndexController extends Core_Controller_Action {
             }
         }
         
-        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start);
+        $items = Default_Model_Tinnhathauthicong::getTinNhaThauThiCongs($where,$where_target_type,$allItems,$this->total, $this->limit, $this->start, $this->limit_hot);
 
         $this->setupPhoto($items);
         $this->setupPhoto($allItems);
